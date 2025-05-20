@@ -1,0 +1,22 @@
+{
+  "condition": {
+    "type": "forge:or",
+    "values": [
+      {
+        "type": "tconstruct:config",
+        "prop": "force_integration_materials"
+      },
+      {
+        "type": "forge:not",
+        "value": {
+          "type": "forge:tag_empty",
+          "tag": "forge:ingots/diorite_alloy"
+        }
+      }
+    ]
+  },
+  "craftable": true,
+  "hidden": false,
+  "sortorder": 3,
+  "tier": 1
+}

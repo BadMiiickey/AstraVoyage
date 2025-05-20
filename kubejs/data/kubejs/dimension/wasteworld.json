@@ -1,0 +1,48 @@
+{
+  "type": "kubejs:wasteworld",
+  "generator": {
+    "type": "minecraft:noise",
+    "biome_source": {
+      "type": "minecraft:multi_noise",
+      "biomes": [
+        {
+          "biome": "kubejs:wasteland",
+          "parameters": {
+            "temperature": 0.6,
+            "humidity": 0.5,
+            "continentalness": 0.3,
+            "erosion": 0.0,
+            "weirdness": 0.0,
+            "depth": 0.0,
+            "offset": 0.0
+          }
+        },
+        {
+          "biome": "kubejs:wasteocean",
+          "parameters": {
+            "temperature": 0.2,
+            "humidity": 0.5,
+            "continentalness": -0.97,
+            "erosion": 0.0,
+            "weirdness": 0.0,
+            "depth": 0.0,
+            "offset": 0.1
+          }
+        },
+        {
+          "biome": "kubejs:wastecaves",
+          "parameters": {
+            "temperature": 0.0,
+            "humidity": 0.5,
+            "continentalness": 0.0,
+            "erosion": 0.0,
+            "weirdness": 0.0,
+            "depth": 1.0,
+            "offset": 0.0
+          }
+        }
+      ]
+    },
+    "settings": "kubejs:wasteworld"
+  }
+}

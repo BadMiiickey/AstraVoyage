@@ -1,0 +1,31 @@
+{
+    "material.kubejs": {
+        "calorite": "#b83145",
+        "dark_iron": "#494747",
+        "desh": "#d68d4d",
+        "etrium": "#7cffda",
+        "ostrum": "#775360",
+        "aluminium_alloy": "#b3d9df",
+        "zinc": "#a5c0a0",
+        "brass": "#fbcc68",
+        "granite_alloy": "#926454",
+        "diorite_alloy": "#a7a7a7",
+        "andesite_alloy": "#5e6963",
+        "void_steel": "#258474",
+        "rock_core": "#83867e",
+        "dense_planet_core": "#7ebdcb",
+        "chromatic_compound": "#853c74",
+        "refined_radiance": "#f5fae1",
+        "shadow_steel": "#4d4861"
+    },
+    "modifier.kubejs": {
+        "degenerate": "#494747",
+        "disease": "#494747",
+        "burning": "#b83145",
+        "fire_bathing": "#b83145",
+        "lightbane": "#6b76f0",
+        "lightbather": "#6b76f0",
+        "looting": "#83867e",
+        "looter": "#83867e"
+    }
+}

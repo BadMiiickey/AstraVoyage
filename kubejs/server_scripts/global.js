@@ -1,0 +1,303 @@
+//priority: 999999
+var $CuriosApi = Java.loadClass('top.theillusivec4.curios.api.CuriosApi')
+
+const curiosHelper = $CuriosApi.getCuriosHelper()
+
+//全局函数
+const methods = {
+
+    /**
+     * 
+     * @method
+     * @param { object[] } objectList
+     */
+    stringListTransformation(objectList) {
+        
+        /** @type { string[] } */
+        let stringList = []
+        
+        objectList.forEach(object =>{
+            stringList.push(object.namespace + ':' + object.path)
+        })
+
+        return stringList
+    },
+
+    /**
+     * 
+     * @method
+     * @param { object[] } objectList 
+     */
+    pathIdTransformation(objectList) {
+
+        /** @type { string[] } */
+        let pathIdList = []
+        
+        objectList.forEach(object => {
+            pathIdList.push(object.path)
+        })
+
+        return pathIdList
+    },
+
+    /**
+     * 
+     * @method
+     * @param { string } string
+     * @param { string[] } stringList 
+     */
+    stringAccessFilter(string, stringList) {
+
+        /** @type { string[] } */
+        let TargetList = []
+        
+        TargetList.push(stringList.filter(item => String(item).includes(string)))
+
+        return TargetList
+    },
+
+    /**
+     * 
+     * @param { Internal.Player } player 
+     * @param { Internal.ItemStack_ } item 
+     */
+    slotResult(player, item) {
+        
+        /** @type { Internal.List<Internal.SlotResult> } */
+        let slotResult = curiosHelper[
+            'findCurios(net.minecraft.world.entity.LivingEntity,net.minecraft.world.item.Item)'
+        ](player, item)
+        /** @type { boolean } */
+        let checkBoolean
+        
+        if (slotResult.length >= 1) {
+            checkBoolean = true
+        } else {
+            checkBoolean = false
+        }
+
+        return checkBoolean
+    },
+
+    /**
+     * 
+     * @param { string } modName
+     * @param { string[] } materials 
+     * @param { string[] } itemTypes 
+     */
+    itemsRemoveArray(modName, materials, itemTypes) {
+        
+        /** @type { string[] } */
+        let itemsRemoveArray = []
+
+        materials.forEach(material => {
+            itemTypes.forEach(itemType => {
+                itemsRemoveArray.push(`${modName}:${material}_${itemType}`)
+            })
+        })
+
+        return itemsRemoveArray
+    },
+
+    /**
+     * 
+     * @param { Internal.Level } level
+     * @param { BlockPos } pos
+     * @returns 
+     */
+    isUnderSunlight(level, pos) {
+        for (let i = 15; i >= 1; i--) {
+            if (level.getBlock(pos).offset(0, i, 0).id != 'minecraft:air') return false
+        }
+
+        if (!level.getBlock(pos).offset(0, 16, 0).canSeeSky) return false
+
+        return true
+    },
+
+    /**
+     * 
+     * @param { Internal.MinecraftServer } server 
+     * @param { number } tickOffset 
+     * @param { number } seconds 
+     */
+    tickCountCheck(server, tickOffset, seconds) {
+        if ((server.tickCount + tickOffset) % (20 * seconds) == 0) return true
+        return false
+    },
+
+    /**
+     * 
+     * @param { Internal.List<{dimension: ResourceLocation, pos: BlockPos}> } mapArray 
+     */
+    mapArrayStringfy(mapArray) {
+        mapArray.forEach(map => {
+            map.dimension = map.dimension.toString()
+            map.pos = {
+                x: map.pos.x,
+                y: map.pos.y,
+                z: map.pos.z
+            }
+        })
+        return mapArray
+    },
+
+    /**
+     * 
+     * @param { Internal.List<{dimension: string, pos: {x: number, y: number, z: number} }> } mapArray 
+     */
+    mapArrayStringfyReverse(mapArray) {
+        mapArray.forEach(map => {
+            map.dimension = new ResourceLocation(map.dimension)
+            map.pos = new BlockPos(map.pos.x, map.pos.y, map.pos.z)
+        })
+        return mapArray
+    }
+}
+
+Object.assign(global, methods)
+
+//全局变量
+    //生物类型定义
+    global.undeads = [
+        
+        //Minecraft
+        'minecraft:drowned',
+        'minecraft:husk',
+        'minecraft:phantom',
+        'minecraft:skeleton',
+        'minecraft:stray',
+        'minecraft:vex',
+        'minecraft:zombie',
+        'minecraft:zombie_villager',
+
+        //Quark
+        'quark:forgotten',
+        'quark:wraith',
+        
+        //The_Graveyard
+        'graveyard:skeleton_creeper',
+        'graveyard:acolyte',
+        'graveyard:ghoul',
+        'graveyard:reaper',
+        'graveyard:revenant',
+        'graveyard:nightmare',
+        'graveyard:corrupted_vindicator',
+        'graveyard:corrupted_pillager',
+        'graveyard:wraith',
+    ]
+
+    //药水效果定义
+        //全体增益效果(不影响正常生存)
+        global.allBeneficialPotionEffectsArray = [
+            'minecraft:absorption',
+            'minecraft:strength',
+            'minecraft:speed',
+            'minecraft:haste',
+            'minecraft:jump_boost',
+            'minecraft:fire_resistance',
+            'minecraft:water_breathing',
+            'minecraft:invisibility',
+            'minecraft:regeneration',
+            'minecraft:resistance',
+            'minecraft:slow_falling',
+            'minecraft:saturation',
+        ]
+
+        //战斗增益效果
+        global.beneficialPotionEffectsArray = [
+            'minecraft:absorption',
+            'minecraft:strength',
+            'minecraft:speed',
+            'kubejs:bloodthirsty'
+        ]
+
+        //减益效果
+        global.harmfulPotionEffectsArray = [
+            'minecraft:slowness',
+            'minecraft:weakness',
+            'minecraft:poison',
+            'minecraft:wither',
+            'kubejs:corrosion'
+        ]
+
+    //生肉定义
+    global.rawMeets = [
+
+        //Minecraft
+        'minecraft:beef',
+        'minecraft:porkchop',
+        'minecraft:mutton',
+        'minecraft:chicken',
+        'minecraft:rabbit',
+        'minecraft:cod',
+        'minecraft:salmon',
+        'minecraft:rotten_flesh',
+        'minecraft:spider_eye',
+
+        //Quark
+        'quark:crab_leg'
+    ]
+
+    //原版工具材料
+    global.vanillaFixMaterials = [
+        'minecraft:iron_ingot',
+        'minecraft:gold_ingot',
+        'minecraft:diamond',
+        'minecraft:netherite_ingot'
+    ]
+
+    global.stringListTransformation(Ingredient.of('#minecraft:planks').itemIds).forEach(item => {
+        global.vanillaFixMaterials.push(item)
+    })
+    
+    global.stringListTransformation(Ingredient.of('#minecraft:stone_crafting_materials').itemIds).forEach(item => {
+        global.vanillaFixMaterials.push(item)
+    })
+
+    //熔融金属流体名称定义
+    global.materialNames = [
+        'dark_iron',
+        'desh',
+        'ostrum',
+        'calorite',
+        'etrium',
+        'aluminum_alloy',
+        'zinc',
+        'andesite_alloy',
+        'granite_alloy',
+        'diorite_alloy',
+        'void_steel',
+        'andesite_alloy',
+        'granite_alloy',
+        'diorite_alloy',
+        'rock_core'
+    ]
+
+    //禁用生成生物
+    global.banedEntities = [
+        'minecraft:wandering_trader',
+        'ad_astra:lunarian_wandering_trader',
+        'ad_astra:martian_wandering_trader'
+    ]
+
+//全局方块Map
+    //营火
+    if (!global.campfiresMapArray) {
+        global.campfiresMapArray = []
+    }
+
+    //工作盆
+    if (!global.basinsMapArray) { 
+        global.basinsMapArray = []
+    }
+
+    //发射台
+    if (!global.launchPadsMapArray) {
+        global.launchPadsMapArray = []
+    }
+
+    //简易工业平台
+    if (!global.platformsMapArray) {
+        global.platformsMapArray = []
+    }

@@ -1,0 +1,10 @@
+{
+  "dimension": "minecraft:the_nether",
+  "gravity": 9.807,
+  "orbit": "kubejs:the_nether_orbit",
+  "oxygen": false,
+  "solar_power": 0,
+  "solar_system": "ad_astra:solar_system",
+  "temperature": 75,
+  "tier": 2
+}

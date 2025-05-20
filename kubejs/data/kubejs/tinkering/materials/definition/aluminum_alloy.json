@@ -1,0 +1,22 @@
+{
+  "condition": {
+    "type": "forge:or",
+    "values": [
+      {
+        "type": "tconstruct:config",
+        "prop": "force_integration_materials"
+      },
+      {
+        "type": "forge:not",
+        "value": {
+          "type": "forge:tag_empty",
+          "tag": "forge:ingots/aluminum_alloy"
+        }
+      }
+    ]
+  },
+  "craftable": false,
+  "hidden": false,
+  "sortorder": 10,
+  "tier": 4
+}

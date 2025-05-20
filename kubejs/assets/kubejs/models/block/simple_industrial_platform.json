@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "kubejs:block/simple_industrial_platform_end",
+    "side": "kubejs:block/simple_industrial_platform_side"
+  }
+}
