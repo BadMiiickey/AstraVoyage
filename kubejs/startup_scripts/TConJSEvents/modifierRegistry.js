@@ -11,7 +11,7 @@ TConJSEvents.modifierRegistry(event => {
 
                 if (Math.random() <= 0.4) {
                     context.livingTarget.potionEffects.add(
-                        global.harmfulPotionEffectsArray[Math.floor(Math.random() * length)],
+                        global.definitionsArray.harmfulPotionEffectsArray[Math.floor(Math.random() * length)],
                         20 * (level ** 1.5),
                         Math.floor(Math.random() * level),
                         false, false
@@ -24,12 +24,12 @@ TConJSEvents.modifierRegistry(event => {
         event.createNew('disease', builder => {
             builder.onDamageDealt((view, level, context, slot, entity, source, damage) => {
 
-                let length = global.harmfulPotionEffectsArray.length
+                let length = global.definitionsArray.harmfulPotionEffectsArray.length
 
                 if (source.actual instanceof $LivingEntity) {
                     if (Math.random() <= 0.4) {
                         source.actual.potionEffects.add(
-                            global.harmfulPotionEffectsArray[Math.floor(Math.random() * length)],
+                            global.definitionsArray.harmfulPotionEffectsArray[Math.floor(Math.random() * length)],
                             20 * (level ** 1.5),
                             Math.floor(Math.random() * level),
                             false, false

@@ -5,7 +5,7 @@ BlockEvents.placed(event => {
     //多方块机器条件判断
         //灰烬收集器 => 工作盆、分散网、鼓风机
         if (block.id == 'create:basin') {
-            global.basinsMapArray.push({
+            global.mapArray.basinsMapArray.push({
                 dimension: block.dimension,
                 pos: block.pos
             })
@@ -13,7 +13,7 @@ BlockEvents.placed(event => {
 
         //火箭发射基座
         if (block.id == 'ad_astra:launch_pad') {
-            global.launchPadsMapArray.push({
+            global.mapArray.launchPadsMapArray.push({
                 dimension: block.dimension,
                 pos: block.pos,
                 hasBuildCorrectly: false,
@@ -24,7 +24,7 @@ BlockEvents.placed(event => {
 
     //营火
     if (block.id == 'minecraft:campfire') {
-        global.campfiresMapArray.push({
+        global.mapArray.campfiresMapArray.push({
             dimension: block.dimension,
             pos: block.pos
         })
@@ -80,7 +80,7 @@ BlockEvents.placed(event => {
     }
 
     if (block.id == 'kubejs:simple_industrial_platform') {
-        global.platformsMapArray.push({
+        global.mapArray.platformsMapArray.push({
             dimension: block.dimension,
             pos: block.pos
         })

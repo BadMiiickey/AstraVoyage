@@ -3,7 +3,7 @@ ItemEvents.foodEaten(event => {
     const { item, player } = event
 
     //生食获得反胃 + 概率虚弱和中毒
-    global.rawMeets.forEach(meet => {
+    global.definitionsArray.rawMeets.forEach(meet => {
         if (item.id == meet) {
             player.potionEffects.add('minecraft:nausea', 20 * 15, 0, false, false)
 

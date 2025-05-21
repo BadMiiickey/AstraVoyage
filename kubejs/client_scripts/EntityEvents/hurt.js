@@ -6,7 +6,7 @@ EntityEvents.hurt(event => {
 
     //玩家受伤事件
     if (entity.player) {
-        if (global.slotResult(entity, 'kubejs:guardian_shield')) {
+        if (global.methods.slotResult(entity, 'kubejs:guardian_shield')) {
             
             let slotsList = $CuriosApi.getCuriosInventory(entity).resolve().get()
             

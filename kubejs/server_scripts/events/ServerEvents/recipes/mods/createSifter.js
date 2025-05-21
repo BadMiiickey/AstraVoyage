@@ -35,7 +35,7 @@ ServerEvents.recipes(event => {
     /** @type { Internal.List<string> } */
     let seeds = []
 
-    global.stringListTransformation(Ingredient.of('#forge:seeds').itemIds).forEach(seed => {
+    global.methods.stringListTransformation(Ingredient.of('#forge:seeds').itemIds).forEach(seed => {
         seeds.push(Item.of(seed).withChance(0.05))
     })
 

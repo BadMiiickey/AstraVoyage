@@ -33,7 +33,7 @@ EntityEvents.spawned(event => {
 
     //被动生物生成事件
         //禁用生物生成
-        global.banedEntities.forEach(banedEntity => {
+        global.definitionsArray.banedEntities.forEach(banedEntity => {
             if (entity.type == banedEntity) {
                 event.cancel()
             }

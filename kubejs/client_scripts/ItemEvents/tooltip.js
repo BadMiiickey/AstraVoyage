@@ -47,7 +47,7 @@ ItemEvents.tooltip(event => {
             event.addAdvanced('kubejs:memory_bracelet', (item, advanced, text) => {
                 text.add(1, '§6存储经验以提升伤害, 按住§8[§7Shift+右键§8]§6存储经验')
                 text.add(2, '§8按住[§7Shift§8]查看概要')
-                text.add(3, `§8按[§7${ global.memoryBraceletUpperCase }§8]以切换经验注入模式`)
+                text.add(3, `§8按[§7${ global.other.memoryBraceletUpperCase }§8]以切换经验注入模式`)
                 
                 if (item.nbt?.AutoStoredXP) {
                     text.add(4, '       §6当前模式: §a自动注入')

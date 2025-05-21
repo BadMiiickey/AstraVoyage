@@ -4,7 +4,7 @@ var $CuriosApi = Java.loadClass('top.theillusivec4.curios.api.CuriosApi')
 const curiosHelper = $CuriosApi.getCuriosHelper()
 
 //全局函数
-const methods = {
+global.methods = {
 
     /**
      * 
@@ -155,12 +155,11 @@ const methods = {
     }
 }
 
-Object.assign(global, methods)
+//全局定义数组
+global.definitionsArray = {
 
-//全局变量
-    //生物类型定义
-    global.undeads = [
-        
+    //亡灵生物
+    undeads: [
         //Minecraft
         'minecraft:drowned',
         'minecraft:husk',
@@ -184,45 +183,53 @@ Object.assign(global, methods)
         'graveyard:nightmare',
         'graveyard:corrupted_vindicator',
         'graveyard:corrupted_pillager',
-        'graveyard:wraith',
-    ]
+        'graveyard:wraith'
+    ],
 
-    //药水效果定义
-        //全体增益效果(不影响正常生存)
-        global.allBeneficialPotionEffectsArray = [
-            'minecraft:absorption',
-            'minecraft:strength',
-            'minecraft:speed',
-            'minecraft:haste',
-            'minecraft:jump_boost',
-            'minecraft:fire_resistance',
-            'minecraft:water_breathing',
-            'minecraft:invisibility',
-            'minecraft:regeneration',
-            'minecraft:resistance',
-            'minecraft:slow_falling',
-            'minecraft:saturation',
-        ]
+    //增益药水效果
+    allBeneficialPotionEffectsArray: [
+        'minecraft:absorption',
+        'minecraft:strength',
+        'minecraft:speed',
+        'minecraft:haste',
+        'minecraft:jump_boost',
+        'minecraft:fire_resistance',
+        'minecraft:water_breathing',
+        'minecraft:invisibility',
+        'minecraft:regeneration',
+        'minecraft:resistance',
+        'minecraft:slow_falling',
+        'minecraft:saturation',
+    ],
 
-        //战斗增益效果
-        global.beneficialPotionEffectsArray = [
-            'minecraft:absorption',
-            'minecraft:strength',
-            'minecraft:speed',
-            'kubejs:bloodthirsty'
-        ]
+    //减益药水效果
+    harmfulPotionEffectsArray: [
+        'minecraft:slowness',
+        'minecraft:weakness',
+        'minecraft:poison',
+        'minecraft:wither',
+        'kubejs:corrosion'
+    ],
 
-        //减益效果
-        global.harmfulPotionEffectsArray = [
-            'minecraft:slowness',
-            'minecraft:weakness',
-            'minecraft:poison',
-            'minecraft:wither',
-            'kubejs:corrosion'
-        ]
+    //战斗增益效果
+    beneficialPotionEffectsArray: [
+        'minecraft:absorption',
+        'minecraft:strength',
+        'minecraft:speed',
+        'kubejs:bloodthirsty'
+    ],
+
+    //战斗减益效果
+    harmfulPotionEffectsArray: [
+        'minecraft:slowness',
+        'minecraft:weakness',
+        'minecraft:poison',
+        'minecraft:wither',
+        'kubejs:corrosion'
+    ],
 
     //生肉定义
-    global.rawMeets = [
+    rawMeets: [
 
         //Minecraft
         'minecraft:beef',
@@ -237,26 +244,10 @@ Object.assign(global, methods)
 
         //Quark
         'quark:crab_leg'
-    ]
-
-    //原版工具材料
-    global.vanillaFixMaterials = [
-        'minecraft:iron_ingot',
-        'minecraft:gold_ingot',
-        'minecraft:diamond',
-        'minecraft:netherite_ingot'
-    ]
-
-    global.stringListTransformation(Ingredient.of('#minecraft:planks').itemIds).forEach(item => {
-        global.vanillaFixMaterials.push(item)
-    })
-    
-    global.stringListTransformation(Ingredient.of('#minecraft:stone_crafting_materials').itemIds).forEach(item => {
-        global.vanillaFixMaterials.push(item)
-    })
+    ],
 
     //熔融金属流体名称定义
-    global.materialNames = [
+    materialNames: [
         'dark_iron',
         'desh',
         'ostrum',
@@ -272,32 +263,38 @@ Object.assign(global, methods)
         'granite_alloy',
         'diorite_alloy',
         'rock_core'
-    ]
+    ],
 
     //禁用生成生物
-    global.banedEntities = [
+    banedEntities: [
         'minecraft:wandering_trader',
         'ad_astra:lunarian_wandering_trader',
         'ad_astra:martian_wandering_trader'
     ]
+}
 
 //全局方块Map
+global.mapArray = {}
+
     //营火
-    if (!global.campfiresMapArray) {
-        global.campfiresMapArray = []
+    if (!global.mapArray.campfiresMapArray) {
+        global.mapArray.campfiresMapArray = []
     }
 
     //工作盆
-    if (!global.basinsMapArray) { 
-        global.basinsMapArray = []
+    if (!global.mapArray.basinsMapArray) { 
+        global.mapArray.basinsMapArray = []
     }
 
     //发射台
-    if (!global.launchPadsMapArray) {
-        global.launchPadsMapArray = []
+    if (!global.mapArray.launchPadsMapArray) {
+        global.mapArray.launchPadsMapArray = []
     }
 
     //简易工业平台
-    if (!global.platformsMapArray) {
-        global.platformsMapArray = []
+    if (!global.mapArray.platformsMapArray) {
+        global.mapArray.platformsMapArray = []
     }
+
+//其他全局属性
+global.other = {}

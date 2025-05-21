@@ -176,24 +176,24 @@ ServerEvents.recipes(event => {
          */
         function ingotTransformation(modName, material) {
             event.shapeless(
-                Item.of(`${modName}:${material}_nugget`, 9),
-                `${modName}:${material}_ingot`
+                Item.of(`${ modName }:${ material }_nugget`, 9),
+                `${ modName }:${ material }_ingot`
             ).id(`kubejs:shapeless_${material}_nugget`)
 
             event.shapeless(
-                Item.of(`${modName}:${material}_ingot`, 9),
-                `${modName}:${material}_block`
-            ).id(`kubejs:shapeless_${material}_ingot/block`)
+                Item.of(`${ modName }:${ material }_ingot`, 9),
+                `${ modName }:${ material }_block`
+            ).id(`kubejs:shapeless_${ material }_ingot/block`)
 
             event.shapeless(
-                `${modName}:${material}_ingot`,
-                Item.of(`${modName}:${material}_nugget`, 9),
-            ).id(`kubejs:shapeless_${material}_ingot/nugget`)
+                `${ modName }:${ material }_ingot`,
+                Item.of(`${ modName }:${ material }_nugget`, 9),
+            ).id(`kubejs:shapeless_${ material }_ingot/nugget`)
 
             event.shapeless(
-                `${modName}:${material}_block`,
-                Item.of(`${modName}:${material}_ingot`, 9)
-            ).id(`kubejs:shapeless_${material}_block`)
+                `${ modName }:${ material }_block`,
+                Item.of(`${ modName }:${ material }_ingot`, 9)
+            ).id(`kubejs:shapeless_${ material }_block`)
         }
 
         ingotTransformation('ad_astra', 'etrium')//埃忒恩锭
@@ -212,8 +212,8 @@ ServerEvents.recipes(event => {
 
             let outputPath = output.toString().replace(':', '_')
 
-            event.smelting(output, input).id(`kubejs:smelting_${outputPath}`)
-            event.blasting(output, input).id(`kubejs:blasting_${outputPath}`)
+            event.smelting(output, input).id(`kubejs:smelting_${ outputPath }`)
+            event.blasting(output, input).id(`kubejs:blasting_${ outputPath }`)
         }
 
         smeltAndBlast('ad_astra:desh_ingot', 'kubejs:crushed_raw_desh')//戴斯锭

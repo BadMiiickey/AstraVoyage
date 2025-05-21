@@ -104,7 +104,7 @@ ServerEvents.recipes(event => {
         removeRecipesId('ad_astra:compressor')
         removeRecipesId('ad_astra:water_pump')
 
-        global.itemsRemoveArray(
+        global.methods.itemsRemoveArray(
             'ad_astra',
             ['encased'],
             ['iron_block', 'steel_block', 'desh_block', 'ostrum_block', 'calorite_block', 'etrium_block']
@@ -112,7 +112,7 @@ ServerEvents.recipes(event => {
             removeRecipesId(item)
         })
 
-        global.itemsRemoveArray(
+        global.methods.itemsRemoveArray(
             'ad_astra',
             ['iron', 'steel', 'desh', 'ostrum', 'calorite', 'etrium'],
             ['panel', 'factory_block']
@@ -179,12 +179,12 @@ ServerEvents.recipes(event => {
         removeRecipesInput('minecraft:tipped_arrow')
         removeRecipesInput('minecraft:enchanted_book')
         
-        global.stringListTransformation(Ingredient.of('#minecraft:tools').itemIds).forEach(tool => {
+        global.methods.stringListTransformation(Ingredient.of('#minecraft:tools').itemIds).forEach(tool => {
             removeRecipesInput(tool)
             removeRecipesOutput(tool)
         })
         
-        global.stringListTransformation(Ingredient.of('#minecraft:trimmable_armor').itemIds).forEach(armor => {
+        global.methods.stringListTransformation(Ingredient.of('#minecraft:trimmable_armor').itemIds).forEach(armor => {
             removeRecipesInput(armor)
             removeRecipesOutput(armor)
         })

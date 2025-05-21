@@ -350,19 +350,19 @@ LevelEvents.tick(event => {
     }
 
     //删除搭建失败后因爆炸丢失的发射台在全局方块Map中的信息
-    if (global.tickCountCheck(server, 1, 1.5)) {
+    if (global.methods.tickCountCheck(server, 1, 1.5)) {
         if (
-            global.launchPadsMapArray
-            && global.launchPadsMapArray.length > 0
+            global.mapArray.launchPadsMapArray
+            && global.mapArray.launchPadsMapArray.length > 0
         ) {
-            global.launchPadsMapArray.forEach(launchPad => {
+            global.mapArray.launchPadsMapArray.forEach(launchPad => {
                 server.players.forEach(player => {
                     if (player.level.dimension == launchPad.dimension) {
 
                         let block = player.level.getBlock(launchPad.pos)
 
                         if (block.id != 'ad_astra:launch_pad') {
-                            global.launchPadsMapArray = global.launchPadsMapArray
+                            global.mapArray.launchPadsMapArray = global.mapArray.launchPadsMapArray
                                 .filter(launchPadBlock => 
                                     launchPadBlock.dimension != block.dimension
                                     && launchPadBlock.pos != block.pos
@@ -375,7 +375,7 @@ LevelEvents.tick(event => {
 
                 //移除bug导致的错误信息
                 if (launchPad.dimension == undefined || launchPad.pos == undefined) {
-                    global.launchPadsMapArray = global.launchPadsMapArray
+                    global.mapArray.launchPadsMapArray = global.mapArray.launchPadsMapArray
                         .filter(launchPadBlock => 
                             launchPadBlock.dimension != undefined
                             && launchPadBlock.pos != undefined
@@ -420,12 +420,12 @@ LevelEvents.tick(event => {
         explosion()
     }
 
-    if (global.tickCountCheck(server, 1, 5)) {
+    if (global.methods.tickCountCheck(server, 1, 5)) {
         if (
-            global.launchPadsMapArray
-            && global.launchPadsMapArray.length > 0
+            global.mapArray.launchPadsMapArray
+            && global.mapArray.launchPadsMapArray.length > 0
         ) {
-            global.launchPadsMapArray.forEach(launchPad => {
+            global.mapArray.launchPadsMapArray.forEach(launchPad => {
                 server.players.forEach(player => {
                     if (player.level.dimension == launchPad.dimension) {
                         

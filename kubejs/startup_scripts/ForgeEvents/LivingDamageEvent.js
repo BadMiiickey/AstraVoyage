@@ -17,7 +17,7 @@ ForgeEvents.onEvent('net.minecraftforge.event.entity.living.LivingDamageEvent', 
         //玩家存储于记忆手链中的经验加成伤害
         if (
             source?.player
-            && global.slotResult(source?.player, 'kubejs:memory_bracelet')
+            && global.methods.slotResult(source?.player, 'kubejs:memory_bracelet')
         ) {
             let slotsList = $CuriosApi.getCuriosInventory(source.player).resolve().get()
 
@@ -41,7 +41,7 @@ ForgeEvents.onEvent('net.minecraftforge.event.entity.living.LivingDamageEvent', 
 
     //敌对生物伤害结算
         //亡灵生物着火或在岩浆中伤害加深
-        global.undeads.forEach(undead => {
+        global.definitionsArray.undeads.forEach(undead => {
             if (entity.type == undead) {
                 if (
                     entity.inLava

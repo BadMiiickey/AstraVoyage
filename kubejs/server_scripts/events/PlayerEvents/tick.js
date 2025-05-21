@@ -15,7 +15,7 @@ PlayerEvents.tick(event => {
         let killPercent = 
             Math.min(20 + player.persistentData.healthFromKills + player.persistentData.healthFromTime, 500) / 500
 
-        if (global.tickCountCheck(server, 20, 10)) {
+        if (global.methods.tickCountCheck(server, 20, 10)) {
             player.paint({
                 
                 mobKillCountFrame: {
@@ -72,7 +72,7 @@ PlayerEvents.tick(event => {
             return ostrumCheck
         }
 
-        if (global.tickCountCheck(server, 20, 1.5)) {
+        if (global.methods.tickCountCheck(server, 20, 1.5)) {
             if (ostrumNBTCheck()) {
                 player.paint({
                     lightLevel: {
@@ -102,7 +102,7 @@ PlayerEvents.tick(event => {
 
     //玩家佩戴饰品事件    
         //吸金磁 => 正面Buff: 佩戴时吸引附近物品
-        if (global.slotResult(player, 'kubejs:magnet')) {
+        if (global.methods.slotResult(player, 'kubejs:magnet')) {
             
             let playerAABBForItems = player.boundingBox.inflate(8, 8, 8)
             let attractableItems = level.getEntitiesWithin(playerAABBForItems)
@@ -118,9 +118,9 @@ PlayerEvents.tick(event => {
         }
 
         //流光水晶 => 正面Buff: 佩戴时若主手持有匠魂镐则获得急迫Buff
-        if (global.tickCountCheck(server, 18, 3)) {
+        if (global.methods.tickCountCheck(server, 18, 3)) {
             if (
-                global.slotResult(player, 'kubejs:luminous_pearl')
+                global.methods.slotResult(player, 'kubejs:luminous_pearl')
                 && player.mainHandItem.id == 'tconstruct:pickaxe'
             ) {
                 player.potionEffects.add('minecraft:haste', 20 * 3, 0, false, false)
@@ -135,8 +135,8 @@ PlayerEvents.tick(event => {
             }
         }
         
-        if (global.tickCountCheck(server, 17, 3)) {
-            if (global.slotResult(player, 'kubejs:freezing_core')) {
+        if (global.methods.tickCountCheck(server, 17, 3)) {
+            if (global.methods.slotResult(player, 'kubejs:freezing_core')) {
                 if (
                     !armorInsulationCheck()
                     && !player.creative
@@ -150,14 +150,14 @@ PlayerEvents.tick(event => {
         //记忆手链 => 存储玩家经验, 并将其转化为伤害加成
         //记忆手链 => 可选功能: 是否自动存储经验, 默认否, G键切换
             //读取玩家设置按键
-            global.memoryBraceletModeName = KeyBindUtil.getKeyMapping('memoryBraceletMode').keyCode.name
-            global.memoryBraceletLowerCase = global.memoryBraceletModeName
-                .substring(global.memoryBraceletModeName.indexOf('key.keyboard.') + 13)
-            global.memoryBraceletUpperCase = 
-            global.memoryBraceletLowerCase.slice(0, 1).toUpperCase() + global.memoryBraceletLowerCase.slice(1)
+            global.other.memoryBraceletModeName = KeyBindUtil.getKeyMapping('memoryBraceletMode').keyCode.name
+            global.other.memoryBraceletLowerCase = global.other.memoryBraceletModeName
+                .substring(global.other.memoryBraceletModeName.indexOf('key.keyboard.') + 13)
+            global.other.memoryBraceletUpperCase = global.other.memoryBraceletLowerCase.slice(0, 1).toUpperCase() 
+                + global.other.memoryBraceletLowerCase.slice(1)
 
             //自动存储玩家经验
-            if (global.tickCountCheck(server, 16, 0.5)) {
+            if (global.methods.tickCountCheck(server, 16, 0.5)) {
                 for (let i = 0; i < slotsList.slots; i++) {
 
                     let target = slotsList.equippedCurios.getStackInSlot(i)
@@ -175,22 +175,22 @@ PlayerEvents.tick(event => {
             }
 
         //回响晶核 => 佩戴时激活小地图
-        if (global.tickCountCheck(server, 14, 3)) {
-            if (!global.slotResult(player, 'kubejs:echo_crystal_nucleus')) {
+        if (global.methods.tickCountCheck(server, 14, 3)) {
+            if (!global.methods.slotResult(player, 'kubejs:echo_crystal_nucleus')) {
                 player.potionEffects.add('xaerominimap:no_minimap', 20 * 3, 0, false, false)
                 player.potionEffects.add('xaerominimap:no_entity_radar', 20 * 3, 0, false, false)
             }
         }
 
         //琥珀金护身符 => 佩戴时获得幸运Ⅰ, 且每隔10秒随机获得一个持续3秒的增益Buff
-        if (global.tickCountCheck(server, 13, 3)) {
-            if (global.slotResult(player, 'createaddition:electrum_amulet')) {
+        if (global.methods.tickCountCheck(server, 13, 3)) {
+            if (global.methods.slotResult(player, 'createaddition:electrum_amulet')) {
                 player.potionEffects.add('minecraft:luck', 20 * 3, 0, false, false)
             }
         }
 
-        if (global.tickCountCheck(server, 13, 10)) {
-            if (global.slotResult(player, 'createaddition:electrum_amulet')) {
+        if (global.methods.tickCountCheck(server, 13, 10)) {
+            if (global.methods.slotResult(player, 'createaddition:electrum_amulet')) {
                 player.potionEffects.add(
                     global.allBeneficialPotionEffectsArray[
                         Math.floor(Math.random() * global.allBeneficialPotionEffectsArray.length)
@@ -201,9 +201,9 @@ PlayerEvents.tick(event => {
         }
 
         //虚化手套 => 佩戴时检测玩家经验或记忆手链中存储的经验, 若两者均为0则持续受伤, 反之持续减少经验值
-        if (global.tickCountCheck(server, 12, 1.5)) {
-            if (global.slotResult(player, 'kubejs:phantom_glove').length) {
-                if (global.slotResult(player, 'kubejs:memory_bracelet')) {
+        if (global.methods.tickCountCheck(server, 12, 1.5)) {
+            if (global.methods.slotResult(player, 'kubejs:phantom_glove').length) {
+                if (global.methods.slotResult(player, 'kubejs:memory_bracelet')) {
                     for (let i = 0; i < slotsList.slots; i++) {
 
                         let target = slotsList.equippedCurios.getStackInSlot(i)
@@ -236,7 +236,7 @@ PlayerEvents.tick(event => {
         if (player.maxHealth < 20) {
             if (
                 player.foodData?.foodLevel >= 18
-                && global.tickCountCheck(server, 13, 3)
+                && global.methods.tickCountCheck(server, 13, 3)
             ) {
                 player.setMaxHealth(player.maxHealth + 20 * 0.15)
                 player.heal(player.maxHealth)
@@ -244,7 +244,7 @@ PlayerEvents.tick(event => {
         }
     
         //药水相关
-        if (global.tickCountCheck(server, 12, 3)) {
+        if (global.methods.tickCountCheck(server, 12, 3)) {
 
             //玩家高草丛下蹲隐身
             if (
@@ -278,7 +278,7 @@ PlayerEvents.tick(event => {
                 !player.creative
                 && !player.spectator
                 && player.block.light <= 7
-                && !global.slotResult(player, 'minecraft:lantern')
+                && !global.methods.slotResult(player, 'minecraft:lantern')
             ) {
                 player.potionEffects.add('minecraft:slowness', 20 * 3, 0, false, false)
                 player.potionEffects.add('minecraft:mining_fatigue', 20 * 3, 0, false, false)
@@ -308,11 +308,11 @@ PlayerEvents.tick(event => {
         }
             
         //世界相关
-        if (global.tickCountCheck(server, 11, 3)) {
+        if (global.methods.tickCountCheck(server, 11, 3)) {
             
             //玩家在下界背包中树苗变为枯萎的灌木
             if (dimension.toString() == 'minecraft:the_nether') {
-                global.stringListTransformation(Ingredient.of('#minecraft:saplings').itemIds).forEach(sapling => {
+                global.methods.stringListTransformation(Ingredient.of('#minecraft:saplings').itemIds).forEach(sapling => {
 
                     let samplingsSlot = player.inventory.findSlotMatchingItem(sapling)
                     let samplingNumber = player.inventory.getItem(samplingsSlot).count
@@ -346,7 +346,7 @@ PlayerEvents.tick(event => {
             ) {
                 if (
                     Math.random() <= 0.01
-                    && !global.slotResult(player, 'kubejs:freezing_core')
+                    && !global.methods.slotResult(player, 'kubejs:freezing_core')
                 ) {
                     player.setSecondsOnFire(1)
                 }
@@ -354,7 +354,7 @@ PlayerEvents.tick(event => {
         }
 
         //流体相关
-        if (global.tickCountCheck(server, 10, 0.5)) {
+        if (global.methods.tickCountCheck(server, 10, 0.5)) {
             
             //玩家浸入熔融金属流体时燃烧
             global.materialNames.forEach(materialName => {
