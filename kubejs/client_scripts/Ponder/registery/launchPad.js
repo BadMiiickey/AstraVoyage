@@ -244,7 +244,7 @@ Ponder.registry(event => {
             scene.idle(20 * 1)
             scene.text(20 * 2, 'kubejs:aboveground_3', [6, 2, 6])
             scene.idle(20 * 3)
-
+            
             scene.world.hideSection([6, 3, 6], Direction.UP)
             scene.idle(20 * 1)
             scene.world.setBlocks([6, 2, 6], 'minecraft:air', true)

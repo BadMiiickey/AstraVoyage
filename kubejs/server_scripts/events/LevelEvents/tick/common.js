@@ -6,11 +6,12 @@ LevelEvents.tick(event => {
     var $BlockStateProperties = Java.loadClass('net.minecraft.world.level.block.state.properties.BlockStateProperties')
 
     //亡灵生物持有嗜血效果时攻击活体生物
-    if (global.tickCountCheck(server, 0, 1.5)) {
+    if (global.methods.tickCountCheck(server, 0, 1.5)) {
         
-        let livingUndeads = level.entities.filter(entity => global.undeads.includes(entity.type))
+        let livingUndeads = level.entities
+            .filter(entity => global.definitionsArray.undeads.includes(entity.type))
         let notUndeads = level.entities
-            .filter(entity => !global.undeads.includes(entity.type))
+            .filter(entity => !global.definitionsArray.undeads.includes(entity.type))
             .filter(entity => entity.type != 'dummmmmmy:target_dummy')
 
         livingUndeads.forEach(/** @param { Internal.AmbientCreature } livingUndead */ livingUndead => {
@@ -31,7 +32,7 @@ LevelEvents.tick(event => {
     //月相预报
     if (
         level.lunarContext != null
-        && global.tickCountCheck(server, 1, 60 * 3)
+        && global.methods.tickCountCheck(server, 1, 60 * 3)
     ) {
         let lunarForecast = level.lunarContext.lunarForecast
         let currentDay = lunarForecast.currentDay
@@ -94,7 +95,7 @@ LevelEvents.tick(event => {
         spawnMob.spawn()
     }
 
-    if (global.tickCountCheck(server, 2, 10)) {
+    if (global.methods.tickCountCheck(server, 2, 10)) {
 
         /** @type { Internal.List<[number, number]>} */
         let allCoordinates = []
@@ -108,7 +109,7 @@ LevelEvents.tick(event => {
                 player.persistentData.mobKillCount >= player.persistentData.hordeCriticalValue
                 && level.night
             ) {
-                for (let i = 0; i < global.undeads.length * player.persistentData.hordeCriticalValue / 150; i++) {
+                for (let i = 0; i < global.definitionsArray.undeads.length * player.persistentData.hordeCriticalValue / 150; i++) {
                     for (let angle = 0; angle < 360; angle++) {
                         
                         let randian = (angle * KMath.PI) / 180
@@ -124,7 +125,8 @@ LevelEvents.tick(event => {
         
                     if (allCoordinates.length >= 1) {
 
-                        let randomUndead = global.undeads[Math.floor(Math.random() * global.undeads.length)]
+                        let randomUndead = 
+                            global.definitionsArray.undeads[Math.floor(Math.random() * global.definitionsArray.undeads.length)]
                         let randomCoordinate = allCoordinates[Math.floor(Math.random() * allCoordinates.length)]
                         /** @type { Internal.AmbientCreature } */
                         let spawnedUndead = level.createEntity(randomUndead)
@@ -172,12 +174,12 @@ LevelEvents.tick(event => {
     }
 
     //亡灵生物暴露于阳光下时自燃
-    if (global.tickCountCheck(server, 3, 3)) {
+    if (global.methods.tickCountCheck(server, 3, 3)) {
         if (
             level.day
             && !level.raining
         ) {
-            global.undeads.forEach(undead => {
+            global.definitionsArray.undeads.forEach(undead => {
 
                 let selfBurningUndead = level.entities
                     .filter(entity => entity.type == undead && entity.type != 'minecraft:husk')
@@ -192,12 +194,12 @@ LevelEvents.tick(event => {
     }
     
     //营火事件
-    if (global.tickCountCheck(server, 4, 3)) {
+    if (global.methods.tickCountCheck(server, 4, 3)) {
         if (
-            global.campfiresMapArray
-            && global.campfiresMapArray.length > 0
+            global.mapArray.campfiresMapArray
+            && global.mapArray.campfiresMapArray.length > 0
         ) {
-            global.campfiresMapArray.forEach(campfire => {
+            global.mapArray.campfiresMapArray.forEach(campfire => {
                 server.players.forEach(/** @param { Internal.Player } player */ player => {
                     if (player.level.dimension.toString() == campfire.dimension.toString()) {
 
@@ -225,7 +227,7 @@ LevelEvents.tick(event => {
     }
         
     //末地唯一进入方式并创造黑曜石平台
-    if (global.tickCountCheck(server, 7, 1.5)) {
+    if (global.methods.tickCountCheck(server, 7, 1.5)) {
         server.players.forEach(/** @param { Internal.Player } player */ player => {
             if (
                 player.level.dimension.toString() == 'kubejs:wasteworld'

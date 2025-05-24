@@ -10,7 +10,7 @@ StartupEvents.modifyCreativeTab('ad_astra:main', event => {
     event.remove('ad_astra:cheese')
     event.remove('ad_astra:cheese_block')
 
-    global.itemsRemoveArray(
+    global.methods.itemsRemoveArray(
         'ad_astra',
         ['iron'],
         ['rod', 'plate']
@@ -18,7 +18,7 @@ StartupEvents.modifyCreativeTab('ad_astra:main', event => {
         event.remove(item)
     })
 
-    global.itemsRemoveArray(
+    global.methods.itemsRemoveArray(
         'ad_astra',
         ['iron', 'steel', 'desh', 'ostrum', 'calorite', 'etrium'],
         ['factory_block', 'plateblock', 'panel']
@@ -26,7 +26,7 @@ StartupEvents.modifyCreativeTab('ad_astra:main', event => {
         event.remove(item)
     })
 
-    global.itemsRemoveArray(
+    global.methods.itemsRemoveArray(
         'ad_astra',
         ['encased'],
         ['iron_block', 'steel_block', 'desh_block', 'ostrum_block', 'calorite_block', 'etrium_block']
@@ -48,7 +48,7 @@ StartupEvents.modifyCreativeTab('create:base', event => {
 //createnuclear:main
 StartupEvents.modifyCreativeTab('createnuclear:main', event => {
 
-    global.itemsRemoveArray(
+    global.methods.itemsRemoveArray(
         'createnuclear',
         ['steel'],
         ['ingot', 'nugget', 'block']
@@ -93,7 +93,7 @@ StartupEvents.modifyCreativeTab('kubejs:tab', event => {
     //minecraft:combat
     StartupEvents.modifyCreativeTab('minecraft:combat', event => {
 
-        global.itemsRemoveArray(
+        global.methods.itemsRemoveArray(
             'minecraft',
             ['wooden', 'stone', 'iron', 'golden', 'diamond', 'netherite'],
             ['sword', 'axe']
@@ -101,7 +101,7 @@ StartupEvents.modifyCreativeTab('kubejs:tab', event => {
             event.remove(item)
         })
 
-        global.itemsRemoveArray(
+        global.methods.itemsRemoveArray(
             'minecraft',
             ['leather', 'chainmail', 'iron', 'golden', 'diamond', 'netherite'],
             ['helmet', 'chestplate', 'leggings', 'boots']
@@ -120,7 +120,7 @@ StartupEvents.modifyCreativeTab('kubejs:tab', event => {
     //minecraft:food_and_drinks
     StartupEvents.modifyCreativeTab('minecraft:food_and_drinks', event => {
 
-        global.itemsRemoveArray(
+        global.methods.itemsRemoveArray(
             'minecraft',
             ['splash', 'lingering'],
             ['potion']
@@ -158,7 +158,7 @@ StartupEvents.modifyCreativeTab('kubejs:tab', event => {
     //minecraft:tools_and_utilities
     StartupEvents.modifyCreativeTab('minecraft:tools_and_utilities', event => {
 
-        global.itemsRemoveArray(
+        global.methods.itemsRemoveArray(
             'minecraft',
             ['wooden', 'stone', 'iron', 'golden', 'diamond', 'netherite'],
             ['shovel', 'pickaxe', 'axe', 'hoe']

@@ -14,7 +14,7 @@ EntityEvents.hurt(event => {
         
         //守护之盾 => 吸收爬行者部分爆炸伤害和箭矢伤害并转化为能量, 受击时自动释放护盾格挡
         //检测是否佩戴守护之盾
-        if (global.slotResult(entity, 'kubejs:guardian_shield')) {
+        if (global.methods.slotResult(entity, 'kubejs:guardian_shield')) {
             
             let slotsList = $CuriosApi.getCuriosInventory(entity).resolve().get()
             
@@ -59,7 +59,7 @@ EntityEvents.hurt(event => {
         }
         
         //检测是否佩戴冷冻核心
-        if (global.slotResult(entity, 'kubejs:freezing_core')) {
+        if (global.methods.slotResult(entity, 'kubejs:freezing_core')) {
 
             //玩家佩戴冷冻核心时免疫灼烧
             if (source.type().msgId() == 'inFire' || 'onFire') {
@@ -87,8 +87,8 @@ EntityEvents.hurt(event => {
         ) {
             if (Math.random() <= 0.5) {
                 entity.potionEffects.add(
-                    global.beneficialPotionEffectsArray[
-                        Math.floor(Math.random() * global.beneficialPotionEffectsArray.length)
+                    global.definitionsArray.beneficialPotionEffectsArray[
+                        Math.floor(Math.random() * global.definitionsArray.beneficialPotionEffectsArray.length)
                     ],
                     20 * 20,
                     Math.floor(Math.random() * 1.25),
@@ -99,7 +99,7 @@ EntityEvents.hurt(event => {
 
         //非亡灵生物生命值降至阈值获得DeBuff
         if (!entity.player) {
-            global.undeads.forEach(undead => {
+            global.definitionsArray.undeads.forEach(undead => {
                 if (entity.type == undead) {
                     if (entity.health <= entity.maxHealth * 0.15) {
                         entity.potionEffects.add('minecraft:slowness', 20 * 3, 2, false, false)
@@ -124,7 +124,7 @@ EntityEvents.hurt(event => {
             entity.monster
             && actual?.player
         ) {
-            if (global.slotResult(actual, 'kubejs:freezing_core')) {
+            if (global.methods.slotResult(actual, 'kubejs:freezing_core')) {
                 entity.ticksFrozen = 200
             }
         }

@@ -5,9 +5,9 @@ Ponder.registry(event => {
 
             //显示地板
             scene.showBasePlate()
-            scene.idle(10)
             scene.scaleSceneView(0.9)
             scene.rotateCameraY(45)
+            scene.idle(10)
             //显示火箭支撑脚
             for (let i = 1; i < 4; i++) {
                 for (let j of [-3, 3]) {
@@ -169,7 +169,7 @@ Ponder.registry(event => {
 
             scene.world.hideSection([5, 5, 4], Direction.NORTH)
             scene.world.setBlocks([5, 5, 4], 'minecraft:air', true)
-            scene.world.hideSection([5, 6, 4], Direction.north)
+            scene.world.hideSection([5, 6, 4], Direction.NORTH)
             scene.world.setBlocks([5, 6, 4], 'minecraft:air', true)
             scene.idle(20 * 1)
             scene.world.setBlocks([5, 5, 4], 'createnuclear:reinforced_glass', false)
@@ -239,22 +239,9 @@ Ponder.registry(event => {
                 .withWrench()
             scene.idle(20 * 1)
             scene.world.hideSection([2, 1, 2, 9, 12, 9], Direction.UP)
-            for (let dx of [-5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5]) {
-                {
-                    for (let dz of [-5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5]) {
-                        if ((5 + dx >= 3 && 5 + dx <= 8) && (5 + dz >= 3 && 5 + dz <= 8)) {
-                            continue
-                        }
-                        scene.world.setBlocks([5 + dx, 0, 5 + dz], 'minecraft:air', false)
-                        scene.world.hideSection([5 + dx, 0, 5 + dz], Direction.DOWN)
-                    }
-                }
-            }
             scene.world.setBlocks([2, 1, 2, 9, 12, 9], 'minecraft:air', true)
 
             let Entity = scene.world.createEntity("ad_astra:tier_1_rocket", [6, 1, 6])
-
-
 
             scene.idle(20 * 3)
             scene.showControls(20 * 2, [6, 2, 6], "DOWN")

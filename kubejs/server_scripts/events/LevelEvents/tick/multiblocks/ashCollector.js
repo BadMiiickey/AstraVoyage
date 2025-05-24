@@ -2,12 +2,12 @@ LevelEvents.tick(event => {
 
     const { server } = event
 
-    if (global.tickCountCheck(server, 0, 1)) {
+    if (global.methods.tickCountCheck(server, 0, 1)) {
         if (
-            global.basinsMapArray
-            && global.basinsMapArray.length > 0
+            global.mapArray.basinsMapArray
+            && global.mapArray.basinsMapArray.length > 0
         ) {
-            global.basinsMapArray.forEach(basin => {
+            global.mapArray.basinsMapArray.forEach(basin => {
                 server.players.forEach(player => {
                     if (player.level.dimension == basin.dimension) {
 
@@ -23,7 +23,7 @@ LevelEvents.tick(event => {
                             let fanSpeed = block.offset(0, 3, 0).entityData.Speed
                             let collectInterval = 9 - Math.floor(Math.log2(fanSpeed))
 
-                            if (global.tickCountCheck(server, 0, collectInterval)) {
+                            if (global.methods.tickCountCheck(server, 0, collectInterval)) {
                                 block.inventory.insertItem('supplementaries:ash', false)
                             }
                         }
