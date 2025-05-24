@@ -10,10 +10,10 @@ PlayerEvents.loggedOut(event => {
         player.persistentData.campfiresMapArray = global.methods.mapArrayStringfy(global.mapArray.campfiresMapArray)
 
         //发射台
-        player.persistentData.launchPadsMapArray = global.methods.mapArrayStringfy(global.mapArray.launchPadsMapArray)
+        player.persistentData.launchPadsMapArray = global.mapArrayStringfy(global.launchPadsMapArray)
 
         //简易工业平台
-        player.persistentData.platformsMapArray = global.methods.mapArrayStringfy(global.mapArray.platformsMapArray)
+        player.persistentData.platformsMapArray = global.methods.methods.mapArrayStringfy(global.mapArray.mapArray.platformsMapArray)
 
         //一阶火箭
         player.persistentData.rocket_1MapArray = global.methods.mapArrayStringfy(global.mapArray.rocket_1MapArray)

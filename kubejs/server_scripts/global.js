@@ -290,7 +290,6 @@ global.mapArray = {}
     if (!global.mapArray.launchPadsMapArray) {
         global.mapArray.launchPadsMapArray = []
     }
-
     //简易工业平台
     if (!global.mapArray.platformsMapArray) {
         global.mapArray.platformsMapArray = []
@@ -315,5 +314,11 @@ global.mapArray = {}
     if (!global.mapArray.rocket_4MapArray) {
         global.mapArray.rocket_4MapArray = []
     }
+//其他全局属性
+global.other = {}
+    if (!global.mapArray.platformsMapArray) {
+        global.mapArray.platformsMapArray = []
+    }
+
 //其他全局属性
 global.other = {}

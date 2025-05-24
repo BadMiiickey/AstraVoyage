@@ -192,8 +192,8 @@ PlayerEvents.tick(event => {
         if (global.methods.tickCountCheck(server, 13, 10)) {
             if (global.methods.slotResult(player, 'createaddition:electrum_amulet')) {
                 player.potionEffects.add(
-                    global.allBeneficialPotionEffectsArray[
-                        Math.floor(Math.random() * global.allBeneficialPotionEffectsArray.length)
+                    global.definitionsArray.allBeneficialPotionEffectsArray[
+                        Math.floor(Math.random() * global.definitionsArray.allBeneficialPotionEffectsArray.length)
                     ],
                     20 * 3, 0, false, false
                 )
