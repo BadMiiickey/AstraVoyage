@@ -192,8 +192,8 @@ PlayerEvents.tick(event => {
         if (global.methods.tickCountCheck(server, 13, 10)) {
             if (global.methods.slotResult(player, 'createaddition:electrum_amulet')) {
                 player.potionEffects.add(
-                    global.allBeneficialPotionEffectsArray[
-                        Math.floor(Math.random() * global.allBeneficialPotionEffectsArray.length)
+                    global.definitionsArray.allBeneficialPotionEffectsArray[
+                        Math.floor(Math.random() * global.definitionsArray.allBeneficialPotionEffectsArray.length)
                     ],
                     20 * 3, 0, false, false
                 )
@@ -357,7 +357,7 @@ PlayerEvents.tick(event => {
         if (global.methods.tickCountCheck(server, 10, 0.5)) {
             
             //玩家浸入熔融金属流体时燃烧
-            global.materialNames.forEach(materialName => {
+            global.definitionsArray.materialNames.forEach(materialName => {
                 if (player.isInFluidType(Fluid.getType(`kubejs:molten_${ materialName }`).fluidType)) {
                     player.attack(2)
                     player.setSecondsOnFire(1)

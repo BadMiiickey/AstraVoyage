@@ -12,5 +12,5 @@ ServerEvents.tags('fluid', event => {
         }) 
     }
 
-    moltenFluidTag(global.materialNames)
+    moltenFluidTag(global.definitionsArray.materialNames)
 })
