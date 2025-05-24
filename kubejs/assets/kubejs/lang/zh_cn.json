@@ -166,6 +166,15 @@
   "kubejs.ponder.launch_pad_aboveground.text_13": "例如这样配置管道引出环流后的冷却水",
   "kubejs.ponder.launch_pad_aboveground.text_14": "需要注意的是, 不能有方块堵塞空气通道, 否则在火箭起飞时会引发爆炸",
 
+  "kubejs.ponder.rocket_1.header": "一阶火箭",
+  "kubejs.ponder.rocket_1.text_1": "如图所示是火箭的支撑脚部分，由钢柱制作而成，切记还有四个钢板台阶！",
+  "kubejs.ponder.rocket_1.text_2": "在支撑脚上放置一个火箭喷射装置",
+  "kubejs.ponder.rocket_1.text_3": "在喷射装置上放置一个9*9的钢板方块载人平台",
+  "kubejs.ponder.rocket_1.text_4": "如图所示在火箭上装载雷达，切记安装两个钢板按钮！",
+  "kubejs.ponder.rocket_1.text_5": "火箭主体正前方需要挖两个方块的空间用于安装强化玻璃",
+  "kubejs.ponder.rocket_1.text_6": "如图便是火箭主体",
+  "kubejs.ponder.rocket_1.text_7": "最后用三个钢柱和一个避雷针来完成火箭顶部的搭建",
+
   "planet.minecraft.the_nether": "下界",
   "planet.kubejs.wasteland": "废土",
 
