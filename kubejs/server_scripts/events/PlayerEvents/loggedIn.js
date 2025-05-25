@@ -40,7 +40,7 @@ PlayerEvents.loggedIn(event => {
             global.mapArray.platformsMapArray.push(platform)
         })
         player.persistentData.remove('platformsMapArray')
-
+//
         //一阶火箭
         global.methods.mapArrayStringfyReverse(player.persistentData.rocket_1MapArray).forEach(rocket_1 => {
             global.mapArray.rocket_1MapArray.push(rocket_1)

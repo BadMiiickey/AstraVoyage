@@ -32,7 +32,7 @@ BlockEvents.broken(event => {
                     && launchPad.hasExploded != undefined
                 )
         }
-
+//
         //简易工业平台
         if (block.id == 'kubejs:simple_industrial_platform') {
             global.mapArray.platformsMapArray = global.mapArray.platformsMapArray
