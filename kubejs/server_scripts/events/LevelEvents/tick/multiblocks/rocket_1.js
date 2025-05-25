@@ -232,6 +232,7 @@ LevelEvents.tick(event => {
 
             // 玻璃只会出现在四个方向之一
             for (let dy of [-6, -7]) {
+
                 // 四个方向的相对坐标
                 for (let [dx, dz] of [[1, 0], [0, 1], [-1, 0], [0, -1]]) {
 
@@ -271,19 +272,16 @@ LevelEvents.tick(event => {
 
     if (global.methods.tickCountCheck(server, 2, 1)) {
         if (
-            global.mapArray.lightningRodsMapArray 
-            && global.mapArray.lightningRodsMapArray.length > 0
+            global.mapArray.steelTanksMapArray 
+            && global.mapArray.steelTanksMapArray.length > 0
         ) {
-            global.mapArray.lightningRodsMapArray.forEach(rocket_1 => {
-                server.players.forEach(player => {
-                    if (
-                        player.level.dimension == rocket_1.dimension
-                        && rocket_1.tier == 1
-                    ) {
+            global.mapArray.steelTanksMapArray.forEach(rocket_1 => {
+                server.players.forEach(/** @param { Internal.Player } player */ player => {
+                    if (player.level.dimension == rocket_1.dimension) {
 
                         let block = player.level.getBlock(rocket_1.pos)
 
-                        if (block.id == 'minecraft:lightning_rod') {
+                        if (block.id == 'kubejs:steel_tank') {
                             
                             let pillarResult = rocket_1Check.steelPillar(block)
                             let stairsResult = rocket_1Check.steelPlatingStairs(block)
@@ -294,8 +292,17 @@ LevelEvents.tick(event => {
                             let glassResult = rocket_1Check.reinforcedGlass(block)
                             let platingResult = rocket_1Check.steelPlating(block)
 
+                            rocket_1.pillarResult = pillarResult
+                            rocket_1.stairsResult = stairsResult
+                            rocket_1.slabResult = slabResult
+                            rocket_1.railwayResult = railwayResult
+                            rocket_1.buttonResult = buttonResult
+                            rocket_1.blockResult = blockResult
+                            rocket_1.glassResult = glassResult
+                            rocket_1.platingResult = platingResult
 
-                            if (pillarResult > 0
+                            if (
+                                pillarResult > 0
                                 || stairsResult > 0
                                 || slabResult > 0
                                 || railwayResult > 0
@@ -304,10 +311,6 @@ LevelEvents.tick(event => {
                                 || glassResult > 0
                                 || platingResult > 0
                             ) {
-                                if (!rocket_1.isBuilding) {
-                                    rocket_1.isBuilding = true
-                                }
-
                                 if (
                                     pillarResult == 43
                                     && stairsResult == 16
@@ -318,6 +321,10 @@ LevelEvents.tick(event => {
                                     && glassResult == 2
                                     && platingResult == 9
                                 ) {
+                                    if (!rocket_1.hasBuilt) {
+                                        rocket_1.hasBuilt = true
+                                    }
+
                                     if (!rocket_1.hasBuildCorrectly) {
                                         rocket_1.hasBuildCorrectly = true
                                         player.setStatusMessage('§a一阶火箭搭建完成!')
@@ -328,6 +335,10 @@ LevelEvents.tick(event => {
                                         player.setStatusMessage('§c一阶火箭尚未搭建完成!')
                                     }
 
+                                    if (rocket_1.hasBuilt) {
+                                        rocket_1.hasBuilt = false
+                                    }
+                                    
                                     if (rocket_1.hasBuildCorrectly) {
                                         rocket_1.hasBuildCorrectly = false
                                         rocket_1.failedMessageHasSent = false

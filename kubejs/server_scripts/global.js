@@ -290,34 +290,15 @@ global.mapArray = {}
     if (!global.mapArray.launchPadsMapArray) {
         global.mapArray.launchPadsMapArray = []
     }
+
     //简易工业平台
     if (!global.mapArray.platformsMapArray) {
         global.mapArray.platformsMapArray = []
     }
 
-    //一阶火箭
-    if (!global.mapArray.rocket_1MapArray) {
-        global.mapArray.rocket_1MapArray = []
-    }
-
-    //二阶火箭
-    if (!global.mapArray.rocket_2MapArray) {
-    global.mapArray.rocket_2MapArray = []
-    }
-
-    //三阶火箭
-    if (!global.mapArray.rocket_3MapArray) {
-        global.mapArray.rocket_3MapArray = []
-    }
-
-    //四阶火箭
-    if (!global.mapArray.rocket_4MapArray) {
-        global.mapArray.rocket_4MapArray = []
-    }
-//其他全局属性
-global.other = {}
-    if (!global.mapArray.platformsMapArray) {
-        global.mapArray.platformsMapArray = []
+    //钢燃料储罐
+    if (!global.mapArray.steelTanksMapArray) {
+        global.mapArray.steelTanksMapArray = []
     }
 
 //其他全局属性

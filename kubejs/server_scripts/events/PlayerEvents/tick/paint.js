@@ -66,7 +66,7 @@ PlayerEvents.tick(event => {
             return ostrumCheck
         }
 
-        if (global.methods.tickCountCheck(server, 20, 1.5)) {
+        if (global.methods.tickCountCheck(server, 19, 1.5)) {
             if (ostrumNBTCheck()) {
                 player.paint({
                     lightLevel: {
@@ -76,21 +76,26 @@ PlayerEvents.tick(event => {
                         alignX: 'left',
                         alignY: 'bottom',
                         color: 'yellow',
-                        text: `光照等级: ${ player.block.light }`
+                        text: `光照等级: ${ player.block.light }`,
+                        visible: true
                     }
                 })
             } else {
                 player.paint({
                     lightLevel: {
                         type: 'text',
-                        x: `$screenW / 2 - 139`,
-                        y: 10,
+                        x: `$screenW / 2 - 142`,
+                        y: -4.5,
                         alignX: 'left',
                         alignY: 'bottom',
                         color: 'yellow',
-                        text: `光照等级: ${ player.block.light }`
+                        text: `光照等级: ${ player.block.light }`,
+                        visible: false
                     }
                 })
             }
         }
+
+        //火箭检查结构正确性显示
+        
 })
