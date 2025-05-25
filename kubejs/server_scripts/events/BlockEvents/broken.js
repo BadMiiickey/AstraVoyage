@@ -41,6 +41,7 @@ BlockEvents.broken(event => {
                     && platform.pos != block.pos
                 )
         }
+        
         //火箭
         if (block.id == 'minecraft:lightning_rod') {
             global.mapArray.rocket_1MapArray = global.mapArray.rocket_1MapArray

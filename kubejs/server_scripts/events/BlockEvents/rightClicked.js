@@ -163,119 +163,45 @@ BlockEvents.rightClicked(event => {
         server.scheduleInTicks(16 * 5, callback => platformFrameFilling(block))
     }
 
-    //流体管道箱
-
-    /**
-     * 
-     * @param { Vec3d } hit 
-     * @param { BlockPos } pos 
-     */
-    function clickedFaceCheck(hit, pos) {
-        
-        let dx = hit.x() - pos.x
-        let dy = hit.y() - pos.y
-        let dz = hit.z() - pos.z
-
-        if (dx == 0) {
-            return 'west'
-        } else if (dx == 1) {
-            return 'east'
-        }
-
-        if (dy == 0) {
-            return 'down'
-        } else if (dy == 1) {
-            return 'up'
-        }
-
-        if (dz == 0) {
-            return 'north'
-        } else if (dz == 1) {
-            return 'south'
-        }
-    }
-
-    if (block.id == 'create:encased_fluid_pipe') {
-        if (player.mainHandItem.empty) {
-
-            let properties = {
-                east: block.properties.east,
-                west: block.properties.west,
-                north: block.properties.north,
-                south: block.properties.south,
-                up: block.properties.up,
-                down: block.properties.down
-            }
-
-            player.swing()
-            Client.tell(`before: ${properties}`)
-            if (player.rayTrace().hit != null) {
-                switch (clickedFaceCheck(player.rayTrace().hit, block.pos)) {
-                    case 'west':
-                        properties.west = properties.west == 'true' ? false : true
-                        break
-                    case 'east':
-                        properties.east = properties.east == 'true' ? false : true
-                        break
-                    case 'north':
-                        properties.north = properties.north == 'true' ? false : true
-                        break
-                    case 'south':
-                        properties.south = properties.south == 'true' ? false : true
-                        break
-                    case 'up':
-                        properties.up = properties.up == 'true' ? false : true
-                        break
-                    case 'down':
-                        properties.down = properties.down == 'true' ? false : true
-                        break
-                }
-                Client.tell(`after: ${properties}`)
-                block.set('create:encased_fluid_pipe', properties)
-            }
-        }
-    }
-
     // 火箭
-
     if (player.mainHandItem.id == 'create:wrench') {
         if (global.mapArray.rocket_1MapArray) {
             global.mapArray.rocket_1MapArray.forEach(rocket_1 => {
                 if (rocket_1.hasBuildCorrectly) {
                     if (block.dimension == rocket_1.dimension) {
                         player.swing()
+
                         const center = rocket_1.pos
                         const minX = center.x - 3, maxX = center.x + 3
                         const minY = center.y - 12, maxY = center.y
                         const minZ = center.z - 3, maxZ = center.z + 3
 
                         if (
-                            block.x >= minX && block.x <= maxX &&
-                            block.y >= minY && block.y <= maxY &&
-                            block.z >= minZ && block.z <= maxZ
+                            block.x >= minX && block.x <= maxX 
+                            && block.y >= minY && block.y <= maxY 
+                            && block.z >= minZ && block.z <= maxZ
                         ) {
                             for (let dx = -3; dx <= 3; dx++) {
                                 for (let dy = 0; dy <= 12; dy++) {
                                     for (let dz = -3; dz <= 3; dz++) {
-                                        let b = player.level.getBlock(center.x + dx,center.y - dy,center.z + dz)
+
+                                        let block = player.level.getBlock(center.x + dx, center.y - dy, center.z + dz)
 
                                         if (
-                                            b.id.startsWith('ad_astra:') ||
-                                            b.id == 'createnuclear:reinforced_glass' ||
-                                            b.id == 'create:railway_casing' ||
-                                            b.id == 'minecraft:lightning_rod'
+                                            block.id.startsWith('ad_astra:') 
+                                            || block.id == 'createnuclear:reinforced_glass' 
+                                            || block.id == 'create:railway_casing' 
+                                            || block.id == 'minecraft:lightning_rod'
                                         ) {
-                                            b.set('minecraft:air')
+                                            block.set('minecraft:air')
                                         }
                                     }
                                 }
                             }
 
-                            let rocket = player.level.createEntity('ad_astra:tier_1_rocket')
-                            rocket.x = center.x + 0.5
-                            rocket.y = center.y - 11
-                            rocket.z = center.z + 0.5
-                            rocket.spawn()
+                            player.level.createEntity('ad_astra:tier_1_rocket')
+                                .setPos(center.x + 0.5, center.y - 11, center.z + 0.5)
+                                .spawn()
 
                             rocket_1.hasBuildCorrectly = false
 
