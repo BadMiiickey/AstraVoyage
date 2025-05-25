@@ -141,6 +141,7 @@ Ponder.registry(event => {
                         (dx == -2 || dx == 2)
                         && (dz == -3 || dz == 3)
                     ) continue
+
                     scene.world.setBlocks([5 + dx, 0, 5 + dz], 'ad_astra:steel_pillar', false)
                     scene.world.showSection([5 + dx, 0, 5 + dz], Direction.DOWN)
                     scene.idle(1)

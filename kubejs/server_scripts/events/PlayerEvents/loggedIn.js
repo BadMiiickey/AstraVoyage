@@ -40,28 +40,10 @@ PlayerEvents.loggedIn(event => {
             global.mapArray.platformsMapArray.push(platform)
         })
         player.persistentData.remove('platformsMapArray')
-//
-        //一阶火箭
-        global.methods.mapArrayStringfyReverse(player.persistentData.rocket_1MapArray).forEach(rocket_1 => {
-            global.mapArray.rocket_1MapArray.push(rocket_1)
-        })
-        player.persistentData.remove('rocket_1MapArray')
 
-        //二阶火箭
-        global.methods.mapArrayStringfyReverse(player.persistentData.rocket_2MapArray).forEach(rocket_2 => {
-            global.mapArray.rocket_1MapArray.push(rocket_2)
+        //钢燃料储罐
+        global.methods.mapArrayStringfyReverse(player.persistentData.steelTanksMapArray).forEach(steelTank => {
+            global.mapArray.steelTanksMapArray.push(steelTank)
         })
-        player.persistentData.remove('rocket_2MapArray')
-
-        //三阶火箭
-        global.methods.mapArrayStringfyReverse(player.persistentData.rocket_3MapArray).forEach(rocket_3 => {
-            global.mapArray.rocket_1MapArray.push(rocket_3)
-        })
-        player.persistentData.remove('rocket_3MapArray')
-        
-        //四阶火箭
-        global.methods.mapArrayStringfyReverse(player.persistentData.rocket_4MapArray).forEach(rocket_4 => {
-            global.mapArray.rocket_1MapArray.push(rocket_4)
-        })
-        player.persistentData.remove('rocket_4MapArray')
+        player.persistentData.remove('steelTanksMapArray')
 })

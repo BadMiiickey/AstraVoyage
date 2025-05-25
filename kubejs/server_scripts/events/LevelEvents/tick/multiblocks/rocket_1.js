@@ -285,15 +285,12 @@ LevelEvents.tick(event => {
 
     if (global.methods.tickCountCheck(server, 2, 1)) {
         if (
-            global.mapArray.lightningRodsMapArray 
-            && global.mapArray.lightningRodsMapArray.length > 0
+            global.mapArray.steelTanksMapArray 
+            && global.mapArray.steelTanksMapArray.length > 0
         ) {
-            global.mapArray.lightningRodsMapArray.forEach(rocket_1 => {
-                server.players.forEach(player => {
-                    if (
-                        player.level.dimension == rocket_1.dimension
-                        && rocket_1.tier == 1
-                    ) {
+            global.mapArray.steelTanksMapArray.forEach(rocket_1 => {
+                server.players.forEach(/** @param { Internal.Player } player */ player => {
+                    if (player.level.dimension == rocket_1.dimension) {
 
                         let block = player.level.getBlock(rocket_1.pos)
 
@@ -307,10 +304,10 @@ LevelEvents.tick(event => {
                             let blockResult = rocket_1Check.steelBlock(block)
                             let glassResult = rocket_1Check.reinforcedGlass(block)
                             let platingResult = rocket_1Check.steelPlating(block)
-                            let lightningRodResult = rocket_1Check.lightningRod(block)
 
 
-                            if (pillarResult > 0
+                            if (
+                                pillarResult > 0
                                 || stairsResult > 0
                                 || slabResult > 0
                                 || railwayResult > 0
@@ -320,10 +317,6 @@ LevelEvents.tick(event => {
                                 || platingResult > 0
                                 || lightningRodResult > 0
                             ) {
-                                if (!rocket_1.isBuilding) {
-                                    rocket_1.isBuilding = true
-                                }
-
                                 if (
                                     pillarResult == 43
                                     && stairsResult == 16
@@ -335,6 +328,10 @@ LevelEvents.tick(event => {
                                     && platingResult == 9
                                     && lightningRodResult == 1
                                 ) {
+                                    if (!rocket_1.hasBuilt) {
+                                        rocket_1.hasBuilt = true
+                                    }
+
                                     if (!rocket_1.hasBuildCorrectly) {
                                         rocket_1.hasBuildCorrectly = true
                                         player.setStatusMessage('§a一阶火箭搭建完成!')
@@ -345,6 +342,10 @@ LevelEvents.tick(event => {
                                         player.setStatusMessage('§c一阶火箭尚未搭建完成!')
                                     }
 
+                                    if (rocket_1.hasBuilt) {
+                                        rocket_1.hasBuilt = false
+                                    }
+                                    
                                     if (rocket_1.hasBuildCorrectly) {
                                         rocket_1.hasBuildCorrectly = false
                                         rocket_1.failedMessageHasSent = false

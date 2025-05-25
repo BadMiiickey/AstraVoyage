@@ -32,7 +32,7 @@ BlockEvents.broken(event => {
                     && launchPad.hasExploded != undefined
                 )
         }
-//
+        
         //简易工业平台
         if (block.id == 'kubejs:simple_industrial_platform') {
             global.mapArray.platformsMapArray = global.mapArray.platformsMapArray
@@ -42,42 +42,22 @@ BlockEvents.broken(event => {
                 )
         }
         
-        //一阶火箭
+        //钢燃料储罐
         if (block.id == 'kubejs:steel_tank') {
-            global.mapArray.rocket_1MapArray = global.mapArray.rocket_1MapArray
-                .filter(rocket_1 => 
-                    rocket_1.dimension != block.dimension
-                    && rocket_1.pos != block.pos
-                    && rocket_1.hasBuildCorrectly != undefined
-                    && rocket_1.failedMessageHasSent != undefined
-                    && rocket_1.isBuilding != undefined
+            global.mapArray.steelTanksMapArray = global.mapArray.steelTanksMapArray
+                .filter(steelTank => 
+                    steelTank.dimension != block.dimension
+                    && steelTank.pos != block.pos
+                    && steelTank.hasBuildCorrectly != undefined
+                    && steelTank.failedMessageHasSent != undefined
+                    && steelTank.blockResult != undefined
+                    && steelTank.buttonResult != undefined
+                    && steelTank.glassResult != undefined
+                    && steelTank.pillarResult != undefined
+                    && steelTank.platingResult != undefined
+                    && steelTank.railwayResult != undefined
+                    && steelTank.slabResult != undefined
+                    && steelTank.stairsResult != undefined
                 )
-            }
-        //二阶火箭
-        if (block.id == 'kubejs:desh_tank') {
-            global.mapArray.rocket_2MapArray = global.mapArray.rocket_2MapArray
-                .filter(rocket_2 => 
-                    rocket_2.dimension != block.dimension
-                    && rocket_2.pos != block.pos
-                    && rocket_2.hasBuildCorrectly != undefined
-                    && rocket_2.failedMessageHasSent != undefined
-                    && rocket_2.isBuilding != undefined
-                )
-            }
-            /* global.mapArray.rocket_3MapArray = global.mapArray.rocket_3MapArray
-                .filter(rocket_3 => 
-                    rocket_3.dimension != block.dimension
-                    && rocket_3.pos != block.pos
-                    && rocket_3.hasBuildCorrectly != undefined
-                    && rocket_3.failedMessageHasSent != undefined
-                    && rocket_3.isBuilding != undefined
-                )
-            global.mapArray.rocket_4MapArray = global.mapArray.rocket_4MapArray
-                .filter(rocket_4 => 
-                    rocket_4.dimension != block.dimension
-                    && rocket_4.pos != block.pos
-                    && rocket_4.hasBuildCorrectly != undefined
-                    && rocket_4.failedMessageHasSent != undefined
-                    && rocket_4.isBuilding != undefined
-                ) */
+        }
 })
