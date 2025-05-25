@@ -91,7 +91,7 @@ LevelEvents.tick(event => {
             }
             // 
             return checkNumber; // 应为 43
-// 
+            // 
             return checkNumber // 应为 43
         },
 
@@ -156,15 +156,15 @@ LevelEvents.tick(event => {
 
             // 喷嘴部分楼梯
             let coordinate_1 = [
-                [-1, -12, -1], [-1, -12, 0], [-1, -12, 1], 
-                [0, -12, 1], [1, -12, 1], [1, -12, 0], 
+                [-1, -12, -1], [-1, -12, 0], [-1, -12, 1],
+                [0, -12, 1], [1, -12, 1], [1, -12, 0],
                 [1, -12, -1], [0, -12, -1]
             ]
 
             for (let i = 0; i < 8; i++) {
                 if (i % 2 == 0) {
 
-                    let [rotatedDx, rotatedDz] 
+                    let [rotatedDx, rotatedDz]
                         = rocket_2Check.rotateCoordinates(coordinate_1[i][0], coordinate_1[i][2], direction)
 
                     if (rocket_2.offset(rotatedDx, coordinate_1[i][1], rotatedDz).id == 'ad_astra:steel_plating_stairs') {
@@ -175,15 +175,15 @@ LevelEvents.tick(event => {
 
             // 顶部楼梯
             let coordinate_2 = [
-                [-1, -3, -1], [-1, -3, 0], [-1, -3, 1], 
-                [0, -3, 1], [1, -3, 1], [1, -3, 0], 
+                [-1, -3, -1], [-1, -3, 0], [-1, -3, 1],
+                [0, -3, 1], [1, -3, 1], [1, -3, 0],
                 [1, -3, -1], [0, -3, -1]
             ]
 
             for (let i = 0; i < 8; i++) {
                 if (i % 2 == 0) {
 
-                    let [rotatedDx, rotatedDz] 
+                    let [rotatedDx, rotatedDz]
                         = rocket_2Check.rotateCoordinates(coordinate_2[i][0], coordinate_2[i][2], direction)
 
                     if (rocket_2.offset(rotatedDx, coordinate_2[i][1], rotatedDz).id == 'ad_astra:steel_plating_stairs') {
@@ -206,15 +206,15 @@ LevelEvents.tick(event => {
 
             // 顶部楼梯
             let coordinate_2 = [
-                [-1, -3, -1], [-1, -3, 0], [-1, -3, 1], 
-                [0, -3, 1], [1, -3, 1], [1, -3, 0], 
+                [-1, -3, -1], [-1, -3, 0], [-1, -3, 1],
+                [0, -3, 1], [1, -3, 1], [1, -3, 0],
                 [1, -3, -1], [0, -3, -1]
             ]
 
             for (let i = 0; i < 8; i++) {
                 if (i % 2 != 0) {
 
-                    let [rotatedDx, rotatedDz] 
+                    let [rotatedDx, rotatedDz]
                         = rocket_2Check.rotateCoordinates(coordinate_2[i][0], coordinate_2[i][2], direction)
 
                     if (rocket_2.offset(rotatedDx, coordinate_2[i][1], rotatedDz).id == 'ad_astra:desh_plating_stairs') {
@@ -328,7 +328,7 @@ LevelEvents.tick(event => {
                 for (let [dx, dz] of [[1, 0], [0, 1], [-1, 0], [0, -1]]) {
 
                     let [rotatedDx, rotatedDz] = rocket_2Check.rotateCoordinates(dx, dz, direction)
-                    
+
                     if (rocket_2.offset(rotatedDx, dy, rotatedDz).id == 'createnuclear:reinforced_glass') {
                         checkNumber++
                     }
@@ -386,7 +386,7 @@ LevelEvents.tick(event => {
 
     if (global.methods.tickCountCheck(server, 2, 1)) {
         if (
-            global.mapArray.rocket_2MapArray 
+            global.mapArray.rocket_2MapArray
             && global.mapArray.rocket_2MapArray.length > 0
         ) {
             global.mapArray.rocket_2MapArray.forEach(rocket_2 => {
@@ -403,7 +403,7 @@ LevelEvents.tick(event => {
 
                             for (let dy = -5; dy >= -9; dy--) {
                                 if (
-                                    block.offset(1, dy, 0).id.includes('desh') 
+                                    block.offset(1, dy, 0).id.includes('desh')
                                     || block.offset(-1, dy, 0).id.includes('desh')
                                 ) {
                                     hasDeshBlocks = true
@@ -433,7 +433,7 @@ LevelEvents.tick(event => {
                                         rocket_2.failedMessageHasSent = true
                                         player.setStatusMessage('§c二阶火箭尚未搭建完成!')
                                     }
-                                    
+
                                     if (rocket_2.hasBuildCorrectly) {
                                         rocket_2.isBuilding = false
                                         rocket_2.hasBuildCorrectly = false
@@ -442,9 +442,9 @@ LevelEvents.tick(event => {
                                 }
                             }
                         }
-                    })
+                    }
                 })
-            }
+            })
         }
     }
-)
+})

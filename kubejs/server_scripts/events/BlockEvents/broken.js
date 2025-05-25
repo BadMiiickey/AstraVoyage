@@ -42,8 +42,8 @@ BlockEvents.broken(event => {
                 )
         }
         
-        //火箭
-        if (block.id == 'minecraft:lightning_rod') {
+        //一阶火箭
+        if (block.id == 'kubejs:steel_tank') {
             global.mapArray.rocket_1MapArray = global.mapArray.rocket_1MapArray
                 .filter(rocket_1 => 
                     rocket_1.dimension != block.dimension
@@ -52,6 +52,9 @@ BlockEvents.broken(event => {
                     && rocket_1.failedMessageHasSent != undefined
                     && rocket_1.isBuilding != undefined
                 )
+            }
+        //二阶火箭
+        if (block.id == 'kubejs:desh_tank') {
             global.mapArray.rocket_2MapArray = global.mapArray.rocket_2MapArray
                 .filter(rocket_2 => 
                     rocket_2.dimension != block.dimension
@@ -60,7 +63,8 @@ BlockEvents.broken(event => {
                     && rocket_2.failedMessageHasSent != undefined
                     && rocket_2.isBuilding != undefined
                 )
-            global.mapArray.rocket_3MapArray = global.mapArray.rocket_3MapArray
+            }
+            /* global.mapArray.rocket_3MapArray = global.mapArray.rocket_3MapArray
                 .filter(rocket_3 => 
                     rocket_3.dimension != block.dimension
                     && rocket_3.pos != block.pos
@@ -75,6 +79,5 @@ BlockEvents.broken(event => {
                     && rocket_4.hasBuildCorrectly != undefined
                     && rocket_4.failedMessageHasSent != undefined
                     && rocket_4.isBuilding != undefined
-                )
-        }
+                ) */
 })

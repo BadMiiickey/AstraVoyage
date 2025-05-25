@@ -173,7 +173,7 @@ BlockEvents.rightClicked(event => {
 
                         const center = rocket_1.pos
                         const minX = center.x - 3, maxX = center.x + 3
-                        const minY = center.y - 12, maxY = center.y
+                        const minY = center.y - 3, maxY = center.y + 9
                         const minZ = center.z - 3, maxZ = center.z + 3
 
                         if (
@@ -192,6 +192,7 @@ BlockEvents.rightClicked(event => {
                                             || block.id == 'createnuclear:reinforced_glass' 
                                             || block.id == 'create:railway_casing' 
                                             || block.id == 'minecraft:lightning_rod'
+                                            || block.id == 'kubejs:steel_tank'
                                         ) {
                                             block.set('minecraft:air')
                                         }
@@ -200,7 +201,7 @@ BlockEvents.rightClicked(event => {
                             }
 
                             player.level.createEntity('ad_astra:tier_1_rocket')
-                                .setPos(center.x + 0.5, center.y - 11, center.z + 0.5)
+                                .setPos(center.x + 0.5, center.y - 2, center.z + 0.5)
                                 .spawn()
 
                             rocket_1.hasBuildCorrectly = false
