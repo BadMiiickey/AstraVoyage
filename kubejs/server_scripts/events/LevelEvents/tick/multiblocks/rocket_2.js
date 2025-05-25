@@ -89,6 +89,8 @@ LevelEvents.tick(event => {
                     }
                 }
             }
+            // 
+            return checkNumber; // 应为 43
 // 
             return checkNumber // 应为 43
         },
@@ -426,9 +428,11 @@ LevelEvents.tick(event => {
                                         player.setStatusMessage('§c二阶火箭尚未搭建完成!')
                                     }
 
-                                    if (rocket_2.hasBuildCorrectly) {
-                                        rocket_2.hasBuildCorrectly = false
-                                        rocket_2.failedMessageHasSent = false
+                                        if (rocket_2.hasBuildCorrectly) {
+                                            rocket_2.isBuilding = false
+                                            rocket_2.hasBuildCorrectly = false
+                                            rocket_2.failedMessageHasSent = false
+                                        }
                                     }
                                 }
                             }

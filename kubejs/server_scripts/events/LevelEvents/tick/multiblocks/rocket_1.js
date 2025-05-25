@@ -283,6 +283,7 @@ LevelEvents.tick(event => {
                             if (hasDeshBlocks) {
                                 // 什么都不做，这个在二阶火箭脚本中处理
                             } else {
+
                                 let pillarResult = rocket_1Check.steelPillar(block)
                                 let stairsResult = rocket_1Check.steelPlatingStairs(block)
                                 let slabResult = rocket_1Check.steelPlatingSlab(block)
@@ -292,39 +293,44 @@ LevelEvents.tick(event => {
                                 let glassResult = rocket_1Check.reinforcedGlass(block)
                                 let platingResult = rocket_1Check.steelPlating(block)
 
-                                player.tell(`§7一阶火箭检测结果：`)
-                                player.tell(`§7- 钢支柱: §e${pillarResult}/43`)
-                                player.tell(`§7- 钢板楼梯: §e${stairsResult}/16`)
-                                player.tell(`§7- 钢板台阶: §e${slabResult}/4`)
-                                player.tell(`§7- 铁路外壳: §e${railwayResult}/6`)
-                                player.tell(`§7- 钢板按钮: §e${buttonResult}/2`)
-                                player.tell(`§7- 钢块: §e${blockResult}/18`)
-                                player.tell(`§7- 强化玻璃: §e${glassResult}/2`)
-                                player.tell(`§7- 钢板: §e${platingResult}/9`)
 
-                                if (
-                                    pillarResult == 43
-                                    && stairsResult == 16
-                                    && slabResult == 4
-                                    && railwayResult == 6
-                                    && buttonResult == 2
-                                    && blockResult == 18
-                                    && glassResult == 2
-                                    && platingResult == 9
-                                ) {
-                                    if (!rocket_1.hasBuildCorrectly) {
-                                        rocket_1.hasBuildCorrectly = true
-                                        player.setStatusMessage('§a一阶火箭搭建完成!')
-                                    }
-                                } else {
-                                    if (!rocket_1.failedMessageHasSent) {
-                                        rocket_1.failedMessageHasSent = true
-                                        player.setStatusMessage('§c一阶火箭尚未搭建完成!')
+                                if (pillarResult > 0
+                                    || stairsResult > 0
+                                    || slabResult > 0
+                                    || railwayResult > 0
+                                    || buttonResult > 0
+                                    || blockResult > 0
+                                    || glassResult > 0
+                                    || platingResult > 0) 
+                                    {
+                                    if (!rocket_1.isBuilding) {
+                                        rocket_1.isBuilding = true
                                     }
 
-                                    if (rocket_1.hasBuildCorrectly) {
-                                        rocket_1.hasBuildCorrectly = false
-                                        rocket_1.failedMessageHasSent = false
+                                    if (
+                                        pillarResult == 43
+                                        && stairsResult == 16
+                                        && slabResult == 4
+                                        && railwayResult == 6
+                                        && buttonResult == 2
+                                        && blockResult == 18
+                                        && glassResult == 2
+                                        && platingResult == 9
+                                    ) {
+                                        if (!rocket_1.hasBuildCorrectly) {
+                                            rocket_1.hasBuildCorrectly = true
+                                            player.setStatusMessage('§a一阶火箭搭建完成!')
+                                        }
+                                    } else {
+                                        if (!rocket_1.failedMessageHasSent) {
+                                            rocket_1.failedMessageHasSent = true
+                                            player.setStatusMessage('§c一阶火箭尚未搭建完成!')
+                                        }
+
+                                        if (rocket_1.hasBuildCorrectly) {
+                                            rocket_1.hasBuildCorrectly = false
+                                            rocket_1.failedMessageHasSent = false
+                                        }
                                     }
                                 }
                             }

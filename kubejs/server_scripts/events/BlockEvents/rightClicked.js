@@ -175,7 +175,7 @@ BlockEvents.rightClicked(event => {
                         const minX = center.x - 3, maxX = center.x + 3
                         const minY = center.y - 12, maxY = center.y
                         const minZ = center.z - 3, maxZ = center.z + 3
-//
+
                         if (
                             block.x >= minX && block.x <= maxX 
                             && block.y >= minY && block.y <= maxY 
@@ -211,5 +211,51 @@ BlockEvents.rightClicked(event => {
                 }
             })
         }
+        if (global.mapArray.rocket_2MapArray) {
+            global.mapArray.rocket_2MapArray.forEach(rocket_2 => {
+                if (rocket_2.hasBuildCorrectly) {
+                    if (block.dimension == rocket_2.dimension) {
+                        player.swing()
+                        const center = rocket_2.pos
+                        const minX = center.x - 3, maxX = center.x + 3
+                        const minY = center.y - 12, maxY = center.y
+                        const minZ = center.z - 3, maxZ = center.z + 3
+
+                        if (
+                            block.x >= minX && block.x <= maxX &&
+                            block.y >= minY && block.y <= maxY &&
+                            block.z >= minZ && block.z <= maxZ
+                        ) {
+                            for (let dx = -3; dx <= 3; dx++) {
+                                for (let dy = 0; dy <= 14; dy++) {
+                                    for (let dz = -3; dz <= 3; dz++) {
+                                        let b = player.level.getBlock(center.x + dx, center.y - dy, center.z + dz)
+
+                                        if (
+                                            b.id.startsWith('ad_astra:') ||
+                                            b.id == 'createnuclear:reinforced_glass' ||
+                                            b.id == 'minecraft:lightning_rod'
+                                        ) {
+                                            b.set('minecraft:air')
+                                        }
+                                    }
+                                }
+                            }
+
+                            let rocket = player.level.createEntity('ad_astra:tier_2_rocket')
+                            rocket.x = center.x + 0.5
+                            rocket.y = center.y - 13
+                            rocket.z = center.z + 0.5
+                            rocket.spawn()
+
+                            rocket_2.hasBuildCorrectly = false
+
+                            event.cancel()
+                        }
+                    }
+                }
+            })
+        }
+
     }
 })
