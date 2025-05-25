@@ -71,7 +71,7 @@ PlayerEvents.tick(event => {
 
             return ostrumCheck
         }
-
+        
         if (global.methods.tickCountCheck(server, 20, 1.5)) {
             if (ostrumNBTCheck()) {
                 player.paint({
