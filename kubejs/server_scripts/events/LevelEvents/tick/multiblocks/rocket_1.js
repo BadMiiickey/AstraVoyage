@@ -304,6 +304,7 @@ LevelEvents.tick(event => {
                             let blockResult = rocket_1Check.steelBlock(block)
                             let glassResult = rocket_1Check.reinforcedGlass(block)
                             let platingResult = rocket_1Check.steelPlating(block)
+                            let lightningRodResult = rocket_1Check.lightningRod(block)
 
 
                             if (
