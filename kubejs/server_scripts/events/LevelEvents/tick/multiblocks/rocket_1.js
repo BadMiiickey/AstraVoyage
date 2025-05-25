@@ -283,15 +283,34 @@ LevelEvents.tick(event => {
                             if (hasDeshBlocks) {
                                 // 什么都不做，这个在二阶火箭脚本中处理
                             } else {
+                                let pillarResult = rocket_1Check.steelPillar(block)
+                                let stairsResult = rocket_1Check.steelPlatingStairs(block)
+                                let slabResult = rocket_1Check.steelPlatingSlab(block)
+                                let railwayResult = rocket_1Check.railwayCasing(block)
+                                let buttonResult = rocket_1Check.steelPlatingButton(block)
+                                let blockResult = rocket_1Check.steelBlock(block)
+                                let glassResult = rocket_1Check.reinforcedGlass(block)
+                                let platingResult = rocket_1Check.steelPlating(block)
+
+                                player.tell(`§7一阶火箭检测结果：`)
+                                player.tell(`§7- 钢支柱: §e${pillarResult}/43`)
+                                player.tell(`§7- 钢板楼梯: §e${stairsResult}/16`)
+                                player.tell(`§7- 钢板台阶: §e${slabResult}/4`)
+                                player.tell(`§7- 铁路外壳: §e${railwayResult}/6`)
+                                player.tell(`§7- 钢板按钮: §e${buttonResult}/2`)
+                                player.tell(`§7- 钢块: §e${blockResult}/18`)
+                                player.tell(`§7- 强化玻璃: §e${glassResult}/2`)
+                                player.tell(`§7- 钢板: §e${platingResult}/9`)
+
                                 if (
-                                    rocket_1Check.steelPillar(block) == 43
-                                    && rocket_1Check.steelPlatingStairs(block) == 16
-                                    && rocket_1Check.steelPlatingSlab(block) == 4
-                                    && rocket_1Check.railwayCasing(block) == 6
-                                    && rocket_1Check.steelPlatingButton(block) == 2
-                                    && rocket_1Check.steelBlock(block) == 18
-                                    && rocket_1Check.reinforcedGlass(block) == 2
-                                    && rocket_1Check.steelPlating(block) == 9
+                                    pillarResult == 43
+                                    && stairsResult == 16
+                                    && slabResult == 4
+                                    && railwayResult == 6
+                                    && buttonResult == 2
+                                    && blockResult == 18
+                                    && glassResult == 2
+                                    && platingResult == 9
                                 ) {
                                     if (!rocket_1.hasBuildCorrectly) {
                                         rocket_1.hasBuildCorrectly = true

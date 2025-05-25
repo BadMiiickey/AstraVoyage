@@ -248,7 +248,7 @@ BlockEvents.rightClicked(event => {
                         const minX = center.x - 3, maxX = center.x + 3
                         const minY = center.y - 12, maxY = center.y
                         const minZ = center.z - 3, maxZ = center.z + 3
-
+//
                         if (
                             block.x >= minX && block.x <= maxX &&
                             block.y >= minY && block.y <= maxY &&

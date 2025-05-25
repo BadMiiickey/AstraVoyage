@@ -293,7 +293,7 @@ Ponder.registry(event => {
             scene.idle(20 * 3)
 
         })
-
+//
         .scene('kubejs:rocket_2_whole', 'kubejs:rocket_2_whole', 'kubejs:rocket_2', scene => {
 
             scene.showBasePlate()

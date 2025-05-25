@@ -85,7 +85,7 @@ LevelEvents.tick(event => {
                     }
                 }
             }
-
+// 
             return checkNumber; // 应为 43
         },
 

@@ -21,6 +21,7 @@ BlockEvents.placed(event => {
                 hasExploded: false
             })
         }
+        //
         //火箭
         if (block.id == 'minecraft:lightning_rod') {
             global.mapArray.rocket_1MapArray.push({
