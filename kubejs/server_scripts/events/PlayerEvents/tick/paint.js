@@ -93,4 +93,71 @@ PlayerEvents.tick(event => {
             })
         }
     }
+
+    //火箭判定是否开始建造
+    if (global.methods.tickCountCheck(server, 20, 1)) {
+        // 获取玩家当前区块的起始坐标
+        let chunkX = Math.floor(player.x / 16) * 16
+        let chunkZ = Math.floor(player.z / 16) * 16
+        let yMin = 0
+        let yMax = 255
+
+        let found = false
+        for (let x = chunkX; x < chunkX + 16; x++) {
+            for (let z = chunkZ; z < chunkZ + 16; z++) {
+                for (let y = yMin; y <= yMax; y++) {
+                    let block = player.level.getBlock(x, y, z)
+                    if (block.id == 'minecraft:lightning_rod') {
+                        found = true
+                        break
+                    }
+                }
+                if (found) break
+            }
+            if (found) break
+        }
+
+        if (found) {
+            if (global.mapArray.rocket_1MapArray.isBuilding) {
+                const screenWidth = event.screen.getWidth()
+                const screenHeight = event.screen.getHeight()
+
+                const textColor = 0xFFFFFF00
+
+                const font = event.screen.getFont()
+                const textWidth = font.width(text)
+                const textHeight = font.lineHeight
+
+                const padding = 8;
+
+                const rectWidth = textWidth + padding * 2
+                const rectHeight = textHeight + padding * 2
+                const rectX = (screenWidth - rectWidth) / 2
+                const rectY = (screenHeight - rectHeight) / 2
+
+                const rectColor = 0x80000000
+
+                player.paint({
+                    retangle: {
+                        type: 'rectangle',
+                        x: rectX,
+                        y: rectY,
+                        w: rectWidth,
+                        h: rectHeight,
+                        color: rectColor
+                    }
+                })
+
+                painter.drawString({
+                    rocket_1: {
+                        type: 'text',
+                        text: '火箭正在建造中',
+                        x: rectX + padding,
+                        y: rectY + padding,
+                        color: textColor,
+                    }
+                });
+            }
+        }
+    }
 })

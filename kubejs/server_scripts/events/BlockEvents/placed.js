@@ -29,24 +29,28 @@ BlockEvents.placed(event => {
                 pos: block.pos,
                 hasBuildCorrectly: false,
                 failedMessageHasSent: false,
+                isBuilding: false,
             })
             global.mapArray.rocket_2MapArray.push({
                 dimension: block.dimension,
                 pos: block.pos,
                 hasBuildCorrectly: false,
                 failedMessageHasSent: false,
+                isBuilding: false,
             })
             global.mapArray.rocket_3MapArray.push({
                 dimension: block.dimension,
                 pos: block.pos,
                 hasBuildCorrectly: false,
                 failedMessageHasSent: false,
+                isBuilding: false,
             })
             global.mapArray.rocket_4MapArray.push({
                 dimension: block.dimension,
                 pos: block.pos,
                 hasBuildCorrectly: false,
                 failedMessageHasSent: false,
+                isBuilding: false,
             })
         }
 

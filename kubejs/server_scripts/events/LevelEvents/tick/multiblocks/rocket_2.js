@@ -85,7 +85,7 @@ LevelEvents.tick(event => {
                     }
                 }
             }
-// 
+            // 
             return checkNumber; // 应为 43
         },
 
@@ -362,6 +362,7 @@ LevelEvents.tick(event => {
                                 }
                             }
                             if (hasDeshBlocks) {
+
                                 let pillarResult = rocket_2Check.steelPillar(block)
                                 let steelSlabResult = rocket_2Check.steelPlatingSlab(block)
                                 let deshSlabResult = rocket_2Check.deshPlatingSlab(block)
@@ -373,43 +374,50 @@ LevelEvents.tick(event => {
                                 let glassResult = rocket_2Check.reinforcedGlass(block)
                                 let platingResult = rocket_2Check.steelPlating(block)
 
-                                player.tell(`§7二阶火箭检测结果：`)
-                                player.tell(`§7- 钢支柱: §e${pillarResult}/43`)
-                                player.tell(`§7- 钢板台阶: §e${steelSlabResult}/4`)
-                                player.tell(`§7- 德氏板台阶: §e${deshSlabResult}/4`)
-                                player.tell(`§7- 钢板楼梯: §e${steelStairsResult}/8`)
-                                player.tell(`§7- 德氏板楼梯: §e${deshStairsResult}/4`)
-                                player.tell(`§7- 钢块: §e${steelBlockResult}/4`)
-                                player.tell(`§7- 发光德氏柱: §e${glowingPillarResult}/4`)
-                                player.tell(`§7- 德氏块: §e${deshBlockResult}/16`)
-                                player.tell(`§7- 强化玻璃: §e${glassResult}/2`)
-                                player.tell(`§7- 钢板: §e${platingResult}/25`)
 
                                 if (
-                                    rocket_2Check.steelPillar(block) == 43
-                                    && rocket_2Check.steelPlatingSlab(block) == 4
-                                    && rocket_2Check.deshPlatingSlab(block) == 4
-                                    && rocket_2Check.steelPlatingStairs(block) == 8
-                                    && rocket_2Check.deshPlatingStairs(block) == 4
-                                    && rocket_2Check.steelBlock(block) == 4
-                                    && rocket_2Check.glowingDeshPillar(block) == 4
-                                    && rocket_2Check.deshBlock(block) == 18
-                                    && rocket_2Check.reinforcedGlass(block) == 2
-                                    && rocket_2Check.steelPlating(block) == 25
+                                    pillarResult > 0
+                                    || steelSlabResult > 0
+                                    || deshSlabResult > 0
+                                    || steelStairsResult > 0
+                                    || deshStairsResult > 0
+                                    || steelBlockResult > 0
+                                    || glowingPillarResult > 0
+                                    || deshBlockResult > 0
+                                    || glassResult > 0
+                                    || platingResult > 0
                                 ) {
-                                    if (!rocket_2.hasBuildCorrectly) {
-                                        rocket_2.hasBuildCorrectly = true
-                                        player.setStatusMessage('§a二阶火箭搭建完成!')
-                                    }
-                                } else {
-                                    if (!rocket_2.failedMessageHasSent) {
-                                        rocket_2.failedMessageHasSent = true
-                                        player.setStatusMessage('§c二阶火箭尚未搭建完成!')
+                                    if (!rocket_2.isBuilding) {
+                                        rocket_2.isBuilding = true
                                     }
 
-                                    if (rocket_2.hasBuildCorrectly) {
-                                        rocket_2.hasBuildCorrectly = false
-                                        rocket_2.failedMessageHasSent = false
+                                    if (
+                                        pillarResult == 43
+                                        && steelSlabResult == 4
+                                        && deshSlabResult == 4
+                                        && steelStairsResult == 8
+                                        && deshStairsResult == 4
+                                        && steelBlockResult == 4
+                                        && glowingPillarResult == 4
+                                        && deshBlockResult == 18
+                                        && glassResult == 2
+                                        && platingResult == 25
+                                    ) {
+                                        if (!rocket_2.hasBuildCorrectly) {
+                                            rocket_2.hasBuildCorrectly = true
+                                            player.setStatusMessage('§a二阶火箭搭建完成!')
+                                        }
+                                    } else {
+                                        if (!rocket_2.failedMessageHasSent) {
+                                            rocket_2.failedMessageHasSent = true
+                                            player.setStatusMessage('§c二阶火箭尚未搭建完成!')
+                                        }
+
+                                        if (rocket_2.hasBuildCorrectly) {
+                                            rocket_2.isBuilding = false
+                                            rocket_2.hasBuildCorrectly = false
+                                            rocket_2.failedMessageHasSent = false
+                                        }
                                     }
                                 }
                             }
