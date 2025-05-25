@@ -442,9 +442,9 @@ LevelEvents.tick(event => {
                                 }
                             }
                         }
-                    }
+                    })
                 })
-            })
+            }
         }
     }
-})
+)
