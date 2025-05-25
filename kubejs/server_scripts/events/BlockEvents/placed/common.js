@@ -1,0 +1,181 @@
+BlockEvents.placed(event => {
+
+    const { block, server } = event
+
+    //多方块机器条件判断
+        //灰烬收集器 => 工作盆、分散网、鼓风机
+        if (block.id == 'create:basin') {
+            global.mapArray.basinsMapArray.push({
+                dimension: block.dimension,
+                pos: block.pos
+            })
+        }
+
+        //火箭发射基座
+        if (block.id == 'ad_astra:launch_pad') {
+            global.mapArray.launchPadsMapArray.push({
+                dimension: block.dimension,
+                pos: block.pos,
+                hasBuildCorrectly: false,
+                failedMessageHasSent: false,
+                hasExploded: false
+            })
+        }
+        
+        //避雷针
+        if (block.id == 'minecraft:lightning_rod') {
+            global.mapArray.lightningRodsMapArray.push({
+                dimension: block.dimension,
+                pos: block.pos,
+                hasBuildCorrectly: false,
+                failedMessageHasSent: false,
+                isBuilding: false,
+                tier: undefined
+            })
+
+            server.scheduleRepeatingInTicks(20 * 1.5, callback => {
+
+                //一阶火箭
+                for (let dy = -1; dy >= -5; dy--) {
+                    if (
+                        block.offset(1, dy, 0).id.includes('steel') 
+                        || block.offset(-1, dy, 0).id.includes('steel')
+                    ) {
+                        global.mapArray.lightningRodsMapArray.forEach(lightningRod => {
+                            if (
+                                lightningRod.dimension == block.dimension 
+                                && lightningRod.pos == block.pos
+                                && lightningRod.tier == undefined
+                            ) {
+                                lightningRod.tier = 1
+                            }
+                        })
+                    }
+                }
+
+                //二阶火箭
+                for (let dy = -5; dy >= -9; dy--) {
+                    if (
+                        block.offset(1, dy, 0).id.includes('desh') 
+                        || block.offset(-1, dy, 0).id.includes('desh')
+                    ) {
+                        global.mapArray.lightningRodsMapArray.forEach(lightningRod => {
+                            if (
+                                lightningRod.dimension == block.dimension 
+                                && lightningRod.pos == block.pos
+                                && lightningRod.tier == undefined
+                            ) {
+                                lightningRod.tier = 2
+                            }
+                        })
+                    }
+                }
+
+                //三阶火箭
+                for (let dy = -9; dy >= -13; dy--) {
+                    if (
+                        block.offset(1, dy, 0).id.includes('ostrum') 
+                        || block.offset(-1, dy, 0).id.includes('ostrum')
+                    ) {
+                        global.mapArray.lightningRodsMapArray.forEach(lightningRod => {
+                            if (
+                                lightningRod.dimension == block.dimension 
+                                && lightningRod.pos == block.pos
+                                && lightningRod.tier == undefined
+                            ) {
+                                lightningRod.tier = 3
+                            }
+                        })
+                    }
+                }
+
+                //四阶火箭
+                for (let dy = -13; dy >= -17; dy--) {
+                    if (
+                        block.offset(1, dy, 0).id.includes('calorite') 
+                        || block.offset(-1, dy, 0).id.includes('calorite')
+                    ) {
+                        global.mapArray.lightningRodsMapArray.forEach(lightningRod => {
+                            if (
+                                lightningRod.dimension == block.dimension 
+                                && lightningRod.pos == block.pos
+                                && lightningRod.tier == undefined
+                            ) {
+                                lightningRod.tier = 4
+                            }
+                        })
+                    }
+                }
+            })
+        }
+
+    //营火
+    if (block.id == 'minecraft:campfire') {
+        global.mapArray.campfiresMapArray.push({
+            dimension: block.dimension,
+            pos: block.pos
+        })
+    }
+
+    //简易工业平台
+    /**
+     * 
+     * @param { Internal.BlockContainerJS } platform 
+     */
+    function frameParticleForecast(platform) {
+
+        let dxs = [19, -19]
+        let dzs = [20, -18]
+        let dys = [0, 15]
+
+        dys.forEach(dy => {
+            for (let x = -18; x <= 19; x++) {
+                dzs.forEach(dz => {
+                    platform.level.spawnParticles(
+                        'minecraft:end_rod', false,
+                        platform.x + x, platform.y + 0.25 + dy, platform.z + dz,
+                        0, 0, 0,
+                        10, 0
+                    )
+                })
+            }
+
+            for (let z = -18; z <= 20; z++) {
+                dxs.forEach(dx => {
+                    platform.level.spawnParticles(
+                        'minecraft:end_rod', false,
+                        platform.x + dx, platform.y + 0.25 + dy, platform.z + z,
+                        0, 0, 0,
+                        10, 0
+                    )
+                })
+            }
+        })
+
+        for (let y = 0; y <= 15; y++) {
+            dxs.forEach(dx => {
+                dzs.forEach(dz => {
+                    platform.level.spawnParticles(
+                        'minecraft:end_rod', false,
+                        platform.x + dx, platform.y + 0.25 + y, platform.z + dz,
+                        0, 0, 0,
+                        10, 0
+                    )
+                })
+            })
+        }
+    }
+
+    if (block.id == 'kubejs:simple_industrial_platform') {
+        global.mapArray.platformsMapArray.push({
+            dimension: block.dimension,
+            pos: block.pos
+        })
+        frameParticleForecast(block)
+        server.scheduleRepeatingInTicks(20 * 2.5, callback => {
+            if (block.level.getBlock(block.pos).id == 'kubejs:simple_industrial_platform') {
+                frameParticleForecast(block)
+            }
+        })
+    }
+})

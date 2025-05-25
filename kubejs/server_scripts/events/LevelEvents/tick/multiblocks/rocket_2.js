@@ -385,7 +385,10 @@ LevelEvents.tick(event => {
     }
 
     if (global.methods.tickCountCheck(server, 2, 1)) {
-        if (global.mapArray.rocket_2MapArray && global.mapArray.rocket_2MapArray.length > 0) {
+        if (
+            global.mapArray.rocket_2MapArray 
+            && global.mapArray.rocket_2MapArray.length > 0
+        ) {
             global.mapArray.rocket_2MapArray.forEach(rocket_2 => {
                 server.players.forEach(player => {
                     if (player.level.dimension == rocket_2.dimension) {
@@ -399,12 +402,15 @@ LevelEvents.tick(event => {
                             let hasDeshBlocks = false
 
                             for (let dy = -5; dy >= -9; dy--) {
-                                if (block.offset(1, dy, 0).id.includes('desh') ||
-                                    block.offset(-1, dy, 0).id.includes('desh')) {
+                                if (
+                                    block.offset(1, dy, 0).id.includes('desh') 
+                                    || block.offset(-1, dy, 0).id.includes('desh')
+                                ) {
                                     hasDeshBlocks = true
                                     break
                                 }
                             }
+
                             if (hasDeshBlocks) {
                                 if (
                                     rocket_2Check.steelPillar(block) == 43
@@ -427,12 +433,11 @@ LevelEvents.tick(event => {
                                         rocket_2.failedMessageHasSent = true
                                         player.setStatusMessage('§c二阶火箭尚未搭建完成!')
                                     }
-
-                                        if (rocket_2.hasBuildCorrectly) {
-                                            rocket_2.isBuilding = false
-                                            rocket_2.hasBuildCorrectly = false
-                                            rocket_2.failedMessageHasSent = false
-                                        }
+                                    
+                                    if (rocket_2.hasBuildCorrectly) {
+                                        rocket_2.isBuilding = false
+                                        rocket_2.hasBuildCorrectly = false
+                                        rocket_2.failedMessageHasSent = false
                                     }
                                 }
                             }
