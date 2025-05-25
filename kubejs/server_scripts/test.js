@@ -22,8 +22,6 @@ BlockEvents.rightClicked(event => {
         Client.tell(`blockProperties: ${block.properties}`)
         Client.tell(`blockEntityData: ${block.entityData}`)
     }
-
-    player.persistentData.map
 })
 
 ItemEvents.rightClicked(event => {

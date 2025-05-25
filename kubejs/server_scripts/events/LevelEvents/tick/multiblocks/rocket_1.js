@@ -3,6 +3,7 @@ LevelEvents.tick(event => {
     const { server } = event
 
     const rocket_1Check = {
+
         /**
          * 
          * @param {Internal.BlockContainerJS} rocket_1
@@ -136,16 +137,20 @@ LevelEvents.tick(event => {
         railwayCasing(rocket_1) {
 
             let checkNumber = 0
-            const direction = rocket_1Check.checkAllDirections(rocket_1)
+            let direction = rocket_1Check.checkAllDirections(rocket_1)
 
             for (let dx of [-3, 0, 3]) {
                 for (let dz of [-3, 3]) {
 
-                    const [rotatedDx, rotatedDz] = rocket_1Check.rotateCoordinates(dx, dz, direction)
+                    let [rotatedDx, rotatedDz] = rocket_1Check.rotateCoordinates(dx, dz, direction)
 
                     if (rotatedDx == 0) {
 
-                        if (rocket_1.offset(rotatedDx, -8, (rotatedDz / Math.abs(rotatedDz)) * (Math.abs(rotatedDz) - 1)).id == 'create:railway_casing') {
+                        if (
+                            rocket_1.offset(
+                                rotatedDx, -8, (rotatedDz / Math.abs(rotatedDz)) * (Math.abs(rotatedDz) - 1)
+                            ).id == 'create:railway_casing'
+                        ) {
                             checkNumber++
                         }
                     } else {
@@ -166,7 +171,7 @@ LevelEvents.tick(event => {
         steelPlatingButton(rocket_1) {
 
             let checkNumber = 0
-            const direction = rocket_1Check.checkAllDirections(rocket_1)
+            let direction = rocket_1Check.checkAllDirections(rocket_1)
 
             for (let dz of [-2, 2]) {
 
@@ -179,6 +184,7 @@ LevelEvents.tick(event => {
 
             return checkNumber//应为2
         },
+
         /**
          * 
          * @param {Internal.BlockContainerJS} rocket_1
@@ -186,7 +192,7 @@ LevelEvents.tick(event => {
         steelBlock(rocket_1) {
 
             let checkNumber = 0
-            const direction = rocket_1Check.checkAllDirections(rocket_1)
+            let direction = rocket_1Check.checkAllDirections(rocket_1)
 
             for (let dy of [-4, -5, -6, -7, -8]) {
                 for (let dx of [-1, 1]) {
@@ -214,6 +220,7 @@ LevelEvents.tick(event => {
 
             return checkNumber//应为18
         },
+
         /**
          * 
          * @param {Internal.BlockContainerJS} rocket_1
@@ -221,7 +228,7 @@ LevelEvents.tick(event => {
         reinforcedGlass(rocket_1) {
 
             let checkNumber = 0
-            const direction = rocket_1Check.checkAllDirections(rocket_1)
+            let direction = rocket_1Check.checkAllDirections(rocket_1)
 
             // 玻璃只会出现在四个方向之一
             for (let dy of [-6, -7]) {
@@ -237,6 +244,7 @@ LevelEvents.tick(event => {
             }
             return checkNumber // 应为2
         },
+
         /**
          * 
          * @param {Internal.BlockContainerJS} rocket_1
@@ -244,12 +252,12 @@ LevelEvents.tick(event => {
         steelPlating(rocket_1) {
 
             let checkNumber = 0
-            const direction = rocket_1Check.checkAllDirections(rocket_1)
+            let direction = rocket_1Check.checkAllDirections(rocket_1)
 
             for (let dx of [-1, 0, 1]) {
                 for (let dz of [-1, 0, 1]) {
 
-                    const [rotatedDx, rotatedDz] = rocket_1Check.rotateCoordinates(dx, dz, direction)
+                    let [rotatedDx, rotatedDz] = rocket_1Check.rotateCoordinates(dx, dz, direction)
 
                     if (rocket_1.offset(rotatedDx, -9, rotatedDz).id == 'ad_astra:steel_plating') {
                         checkNumber++
@@ -262,84 +270,74 @@ LevelEvents.tick(event => {
     }
 
     if (global.methods.tickCountCheck(server, 2, 1)) {
-        if (global.mapArray.rocket_1MapArray && global.mapArray.rocket_1MapArray.length > 0) {
-            global.mapArray.rocket_1MapArray.forEach(rocket_1 => {
+        if (
+            global.mapArray.lightningRodsMapArray 
+            && global.mapArray.lightningRodsMapArray.length > 0
+        ) {
+            global.mapArray.lightningRodsMapArray.forEach(rocket_1 => {
                 server.players.forEach(player => {
-                    if (player.level.dimension == rocket_1.dimension) {
+                    if (
+                        player.level.dimension == rocket_1.dimension
+                        && rocket_1.tier == 1
+                    ) {
 
                         let block = player.level.getBlock(rocket_1.pos)
 
                         if (block.id == 'minecraft:lightning_rod') {
+                            
+                            let pillarResult = rocket_1Check.steelPillar(block)
+                            let stairsResult = rocket_1Check.steelPlatingStairs(block)
+                            let slabResult = rocket_1Check.steelPlatingSlab(block)
+                            let railwayResult = rocket_1Check.railwayCasing(block)
+                            let buttonResult = rocket_1Check.steelPlatingButton(block)
+                            let blockResult = rocket_1Check.steelBlock(block)
+                            let glassResult = rocket_1Check.reinforcedGlass(block)
+                            let platingResult = rocket_1Check.steelPlating(block)
 
-                            // 检查是否有戴斯块 (二阶火箭特有)
-                            let hasDeshBlocks = false;
-                            for (let dy = -5; dy >= -9; dy--) {
-                                if (block.offset(1, dy, 0).id.includes('desh') ||
-                                    block.offset(-1, dy, 0).id.includes('desh')) {
-                                    hasDeshBlocks = true;
-                                    break;
+
+                            if (pillarResult > 0
+                                || stairsResult > 0
+                                || slabResult > 0
+                                || railwayResult > 0
+                                || buttonResult > 0
+                                || blockResult > 0
+                                || glassResult > 0
+                                || platingResult > 0
+                            ) {
+                                if (!rocket_1.isBuilding) {
+                                    rocket_1.isBuilding = true
                                 }
-                            }
-                            if (hasDeshBlocks) {
-                                // 什么都不做，这个在二阶火箭脚本中处理
-                            } else {
 
-                                let pillarResult = rocket_1Check.steelPillar(block)
-                                let stairsResult = rocket_1Check.steelPlatingStairs(block)
-                                let slabResult = rocket_1Check.steelPlatingSlab(block)
-                                let railwayResult = rocket_1Check.railwayCasing(block)
-                                let buttonResult = rocket_1Check.steelPlatingButton(block)
-                                let blockResult = rocket_1Check.steelBlock(block)
-                                let glassResult = rocket_1Check.reinforcedGlass(block)
-                                let platingResult = rocket_1Check.steelPlating(block)
-
-
-                                if (pillarResult > 0
-                                    || stairsResult > 0
-                                    || slabResult > 0
-                                    || railwayResult > 0
-                                    || buttonResult > 0
-                                    || blockResult > 0
-                                    || glassResult > 0
-                                    || platingResult > 0) 
-                                    {
-                                    if (!rocket_1.isBuilding) {
-                                        rocket_1.isBuilding = true
+                                if (
+                                    pillarResult == 43
+                                    && stairsResult == 16
+                                    && slabResult == 4
+                                    && railwayResult == 6
+                                    && buttonResult == 2
+                                    && blockResult == 18
+                                    && glassResult == 2
+                                    && platingResult == 9
+                                ) {
+                                    if (!rocket_1.hasBuildCorrectly) {
+                                        rocket_1.hasBuildCorrectly = true
+                                        player.setStatusMessage('§a一阶火箭搭建完成!')
+                                    }
+                                } else {
+                                    if (!rocket_1.failedMessageHasSent) {
+                                        rocket_1.failedMessageHasSent = true
+                                        player.setStatusMessage('§c一阶火箭尚未搭建完成!')
                                     }
 
-                                    if (
-                                        pillarResult == 43
-                                        && stairsResult == 16
-                                        && slabResult == 4
-                                        && railwayResult == 6
-                                        && buttonResult == 2
-                                        && blockResult == 18
-                                        && glassResult == 2
-                                        && platingResult == 9
-                                    ) {
-                                        if (!rocket_1.hasBuildCorrectly) {
-                                            rocket_1.hasBuildCorrectly = true
-                                            player.setStatusMessage('§a一阶火箭搭建完成!')
-                                        }
-                                    } else {
-                                        if (!rocket_1.failedMessageHasSent) {
-                                            rocket_1.failedMessageHasSent = true
-                                            player.setStatusMessage('§c一阶火箭尚未搭建完成!')
-                                        }
-
-                                        if (rocket_1.hasBuildCorrectly) {
-                                            rocket_1.hasBuildCorrectly = false
-                                            rocket_1.failedMessageHasSent = false
-                                        }
+                                    if (rocket_1.hasBuildCorrectly) {
+                                        rocket_1.hasBuildCorrectly = false
+                                        rocket_1.failedMessageHasSent = false
                                     }
                                 }
                             }
                         }
                     }
-                }
-                )
-            }
-            )
+                })
+            })
         }
     }
 })
