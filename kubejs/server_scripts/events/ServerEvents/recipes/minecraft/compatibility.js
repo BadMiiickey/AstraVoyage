@@ -89,9 +89,9 @@ ServerEvents.recipes(event => {
 
     //移除配方
     
-    const removeRecipesId = (/** @type { Internal.ItemStack } */ name) => { event.remove({ id: name }) }
-    const removeRecipesInput = (/** @type { Internal.ItemStack } */ name) => { event.remove({ input: name })}
-    const removeRecipesOutput = (/** @type { Internal.ItemStack } */ name) => { event.remove({ output: name })}
+    const removeRecipesId = (/** @type { ResourceLocation_ } */ name) => { event.remove({ id: name }) }
+    const removeRecipesInput = (/** @type { Internal.ItemStack_ } */ name) => { event.remove({ input: name })}
+    const removeRecipesOutput = (/** @type { Internal.ItemStack_ } */ name) => { event.remove({ output: name })}
     const removeRecipesType = (/** @type { Internal.ItemStack } */ name) => { event.remove({ type: name })}
 
         //Ad_Astra
