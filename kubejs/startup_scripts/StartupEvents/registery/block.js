@@ -87,4 +87,13 @@ StartupEvents.registry('block', event => {
             item.unstackable()
             item.tag('curios:belt')
         })
+
+    //钢燃料储罐
+    event.create('kubejs:steel_tank', 'basic')
+        .hardness(2.0)
+        .requiresTool(true)
+        .tagBlock('minecraft:mineable/pickaxe')
+        .tagBlock('minecraft:needs_iron_tool')
+        .tagBlock('create:wrench_pickup')
+        .stoneSoundType()
 })
