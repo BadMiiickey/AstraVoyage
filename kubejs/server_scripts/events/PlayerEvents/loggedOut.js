@@ -17,4 +17,7 @@ PlayerEvents.loggedOut(event => {
 
         //钢燃料储罐
         player.persistentData.steelTanksMapArray = global.methods.mapArrayStringfy(global.mapArray.steelTanksMapArray)
+
+        //戴斯燃料储罐
+        player.persistentData.deshTanksMapArray = global.methods.mapArrayStringfy(global.mapArray.deshTanksMapArray)
 })

@@ -60,4 +60,23 @@ BlockEvents.broken(event => {
                     && steelTank.stairsResult != undefined
                 )
         }
+
+        //戴斯燃料储罐
+        if (block.id == 'kubejs:desh_tank') {
+            global.mapArray.deshTanksMapArray = global.mapArray.deshTanksMapArray
+                .filter(deshTank => 
+                    deshTank.dimension != block.dimension
+                    && deshTank.pos != block.pos
+                    && deshTank.hasBuildCorrectly != undefined
+                    && deshTank.failedMessageHasSent != undefined
+                    && deshTank.blockResult != undefined
+                    && deshTank.buttonResult != undefined
+                    && deshTank.glassResult != undefined
+                    && deshTank.pillarResult != undefined
+                    && deshTank.platingResult != undefined
+                    && deshTank.railwayResult != undefined
+                    && deshTank.slabResult != undefined
+                    && deshTank.stairsResult != undefined
+                )
+        }
 })

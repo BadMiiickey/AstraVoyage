@@ -163,10 +163,10 @@ BlockEvents.rightClicked(event => {
         server.scheduleInTicks(16 * 5, callback => platformFrameFilling(block))
     }
 
-    // 火箭
+    // 一阶火箭
     if (player.mainHandItem.id == 'create:wrench') {
-        if (global.mapArray.rocket_1MapArray) {
-            global.mapArray.rocket_1MapArray.forEach(rocket_1 => {
+        if (global.mapArray.steelTanksMapArray) {
+            global.mapArray.steelTanksMapArray.forEach(rocket_1 => {
                 if (rocket_1.hasBuildCorrectly) {
                     if (block.dimension == rocket_1.dimension) {
                         player.swing()
@@ -182,10 +182,10 @@ BlockEvents.rightClicked(event => {
                             && block.z >= minZ && block.z <= maxZ
                         ) {
                             for (let dx = -3; dx <= 3; dx++) {
-                                for (let dy = 0; dy <= 12; dy++) {
+                                for (let dy = -3; dy <= 9; dy++) {
                                     for (let dz = -3; dz <= 3; dz++) {
 
-                                        let block = player.level.getBlock(center.x + dx, center.y - dy, center.z + dz)
+                                        let block = player.level.getBlock(center.x + dx, center.y + dy, center.z + dz)
 
                                         if (
                                             block.id.startsWith('ad_astra:') 
@@ -200,9 +200,12 @@ BlockEvents.rightClicked(event => {
                                 }
                             }
 
-                            player.level.createEntity('ad_astra:tier_1_rocket')
-                                .setPos(center.x + 0.5, center.y - 2, center.z + 0.5)
-                                .spawn()
+                            let rocket = player.level.createEntity('ad_astra:tier_1_rocket')
+                            rocket.x = center.x + 0.5
+                            rocket.y = center.y - 2
+                            rocket.z = center.z + 0.5
+                            rocket.spawn()
+
 
                             rocket_1.hasBuildCorrectly = false
 
@@ -212,8 +215,8 @@ BlockEvents.rightClicked(event => {
                 }
             })
         }
-        if (global.mapArray.rocket_2MapArray) {
-            global.mapArray.rocket_2MapArray.forEach(rocket_2 => {
+        if (global.mapArray.deshTanksMapArray) {
+            global.mapArray.deshTanksMapArray.forEach(rocket_2 => {
                 if (rocket_2.hasBuildCorrectly) {
                     if (block.dimension == rocket_2.dimension) {
                         player.swing()
@@ -230,22 +233,21 @@ BlockEvents.rightClicked(event => {
                             for (let dx = -3; dx <= 3; dx++) {
                                 for (let dy = 0; dy <= 14; dy++) {
                                     for (let dz = -3; dz <= 3; dz++) {
-                                        let b = player.level.getBlock(center.x + dx, center.y - dy, center.z + dz)
-
+                                        let block = player.level.getBlock(center.x + dx, center.y - dy, center.z + dz)   
                                         if (
-                                            b.id.startsWith('ad_astra:') ||
-                                            b.id == 'createnuclear:reinforced_glass' ||
-                                            b.id == 'minecraft:lightning_rod'
+                                            block.id.startsWith('ad_astra:') ||
+                                            block.id == 'createnuclear:reinforced_glass' ||
+                                            block.id == 'minecraft:lightning_rod' || 
+                                            block.id == 'kubejs:desh_tank'
                                         ) {
-                                            b.set('minecraft:air')
+                                            block.set('minecraft:air')
                                         }
                                     }
                                 }
-                            }
-
+                            }                            
                             let rocket = player.level.createEntity('ad_astra:tier_2_rocket')
                             rocket.x = center.x + 0.5
-                            rocket.y = center.y - 13
+                            rocket.y = center.y - 2
                             rocket.z = center.z + 0.5
                             rocket.spawn()
 

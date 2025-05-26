@@ -46,4 +46,10 @@ PlayerEvents.loggedIn(event => {
             global.mapArray.steelTanksMapArray.push(steelTank)
         })
         player.persistentData.remove('steelTanksMapArray')
+
+        //戴斯燃料储罐
+        global.methods.mapArrayStringfyReverse(player.persistentData.deshTanksMapArray).forEach(deshTank => {
+            global.mapArray.deshTanksMapArray.push(deshTank)
+        })
+        player.persistentData.remove('deshTanksMapArray')
 })

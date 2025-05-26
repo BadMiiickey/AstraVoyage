@@ -126,6 +126,30 @@ LevelEvents.tick(event => {
             return checkNumber//应为16
         },
 
+        /**
+         * 
+         * @param {Internal.BlockContainerJS} rocket_1
+         */
+        steelPlating(rocket_1) {
+
+            let checkNumber = 0
+
+            for (let dx of [-1, 0, 1]) {
+                for (let dz of [-1, 0, 1]) {
+
+                    if (dx == 0 && dz == 0) {
+                        continue
+                    } else {
+                        if (rocket_1.offset(dx, 0, dz).id == 'ad_astra:steel_plating') {
+                            checkNumber++
+                        }
+                    }
+                }
+            }
+
+            return checkNumber//应为8
+        },
+
 
         //接下来这些都要设置四个方向的数据
 
@@ -249,35 +273,13 @@ LevelEvents.tick(event => {
          * 
          * @param {Internal.BlockContainerJS} rocket_1
          */
-        steelPlating(rocket_1) {
-
-            let checkNumber = 0
-            let direction = rocket_1Check.checkAllDirections(rocket_1)
-
-            for (let dx of [-1, 0, 1]) {
-                for (let dz of [-1, 0, 1]) {
-
-                    let [rotatedDx, rotatedDz] = rocket_1Check.rotateCoordinates(dx, dz, direction)
-
-                    if (rocket_1.offset(rotatedDx, 0, rotatedDz).id == 'ad_astra:steel_plating') {
-                        checkNumber++
-                    }
-                }
-            }
-
-            return checkNumber//应为9
-        },
-        /**
-         * 
-         * @param {Internal.BlockContainerJS} rocket_1
-         */
         lightningRod(rocket_1) {
 
             let checkNumber = 0
 
-                if (rocket_1.offset(0, 9, 0).id == 'minecraft:lightning_rod') {
-                    checkNumber++
-                }
+            if (rocket_1.offset(0, 9, 0).id == 'minecraft:lightning_rod') {
+                checkNumber++
+            }
 
             return checkNumber//应为1
         }
@@ -285,7 +287,7 @@ LevelEvents.tick(event => {
 
     if (global.methods.tickCountCheck(server, 2, 1)) {
         if (
-            global.mapArray.steelTanksMapArray 
+            global.mapArray.steelTanksMapArray
             && global.mapArray.steelTanksMapArray.length > 0
         ) {
             global.mapArray.steelTanksMapArray.forEach(rocket_1 => {
@@ -295,7 +297,7 @@ LevelEvents.tick(event => {
                         let block = player.level.getBlock(rocket_1.pos)
 
                         if (block.id == 'kubejs:steel_tank') {
-                            
+
                             let pillarResult = rocket_1Check.steelPillar(block)
                             let stairsResult = rocket_1Check.steelPlatingStairs(block)
                             let slabResult = rocket_1Check.steelPlatingSlab(block)
@@ -306,27 +308,15 @@ LevelEvents.tick(event => {
                             let platingResult = rocket_1Check.steelPlating(block)
                             let lightningRodResult = rocket_1Check.lightningRod(block)
 
-
-                            if (
-                                pillarResult > 0
-                                || stairsResult > 0
-                                || slabResult > 0
-                                || railwayResult > 0
-                                || buttonResult > 0
-                                || blockResult > 0
-                                || glassResult > 0
-                                || platingResult > 0
-                                || lightningRodResult > 0
-                            ) {
                                 if (
                                     pillarResult == 43
-                                    && stairsResult == 16
                                     && slabResult == 4
+                                    && stairsResult == 16
+                                    && platingResult == 8
                                     && railwayResult == 6
                                     && buttonResult == 2
                                     && blockResult == 18
                                     && glassResult == 2
-                                    && platingResult == 9
                                     && lightningRodResult == 1
                                 ) {
                                     if (!rocket_1.hasBuilt) {
@@ -346,13 +336,13 @@ LevelEvents.tick(event => {
                                     if (rocket_1.hasBuilt) {
                                         rocket_1.hasBuilt = false
                                     }
-                                    
+
                                     if (rocket_1.hasBuildCorrectly) {
                                         rocket_1.hasBuildCorrectly = false
                                         rocket_1.failedMessageHasSent = false
                                     }
                                 }
-                            }
+                            
                         }
                     }
                 })
