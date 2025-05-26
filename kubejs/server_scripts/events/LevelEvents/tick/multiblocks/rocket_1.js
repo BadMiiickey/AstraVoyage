@@ -12,13 +12,13 @@ LevelEvents.tick(event => {
 
             let direction = 0
 
-            if (rocket_1.offset(1, -6, 0).id == 'createnuclear:reinforced_glass') {
+            if (rocket_1.offset(1, 3, 0).id == 'createnuclear:reinforced_glass') {
                 direction = 0
-            } else if (rocket_1.offset(0, -6, 1).id == 'createnuclear:reinforced_glass') {
+            } else if (rocket_1.offset(0, 3, 1).id == 'createnuclear:reinforced_glass') {
                 direction = 1
-            } else if (rocket_1.offset(-1, -6, 0).id == 'createnuclear:reinforced_glass') {
+            } else if (rocket_1.offset(-1, 3, 0).id == 'createnuclear:reinforced_glass') {
                 direction = 2
-            } else if (rocket_1.offset(0, -6, -1).id == 'createnuclear:reinforced_glass') {
+            } else if (rocket_1.offset(0, 3, -1).id == 'createnuclear:reinforced_glass') {
                 direction = 3
             }
 
@@ -47,12 +47,12 @@ LevelEvents.tick(event => {
 
             let checkNumber = 0
 
-            for (let dy = -1; dy >= -12; dy--) {
-                if (dy >= -3 && dy <= -1) {
+            for (let dy = 8; dy >= -3; dy--) {
+                if (dy >= 6 && dy <= 8) {
                     if (rocket_1.offset(0, dy, 0).id == 'ad_astra:steel_pillar') {
                         checkNumber++
                     }
-                } else if (dy <= -4 && dy >= -8) {
+                } else if (dy <= 5 && dy >= 1) {
                     for (let dx of [-1, 1]) {
                         for (let dz of [-1, 1]) {
                             if (rocket_1.offset(dx, dy, dz).id == 'ad_astra:steel_pillar') {
@@ -61,7 +61,7 @@ LevelEvents.tick(event => {
                         }
                     }
                 } else {
-                    if (dy >= -11) {
+                    if (dy >= -2) {
                         for (let dx of [-2, 2]) {
                             for (let dz of [-2, 2]) {
                                 if (rocket_1.offset(dx, dy, dz).id == 'ad_astra:steel_pillar') {
@@ -92,7 +92,7 @@ LevelEvents.tick(event => {
 
             for (let dx of [-2, 2]) {
                 for (let dz of [-2, 2]) {
-                    if (rocket_1.offset(dx, -8, dz).id == 'ad_astra:steel_plating_slab') {
+                    if (rocket_1.offset(dx, 1, dz).id == 'ad_astra:steel_plating_slab') {
                         checkNumber++
                     }
                 }
@@ -109,7 +109,7 @@ LevelEvents.tick(event => {
 
             let checkNumber = 0
 
-            for (let dy of [-3, -10]) {
+            for (let dy of [6, -1]) {
                 for (let dx of [-1, 0, 1]) {
                     for (let dz of [-1, 0, 1]) {
                         if (dx == 0 && dz == 0) {
@@ -124,6 +124,30 @@ LevelEvents.tick(event => {
             }
 
             return checkNumber//应为16
+        },
+
+        /**
+         * 
+         * @param {Internal.BlockContainerJS} rocket_1
+         */
+        steelPlating(rocket_1) {
+
+            let checkNumber = 0
+
+            for (let dx of [-1, 0, 1]) {
+                for (let dz of [-1, 0, 1]) {
+
+                    if (dx == 0 && dz == 0) {
+                        continue
+                    } else {
+                        if (rocket_1.offset(dx, 0, dz).id == 'ad_astra:steel_plating') {
+                            checkNumber++
+                        }
+                    }
+                }
+            }
+
+            return checkNumber//应为8
         },
 
 
@@ -148,13 +172,13 @@ LevelEvents.tick(event => {
 
                         if (
                             rocket_1.offset(
-                                rotatedDx, -8, (rotatedDz / Math.abs(rotatedDz)) * (Math.abs(rotatedDz) - 1)
+                                rotatedDx, 1, (rotatedDz / Math.abs(rotatedDz)) * (Math.abs(rotatedDz) - 1)
                             ).id == 'create:railway_casing'
                         ) {
                             checkNumber++
                         }
                     } else {
-                        if (rocket_1.offset(rotatedDx, -8, rotatedDz).id == 'create:railway_casing') {
+                        if (rocket_1.offset(rotatedDx, 1, rotatedDz).id == 'create:railway_casing') {
                             checkNumber++
                         }
                     }
@@ -177,7 +201,7 @@ LevelEvents.tick(event => {
 
                 let [rotatedDx, rotatedDz] = rocket_1Check.rotateCoordinates(0, dz, direction)
 
-                if (rocket_1.offset(rotatedDx, -7, rotatedDz).id == 'ad_astra:steel_plating_button') {
+                if (rocket_1.offset(rotatedDx, 2, rotatedDz).id == 'ad_astra:steel_plating_button') {
                     checkNumber++
                 }
             }
@@ -194,12 +218,12 @@ LevelEvents.tick(event => {
             let checkNumber = 0
             let direction = rocket_1Check.checkAllDirections(rocket_1)
 
-            for (let dy of [-4, -5, -6, -7, -8]) {
+            for (let dy of [5, 4, 3, 2, 1]) {
                 for (let dx of [-1, 1]) {
 
                     let [rotatedDx, rotatedDz] = rocket_1Check.rotateCoordinates(dx, 0, direction)
 
-                    if ((dy == -6 || dy == -7) && rotatedDx == 1) {
+                    if ((dy == 3 || dy == 2) && rotatedDx == 1) {
                         continue
                     } else {
                         if (rocket_1.offset(rotatedDx, dy, rotatedDz).id == 'ad_astra:steel_block') {
@@ -231,8 +255,7 @@ LevelEvents.tick(event => {
             let direction = rocket_1Check.checkAllDirections(rocket_1)
 
             // 玻璃只会出现在四个方向之一
-            for (let dy of [-6, -7]) {
-
+            for (let dy of [3, 2]) {
                 // 四个方向的相对坐标
                 for (let [dx, dz] of [[1, 0], [0, 1], [-1, 0], [0, -1]]) {
 
@@ -250,29 +273,21 @@ LevelEvents.tick(event => {
          * 
          * @param {Internal.BlockContainerJS} rocket_1
          */
-        steelPlating(rocket_1) {
+        lightningRod(rocket_1) {
 
             let checkNumber = 0
-            let direction = rocket_1Check.checkAllDirections(rocket_1)
 
-            for (let dx of [-1, 0, 1]) {
-                for (let dz of [-1, 0, 1]) {
-
-                    let [rotatedDx, rotatedDz] = rocket_1Check.rotateCoordinates(dx, dz, direction)
-
-                    if (rocket_1.offset(rotatedDx, -9, rotatedDz).id == 'ad_astra:steel_plating') {
-                        checkNumber++
-                    }
-                }
+            if (rocket_1.offset(0, 9, 0).id == 'minecraft:lightning_rod') {
+                checkNumber++
             }
 
-            return checkNumber//应为9
+            return checkNumber//应为1
         }
     }
 
     if (global.methods.tickCountCheck(server, 2, 1)) {
         if (
-            global.mapArray.steelTanksMapArray 
+            global.mapArray.steelTanksMapArray
             && global.mapArray.steelTanksMapArray.length > 0
         ) {
             global.mapArray.steelTanksMapArray.forEach(rocket_1 => {
@@ -282,7 +297,7 @@ LevelEvents.tick(event => {
                         let block = player.level.getBlock(rocket_1.pos)
 
                         if (block.id == 'kubejs:steel_tank') {
-                            
+
                             let pillarResult = rocket_1Check.steelPillar(block)
                             let stairsResult = rocket_1Check.steelPlatingStairs(block)
                             let slabResult = rocket_1Check.steelPlatingSlab(block)
@@ -291,35 +306,18 @@ LevelEvents.tick(event => {
                             let blockResult = rocket_1Check.steelBlock(block)
                             let glassResult = rocket_1Check.reinforcedGlass(block)
                             let platingResult = rocket_1Check.steelPlating(block)
+                            let lightningRodResult = rocket_1Check.lightningRod(block)
 
-                            rocket_1.pillarResult = pillarResult
-                            rocket_1.stairsResult = stairsResult
-                            rocket_1.slabResult = slabResult
-                            rocket_1.railwayResult = railwayResult
-                            rocket_1.buttonResult = buttonResult
-                            rocket_1.blockResult = blockResult
-                            rocket_1.glassResult = glassResult
-                            rocket_1.platingResult = platingResult
-
-                            if (
-                                pillarResult > 0
-                                || stairsResult > 0
-                                || slabResult > 0
-                                || railwayResult > 0
-                                || buttonResult > 0
-                                || blockResult > 0
-                                || glassResult > 0
-                                || platingResult > 0
-                            ) {
                                 if (
                                     pillarResult == 43
-                                    && stairsResult == 16
                                     && slabResult == 4
+                                    && stairsResult == 16
+                                    && platingResult == 8
                                     && railwayResult == 6
                                     && buttonResult == 2
                                     && blockResult == 18
                                     && glassResult == 2
-                                    && platingResult == 9
+                                    && lightningRodResult == 1
                                 ) {
                                     if (!rocket_1.hasBuilt) {
                                         rocket_1.hasBuilt = true
@@ -338,13 +336,13 @@ LevelEvents.tick(event => {
                                     if (rocket_1.hasBuilt) {
                                         rocket_1.hasBuilt = false
                                     }
-                                    
+
                                     if (rocket_1.hasBuildCorrectly) {
                                         rocket_1.hasBuildCorrectly = false
                                         rocket_1.failedMessageHasSent = false
                                     }
                                 }
-                            }
+                            
                         }
                     }
                 })

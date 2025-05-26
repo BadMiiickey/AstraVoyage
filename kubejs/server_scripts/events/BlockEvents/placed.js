@@ -37,7 +37,29 @@ BlockEvents.placed(event => {
                 buttonResult: undefined,
                 blockResult: undefined,
                 glassResult: undefined,
-                platingResult: undefined
+                platingResult: undefined,
+                lightningRodResult: undefined
+            })
+        }
+
+        //戴斯燃料储罐
+        if (block.id == 'kubejs:desh_tank') {
+            global.mapArray.deshTanksMapArray.push({
+                dimension: block.dimension,
+                pos: block.pos,
+                hasBuildCorrectly: false,
+                failedMessageHasSent: false,
+                hasBuilt: false,
+                pillarResult: undefined,
+                deshSlabResult: undefined,
+                slabResult: undefined,
+                stairsResult: undefined,
+                deshStairsResult: undefined,
+                glowingPillarResult: undefined,
+                blockResult: undefined,
+                glassResult: undefined,
+                platingResult: undefined,
+                lightningRodResult: undefined
             })
         }
 

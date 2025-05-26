@@ -49,8 +49,8 @@ Ponder.registry(event => {
             scene.addKeyframe()
 
             let coordinate_1 = [
-                [4, 2, 4], [4, 2, 5], [4, 2, 6], 
-                [5, 2, 6], [6, 2, 6], [6, 2, 5], 
+                [4, 2, 4], [4, 2, 5], [4, 2, 6],
+                [5, 2, 6], [6, 2, 6], [6, 2, 5],
                 [6, 2, 4], [5, 2, 4]
             ]
 
@@ -60,32 +60,32 @@ Ponder.registry(event => {
                         scene.world.setBlocks(coordinate_1[i], 'ad_astra:steel_plating_stairs', false)
                         scene.world.modifyBlock(coordinate_1[i], state =>
                             state.with('facing', 'east')
-                        , false)
+                            , false)
                         break
                     case 1:
                         scene.world.setBlocks(coordinate_1[i], 'ad_astra:steel_plating_stairs', false)
                         scene.world.modifyBlock(coordinate_1[i], state =>
                             state.with('facing', 'north')
-                        , false)
+                            , false)
                         break
                     case 2:
                         scene.world.setBlocks(coordinate_1[i], 'ad_astra:steel_plating_stairs', false)
                         scene.world.modifyBlock(coordinate_1[i], state =>
                             state.with('facing', 'west')
-                        , false)
+                            , false)
                         break
                     case 3:
                         scene.world.setBlocks(coordinate_1[i], 'ad_astra:steel_plating_stairs', false)
                         scene.world.modifyBlock(coordinate_1[i], state =>
                             state.with('facing', 'south')
-                        , false)
+                            , false)
                         break
                 }
 
                 if (i % 2 == 0) {
                     scene.world.modifyBlock(coordinate_1[i], state =>
                         state.with('shape', 'outer_right')
-                    , false)
+                        , false)
                 }
 
                 scene.world.showSection(coordinate_1[i], Direction.DOWN)
@@ -101,8 +101,13 @@ Ponder.registry(event => {
 
             for (let dx of [-1, 0, 1]) {
                 for (let dz of [-1, 0, 1]) {
-                    scene.world.setBlocks([5 + dx, 3, 5 + dz], 'ad_astra:steel_plating', false)
-                    scene.world.showSection([5 + dx, 3, 5 + dz], Direction.DOWN)
+                    if (dx == 0 && dz == 0) {
+                        scene.world.setBlocks([5 + dx, 3, 5 + dz], 'kubejs:desh_tank', false)
+                        scene.world.showSection([5 + dx, 3, 5 + dz], Direction.DOWN)
+                    } else {
+                        scene.world.setBlocks([5 + dx, 3, 5 + dz], 'ad_astra:steel_plating', false)
+                        scene.world.showSection([5 + dx, 3, 5 + dz], Direction.DOWN)
+                    }
                     scene.idle(1)
                 }
             }
@@ -124,7 +129,7 @@ Ponder.registry(event => {
                             scene.world.setBlocks([5 + dx, 4, 5 + dz], 'ad_astra:desh_plating_slab', false)
                             scene.world.modifyBlock([5 + dx, 4, 5 + dz], state =>
                                 state.with('type', 'bottom')
-                            , false)
+                                , false)
                             scene.world.showSection([5 + dx, 3, 5 + dz], Direction.DOWN)
                             scene.world.showSection([5 + dx, 4, 5 + dz], Direction.DOWN)
                             scene.idle(1)
@@ -166,7 +171,7 @@ Ponder.registry(event => {
                             scene.world.setBlocks([5 + dx, 1, 5 + dz], 'ad_astra:desh_plating_slab', false)
                             scene.world.modifyBlock([5 + dx, 1, 5 + dz], state =>
                                 state.with('type', 'bottom')
-                            , false)
+                                , false)
                             scene.world.showSection([5 + dx, 0, 5 + dz], Direction.DOWN)
                             scene.world.showSection([5 + dx, 1, 5 + dz], Direction.DOWN)
                         }
@@ -176,8 +181,13 @@ Ponder.registry(event => {
 
             for (let dx of [-1, 0, 1]) {
                 for (let dz of [-1, 0, 1]) {
-                    scene.world.setBlocks([5 + dx, 0, 5 + dz], 'ad_astra:steel_plating', false)
-                    scene.world.showSection([5 + dx, 0, 5 + dz], Direction.DOWN)
+                    if (dx == 0 && dz == 0) {
+                        scene.world.setBlocks([5 + dx, 0, 5 + dz], 'kubejs:desh_tank', false)
+                        scene.world.showSection([5 + dx, 0, 5 + dz], Direction.DOWN)
+                    } else {
+                        scene.world.setBlocks([5 + dx, 0, 5 + dz], 'ad_astra:steel_plating', false)
+                        scene.world.showSection([5 + dx, 0, 5 + dz], Direction.DOWN)
+                    }
                 }
             }
 
@@ -262,8 +272,8 @@ Ponder.registry(event => {
             scene.addKeyframe()
 
             let coordinate_2 = [
-                [4, 8, 4], [4, 8, 5], [4, 8, 6], 
-                [5, 8, 6], [6, 8, 6], [6, 8, 5], 
+                [4, 8, 4], [4, 8, 5], [4, 8, 6],
+                [5, 8, 6], [6, 8, 6], [6, 8, 5],
                 [6, 8, 4], [5, 8, 4]
             ]
 
@@ -272,7 +282,7 @@ Ponder.registry(event => {
                     scene.world.setBlocks(coordinate_2[i], 'ad_astra:steel_plating_stairs', false)
                     scene.world.modifyBlock(coordinate_2[i], state =>
                         state.with('shape', 'outer_right')
-                    , false)
+                        , false)
                 } else {
                     scene.world.setBlocks(coordinate_2[i], 'ad_astra:desh_plating_stairs', false)
                 }
@@ -280,22 +290,22 @@ Ponder.registry(event => {
                     case 0:
                         scene.world.modifyBlock(coordinate_2[i], state =>
                             state.with('facing', 'east')
-                        , false)
+                            , false)
                         break
                     case 1:
                         scene.world.modifyBlock(coordinate_2[i], state =>
                             state.with('facing', 'north')
-                        , false)
+                            , false)
                         break
                     case 2:
                         scene.world.modifyBlock(coordinate_2[i], state =>
                             state.with('facing', 'west')
-                        , false)
+                            , false)
                         break
                     case 3:
                         scene.world.modifyBlock(coordinate_2[i], state =>
                             state.with('facing', 'south')
-                        , false)
+                            , false)
                         break
                 }
 
@@ -317,14 +327,14 @@ Ponder.registry(event => {
             scene.world.showSection([5, 11, 5], Direction.DOWN)
             scene.world.modifyBlock([5, 11, 5], state =>
                 state.with('facing', 'up')
-            , false)
+                , false)
 
             scene.idle(20 * 1)
             scene.text(20 * 2, 'kubejs:rocket_2_body_5', [5, 10, 5])
             scene.idle(20 * 3)
 
         })
-//
+        //
         .scene('kubejs:rocket_2_whole', 'kubejs:rocket_2_whole', 'kubejs:rocket_2', scene => {
 
             scene.showBasePlate()
@@ -356,7 +366,7 @@ Ponder.registry(event => {
                     scene.world.showSection([5 + dx, 4, 5 + dz], Direction.DOWN)
                     scene.world.modifyBlock([5 + dx, 4, 5 + dz], state =>
                         state.with('type', 'bottom')
-                    , false)
+                        , false)
                 }
             }
 
@@ -364,7 +374,7 @@ Ponder.registry(event => {
 
             let coordinate_1 = [
                 [4, 2, 4], [4, 2, 5], [4, 2, 6],
-                [5, 2, 6], [6, 2, 6], [6, 2, 5], 
+                [5, 2, 6], [6, 2, 6], [6, 2, 5],
                 [6, 2, 4], [5, 2, 4]
             ]
 
@@ -374,32 +384,32 @@ Ponder.registry(event => {
                         scene.world.setBlocks(coordinate_1[i], 'ad_astra:steel_plating_stairs', false)
                         scene.world.modifyBlock(coordinate_1[i], state =>
                             state.with('facing', 'east')
-                        , false)
+                            , false)
                         break
                     case 1:
                         scene.world.setBlocks(coordinate_1[i], 'ad_astra:steel_plating_stairs', false)
                         scene.world.modifyBlock(coordinate_1[i], state =>
                             state.with('facing', 'north')
-                        , false)
+                            , false)
                         break
                     case 2:
                         scene.world.setBlocks(coordinate_1[i], 'ad_astra:steel_plating_stairs', false)
                         scene.world.modifyBlock(coordinate_1[i], state =>
                             state.with('facing', 'west')
-                        , false)
+                            , false)
                         break
                     case 3:
                         scene.world.setBlocks(coordinate_1[i], 'ad_astra:steel_plating_stairs', false)
                         scene.world.modifyBlock(coordinate_1[i], state =>
                             state.with('facing', 'south')
-                        , false)
+                            , false)
                         break
                 }
 
                 if (i % 2 == 0) {
                     scene.world.modifyBlock(coordinate_1[i], state =>
                         state.with('shape', 'outer_right')
-                    , false)
+                        , false)
                 }
                 scene.world.showSection(coordinate_1[i], Direction.DOWN)
             }
@@ -423,7 +433,7 @@ Ponder.registry(event => {
                             scene.world.setBlocks([5 + dx, 4, 5 + dz], 'ad_astra:desh_plating_slab', false)
                             scene.world.modifyBlock([5 + dx, 4, 5 + dz], state =>
                                 state.with('type', 'bottom')
-                            , false)
+                                , false)
                             scene.world.showSection([5 + dx, 3, 5 + dz], Direction.DOWN)
                             scene.world.showSection([5 + dx, 4, 5 + dz], Direction.DOWN)
                         }
@@ -458,7 +468,7 @@ Ponder.registry(event => {
                 }
 
                 let coordinate = [
-                    [4, dy, 5], [6, dy, 5], 
+                    [4, dy, 5], [6, dy, 5],
                     [5, dy, 6], [5, dy, 4]
                 ]
 
@@ -484,8 +494,8 @@ Ponder.registry(event => {
             }
 
             let coordinate_2 = [
-                [4, 11, 4], [4, 11, 5], [4, 11, 6], 
-                [5, 11, 6], [6, 11, 6], [6, 11, 5], 
+                [4, 11, 4], [4, 11, 5], [4, 11, 6],
+                [5, 11, 6], [6, 11, 6], [6, 11, 5],
                 [6, 11, 4], [5, 11, 4]
             ]
 
@@ -494,7 +504,7 @@ Ponder.registry(event => {
                     scene.world.setBlocks(coordinate_2[i], 'ad_astra:steel_plating_stairs', false)
                     scene.world.modifyBlock(coordinate_2[i], state =>
                         state.with('shape', 'outer_right')
-                    , false)
+                        , false)
                 } else {
                     scene.world.setBlocks(coordinate_2[i], 'ad_astra:desh_plating_stairs', false)
                 }
@@ -530,7 +540,7 @@ Ponder.registry(event => {
             scene.world.showSection([5, 14, 5], Direction.DOWN)
             scene.world.modifyBlock([5, 14, 5], state =>
                 state.with('facing', 'up')
-            , false)
+                , false)
 
             scene.showControls(20 * 2, [5, 5, 4], "DOWN")
                 .rightClick()
@@ -547,12 +557,14 @@ Ponder.registry(event => {
             scene.showControls(20 * 2, [6, 2, 6], "DOWN")
                 .leftClick()
             scene.idle(20 * 2)
-            
+
             let itemEntity = scene.world.createItemEntity([6, 1, 6], [0, 0, 0], "ad_astra:tier_2_rocket")
-            
+
             scene.world.modifyEntity(itemEntity, entity => {
                 entity.setNoGravity(true)
             })
+
+            let Entity = scene.world.createEntity("ad_astra:tier_2_rocket", [6, 1, 6])
 
             scene.world.removeEntity(Entity)
         })

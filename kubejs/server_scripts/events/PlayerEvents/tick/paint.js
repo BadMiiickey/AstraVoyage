@@ -97,5 +97,26 @@ PlayerEvents.tick(event => {
         }
 
         //火箭检查结构正确性显示
-        
+    /* player.tell('§e火箭检查结果:');
+    player.tell(`§e支柱: ${pillarResult}/43 ${pillarResult == 43 ? '§a✓' : '§c✗'}`)
+    player.tell(`§e楼梯: ${stairsResult}/16 ${stairsResult == 16 ? '§a✓' : '§c✗'}`)
+    player.tell(`§e台阶: ${slabResult}/4 ${slabResult == 4 ? '§a✓' : '§c✗'}`)
+    player.tell(`§e铁路外壳: ${railwayResult}/6 ${railwayResult == 6 ? '§a✓' : '§c✗'}`)
+    player.tell(`§e按钮: ${buttonResult}/2 ${buttonResult == 2 ? '§a✓' : '§c✗'}`)
+    player.tell(`§e钢块: ${blockResult}/18 ${blockResult == 18 ? '§a✓' : '§c✗'}`)
+    player.tell(`§e强化玻璃: ${glassResult}/2 ${glassResult == 2 ? '§a✓' : '§c✗'}`)
+    player.tell(`§e钢板: ${platingResult}/8 ${platingResult == 8 ? '§a✓' : '§c✗'}`)
+    player.tell(`§e避雷针: ${lightningRodResult}/1 ${lightningRodResult == 1 ? '§a✓' : '§c✗'}`)
+    
+    player.tell(`§e钢支柱: ${pillarResult}/43 ${pillarResult == 43 ? '§a✓' : '§c✗'}`)
+    player.tell(`§e钢板台阶: ${slabResult}/4 ${slabResult == 4 ? '§a✓' : '§c✗'}`)
+    player.tell(`§e戴斯板台阶: ${deshSlabResult}/4 ${deshSlabResult == 4 ? '§a✓' : '§c✗'}`)
+    player.tell(`§e钢板楼梯: ${stairsResult}/8 ${stairsResult == 8 ? '§a✓' : '§c✗'}`)
+    player.tell(`§e戴斯板楼梯: ${deshStairsResult}/4 ${deshStairsResult == 4 ? '§a✓' : '§c✗'}`)
+    player.tell(`§e钢块: ${blockResult}/4 ${blockResult == 4 ? '§a✓' : '§c✗'}`)
+    player.tell(`§e发光戴斯柱: ${glowingPillarResult}/4 ${glowingPillarResult == 4 ? '§a✓' : '§c✗'}`)
+    player.tell(`§e戴斯块: ${deshBlockResult}/18 ${deshBlockResult == 18 ? '§a✓' : '§c✗'}`)
+    player.tell(`§e强化玻璃: ${glassResult}/2 ${glassResult == 2 ? '§a✓' : '§c✗'}`)
+    player.tell(`§e钢板: ${platingResult}/24 ${platingResult == 24 ? '§a✓' : '§c✗'}`)
+    player.tell(`§e避雷针: ${lightningRodResult}/1 ${lightningRodResult == 1 ? '§a✓' : '§c✗'}`)*/
 })
