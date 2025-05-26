@@ -564,8 +564,6 @@ Ponder.registry(event => {
                 entity.setNoGravity(true)
             })
 
-            let Entity = scene.world.createEntity("ad_astra:tier_2_rocket", [6, 1, 6])
-
             scene.world.removeEntity(Entity)
         })
 })
