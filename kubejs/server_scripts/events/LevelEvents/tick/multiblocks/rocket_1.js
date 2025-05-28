@@ -308,41 +308,40 @@ LevelEvents.tick(event => {
                             let platingResult = rocket_1Check.steelPlating(block)
                             let lightningRodResult = rocket_1Check.lightningRod(block)
 
-                                if (
-                                    pillarResult == 43
-                                    && slabResult == 4
-                                    && stairsResult == 16
-                                    && platingResult == 8
-                                    && railwayResult == 6
-                                    && buttonResult == 2
-                                    && blockResult == 18
-                                    && glassResult == 2
-                                    && lightningRodResult == 1
-                                ) {
-                                    if (!rocket_1.hasBuilt) {
-                                        rocket_1.hasBuilt = true
-                                    }
-
-                                    if (!rocket_1.hasBuildCorrectly) {
-                                        rocket_1.hasBuildCorrectly = true
-                                        player.setStatusMessage('§a一阶火箭搭建完成!')
-                                    }
-                                } else {
-                                    if (!rocket_1.failedMessageHasSent) {
-                                        rocket_1.failedMessageHasSent = true
-                                        player.setStatusMessage('§c一阶火箭尚未搭建完成!')
-                                    }
-
-                                    if (rocket_1.hasBuilt) {
-                                        rocket_1.hasBuilt = false
-                                    }
-
-                                    if (rocket_1.hasBuildCorrectly) {
-                                        rocket_1.hasBuildCorrectly = false
-                                        rocket_1.failedMessageHasSent = false
-                                    }
+                            if (
+                                pillarResult == 43
+                                && slabResult == 4
+                                && stairsResult == 16
+                                && platingResult == 8
+                                && railwayResult == 6
+                                && buttonResult == 2
+                                && blockResult == 18
+                                && glassResult == 2
+                                && lightningRodResult == 1
+                            ) {
+                                if (!rocket_1.hasBuilt) {
+                                    rocket_1.hasBuilt = true
                                 }
-                            
+
+                                if (!rocket_1.hasBuildCorrectly) {
+                                    rocket_1.hasBuildCorrectly = true
+                                    player.setStatusMessage('§a一阶火箭搭建完成!')
+                                }
+                            } else {
+                                if (!rocket_1.failedMessageHasSent) {
+                                    rocket_1.failedMessageHasSent = true
+                                    player.setStatusMessage('§c一阶火箭尚未搭建完成!')
+                                }
+
+                                if (rocket_1.hasBuilt) {
+                                    rocket_1.hasBuilt = false
+                                }
+
+                                if (rocket_1.hasBuildCorrectly) {
+                                    rocket_1.hasBuildCorrectly = false
+                                    rocket_1.failedMessageHasSent = false
+                                }
+                            }
                         }
                     }
                 })

@@ -336,6 +336,9 @@
   "block.kubejs.simple_industrial_platform": "简易工业平台",
   "block.kubejs.dense_planet_core_block": "致密星核块",
   "block.kubejs.steel_tank": "钢燃料储罐",
+  "block.kubejs.desh_tank": "戴斯燃料储罐",
+  "block.kubejs.ostrum_tank": "紫金燃料储罐",
+  "block.kubejs.calorite_tank": "耐热金属燃料储罐",
 
   "block.kubejs.aluminate_solution": "铝酸盐溶液",
   "block.kubejs.nuclear_waste": "核废水",

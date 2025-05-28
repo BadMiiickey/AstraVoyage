@@ -551,7 +551,7 @@ Ponder.registry(event => {
             scene.world.hideSection([2, 1, 2, 9, 14, 9], Direction.UP)
             scene.world.setBlocks([2, 1, 2, 9, 14, 9], 'minecraft:air', true)
             
-            let Entity = scene.world.createEntity("ad_astra:tier_2_rocket", [6, 1, 6])
+            let rocket_2 = scene.world.createEntity("ad_astra:tier_2_rocket", [6, 1, 6])
 
             scene.idle(20 * 3)
             scene.showControls(20 * 2, [6, 2, 6], "DOWN")
@@ -564,6 +564,6 @@ Ponder.registry(event => {
                 entity.setNoGravity(true)
             })
 
-            scene.world.removeEntity(Entity)
+            scene.world.removeEntity(rocket_2)
         })
 })

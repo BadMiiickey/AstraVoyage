@@ -301,5 +301,35 @@ global.mapArray = {}
         global.mapArray.steelTanksMapArray = []
     }
 
+    //戴斯燃料储罐
+    if (!global.mapArray.deshTanksMapArray) {
+        global.mapArray.deshTanksMapArray = []
+    }
+
+    //紫金燃料储罐
+    if (!global.mapArray.ostrumTanksMapArray) {
+        global.mapArray.ostrumTanksMapArray = []
+    }
+
+    //耐热金属燃料储罐
+    if (!global.mapArray.calorieTanksMapArray) {
+        global.mapArray.calorieTanksMapArray = []
+    }
+
+//全局Config
+global.config = {
+    steelTanksResult: {
+        'pillarResult': { name: '钢柱', target: 43 },
+        'stairsResult': { name: '钢板楼梯', target: 16 },
+        'slabResult': { name: '钢板台阶', target: 4 },
+        'railwayResult': { name: '列车机壳', target: 6 },
+        'buttonResult': { name: '钢板按钮', target: 2 },
+        'blockResult': { name: '钢块', target: 18 },
+        'glassResult': { name: '强化玻璃', target: 2 },
+        'platingResult': { name: '钢板方块', target: 8 },
+        'lightningRodResult': { name: '避雷针', target: 1 }
+    }
+}
+
 //其他全局属性
 global.other = {}

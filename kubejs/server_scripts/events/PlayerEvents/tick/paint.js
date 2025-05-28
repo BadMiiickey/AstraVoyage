@@ -2,6 +2,9 @@ PlayerEvents.tick(event => {
 
     const { player, server } = event
 
+    const $ = Java.loadClass('dev.latvian.mods.kubejs.client.painter.screen.PaintScreenEventJS')
+
+
     if (!player.alive) return
 
     //玩家界面显示事件
@@ -81,33 +84,94 @@ PlayerEvents.tick(event => {
                     }
                 })
             } else {
-                player.paint({
-                    lightLevel: {
-                        type: 'text',
-                        x: `$screenW / 2 - 142`,
-                        y: -4.5,
-                        alignX: 'left',
-                        alignY: 'bottom',
-                        color: 'yellow',
-                        text: `光照等级: ${ player.block.light }`,
-                        visible: false
-                    }
-                })
+                player.paint({ lightLevel: { visible: false } })
             }
         }
 
         //火箭检查结构正确性显示
-    /* player.tell('§e火箭检查结果:');
-    player.tell(`§e支柱: ${pillarResult}/43 ${pillarResult == 43 ? '§a✓' : '§c✗'}`)
-    player.tell(`§e楼梯: ${stairsResult}/16 ${stairsResult == 16 ? '§a✓' : '§c✗'}`)
-    player.tell(`§e台阶: ${slabResult}/4 ${slabResult == 4 ? '§a✓' : '§c✗'}`)
-    player.tell(`§e铁路外壳: ${railwayResult}/6 ${railwayResult == 6 ? '§a✓' : '§c✗'}`)
-    player.tell(`§e按钮: ${buttonResult}/2 ${buttonResult == 2 ? '§a✓' : '§c✗'}`)
-    player.tell(`§e钢块: ${blockResult}/18 ${blockResult == 18 ? '§a✓' : '§c✗'}`)
-    player.tell(`§e强化玻璃: ${glassResult}/2 ${glassResult == 2 ? '§a✓' : '§c✗'}`)
-    player.tell(`§e钢板: ${platingResult}/8 ${platingResult == 8 ? '§a✓' : '§c✗'}`)
-    player.tell(`§e避雷针: ${lightningRodResult}/1 ${lightningRodResult == 1 ? '§a✓' : '§c✗'}`)
-    
+        
+        /**
+         * 
+         * @param { Internal.CompoundTag_ } paint 
+         */
+        function backgroundPaintFirst(paint) {
+            
+        }
+
+        if (global.methods.tickCountCheck(server, 18, 1.5)) {
+
+            //一阶火箭
+            if (
+                global.mapArray.steelTanksMapArray
+                && global.mapArray.steelTanksMapArray.length > 0
+            ) {
+                player.persistentData.steelTankPaint = {}
+                player.persistentData.steelTankPaint.steelTankBackground = {
+                    type: 'rectangle',
+                    x: 5,
+                    y: -61,
+                    w: 120,
+                    h: 135,
+                    alignX: 'left',
+                    alignY: 'bottom',
+                    texture: 'kubejs:textures/gui/steel_tank_background.png',
+                    visible: true
+                }
+
+                for (let steelTank of global.mapArray.steelTanksMapArray) {
+                    for (let result in steelTank) {
+                        if (global.config.steelTanksResult[result]) {
+
+                            /**
+                             * @typedef { object } SteelTankDefinition
+                             * @property { string } name
+                             * @property { number } target
+                             */
+
+                            /** @type { SteelTankDefinition } */
+                            let definition = global.config.steelTanksResult[result]
+
+                            /** @type { number } */
+                            let actual = steelTank[result]
+                            let text = `§8${ definition.name }: ${ actual } / §a${ definition.target }`
+                            let check = actual == definition.target ? '§a§l✓' : '§c§l✗'
+
+                            player.persistentData.steelTankPaint[`steelTankText_${result}`] = {
+                                type: 'text',
+                                x: 30,
+                                y: -35 - Object.keys(steelTank).indexOf(result) * 10,
+                                alignX: 'left',
+                                alignY: 'bottom',
+                                text: text,
+                                visible: true
+                            }
+
+                            player.persistentData.steelTankPaint[`steelTankCheck_${result}`] = {
+                                type: 'text',
+                                x: 95,
+                                y: -35 - Object.keys(steelTank).indexOf(result) * 10,
+                                alignX: 'left',
+                                alignY: 'bottom',
+                                text: check,
+                                visible: true
+                            }
+                        }
+                    }
+
+                    break
+                }
+
+                player.paint(player.persistentData.steelTankPaint)
+
+            } else {
+                for (let element in player.persistentData.steelTankPaint) {
+                    player.persistentData.steelTankPaint[element] = { visible: false }
+                }
+
+                player.paint(player.persistentData.steelTankPaint)
+            }
+        }
+    /* 
     player.tell(`§e钢支柱: ${pillarResult}/43 ${pillarResult == 43 ? '§a✓' : '§c✗'}`)
     player.tell(`§e钢板台阶: ${slabResult}/4 ${slabResult == 4 ? '§a✓' : '§c✗'}`)
     player.tell(`§e戴斯板台阶: ${deshSlabResult}/4 ${deshSlabResult == 4 ? '§a✓' : '§c✗'}`)

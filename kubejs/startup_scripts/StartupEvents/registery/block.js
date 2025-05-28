@@ -96,6 +96,7 @@ StartupEvents.registry('block', event => {
         .tagBlock('minecraft:needs_iron_tool')
         .tagBlock('create:wrench_pickup')
         .stoneSoundType()
+
     //戴斯燃料储罐
     event.create('kubejs:desh_tank', 'basic')
         .hardness(2.5)
@@ -104,6 +105,7 @@ StartupEvents.registry('block', event => {
         .tagBlock('minecraft:needs_iron_tool')
         .tagBlock('create:wrench_pickup')
         .stoneSoundType()
+
     //紫金燃料储罐
     event.create('kubejs:ostrum_tank', 'basic')
         .hardness(3.0)
@@ -112,6 +114,7 @@ StartupEvents.registry('block', event => {
         .tagBlock('minecraft:needs_iron_tool')
         .tagBlock('create:wrench_pickup')
         .stoneSoundType()
+        
     //耐热金属燃料储罐
     event.create('kubejs:calorite_tank', 'basic')
         .hardness(3.5)
