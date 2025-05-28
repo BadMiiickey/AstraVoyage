@@ -30,6 +30,14 @@ BlockEvents.broken(event => {
                     && launchPad.hasBuildCorrectly != undefined
                     && launchPad.failedMessageHasSent != undefined
                     && launchPad.hasExploded != undefined
+                    && andesiteAlloyBlockResult != undefined
+                    && andesiteScaffoldingResult != undefined
+                    && encasedFluidPipeResult != undefined
+                    && fluidPipeResult != undefined
+                    && mechanicalPumpResult != undefined
+                    && railwayCasingResult != undefined
+                    && airResult != undefined
+                    && industrialIronBlockResult != undefined
                 )
         }
         

@@ -432,15 +432,27 @@ LevelEvents.tick(event => {
                         let block = player.level.getBlock(launchPad.pos)
 
                         if (block.id == 'ad_astra:launch_pad') {
+
+                            let andesiteAlloyBlockResult = launchPadCheck.andesiteAlloyBlock(block)
+                            let andesiteScaffoldingResult = launchPadCheck.andesiteScaffolding(block)
+                            let encasedFluidPipeResult = launchPadCheck.encasedFluidPipe(block)
+                            let fluidPipeResult = launchPadCheck.fluidPipe(block)
+                            let mechanicalPumpResult = launchPadCheck.mechanicalPump(block)
+                            let railwayCasingResult = launchPadCheck.railwayCasing(block)
+                            let airResult = launchPadCheck.air(block)
+                            let industrialIronBlockResult = launchPadCheck.industrialIronBlock(block)
+
+                            
+
                             if (
-                                launchPadCheck.andesiteAlloyBlock(block) == 8
-                                && launchPadCheck.andesiteScaffolding(block) == 8
-                                && launchPadCheck.encasedFluidPipe(block) == 12
-                                && launchPadCheck.fluidPipe(block) == 32
-                                && launchPadCheck.mechanicalPump(block) == 12
-                                && launchPadCheck.railwayCasing(block) == 52
-                                && launchPadCheck.air(block) == 36
-                                && launchPadCheck.industrialIronBlock(block) == 177
+                                andesiteAlloyBlockResult == 8
+                                && andesiteScaffoldingResult == 8
+                                && encasedFluidPipeResult == 12
+                                && fluidPipeResult == 32
+                                && mechanicalPumpResult == 12
+                                && railwayCasingResult == 52
+                                && airResult == 36
+                                && industrialIronBlockResult == 177
                             ) {
                                 if (!launchPad.hasBuildCorrectly) {
                                     launchPad.hasBuildCorrectly = true

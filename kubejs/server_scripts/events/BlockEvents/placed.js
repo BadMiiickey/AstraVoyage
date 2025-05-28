@@ -18,7 +18,15 @@ BlockEvents.placed(event => {
                 pos: block.pos,
                 hasBuildCorrectly: false,
                 failedMessageHasSent: false,
-                hasExploded: false
+                hasExploded: false,
+                andesiteAlloyBlockResult: 0,
+                andesiteScaffoldingResult: 0,
+                encasedFluidPipeResult: 0,
+                fluidPipeResult: 0,
+                mechanicalPumpResult: 0,
+                railwayCasingResult: 0,
+                airResult: 0,
+                industrialIronBlockResult: 0
             })
         }
 

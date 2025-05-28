@@ -88,17 +88,80 @@ PlayerEvents.tick(event => {
             }
         }
 
-        //火箭检查结构正确性显示
-        
-        /**
-         * 
-         * @param { Internal.CompoundTag_ } paint 
-         */
-        function backgroundPaintFirst(paint) {
-            
+        //发射台检查结构正确性显示
+        if (global.methods.tickCountCheck(server, 18, 1.5)) {
+            if (
+                global.mapArray.launchPadsMapArray
+                && global.mapArray.launchPadsMapArray.length > 0
+            ) {
+                player.persistentData.launchPadPaint = {}
+                player.persistentData.launchPadPaint.launchPadBackground = {
+                    type: 'rectangle',
+                    x: 5,
+                    y: 42,
+                    w: 120,
+                    h: 125,
+                    alignX: 'left',
+                    alignY: 'top',
+                    texture: 'kubejs:textures/gui/background.png',
+                    visible: true
+                }
+
+                for (let launchPad of global.mapArray.launchPadsMapArray) {
+                    for (let result in launchPad) {
+                        if (global.config.launchPadsResult[result]) {
+
+                            /**
+                             * @typedef { object } LaunchPadDefinition
+                             * @property { string } name
+                             * @property { number } target
+                             */
+
+                            /** @type { LaunchPadDefinition } */
+                            let definition = global.config.launchPadsResult[result]
+
+                            /** @type { number } */
+                            let actual = launchPad[result]
+                            let text = `§8${ definition.name }: ${ actual } / §a${ definition.target }`
+                            let check = actual == definition.target ? '§a§l✓' : '§c§l✗'
+
+                            player.persistentData.launchPadPaint[`launchPadText_${result}`] = {
+                                type: 'text',
+                                x: 30,
+                                y: 15 + Object.keys(launchPad).indexOf(result) * 10,
+                                alignX: 'left',
+                                alignY: 'top',
+                                text: text,
+                                visible: true
+                            }
+
+                            player.persistentData.launchPadPaint[`launchPadCheck_${result}`] = {
+                                type: 'text',
+                                x: 95,
+                                y: 15 + Object.keys(launchPad).indexOf(result) * 10,
+                                alignX: 'left',
+                                alignY: 'top',
+                                text: check,
+                                visible: true
+                            }
+                        }
+                    }
+
+                    break
+                }
+
+                player.paint(player.persistentData.launchPadPaint)
+            } else {
+                for (let element in player.persistentData.launchPadPaint) {
+                    player.persistentData.launchPadPaint[element] = { visible: false }
+                }
+
+                player.paint(player.persistentData.launchPadPaint)
+            }
         }
 
-        if (global.methods.tickCountCheck(server, 18, 1.5)) {
+        //火箭检查结构正确性显示
+        if (global.methods.tickCountCheck(server, 17, 1.5)) {
 
             //一阶火箭
             if (
@@ -109,12 +172,12 @@ PlayerEvents.tick(event => {
                 player.persistentData.steelTankPaint.steelTankBackground = {
                     type: 'rectangle',
                     x: 5,
-                    y: -61,
+                    y: 42,
                     w: 120,
                     h: 135,
                     alignX: 'left',
-                    alignY: 'bottom',
-                    texture: 'kubejs:textures/gui/steel_tank_background.png',
+                    alignY: 'top',
+                    texture: 'kubejs:textures/gui/background.png',
                     visible: true
                 }
 
@@ -139,9 +202,9 @@ PlayerEvents.tick(event => {
                             player.persistentData.steelTankPaint[`steelTankText_${result}`] = {
                                 type: 'text',
                                 x: 30,
-                                y: -35 - Object.keys(steelTank).indexOf(result) * 10,
+                                y: 15 + Object.keys(steelTank).indexOf(result) * 10,
                                 alignX: 'left',
-                                alignY: 'bottom',
+                                alignY: 'top',
                                 text: text,
                                 visible: true
                             }
@@ -149,9 +212,9 @@ PlayerEvents.tick(event => {
                             player.persistentData.steelTankPaint[`steelTankCheck_${result}`] = {
                                 type: 'text',
                                 x: 95,
-                                y: -35 - Object.keys(steelTank).indexOf(result) * 10,
+                                y: 15 + Object.keys(steelTank).indexOf(result) * 10,
                                 alignX: 'left',
-                                alignY: 'bottom',
+                                alignY: 'top',
                                 text: check,
                                 visible: true
                             }
@@ -170,17 +233,70 @@ PlayerEvents.tick(event => {
 
                 player.paint(player.persistentData.steelTankPaint)
             }
+
+            //二阶火箭
+            if (
+                global.mapArray.deshTanksMapArray
+                && global.mapArray.deshTanksMapArray.length > 0
+            ) {
+                player.persistentData.deshTankPaint = {}
+                player.persistentData.deshTankPaint.deshTankBackground = {
+                    type: 'rectangle',
+                    x: 5,
+                    y: 42,
+                    w: 120,
+                    h: 150,
+                    alignX: 'left',
+                    alignY: 'top',
+                    texture: 'kubejs:textures/gui/background.png',
+                    visible: true
+                }
+
+                for (let deshTank of global.mapArray.deshTanksMapArray) {
+                    for (let result in deshTank) {
+                        if (global.config.deshTanksResult[result]) {
+
+                            /** @type { DeshTankDefinition } */
+                            let definition = global.config.deshTanksResult[result]
+
+                            /** @type { number } */
+                            let actual = deshTank[result]
+                            let text = `§8${ definition.name }: ${ actual } / §a${ definition.target }`
+                            let check = actual == definition.target ? '§a§l✓' : '§c§l✗'
+
+                            player.persistentData.deshTankPaint[`deshTankText_${result}`] = {
+                                type: 'text',
+                                x: 30,
+                                y: 7 + Object.keys(deshTank).indexOf(result) * 10,
+                                alignX: 'left',
+                                alignY: 'top',
+                                text: text,
+                                visible: true
+                            }
+
+                            player.persistentData.deshTankPaint[`deshTankCheck_${result}`] = {
+                                type: 'text',
+                                x: 95,
+                                y: 7 + Object.keys(deshTank).indexOf(result) * 10,
+                                alignX: 'left',
+                                alignY: 'top',
+                                text: check,
+                                visible: true
+                            }
+                        }
+                    }
+
+                    break
+                }
+
+                player.paint(player.persistentData.deshTankPaint)
+
+            } else {
+                for (let element in player.persistentData.deshTankPaint) {
+                    player.persistentData.deshTankPaint[element] = { visible: false }
+                }
+
+                player.paint(player.persistentData.deshTankPaint)
+            }
         }
-    /* 
-    player.tell(`§e钢支柱: ${pillarResult}/43 ${pillarResult == 43 ? '§a✓' : '§c✗'}`)
-    player.tell(`§e钢板台阶: ${slabResult}/4 ${slabResult == 4 ? '§a✓' : '§c✗'}`)
-    player.tell(`§e戴斯板台阶: ${deshSlabResult}/4 ${deshSlabResult == 4 ? '§a✓' : '§c✗'}`)
-    player.tell(`§e钢板楼梯: ${stairsResult}/8 ${stairsResult == 8 ? '§a✓' : '§c✗'}`)
-    player.tell(`§e戴斯板楼梯: ${deshStairsResult}/4 ${deshStairsResult == 4 ? '§a✓' : '§c✗'}`)
-    player.tell(`§e钢块: ${blockResult}/4 ${blockResult == 4 ? '§a✓' : '§c✗'}`)
-    player.tell(`§e发光戴斯柱: ${glowingPillarResult}/4 ${glowingPillarResult == 4 ? '§a✓' : '§c✗'}`)
-    player.tell(`§e戴斯块: ${deshBlockResult}/18 ${deshBlockResult == 18 ? '§a✓' : '§c✗'}`)
-    player.tell(`§e强化玻璃: ${glassResult}/2 ${glassResult == 2 ? '§a✓' : '§c✗'}`)
-    player.tell(`§e钢板: ${platingResult}/24 ${platingResult == 24 ? '§a✓' : '§c✗'}`)
-    player.tell(`§e避雷针: ${lightningRodResult}/1 ${lightningRodResult == 1 ? '§a✓' : '§c✗'}`)*/
 })

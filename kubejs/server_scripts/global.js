@@ -318,16 +318,41 @@ global.mapArray = {}
 
 //全局Config
 global.config = {
+    launchPadsResult: {
+        andesiteAlloyBlockResult: { name: '安山合金块', target: 8 },
+        andesiteScaffoldingResult: { name: '安山脚手架', target: 8 },
+        encasedFluidPipeResult: { name: '流体管道箱', target: 12 },
+        fluidPipeResult: { name: '流体管道', target: 32 },
+        mechanicalPumpResult: { name: '动力泵', target: 12 },
+        railwayCasingResult: { name: '列车机壳', target: 52 },
+        airResult: { name: '空气', target: 36 },
+        industrialIronBlockResult: { name: '工业铁块', target: 177 }
+    },
+
     steelTanksResult: {
-        'pillarResult': { name: '钢柱', target: 43 },
-        'stairsResult': { name: '钢板楼梯', target: 16 },
-        'slabResult': { name: '钢板台阶', target: 4 },
-        'railwayResult': { name: '列车机壳', target: 6 },
-        'buttonResult': { name: '钢板按钮', target: 2 },
-        'blockResult': { name: '钢块', target: 18 },
-        'glassResult': { name: '强化玻璃', target: 2 },
-        'platingResult': { name: '钢板方块', target: 8 },
-        'lightningRodResult': { name: '避雷针', target: 1 }
+        pillarResult: { name: '钢柱', target: 43 },
+        stairsResult: { name: '钢板楼梯', target: 16 },
+        slabResult: { name: '钢板台阶', target: 4 },
+        railwayResult: { name: '列车机壳', target: 6 },
+        buttonResult: { name: '钢板按钮', target: 2 },
+        blockResult: { name: '钢块', target: 18 },
+        glassResult: { name: '强化玻璃', target: 2 },
+        platingResult: { name: '钢板方块', target: 8 },
+        lightningRodResult: { name: '避雷针', target: 1 }
+    },
+
+    deshTanksResult: {
+        pillarResult: { name: '钢柱', target: 43 },
+        slabResult: { name: '钢板台阶', target: 4 },
+        deshSlabResult: { name: '戴斯板台阶', target: 4 },
+        stairsResult: { name: '钢板楼梯', target: 8 },
+        deshStairsResult: { name: '戴斯板楼梯', target: 4 },
+        blockResult: { name: '钢块', target: 4 },
+        glowingPillarResult: { name: '发光戴斯柱', target: 4 },
+        deshBlockResult: { name: '戴斯块', target: 18 },
+        glassResult: { name: '强化玻璃', target: 2 },
+        platingResult: { name: '钢板方块', target: 24 },
+        lightningRodResult: { name: '避雷针', target: 1 },
     }
 }
 
