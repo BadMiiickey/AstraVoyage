@@ -10,7 +10,7 @@ ServerEvents.recipes(event => {
         .id('kubejs:magma_sac_stage_vein')
     createoreexcavation.extracting('minecraft:lava 125', 'kubejs:magma_sac_stage_vein', 20)
         .stress(4)
-        .fluid(Fluid.of('minecraft:water', 10))
+        .fluid(Fluid.of('ad_astra:cryo_fuel', 10))
         .drill('createoreexcavation:netherite_drill')
         .id('kubejs:vein_magma_sac_stage')
 
@@ -51,7 +51,7 @@ ServerEvents.recipes(event => {
         'kubejs:quartz_vein', 20
     )
     .stress(8)
-    .fluid(Fluid.of('minecraft:water', 10))
+    .fluid(Fluid.of('ad_astra:cryo_fuel', 10))
     .id('kubejs:vein_quartz')
 
     //萤石矿脉
@@ -68,7 +68,7 @@ ServerEvents.recipes(event => {
         'kubejs:glowstone_dust_vein', 20
     )
     .stress(8)
-    .fluid(Fluid.of('minecraft:water', 10))
+    .fluid(Fluid.of('ad_astra:cryo_fuel', 10))
     .id('kubejs:vein_glowstone_dust')
 
     //粗铜矿脉
@@ -191,7 +191,7 @@ ServerEvents.recipes(event => {
         'kubejs:ancient_debris_vein', 20
     )
     .stress(32)
-    .fluid(Fluid.of('minecraft:water', 20))
+    .fluid(Fluid.of('ad_astra:cryo_fuel', 20))
     .drill(['createoreexcavation:diamond_drill', 'createoreexcavation:netherite_drill'])
     .id('kubejs:vein_ancient_debris')
 
@@ -251,7 +251,7 @@ ServerEvents.recipes(event => {
         'kubejs:raw_calorite_vein', 20
     )
     .stress(64)
-    .fluid(Fluid.of('minecraft:water', 30))
+    .fluid(Fluid.of('ad_astra:cryo_fuel', 30))
     .id('kubejs:vein_raw_calorite')
 
     //粗铅矿脉
@@ -279,7 +279,7 @@ ServerEvents.recipes(event => {
         .id('kubejs:raw_uranium')
     createoreexcavation.drilling('createnuclear:raw_uranium', 'kubejs:raw_uranium_vein', 20)
         .stress(64)
-        .fluid(Fluid.of('minecraft:water', 20))
+        .fluid(Fluid.of('ad_astra:cryo_fuel', 20))
         .id('kubejs:vein_raw_uranium')
 
     //粗钴矿脉
@@ -290,7 +290,7 @@ ServerEvents.recipes(event => {
         .id('kubejs:raw_cobalt_vein')
     createoreexcavation.drilling('tconstruct:raw_cobalt', 'kubejs:raw_cobalt_vein', 20)
         .stress(64)
-        .fluid(Fluid.of('minecraft:water', 20))
+        .fluid(Fluid.of('ad_astra:cryo_fuel', 20))
         .drill(['createoreexcavation:diamond_drill', 'createoreexcavation:netherite_drill'])
         .id('kubejs:vein_raw_cobalt')
 
@@ -304,4 +304,15 @@ ServerEvents.recipes(event => {
         .stress(64)
         .fluid(Fluid.of('minecraft:water', 20))
         .id('kubejs:vein_raw_aluminum')
+
+    //寒冰碎片矿脉
+    createoreexcavation.vein('§b§l寒冰碎片矿脉', 'ad_astra:ice_shard')
+        .placement(256, 16, 2101954)
+        .biomeWhitelist('kubejs:is_iceworld')
+        .priority(32)
+        .id('ad_astra:ice_shard_vein')
+    createoreexcavation.drilling('ad_astra:ice_shard', 'ad_astra:ice_shard_vein', 20)
+        .stress(8)
+        .fluid(Fluid.of('minecraft:water', 20))
+        .id('kubejs:vein_ice_shard')
 })

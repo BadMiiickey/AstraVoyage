@@ -220,6 +220,7 @@ BlockEvents.rightClicked(event => {
                 if (rocket_2.hasBuildCorrectly) {
                     if (block.dimension == rocket_2.dimension) {
                         player.swing()
+
                         const center = rocket_2.pos
                         const minX = center.x - 3, maxX = center.x + 3
                         const minY = center.y - 12, maxY = center.y
@@ -233,7 +234,9 @@ BlockEvents.rightClicked(event => {
                             for (let dx = -3; dx <= 3; dx++) {
                                 for (let dy = 0; dy <= 14; dy++) {
                                     for (let dz = -3; dz <= 3; dz++) {
-                                        let block = player.level.getBlock(center.x + dx, center.y - dy, center.z + dz)   
+
+                                        let block = player.level.getBlock(center.x + dx, center.y - dy, center.z + dz) 
+                                          
                                         if (
                                             block.id.startsWith('ad_astra:') ||
                                             block.id == 'createnuclear:reinforced_glass' ||
@@ -244,11 +247,11 @@ BlockEvents.rightClicked(event => {
                                         }
                                     }
                                 }
-                            }                            
+                            }
+
                             let rocket = player.level.createEntity('ad_astra:tier_2_rocket')
-                            rocket.x = center.x + 0.5
-                            rocket.y = center.y - 2
-                            rocket.z = center.z + 0.5
+                            
+                            rocket.setPos(center.x + 0.5, center.y - 2, center.z + 0.5)
                             rocket.spawn()
 
                             rocket_2.hasBuildCorrectly = false
@@ -259,6 +262,5 @@ BlockEvents.rightClicked(event => {
                 }
             })
         }
-
     }
 })

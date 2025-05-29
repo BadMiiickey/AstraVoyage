@@ -110,7 +110,7 @@ PlayerEvents.tick(event => {
             }
         }
 
-        //虚化手套 => 佩戴时检测玩家经验或记忆手链中存储的经验, 若两者均为0则持续受伤, 反之持续减少经验值
+        //虚无手套 => 佩戴时检测玩家经验或记忆手链中存储的经验, 若两者均为0则持续受伤, 反之持续减少经验值
         if (global.methods.tickCountCheck(server, 12, 1.5)) {
             if (global.methods.slotResult(player, 'kubejs:phantom_glove').length) {
                 if (global.methods.slotResult(player, 'kubejs:memory_bracelet')) {

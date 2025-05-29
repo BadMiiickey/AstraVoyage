@@ -45,6 +45,12 @@ StartupEvents.modifyCreativeTab('create:base', event => {
     event.add('create:shadow_steel')
 })
 
+//createadditions
+StartupEvents.modifyCreativeTab('createaddition:main', event => {
+
+    event.remove('createaddition:tesla_coil')
+})
+
 //createnuclear:main
 StartupEvents.modifyCreativeTab('createnuclear:main', event => {
 
@@ -66,10 +72,19 @@ StartupEvents.modifyCreativeTab('createsifter:main', event => {
     event.remove('createsifter:crushed_end_stone')
 })
 
+//create_mechanical_chicken:main
+StartupEvents.modifyCreativeTab('create_mechanical_chicken:main', event => {
+
+    event.remove('create_mechanical_chicken:seed_oil_bucket')
+    event.remove('create_mechanical_chicken:seed_oil')
+})
+
 //homeostatic:items
 StartupEvents.modifyCreativeTab('homeostatic:items', event => {
 
     event.remove('homeostatic:water_filter')
+    event.remove('homeostatic:book')
+    event.remove('homeostatic:thermometer')
 }) 
 
 //kubejs:tab
@@ -158,6 +173,10 @@ StartupEvents.modifyCreativeTab('kubejs:tab', event => {
     //minecraft:tools_and_utilities
     StartupEvents.modifyCreativeTab('minecraft:tools_and_utilities', event => {
 
+        event.remove('homeostatic:water_filter')
+        event.remove('homeostatic:book')
+        event.remove('homeostatic:thermometer')
+
         global.methods.itemsRemoveArray(
             'minecraft',
             ['wooden', 'stone', 'iron', 'golden', 'diamond', 'netherite'],
@@ -166,7 +185,6 @@ StartupEvents.modifyCreativeTab('kubejs:tab', event => {
             event.remove(item)
         })
 
-        event.remove('homeostatic:water_filter')
     })
 
 //refinedstorage:general

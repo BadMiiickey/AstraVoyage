@@ -1,6 +1,6 @@
 BlockEvents.broken(event => {
 
-    const { block } = event
+    const { block, player } = event
 
     //移除全局方块Map中已不存在的方块信息
         //工作盆
@@ -39,7 +39,19 @@ BlockEvents.broken(event => {
                     && airResult != undefined
                     && industrialIronBlockResult != undefined
                 )
+
+            //修复创造模式破坏掉落物增加的bug
+            if (player.creative) {
+                for (let i = -1; i <= 1; i++) {
+                    for (let j = -1; j <= 1; j++) {
+                        block.offset(i, 0, j).set('minecraft:air')
+                    }
+                }
+
+                event.cancel()
+            }
         }
+                
         
         //简易工业平台
         if (block.id == 'kubejs:simple_industrial_platform') {

@@ -80,48 +80,12 @@ StartupEvents.registry('item', event => {
             .unstackable()
             .tag('curios:bracelet')
 
-        //守护之盾
-        event.create('kubejs:guardian_shield', 'basic')
-            .unstackable()
-            .attachCapability(
-                CapabilityBuilder.ENERGY.customItemStack()
-                    .canExtract(item => true)
-                    .canReceive(item => true)
-                    .extractEnergy((item, energyCount, simulateBoolean) => {
-                        if (item.nbt?.Energy == undefined) return
-
-                        /** @type { number } */
-                        let energy = item.nbt.Energy
-
-                        if (!simulateBoolean) {
-                            energy = Math.min(96000, energy - 200)
-                        }
-
-                        return 200
-                    })
-                    .receiveEnergy((item, energyCount, simulateBoolean) => {
-                        if (item.nbt?.Energy == undefined) return
-
-                        /** @type { number } */
-                        let energy = item.nbt.Energy
-
-                        if (!simulateBoolean) {
-                            energy = Math.min(96000, energy + 200)
-                        }
-
-                        return 200
-                    })
-                    .getEnergyStored(item => item.nbt.Energy)
-                    .getMaxEnergyStored(item => item.nbt.MaxEnergy)
-            )
-            .tag('curios:charm')
-
         //回响晶核
         event.create('kubejs:echo_crystal_nucleus', 'basic')
             .unstackable()
             .tag('curios:charm')
 
-        //虚化手套
+        //虚无手套
         event.create('kubejs:phantom_glove', 'basic')
             .unstackable()
             .fireResistant()

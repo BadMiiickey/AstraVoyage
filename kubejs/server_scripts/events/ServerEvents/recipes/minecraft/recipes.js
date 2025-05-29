@@ -166,6 +166,37 @@ ServerEvents.recipes(event => {
                 C: 'kubejs:echo_mechanism'
             }
         ).id('kubejs:shaped_echo_crystal_nucleus')//回响晶核
+
+        event.shaped(
+            'kubejs:simple_industrial_platform',
+            [
+                'WLW',
+                'LIL',
+                'WLW'
+            ],
+            {
+                W: 'minecraft:white_concrete',
+                L: 'minecraft:light_gray_concrete',
+                I: 'ad_astra:marked_iron_pillar'
+            }
+        ).id('kubejs:shaped_simple_industrial_platform')//简易工业平台
+
+        event.shaped(
+            'create_mechanical_chicken:mechanical_chicken',
+            [
+                'PCP',
+                'EIE',
+                'BSB'
+            ],
+            {
+                P: 'createaddition:biomass_pellet',
+                C: 'create:cogwheel',
+                E: '#forge:eggs',
+                I: 'create:item_vault',
+                B: 'create:brass_sheet',
+                S: 'create:shaft',
+            }
+        ).id('kubejs:shaped_mechanical_chicken')//动力鸡
         
         //无序合成
 

@@ -140,6 +140,8 @@
 
   "block.createnuclear.reactor_gauge": "反应堆压力表",
 
+  "block.ad_astra.ostrum_block": "紫金块",
+
   "kubejs.ponder.ash_collector.header": "灰烬收集器",
   "kubejs.ponder.ash_collector.text_1": "灰烬收集器需要在下界玄武岩三角洲才能正常工作",
   "kubejs.ponder.ash_collector.text_2": "接入动力, 使得分散网为吸引风向",
@@ -419,9 +421,8 @@
   "item.kubejs.magnet": "§e万能磁体",
   "item.kubejs.freezing_core": "§b冷冻核心",
   "item.kubejs.memory_bracelet": "§a记忆手链",
-  "item.kubejs.guardian_shield": "§d守护之盾",
   "item.kubejs.echo_crystal_nucleus": "§9回响晶核",
-  "item.kubejs.phantom_glove": "§7§k虚化手套",
+  "item.kubejs.phantom_glove": "§7§k虚无手套",
 
   "effect.kubejs.bloodthirsty": "嗜血",
   "effect.kubejs.corrosion": "蛀蚀",

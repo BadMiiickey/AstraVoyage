@@ -328,6 +328,16 @@ Ponder.registry(event => {
             scene.idle(20 * 1)
             scene.world.hideSection([2, 1, 2, 9, 9, 9], Direction.UP)
             scene.world.setBlocks([2, 1, 2, 9, 9, 9], 'minecraft:air', true)
+
+            for (let dx = -3; dx <= 3; dx++) {
+                scene.world.setBlocks([5 + dx, 0, 5 + dx], 'minecraft:light_gray_concrete', false)
+                scene.world.setBlocks([5 + dx, 0, 5 - dx], 'minecraft:light_gray_concrete', false)
+            }
+
+            for (let dz of [-1, 1]) {
+                scene.world.setBlocks([5, 0, 5 + dz], 'minecraft:white_concrete', false)
+                scene.world.setBlocks([5 + dz, 0, 5], 'minecraft:white_concrete', false)
+            }
             
             let rocket_1 = scene.world.createEntity('ad_astra:tier_1_rocket', [6, 1, 6])
             
