@@ -144,12 +144,12 @@ ServerEvents.recipes(event => {
         event.shaped(
             'kubejs:diorite_alloy',
             [
-                'DZ',
-                'ZD'
+                'DC',
+                'CD'
             ],
             {
                 D: 'minecraft:diorite',
-                Z: 'create:zinc_nugget'
+                C: 'create:copper_nugget'
             }
         ).id('kubejs:shaped_diorite_alloy')//闪长合金
 
@@ -231,6 +231,20 @@ ServerEvents.recipes(event => {
         ingotTransformation('kubejs', 'aluminum')//铝锭
         ingotTransformation('kubejs', 'rock_core')//岩核锭
         ingotTransformation('kubejs', 'dense_planet_core')//致密星核锭
+
+        event.shapeless(
+            'kubejs:rock_core_ingot',
+            [
+                'kubejs:diorite_alloy',
+                'create:andesite_alloy',
+                'kubejs:granite_alloy'
+            ]
+        ).id('kubejs:shapeless_rock_core_ingot')//岩核锭
+
+        event.shapeless(
+            Item.of('create:copper_nugget', 9),
+            'minecraft:copper_ingot'
+        ).id('kubejs:shapeless_copper_nugget')//铜粒
 
         //熔炉 *** 高炉
 

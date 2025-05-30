@@ -197,7 +197,7 @@ ServerEvents.recipes(event => {
         'kubejs:diorite_alloy',
         [
             Item.of('minecraft:diorite', 2),
-            Item.of('create:zinc_nugget', 2)
+            Item.of('create:copper_nugget', 2)
         ]
     ).id('kubejs:mixing_diorite_alloy')//闪长合金
 
@@ -208,6 +208,15 @@ ServerEvents.recipes(event => {
             Fluid.of('kubejs:acid', 100)
         ]
     ).id('kubejs:mixing_acid_silicon')//酸性硅
+
+    create.mixing(
+        'kubejs:rock_core_ingot',
+        [
+            'kubejs:diorite_alloy',
+            'create:andesite_alloy',
+            'kubejs:granite_alloy'
+        ]
+    ).id('kubejs:mixing_rock_core_ingot')//岩核锭
 
     //鼓风机
         //洗涤

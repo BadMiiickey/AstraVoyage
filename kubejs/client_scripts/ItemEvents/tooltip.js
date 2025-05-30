@@ -1,5 +1,11 @@
 ItemEvents.tooltip(event => {
 
+    //adAstra
+        //NASA工作台
+        event.addAdvanced('ad_astra:nasa_workbench', (item, advanced, text) => {
+            text.remove(1)
+        })
+
     //kubejs
         //饰品
             //吸金磁

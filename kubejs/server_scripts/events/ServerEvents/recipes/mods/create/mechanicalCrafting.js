@@ -152,4 +152,20 @@ ServerEvents.recipes(event => {
             T: 'ad_astra:calorite_tank'
         }
     ).id('kubejs:mechanical_crafting_calorite_tank')//耐热金属燃料储罐
+
+    create.mechanical_crafting(
+        'ad_astra:nasa_workbench',
+        [
+            ' I I ',
+            'I   I',
+            'PAAAP',
+            'SSSSS'
+        ],
+        {
+            I: 'createaddition:iron_rod',
+            P: 'ad_astra:steel_plate',
+            A: 'kubejs:aviation_mechanism',
+            S: 'ad_astra:steel_block'
+        }
+    ).id('kubejs:mechanical_crafting_nasa_workbench')//NASA工作台
 })

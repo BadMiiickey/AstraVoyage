@@ -23,6 +23,7 @@ ServerEvents.tags('item', event => {
 
         //forge:nuggets
         event.remove('forge:nuggets/steel', 'ad_astra:steel_nugget')
+        event.remove('forge:nuggets/copper', 'tconstruct:copper_nugget')
 
         //forge:rods
         event.remove('forge:rods/iron', 'ad_astra:iron_rod')

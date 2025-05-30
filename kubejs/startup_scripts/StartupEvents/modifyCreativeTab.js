@@ -9,6 +9,7 @@ StartupEvents.modifyCreativeTab('ad_astra:main', event => {
     event.remove('ad_astra:water_pump')
     event.remove('ad_astra:cheese')
     event.remove('ad_astra:cheese_block')
+    event.remove('ad_astra:wrench')
 
     global.methods.itemsRemoveArray(
         'ad_astra',
@@ -219,7 +220,13 @@ StartupEvents.modifyCreativeTab('sophisticatedbackpacks:main', event => {
 
 //tconstruct:fluids
 StartupEvents.modifyCreativeTab('tconstruct:fluids', event => {
-
+    
     event.remove('tconstruct:potion_bucket')
     event.remove('tconstruct:honey_bucket')
+})
+
+//tconstruct:general
+StartupEvents.modifyCreativeTab('tconstruct:general', event => {
+
+    event.remove('tconstruct:copper_nugget')
 })

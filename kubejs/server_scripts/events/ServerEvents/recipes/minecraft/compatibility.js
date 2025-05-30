@@ -16,6 +16,7 @@ ServerEvents.recipes(event => {
     compatibility('ad_astra:cheese_block', 'tconstruct:cheese_block')//奶酪块
     compatibility('tconstruct:honey', 'create:honey')//蜂蜜
     compatibility('tconstruct:honey_bucket', 'create:honey_bucket')//蜂蜜桶
+    compatibility('#forge:nuggets/copper', 'create:copper_nugget')//铜粒
 
         //埃忒恩光伏电池
         event.replaceInput(
@@ -115,6 +116,9 @@ ServerEvents.recipes(event => {
         removeRecipesId('ad_astra:etrionic_capacitor')
         removeRecipesId('ad_astra:gas_tank')
         removeRecipesId('ad_astra:rocket_nose_cone')
+        removeRecipesId('ad_astra:nasa_workbench')
+        removeRecipesId('ad_astra:wrench')
+        removeRecipesId('ad_astra:oxygen_gear')
 
         global.methods.itemsRemoveArray(
             'ad_astra',
@@ -228,4 +232,5 @@ ServerEvents.recipes(event => {
 
         removeRecipesOutput('tconstruct:potion')
         removeRecipesOutput('tconstruct:potion_bucket')
+        removeRecipesOutput('tconstruct:copper_nugget')
 })
