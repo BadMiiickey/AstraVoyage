@@ -2,8 +2,6 @@ KeyBindEvents.keyPressInGui('memoryBraceletMode', event => {
     
     const { player } = event
 
-    var $CuriosApi = Java.loadClass('top.theillusivec4.curios.api.CuriosApi')
-
     let slotsList = $CuriosApi.getCuriosInventory(player).resolve().get()
 
     player.inventory.allItems.forEach(item => {

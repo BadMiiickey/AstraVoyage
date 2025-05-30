@@ -1,13 +1,4 @@
 //priority: 999999
-
-var $CuriosApi = Java.loadClass('top.theillusivec4.curios.api.CuriosApi')
-var $Boolean = Java.loadClass('java.lang.Boolean')
-var $BlockStateProperties = Java.loadClass('net.minecraft.world.level.block.state.properties.BlockStateProperties')
-var $LivingEntity = Java.loadClass('net.minecraft.world.entity.LivingEntity')
-var $NasaWorkbenchMenu = Java.loadClass('earth.terrarium.adastra.common.menus.machines.NasaWorkbenchMenu')
-
-const curiosHelper = $CuriosApi.getCuriosHelper()
-
 //全局函数
 global.methods = {
 
@@ -67,19 +58,18 @@ global.methods = {
      * @param { Internal.ItemStack_ } item 
      */
     slotResult(player, item) {
-        
+
+        let curiosHelper = $CuriosApi.getCuriosHelper()
+
         /** @type { Internal.List<Internal.SlotResult> } */
         let slotResult = curiosHelper[
             'findCurios(net.minecraft.world.entity.LivingEntity,net.minecraft.world.item.Item)'
         ](player, item)
+
         /** @type { boolean } */
         let checkBoolean
         
-        if (slotResult.length >= 1) {
-            checkBoolean = true
-        } else {
-            checkBoolean = false
-        }
+        checkBoolean = slotResult.length >= 1 ? true : false
 
         return checkBoolean
     },

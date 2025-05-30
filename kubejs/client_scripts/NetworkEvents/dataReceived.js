@@ -2,8 +2,6 @@ NetworkEvents.dataReceived('openNasaWorkbench', event => {
 
     const { screen } = Client
 
-    var $NasaWorkbenchScreen = Java.loadClass('earth.terrarium.adastra.client.screens.machines.NasaWorkbenchScreen')
-
     if (screen instanceof $NasaWorkbenchScreen) {
         for (let i = 0; i <= 13; i++) {
 

@@ -2,9 +2,6 @@ ForgeEvents.onEvent('net.minecraftforge.event.entity.living.LivingDamageEvent', 
     
     const { entity, source } = event
 
-    var $CuriosApi = Java.loadClass('top.theillusivec4.curios.api.CuriosApi')
-    var $LivingEntity = Java.loadClass('net.minecraft.world.entity.LivingEntity')
-
     if (source == null) return
 
     //玩家伤害结算

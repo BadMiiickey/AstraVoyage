@@ -1,7 +1,5 @@
 TConJSEvents.modifierRegistry(event => {
 
-    var $LivingEntity = Java.loadClass('net.minecraft.world.entity.LivingEntity')
-
     //暗铁
         //工具 => 堕落
         event.createNew('degenerate', builder => {
