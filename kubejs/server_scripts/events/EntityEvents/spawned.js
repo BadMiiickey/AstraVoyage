@@ -2,8 +2,6 @@ EntityEvents.spawned(event => {
 
     const { entity, server, level } = event
 
-    var $LivingEntity = Java.loadClass('net.minecraft.world.entity.LivingEntity')
-
     const player = level.getNearestPlayer(entity, 128)
 
     //敌对生物生成事件

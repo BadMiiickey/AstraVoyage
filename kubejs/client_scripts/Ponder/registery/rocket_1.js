@@ -1,4 +1,5 @@
 Ponder.registry(event => {
+
     //火箭
     event.create('ad_astra:tier_1_rocket')
         .scene('kubejs:rocket_1_pedestal', 'kubejs:rocket_1_pedestal', 'kubejs:rocket_1', scene => {

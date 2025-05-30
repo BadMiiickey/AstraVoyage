@@ -2,9 +2,6 @@ PlayerEvents.tick(event => {
 
     const { player, server } = event
 
-    const $ = Java.loadClass('dev.latvian.mods.kubejs.client.painter.screen.PaintScreenEventJS')
-
-
     if (!player.alive) return
 
     //玩家游戏界面显示杀戮进度

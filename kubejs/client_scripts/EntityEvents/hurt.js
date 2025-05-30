@@ -2,8 +2,6 @@ EntityEvents.hurt(event => {
     
     const { entity } = event
 
-    var $CuriosApi = Java.loadClass('top.theillusivec4.curios.api.CuriosApi')
-
     //玩家受伤事件
     if (entity.player) {
         if (global.methods.slotResult(entity, 'kubejs:guardian_shield')) {

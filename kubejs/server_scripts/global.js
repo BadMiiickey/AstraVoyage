@@ -1,5 +1,10 @@
 //priority: 999999
+
 var $CuriosApi = Java.loadClass('top.theillusivec4.curios.api.CuriosApi')
+var $Boolean = Java.loadClass('java.lang.Boolean')
+var $BlockStateProperties = Java.loadClass('net.minecraft.world.level.block.state.properties.BlockStateProperties')
+var $LivingEntity = Java.loadClass('net.minecraft.world.entity.LivingEntity')
+var $NasaWorkbenchMenu = Java.loadClass('earth.terrarium.adastra.common.menus.machines.NasaWorkbenchMenu')
 
 const curiosHelper = $CuriosApi.getCuriosHelper()
 

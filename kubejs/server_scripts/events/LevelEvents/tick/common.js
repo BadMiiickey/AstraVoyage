@@ -2,9 +2,6 @@ LevelEvents.tick(event => {
     
     const { server, level } = event
 
-    var $Boolean = Java.loadClass('java.lang.Boolean')
-    var $BlockStateProperties = Java.loadClass('net.minecraft.world.level.block.state.properties.BlockStateProperties')
-
     //亡灵生物持有嗜血效果时攻击活体生物
     if (global.methods.tickCountCheck(server, 0, 1.5)) {
         

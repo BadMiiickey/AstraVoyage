@@ -6,8 +6,6 @@ PlayerEvents.tick(event => {
 
     if (!player.alive) return
 
-    var $CuriosApi = Java.loadClass('top.theillusivec4.curios.api.CuriosApi')
-
     let slotsList = $CuriosApi.getCuriosInventory(player).resolve().get()
 
     //玩家佩戴饰品事件    

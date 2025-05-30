@@ -3,10 +3,6 @@ EntityEvents.hurt(event => {
     const { source, entity, level } = event
     const { actual, immediate } = source
 
-    var $CuriosApi = Java.loadClass('top.theillusivec4.curios.api.CuriosApi')
-    var $LivingEntity = Java.loadClass('net.minecraft.world.entity.LivingEntity')
-    var $Minecraft = Java.loadClass('net.minecraft.client.Minecraft')
-
     if (source.actual == null) return
 
     //玩家受伤事件

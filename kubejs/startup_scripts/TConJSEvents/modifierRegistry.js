@@ -3,7 +3,7 @@ TConJSEvents.modifierRegistry(event => {
     var $LivingEntity = Java.loadClass('net.minecraft.world.entity.LivingEntity')
 
     //暗铁
-        //武器 => 堕落
+        //工具 => 堕落
         event.createNew('degenerate', builder => {
             builder.onAfterMeleeHit((view, level, context, damage) => {  
                 
@@ -40,7 +40,7 @@ TConJSEvents.modifierRegistry(event => {
         })
 
     //岩核
-        //武器 => 掠夺
+        //工具 => 掠夺
         event.createNew('looting', builder => {
             builder.onAfterMeleeHit((view, level, context, damage) => {
                 if (context.livingTarget.potionEffects.active.length > 0) {
@@ -81,7 +81,7 @@ TConJSEvents.modifierRegistry(event => {
         })
 
     //紫金
-        //武器 => 逐光
+        //工具 => 逐光
         event.createNew('lightbane', builder => {
             builder.getMeleeDamage((view, level, context, baseDamage, finalDamage) => {
                 if (context.attacker.block.light >= 7) {
@@ -100,7 +100,7 @@ TConJSEvents.modifierRegistry(event => {
         })
     
     //耐热金属
-        //武器 => 炎灼
+        //工具 => 炎灼
         event.createNew('burning', builder => {
             builder.onAfterMeleeHit((view, level, context, damage) => {
                 if (context.livingTarget.onFire) {
@@ -128,5 +128,11 @@ TConJSEvents.modifierRegistry(event => {
             builder.canBlockAttacked((view, level, context, slot, source, damage) => {
                 if (source.type().msgId() == 'inFire' || 'onfire') return false
             })
+        })
+
+    //花岗合金
+        //工具 => 大地亲和
+        event.createNew('earthbound', builder => {
+            
         })
 })
