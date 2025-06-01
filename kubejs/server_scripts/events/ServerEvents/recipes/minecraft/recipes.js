@@ -197,6 +197,49 @@ ServerEvents.recipes(event => {
                 S: 'create:shaft',
             }
         ).id('kubejs:shaped_mechanical_chicken')//动力鸡
+
+        event.shaped(
+            'constructionwand:iron_wand',
+            [
+                ' RI',
+                ' S ',
+                'S  '
+            ],
+            {
+                R: 'kubejs:rock_core_mechanism',
+                I: 'minecraft:iron_ingot',
+                S: 'minecraft:stick'
+            }
+        ).id('kubejs:shaped_iron_wand')//铁制手杖
+
+        event.shaped(
+            'constructionwand:diamond_wand',
+            [
+                ' RD',
+                ' S ',
+                'S  '
+            ],
+            {
+                R: 'kubejs:rock_core_mechanism',
+                D: 'minecraft:diamond',
+                S: 'minecraft:stick'
+            }
+        ).id('kubejs:shaped_diamond_wand')//钻石手杖
+
+        event.shaped(
+            'constructionwand:infinity_wand',
+            [
+                ' RN',
+                ' SD',
+                'S  '
+            ],
+            {
+                R: 'kubejs:rock_core_mechanism',
+                N: 'minecraft:nether_star',
+                S: 'minecraft:stick',
+                D: 'kubejs:dense_planet_core_mechanism'
+            }
+        ).id('kubejs:shaped_infinity_wand')//无尽手杖
         
         //无序合成
 

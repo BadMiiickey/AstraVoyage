@@ -139,6 +139,8 @@ PlayerEvents.tick(event => {
             }
         }
 
+    if (player.creative || player.spectator) return
+
     //玩家操作事件
         //玩家死亡惩罚补救
         if (player.maxHealth < 20) {
@@ -163,19 +165,13 @@ PlayerEvents.tick(event => {
             }
 
             //玩家生命值降至阈值触发DeBuff
-            if (
-                player.health <= 3
-                && !player.creative
-            ) {
+            if (player.health <= 3) {
                 player.setStatusMessage('§c你伤势已经极其严重, 请赶紧治疗!')
                 player.potionEffects.add('minecraft:blindness', 20 * 3, 0, false, false)
                 player.potionEffects.add('minecraft:nausea', 20 * 3, 0, false, false)
                 player.potionEffects.add('minecraft:weakness', 20 * 3, 2, false, false)
                 player.potionEffects.add('minecraft:slowness', 20 * 3, 2, false, false)
-            } else if (
-                player.health <= 10
-                && !player.creative
-            ) {
+            } else if (player.health <= 10) {
                 player.setStatusMessage('§e你的伤势开始影响意识, 注意治疗!')
                 player.potionEffects.add('minecraft:weakness', 20 * 3, 0, false, false)
                 player.potionEffects.add('minecraft:slowness', 20 * 3, 0, false, false)
@@ -183,9 +179,7 @@ PlayerEvents.tick(event => {
 
             //玩家在黑暗环境下获得缓慢及挖掘疲劳DeBuff
             if (
-                !player.creative
-                && !player.spectator
-                && player.block.light <= 7
+                player.block.light <= 7
                 && !global.methods.slotResult(player, 'minecraft:lantern')
             ) {
                 player.potionEffects.add('minecraft:slowness', 20 * 3, 0, false, false)
@@ -234,7 +228,6 @@ PlayerEvents.tick(event => {
             if (
                 dimension.toString() == 'kubejs:wasteworld'
                 && player.inRain
-                && !player.creative
             ) {
                 player.inventory.armor.forEach(armor => {
                     armor.damageValue += 1

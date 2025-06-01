@@ -136,6 +136,11 @@ ServerEvents.recipes(event => {
             removeRecipesId(item)
         })
 
+        //ConstructionWand
+        removeRecipesId('constructionwand:iron_wand')
+        removeRecipesId('constructionwand:diamond_wand')
+        removeRecipesId('constructionwand:infinity_wand')
+
         //Create
         removeRecipesId('create:crafting/materials/rose_quartz')
         removeRecipesId('create:mechanical_crafting/patato_cannon')
