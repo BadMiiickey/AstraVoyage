@@ -176,17 +176,6 @@ global.definitionsArray = {
         //Quark
         'quark:forgotten',
         'quark:wraith',
-        
-        //The_Graveyard
-        'graveyard:skeleton_creeper',
-        'graveyard:acolyte',
-        'graveyard:ghoul',
-        'graveyard:reaper',
-        'graveyard:revenant',
-        'graveyard:nightmare',
-        'graveyard:corrupted_vindicator',
-        'graveyard:corrupted_pillager',
-        'graveyard:wraith'
     ],
 
     //增益药水效果

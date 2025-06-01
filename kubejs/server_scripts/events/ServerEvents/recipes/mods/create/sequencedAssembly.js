@@ -195,4 +195,38 @@ ServerEvents.recipes(event => {
         'kubejs:incomplete_aviation_mechanism',
         5
     ).id('kubejs:sequenced_assembly_aviation_mechanism')//航空构件
+
+    create.sequenced_assembly(
+        'kubejs:void_mechanism',
+        'createutilities:void_steel_sheet',
+        [
+            create.deploying(
+                'kubejs:incomplete_void_mechanism',
+                [
+                    'kubejs:incomplete_void_mechanism',
+                    'createnuclear:reinforced_glass'
+                ]
+            ),
+            create.filling(
+                'kubejs:incomplete_void_mechanism',
+                [
+                    'kubejs:incomplete_void_mechanism',
+                    Fluid.of('tconstruct:molten_ender', 1000)
+                ]
+            ),
+            create.pressing(
+                'kubejs:incomplete_void_mechanism',
+                'kubejs:incomplete_void_mechanism'
+            ),
+            create.deploying(
+                'kubejs:incomplete_void_mechanism',
+                [
+                    'kubejs:incomplete_void_mechanism',
+                    'kubejs:dense_planet_core_sheet'
+                ]
+            )
+        ],
+        'kubejs:incomplete_void_mechanism',
+        5
+    ).id('kubejs:sequenced_assembly_void_mechanism')//虚空构件
 })

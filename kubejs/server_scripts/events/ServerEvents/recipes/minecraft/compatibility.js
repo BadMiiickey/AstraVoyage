@@ -93,6 +93,47 @@ ServerEvents.recipes(event => {
             'ad_astra:desh_block'
         )
 
+        //氧气装载机
+        event.replaceInput(
+            'ad_astra:oxygen_loader',
+            'minecraft:redstone_block',
+            'kubejs:electronic_mechanism'
+        )
+
+        event.replaceInput(
+            'ad_astra:oxygen_loader',
+            'minecraft:lightning_rod',
+            'createaddition:copper_rod'
+        )
+
+        //钢电缆
+        event.replaceInput(
+            'ad_astra:steel_cable',
+            'minecraft:copper_ingot',
+            'createaddition:copper_wire'
+        )
+
+        //戴斯电缆
+        event.replaceInput(
+            'ad_astra:desh_cable',
+            'minecraft:copper_ingot',
+            'createaddition:copper_wire'
+        )
+
+        //电缆管道
+        event.replaceInput(
+            'ad_astra:cable_duct',
+            'minecraft:copper_ingot',
+            'create:copper_sheet'
+        )
+
+        //流体管道
+        event.replaceInput(
+            'ad_astra:fluid_pipe_duct',
+            'minecraft:copper_ingot',
+            'create:copper_sheet'
+        )
+
     //移除配方
     
     const removeRecipesId = (/** @type { ResourceLocation_ } */ name) => { event.remove({ id: name }) }
@@ -119,6 +160,9 @@ ServerEvents.recipes(event => {
         removeRecipesId('ad_astra:nasa_workbench')
         removeRecipesId('ad_astra:wrench')
         removeRecipesId('ad_astra:oxygen_gear')
+        removeRecipesId('ad_astra:engine_frame')
+        removeRecipesId('ad_astra:gravity_normalizer')
+        removeRecipesId('ad_astra:cryo_freezer')
 
         global.methods.itemsRemoveArray(
             'ad_astra',
@@ -186,6 +230,10 @@ ServerEvents.recipes(event => {
 
         //CreateUtilities
         removeRecipesId('createutilities:mixing/void_steel_ingot')
+        removeRecipesId('createutilities:shaped/void_motor')
+        removeRecipesId('createutilities:shaped/void_chest')
+        removeRecipesId('createutilities:shaped/void_tank')
+        removeRecipesId('createutilities:shaped/void_battery')
 
         //Homeostatic
         removeRecipesId('homeostatic:smoking_purified_leather_flask')

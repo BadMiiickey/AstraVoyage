@@ -136,7 +136,6 @@ LevelEvents.tick(event => {
 
             for (let dx of [-1, 0, 1]) {
                 for (let dz of [-1, 0, 1]) {
-
                     if (dx == 0 && dz == 0) {
                         continue
                     } else {

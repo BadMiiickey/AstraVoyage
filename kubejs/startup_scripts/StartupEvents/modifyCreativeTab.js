@@ -80,6 +80,11 @@ StartupEvents.modifyCreativeTab('create_mechanical_chicken:main', event => {
     event.remove('create_mechanical_chicken:seed_oil')
 })
 
+StartupEvents.modifyCreativeTab('createutilities:base', event => {
+
+    event.remove('createutilities:void_chest')
+})
+
 //homeostatic:items
 StartupEvents.modifyCreativeTab('homeostatic:items', event => {
 
@@ -94,15 +99,7 @@ StartupEvents.modifyCreativeTab('kubejs:tab', event => {
     event.setIcon('kubejs:earth_coin')
     event.setDisplayName('AstraVoyage')
 
-    event.remove('kubejs:incomplete_guardian_shield')
-    event.remove('kubejs:incomplete_silicon')
-    event.remove('kubejs:incomplete_sculk_sensor')
-    event.remove('kubejs:incomplete_electronic_mechanism')
-    event.remove('kubejs:incomplete_rock_core_mechanism')
-    event.remove('kubejs:incomplete_dense_planet_core_mechanism')
-    event.remove('kubejs:incomplete_echo_mechanism')
-    event.remove('kubejs:incomplete_creative_mechanism')
-    event.remove('kubejs:incomplete_aviation_mechanism')
+    event.remove(/kubejs:incomplete_.*/)
 })
 
 //minecraft    

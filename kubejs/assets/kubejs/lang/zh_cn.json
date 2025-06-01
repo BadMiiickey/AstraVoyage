@@ -262,17 +262,9 @@
   "item.kubejs.molten_refined_radiance_bucket": "熔融光辉石桶",
   "item.kubejs.molten_shadow_steel_bucket": "熔融暗影钢",
 
-  "material.kubejs.dark_iron": "暗铁",
-  "material.kubejs.dark_iron.encyclopedia": "攻击时40%概率为敌人随机附加一种负面效果, 每级效果等级上限+1, 持续时间延长约80%",
-  "modifier.kubejs.degenerate": "堕落",
-  "modifier.kubejs.degenerate.description": "攻击时让敌人进入短暂的负面状态",
-  "modifier.kubejs.degenerate.flavor": "堕落者的狂欢!",
-  "modifier.kubejs.disease": "流疫",
-  "modifier.kubejs.disease.description": "受伤时让敌人进入短暂的负面状态",
-  "modifier.kubejs.disease.flavor": "瘟疫的开端往往无声无息",
-
   "material.kubejs.rock_core": "岩核",
   "material.kubejs.rock_core.encyclopedia": "攻击时掠夺敌人上的随机正面效果, 每级效果等级上限+1, 持续时间延长约80%",
+  "material.kubejs.rock_core.armor": "受击时掠夺敌人上的随机正面效果, 每级效果等级上限+1, 持续时间延长约80%",
   "modifier.kubejs.looting": "掠夺",
   "modifier.kubejs.looting.description": "攻击时掠夺敌人增益为己用",
   "modifier.kubejs.looting.flavor": "贪婪, 永无止境",
@@ -285,11 +277,20 @@
   "material.kubejs.brass": "黄铜",
 
   "material.kubejs.desh": "戴斯",
+  "material.kubejs.desh.encyclopedia": "攻击时40%概率为敌人随机附加一种负面效果, 每级效果等级上限+1, 持续时间延长约80%",
+  "material.kubejs.desh.armor": "受击时40%概率为敌人随机附加一种负面效果, 每级效果等级上限+1, 持续时间延长约80%",
+  "modifier.kubejs.degenerate": "堕落",
+  "modifier.kubejs.degenerate.description": "攻击时让敌人进入短暂的负面状态",
+  "modifier.kubejs.degenerate.flavor": "堕落者的狂欢!",
+  "modifier.kubejs.disease": "流疫",
+  "modifier.kubejs.disease.description": "受伤时让敌人进入短暂的负面状态",
+  "modifier.kubejs.disease.flavor": "瘟疫的开端往往无声无息",
 
   "material.kubejs.etrium": "埃忒恩",
 
   "material.kubejs.ostrum": "紫金",
   "material.kubejs.ostrum.encyclopedia": "当玩家位置光照强度大于等于7时, 每级光照强度和每级使伤害倍率增加20%",
+  "material.kubejs.ostrum.armor": "当玩家位置光照强度大于等于7时, 每级光照强度和每级使减伤倍率增加20%",
   "modifier.kubejs.lightbane": "逐光",
   "modifier.kubejs.lightbane.description": "光照强度大于等于7时造成额外伤害",
   "modifier.kubejs.lightbane.flavor": "光明永远在你背后!",
@@ -299,6 +300,7 @@
 
   "material.kubejs.calorite": "耐热金属",
   "material.kubejs.calorite.encyclopedia": "攻击时引爆敌人的灼烧效果, 每级伤害增加10%",
+  "material.kubejs.calorite.armor": "免疫灼烧伤害",
   "modifier.kubejs.burning": "炎灼",
   "modifier.kubejs.burning.description": "引爆敌人的灼烧效果",
   "modifier.kubejs.burning.flavor": "燃起来!",
@@ -309,6 +311,14 @@
   "material.kubejs.zinc": "锌",
   
   "material.kubejs.granite_alloy": "花岗合金",
+  "material.kubejs.granite_alloy.encyclopedia": "攻击时若脚下三格为泥土或草方块, 则给予敌人缓慢DeBuff, 每级增加缓慢等级",
+  "material.kubejs.granite_alloy.armor": "每级降低10%摔落伤害",
+  "modifier.kubejs.ground_binding": "地缚",
+  "modifier.kubejs.ground_binding.description": "攻击时若脚下三格为泥土或草方块则给予敌人缓慢DeBuff",
+  "modifier.kubejs.ground_binding.flavor": "大地束缚, 无处遁逃",
+  "modifier.kubejs.buffer": "缓冲",
+  "modifier.kubejs.buffer.description": "降低摔落伤害",
+  "modifier.kubejs.buffer.flavor": "大地永远温柔",
 
   "material.kubejs.diorite_alloy": "闪长合金",
 
@@ -407,6 +417,7 @@
   "item.kubejs.echo_mechanism": "§1回响构件",
   "item.kubejs.creative_mechanism": "§4§k创世构件",
   "item.kubejs.aviation_mechanism": "§3航空构件",
+  "item.kubejs.void_mechanism": "§8虚空构件",
 
   "item.kubejs.incomplete_guardian_shield": "§d守护之盾(半成品)",
   "item.kubejs.incomplete_silicon": "硅(半成品)",
@@ -416,6 +427,7 @@
   "item.kubejs.incomplete_echo_mechanism": "§1回响构件(半成品)",
   "item.kubejs.incomplete_creative_mechanism": "§4§k创世构件(半成品)",
   "item.kubejs.incomplete_aviation_mechanism": "§3航空构件(半成品)",
+  "item.kubejs.incomplete_void_mechanism": "§8虚空构件(半成品)",
 
   "block.kubejs.luminous_pearl": "§5流光水晶",
   "item.kubejs.magnet": "§e万能磁体",

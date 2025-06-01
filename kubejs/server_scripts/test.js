@@ -23,22 +23,3 @@ BlockEvents.rightClicked(event => {
         Client.tell(`blockEntityData: ${block.entityData}`)
     }
 })
-
-ItemEvents.rightClicked(event => {
-
-    const { item, entity, player, level } = event
-
-    if (
-        item.id == 'kubejs:phantom_glove'
-        && player.crouching
-    ) {
-        Client.tell(global.launchPadsMapArray)
-        Client.tell(global.campfiresMapArray)
-        Client.tell(global.platformsMapArray)
-        player.swing()
-    }
-
-    if (item.id == 'kubejs:guardian_shield') {
-        item.nbt.Energy = 72000
-    }
-})

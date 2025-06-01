@@ -24,6 +24,25 @@
       "durability": 130,
       "velocity": 0.0
     },
-    "tconstruct:maille": {}
+    "tconstruct:maille": {},
+      "tconstruct:plating_boots": {
+        "armor": 1.0,
+        "durability": 120
+      },
+      "tconstruct:plating_chestplate": {
+        "armor": 2.0,
+        "durability": 120
+      },
+      "tconstruct:plating_helmet": {
+        "armor": 1.0,
+        "durability": 80
+      },
+      "tconstruct:plating_leggings": {
+        "armor": 2.0,
+        "durability": 140
+      },
+      "tconstruct:plating_shield": {
+      "durability": 150
+    }
   }
 }

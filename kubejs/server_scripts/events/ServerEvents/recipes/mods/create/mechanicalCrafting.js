@@ -168,4 +168,87 @@ ServerEvents.recipes(event => {
             S: 'ad_astra:steel_block'
         }
     ).id('kubejs:mechanical_crafting_nasa_workbench')//NASA工作台
+
+    create.mechanical_crafting(
+        'ad_astra:gravity_normalizer',
+        [
+            '  D  ',
+            ' EME ',
+            'SPPPS'
+        ],
+        {
+            D: 'minecraft:diamond_block',
+            E: 'ad_astra:etrionic_capacitor',
+            M: 'kubejs:electronic_mechanism',
+            S: 'ad_astra:steel_block',
+            P: 'ad_astra:desh_plate'
+        }
+    ).id('kubejs:mechanical_crafting_gravity_normalizer')//重力规正器
+
+    create.mechanical_crafting(
+        'ad_astra:cryo_freezer',
+        [
+            ' O ',
+            ' P ',
+            'OTO',
+            'OIO',
+            'SES'
+        ],
+        {
+            O: 'ad_astra:ostrum_plate',
+            P: 'ad_astra:ostrum_fluid_pipe',
+            T: 'ad_astra:large_gas_tank',
+            I: 'minecraft:ice',
+            S: 'ad_astra:steel_block',
+            E: 'kubejs:electronic_mechanism'
+        }
+    ).id('kubejs:mechanical_crafting_cryo_freezer')//凛冰冻结装置
+
+    create.mechanical_crafting(
+        'createutilities:void_motor',
+        [
+            ' GGG ',
+            'VCCCV',
+            ' MSM '
+        ],
+        {
+            G: 'createutilities:graviton_tube',
+            V: 'createutilities:void_steel_sheet',
+            C: 'createutilities:void_casing',
+            M: 'kubejs:void_mechanism',
+            S: 'create:shaft'
+        }
+    ).id('kubejs:mechanical_crafting_void_motor')//虚空马达
+
+    create.mechanical_crafting(
+        'createutilities:void_tank',
+        [
+            ' GGG ',
+            'VFFFV',
+            ' MCM '
+        ],
+        {
+            G: 'createutilities:graviton_tube',
+            V: 'createutilities:void_steel_sheet',
+            F: 'create:fluid_tank',
+            M: 'kubejs:void_mechanism',
+            C: 'createutilities:void_casing'
+        }
+    ).id('kubejs:mechanical_crafting_void_tank')//虚空流体储罐
+
+    create.mechanical_crafting(
+        'createutilities:void_battery',
+        [
+            ' GGG ',
+            'VAAAV',
+            ' MCM '
+        ],
+        {
+            G: 'createutilities:graviton_tube',
+            V: 'createutilities:void_steel_sheet',
+            A: 'createaddition:modular_accumulator',
+            M: 'kubejs:void_mechanism',
+            C: 'createutilities:void_casing'
+        }
+    ).id('kubejs:mechanical_crafting_void_battery')//虚空蓄电池
 })
