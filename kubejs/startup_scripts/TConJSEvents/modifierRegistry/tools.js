@@ -69,22 +69,25 @@ TConJSEvents.modifierRegistry(event => {
         })
     })
 
-    //地缚 => 攻击时若脚下三格为泥土或草方块, 则给予敌人缓慢DeBuff, 每级增加缓慢等级
+    //地缚 => 攻击时若脚下三格不为空气, 则给予敌人缓慢DeBuff, 每级效果等级+1
     event.createNew('kubejs:ground_binding', builder => {
         builder.onAfterMeleeHit((view, level, context, damage) => {
+
+            let airCheck = 0
+
             for (let i = -3; i <= -1; i++) {
-                if (
-                    context.attacker.block.offset(0, i, 0).id == 'minecraft:dirt' || 
-                    context.attacker.block.offset(0, i, 0).id == 'minecraft:grass_block'
-                ) {
-                    context.livingTarget.potionEffects.add(
-                        'minecraft:slowness', 
-                        20 * 1.5, 
-                        level - 1, 
-                        false, false
-                    )
-                    break
+                if (context.attacker.block.offset(0, i, 0).id != 'minecraft:air') {
+                    airCheck++
                 }
+            }
+
+            if (airCheck == 0) {
+                context.livingTarget.potionEffects.add(
+                    'minecraft:slowness', 
+                    20 * 1.5, 
+                    level - 1, 
+                    false, false
+                )
             }
         })
     }) 

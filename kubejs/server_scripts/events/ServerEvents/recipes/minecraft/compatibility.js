@@ -199,6 +199,11 @@ ServerEvents.recipes(event => {
         removeRecipesId('create:crafting/materials/copper_nugget')
         removeRecipesId('create:crafting/materials/andesite_alloy')
 
+        removeRecipesOutput('create:copper_diving_helmet')
+        removeRecipesOutput('create:copper_diving_boots')
+        removeRecipesOutput('create:netherite_diving_helmet')
+        removeRecipesOutput('create:netherite_diving_boots')
+
         //CreateAddition
         removeRecipesId('createaddition:compat/tconstruct/pig_iron')
         removeRecipesId('createaddition:compat/tconstruct/pig_iron_2')

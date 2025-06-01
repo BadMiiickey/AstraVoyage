@@ -311,10 +311,10 @@
   "material.kubejs.zinc": "锌",
   
   "material.kubejs.granite_alloy": "花岗合金",
-  "material.kubejs.granite_alloy.encyclopedia": "攻击时若脚下三格为泥土或草方块, 则给予敌人缓慢DeBuff, 每级增加缓慢等级",
+  "material.kubejs.granite_alloy.encyclopedia": "攻击时若脚下三格不为空气, 则给予敌人缓慢DeBuff, 每级效果等级+1",
   "material.kubejs.granite_alloy.armor": "每级降低10%摔落伤害",
   "modifier.kubejs.ground_binding": "地缚",
-  "modifier.kubejs.ground_binding.description": "攻击时若脚下三格为泥土或草方块则给予敌人缓慢DeBuff",
+  "modifier.kubejs.ground_binding.description": "攻击时若脚下三格不为空气则给予敌人缓慢DeBuff",
   "modifier.kubejs.ground_binding.flavor": "大地束缚, 无处遁逃",
   "modifier.kubejs.buffer": "缓冲",
   "modifier.kubejs.buffer.description": "降低摔落伤害",

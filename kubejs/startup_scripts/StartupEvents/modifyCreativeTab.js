@@ -40,6 +40,10 @@ StartupEvents.modifyCreativeTab('ad_astra:main', event => {
 StartupEvents.modifyCreativeTab('create:base', event => {
 
     event.remove('create:potato_cannon')
+    event.remove('create:copper_diving_helmet')
+    event.remove('create:copper_diving_boots')
+    event.remove('create:netherite_diving_helmet')
+    event.remove('create:netherite_diving_boots')
 
     event.add('create:chromatic_compound')
     event.add('create:refined_radiance')
