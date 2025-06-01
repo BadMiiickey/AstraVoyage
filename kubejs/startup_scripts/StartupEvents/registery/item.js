@@ -53,6 +53,7 @@ StartupEvents.registry('item', event => {
     event.create('kubejs:echo_mechanism', 'basic')//回响构件
     event.create('kubejs:creative_mechanism', 'basic')//创世构件
     event.create('kubejs:aviation_mechanism', 'basic')//航空构件
+    event.create('kubejs:void_mechanism', 'basic')//虚空构件
 
     //半成品注册
     event.create('kubejs:incomplete_guardian_shield', 'create:sequenced_assembly')//守护之盾(半成品)
@@ -63,6 +64,7 @@ StartupEvents.registry('item', event => {
     event.create('kubejs:incomplete_echo_mechanism', 'create:sequenced_assembly')//回响构件(半成品)
     event.create('kubejs:incomplete_creative_mechanism', 'create:sequenced_assembly')//创世构件(半成品)
     event.create('kubejs:incomplete_aviation_mechanism', 'create:sequenced_assembly')//航空构件(半成品)
+    event.create('kubejs:incomplete_void_mechanism', 'create:sequenced_assembly')//虚空构件(半成品)
 
     //饰品注册
         //吸金磁
