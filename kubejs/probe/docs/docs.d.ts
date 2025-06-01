@@ -34,7 +34,8 @@ declare const global: {
         mapArrayStringfyReverse(mapArray: Internal.List<{
             dimension: string, 
             pos: {x: number, y: number, z: number}
-        }>): Internal.List<T>
+        }>): Internal.List<T>,
+        frozenSeconds(seconds: number): number
     }
     
     mapArray: {

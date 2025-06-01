@@ -1,4 +1,4 @@
-ForgeEvents.onEvent('net.minecraftforge.event.entity.living.LivingDamageEvent', event => {
+ForgeEvents.onEvent($LivingDamageEvent, /** @param { Internal.LivingDamageEvent } event */ event => {
     
     const { entity, source } = event
 

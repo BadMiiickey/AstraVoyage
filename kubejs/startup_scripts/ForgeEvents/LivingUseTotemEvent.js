@@ -1,4 +1,4 @@
-ForgeEvents.onEvent('net.minecraftforge.event.entity.living.LivingUseTotemEvent', event => {
+ForgeEvents.onEvent($LivingUseTotemEvent, /** @param { Internal.LivingUseTotemEvent } event */ event => {
 
     const { entity, totem } = event
 

@@ -50,7 +50,7 @@ PlayerEvents.tick(event => {
                     && !player.creative
                     && !player.spectator
                 ) {
-                    player.ticksFrozen = 200
+                    player.ticksFrozen = global.methods.frozenSeconds(3)
                 }
             }
         }

@@ -75,7 +75,7 @@ EntityEvents.hurt(event => {
             && actual?.player
         ) {
             if (global.methods.slotResult(actual, 'kubejs:freezing_core')) {
-                entity.ticksFrozen = 200
+                entity.ticksFrozen = global.methods.frozenSeconds(3)
             }
         }
 })

@@ -147,6 +147,14 @@ global.methods = {
             map.pos = new BlockPos(map.pos.x, map.pos.y, map.pos.z)
         })
         return mapArray
+    },
+
+    /**
+     * 
+     * @param { number } seconds 
+     */
+    frozenSeconds(seconds) {
+        return 140 + seconds * 20
     }
 }
 
