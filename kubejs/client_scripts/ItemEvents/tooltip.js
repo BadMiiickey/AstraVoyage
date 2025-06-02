@@ -116,6 +116,19 @@ ItemEvents.tooltip(event => {
                 }
             })
 
+            //惊霆裂爪
+            event.addAdvanced('kubejs:lightning_claw', (item, advanced, text) => {
+                text.add(1, '§6概率召唤雷霆攻击敌人')
+                text.add(2, '§8按住[§7Shift§8]查看概要')
+
+                if (event.shift) {
+                    text.remove(2)
+                    text.add(2, '§8按住[§fShift§8]查看概要')
+                    text.add(4, '§6佩戴至手饰时:')
+                    text.add(5, '       §9+30% 落雷概率')
+                }
+            })
+
         //方块
             //简易工业平台
             event.addAdvanced('kubejs:simple_industrial_platform', (item, advanced, text) => {

@@ -6,10 +6,16 @@ LevelEvents.tick(event => {
     if (global.methods.tickCountCheck(server, 0, 1.5)) {
         
         let livingUndeads = level.entities
-            .filter(entity => global.definitionsArray.undeads.includes(entity.type))
+            .filter(/** @param { Internal.LivingEntity } entity */ entity => 
+                entity.alive
+                && entity.undead
+            )
         let notUndeads = level.entities
-            .filter(entity => !global.definitionsArray.undeads.includes(entity.type))
-            .filter(entity => entity.type != 'dummmmmmy:target_dummy')
+            .filter(/** @param { Internal.LivingEntity } entity */ entity => 
+                entity.alive
+                && !entity.undead
+                && entity.type != 'dummmmmmy:target_dummy'
+            )
 
         livingUndeads.forEach(/** @param { Internal.AmbientCreature } livingUndead */ livingUndead => {
 
@@ -18,7 +24,7 @@ LevelEvents.tick(event => {
                 notUndeads.forEach(notUndead => {
 
                     //检测亡灵生物与活体生物的距离
-                    if (notUndead.distanceToEntity(livingUndead) < 16) {
+                    if (notUndead.distanceToEntity(livingUndead) <= 16) {
                         livingUndead.setTarget(notUndead)
                     }
                 }
@@ -182,7 +188,7 @@ LevelEvents.tick(event => {
                     .filter(entity => entity.type == undead && entity.type != 'minecraft:husk')
 
                 selfBurningUndead.forEach(entity => {
-                    if (global.isUnderSunlight(entity.level, entity.block.down.pos)) {
+                    if (global.methods.isUnderSunlight(entity.level, entity.block.down.pos)) {
                         entity.setSecondsOnFire(3)
                     }
                 })

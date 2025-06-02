@@ -1,7 +1,7 @@
 EntityEvents.hurt(event => {
 
-    const { source, entity, level } = event
-    const { actual, immediate } = source
+    const { source, entity } = event
+    const { actual } = source
 
     if (source.actual != null) {
 
@@ -34,10 +34,12 @@ EntityEvents.hurt(event => {
             && actual?.player
         ) {
             if (Math.random() <= 0.5) {
+
+                let potionEffect = global.definitionsArray.beneficialPotionEffectsArray
+                let length = potionEffect.length
+
                 entity.potionEffects.add(
-                    global.definitionsArray.beneficialPotionEffectsArray[
-                        Math.floor(Math.random() * global.definitionsArray.beneficialPotionEffectsArray.length)
-                    ],
+                    potionEffect[Math.floor(Math.random() * length)],
                     20 * 20,
                     Math.floor(Math.random() * 1.25),
                     false, false
@@ -47,17 +49,15 @@ EntityEvents.hurt(event => {
 
         //非亡灵生物生命值降至阈值获得DeBuff
         if (!entity.player) {
-            global.definitionsArray.undeads.forEach(undead => {
-                if (entity.type == undead) {
-                    if (entity.health <= entity.maxHealth * 0.15) {
-                        entity.potionEffects.add('minecraft:slowness', 20 * 3, 2, false, false)
-                        entity.potionEffects.add('minecraft:weakness', 20 * 3, 2, false, false)
-                    } else if (entity.health <= entity.maxHealth * 0.5) {
-                        entity.potionEffects.add('minecraft:slowness', 20 * 3, 0, false, false)
-                        entity.potionEffects.add('minecraft:weakness', 20 * 3, 0, false, false)
-                    }
+            if (entity.undead) {
+                if (entity.health <= entity.maxHealth * 0.15) {
+                    entity.potionEffects.add('minecraft:slowness', 20 * 3, 2, false, false)
+                    entity.potionEffects.add('minecraft:weakness', 20 * 3, 2, false, false)
+                } else if (entity.health <= entity.maxHealth * 0.5) {
+                    entity.potionEffects.add('minecraft:slowness', 20 * 3, 0, false, false)
+                    entity.potionEffects.add('minecraft:weakness', 20 * 3, 0, false, false)
                 }
-            })
+            }
         }
 
         //持有嗜血效果的敌对生物攻击其他活体生物时获得生命值
@@ -67,7 +67,7 @@ EntityEvents.hurt(event => {
             }    
         }
 
-        //寒霜芯核 => 佩戴时玩, 使被攻击的敌对生物获得冰冻DeBuff
+        //寒霜芯核 => 佩戴时使被攻击的敌对生物获得冰冻DeBuff
         if (
             entity.monster
             && actual?.player
@@ -79,9 +79,25 @@ EntityEvents.hurt(event => {
 
         //恶业之戒 => 佩戴时吸取攻击伤害的10%用于回复生命值
         if (actual?.player) {
-            if (global.methods.slotResult(actual.player, 'kubejs:evil_ring')) {
+            if (global.methods.slotResult(actual, 'kubejs:evil_ring')) {
                 source.player.heal(entity.lastHurt * 0.1)
             }
-        } 
+        }
+
+        //惊霆裂爪 => 佩戴时30%的概率召唤雷霆攻击该生物
+        if (
+            entity.monster
+            && actual?.player
+        ) {
+            if (global.methods.slotResult(actual, 'kubejs:lightning_claw')) {
+                if (Math.random() <= 0.3) {
+                    
+                    let thunder = entity.level.createEntity('minecraft:lightning_bolt')
+
+                    thunder.setPos(entity.block.pos)
+                    thunder.spawn()
+                }
+            }
+        }
     }
 })

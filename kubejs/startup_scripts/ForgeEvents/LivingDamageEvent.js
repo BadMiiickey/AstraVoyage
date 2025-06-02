@@ -38,16 +38,14 @@ ForgeEvents.onEvent($LivingDamageEvent, /** @param { Internal.LivingDamageEvent 
 
     //敌对生物伤害结算
         //亡灵生物着火或在岩浆中伤害加深
-        global.definitionsArray.undeads.forEach(undead => {
-            if (entity.type == undead) {
-                if (
-                    entity.inLava
-                    || entity.onFire
-                ) {
-                    event.amount *= 2                
-                }
+        if (entity.undead) {
+            if (
+                entity.inLava
+                || entity.onFire
+            ) {
+                event.amount *= 2                
             }
-        })
+        }
 
         //敌对生物持有蛀蚀效果时伤害加深
         if (

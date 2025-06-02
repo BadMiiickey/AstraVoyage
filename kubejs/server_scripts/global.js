@@ -161,24 +161,6 @@ global.methods = {
 //全局定义数组
 global.definitionsArray = {
 
-    //亡灵生物
-    undeads: [
-        
-        //Minecraft
-        'minecraft:drowned',
-        'minecraft:husk',
-        'minecraft:phantom',
-        'minecraft:skeleton',
-        'minecraft:stray',
-        'minecraft:vex',
-        'minecraft:zombie',
-        'minecraft:zombie_villager',
-
-        //Quark
-        'quark:forgotten',
-        'quark:wraith',
-    ],
-
     //增益药水效果
     allBeneficialPotionEffectsArray: [
         'minecraft:absorption',
