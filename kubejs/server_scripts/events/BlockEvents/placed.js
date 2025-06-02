@@ -72,6 +72,44 @@ BlockEvents.placed(event => {
             })
         }
 
+        //紫金燃料储罐
+        if (block.id == 'kubejs:ostrum_tank') {
+            global.mapArray.ostrumTanksMapArray.push({
+                dimension: block.dimension,
+                pos: block.pos,
+                hasBuildCorrectly: false,
+                failedMessageHasSent: false,
+                hasBuilt: false,
+                pillarResult: undefined,
+                stairsResult: undefined,
+                slabResult: undefined,
+                railwayResult: undefined,
+                buttonResult: undefined,
+                blockResult: undefined,
+                glassResult: undefined,
+                platingResult: undefined
+            })
+        }
+
+        //耐热金属燃料储罐
+        if (block.id == 'kubejs:calorite_tank') {
+            global.mapArray.caloriteTanksMapArray.push({
+                dimension: block.dimension,
+                pos: block.pos,
+                hasBuildCorrectly: false,
+                failedMessageHasSent: false,
+                hasBuilt: false,
+                pillarResult: undefined,
+                stairsResult: undefined,
+                slabResult: undefined,
+                railwayResult: undefined,
+                buttonResult: undefined,
+                blockResult: undefined,
+                glassResult: undefined,
+                platingResult: undefined
+            })
+        }
+
     //营火
     if (block.id == 'minecraft:campfire') {
         global.mapArray.campfiresMapArray.push({
