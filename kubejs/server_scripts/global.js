@@ -163,6 +163,7 @@ global.definitionsArray = {
 
     //亡灵生物
     undeads: [
+        
         //Minecraft
         'minecraft:drowned',
         'minecraft:husk',

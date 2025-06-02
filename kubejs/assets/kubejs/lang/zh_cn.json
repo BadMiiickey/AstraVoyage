@@ -351,6 +351,7 @@
   "block.kubejs.desh_tank": "戴斯燃料储罐",
   "block.kubejs.ostrum_tank": "紫金燃料储罐",
   "block.kubejs.calorite_tank": "耐热金属燃料储罐",
+  "block.kubejs.washed_scoria": "水洗熔渣",
 
   "block.kubejs.aluminate_solution": "铝酸盐溶液",
   "block.kubejs.nuclear_waste": "核废水",
@@ -370,7 +371,7 @@
   "item.kubejs.crushed_raw_ostrum": "粉碎紫金矿石",
   "item.kubejs.crushed_raw_calorite": "粉碎耐热金属矿石",
   "item.kubejs.crushed_bauxite": "粉碎铝土矿石",
-  "item.kubejs.raw_aluminum": "粗铝",
+  "item.kubejs.raw_bauxite": "粗铝土",
   "item.kubejs.aluminum_hydroxide": "氢氧化铝",
   "item.kubejs.alumina": "氧化铝",
   "item.kubejs.aluminum_ingot": "铝锭",
@@ -429,15 +430,17 @@
   "item.kubejs.incomplete_aviation_mechanism": "§3航空构件(半成品)",
   "item.kubejs.incomplete_void_mechanism": "§8虚空构件(半成品)",
 
-  "block.kubejs.luminous_pearl": "§5流光水晶",
-  "item.kubejs.magnet": "§e万能磁体",
-  "item.kubejs.freezing_core": "§b冷冻核心",
-  "item.kubejs.memory_bracelet": "§a记忆手链",
+  "block.kubejs.luminous_pearl": "§5月华流晶",
+  "item.kubejs.magnet": "§e磁引衡轮",
+  "item.kubejs.freezing_core": "§b寒霜芯核",
+  "item.kubejs.memory_bracelet": "§a慧泽丝链",
   "item.kubejs.echo_crystal_nucleus": "§9回响晶核",
-  "item.kubejs.phantom_glove": "§7§k虚无手套",
+  "item.kubejs.phantom_glove": "§7幻虚手衣",
+  "item.kubejs.evil_ring": "§c血恶环戒",
+  "item.kubejs.light_crystal": "§e曦光缀玉",
 
   "effect.kubejs.bloodthirsty": "嗜血",
   "effect.kubejs.corrosion": "蛀蚀",
 
-  "key.memoryBraceletMode": "切换记忆手链模式"
+  "key.memoryBraceletMode": "切换慧泽丝链模式"
 }

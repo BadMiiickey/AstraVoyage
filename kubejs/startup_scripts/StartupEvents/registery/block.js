@@ -72,7 +72,7 @@ StartupEvents.registry('block', event => {
         .tagBlock('minecraft:needs_netherite_tool')
         .stoneSoundType()
 
-    //流光水晶
+    //月华流晶
     event.create('kubejs:luminous_pearl', 'basic')
         .waterlogged()
         .fullBlock(false)
@@ -123,4 +123,11 @@ StartupEvents.registry('block', event => {
         .tagBlock('minecraft:needs_iron_tool')
         .tagBlock('create:wrench_pickup')
         .stoneSoundType()
+
+    //水洗熔渣
+    event.create('kubejs:washed_scoria', 'basic')
+        .hardness(1.0)
+        .requiresTool(true)
+        .tagBlock('minecraft:mineble/shovel')
+        .sandSoundType()
 })

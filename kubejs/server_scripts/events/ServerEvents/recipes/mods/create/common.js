@@ -75,7 +75,7 @@ ServerEvents.recipes(event => {
         [
             'minecraft:iron_ingot',
             'createnuclear:coal_dust'
-        ]
+        ],
     )
     .superheated()
     .id('kubejs:mixing_steel_ingot')//钢锭
@@ -254,6 +254,14 @@ ServerEvents.recipes(event => {
             'kubejs:acid_silicon'
         ).id('kubejs:splashing_silicon')//硅
 
+        create.splashing(
+            [
+                'kubejs:washed_scoria',
+                Item.of('kubejs:washed_scoria', 1).withChance(0.75),
+            ],
+            'create:scoria'
+        ).id('kubejs:splashing_washed_scoria')//水洗熔渣
+
     //注液器
     create.filling(
         'homeostatic:purified_water_bottle',
@@ -362,7 +370,7 @@ ServerEvents.recipes(event => {
             [
                 'kubejs:bauxite_ore',
                 'kubejs:deepslate_bauxite_ore',
-                'kubejs:raw_aluminum'
+                'kubejs:raw_bauxite'
             ],
             'minecraft:cobblestone'
         )

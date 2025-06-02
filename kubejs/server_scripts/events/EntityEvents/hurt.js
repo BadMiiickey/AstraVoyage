@@ -8,10 +8,8 @@ EntityEvents.hurt(event => {
         //玩家受伤事件
         if (entity.player) {
             
-            //检测是否佩戴冷冻核心
+            //寒霜芯核 => 佩戴时免疫灼烧
             if (global.methods.slotResult(entity, 'kubejs:freezing_core')) {
-
-                //玩家佩戴冷冻核心时免疫灼烧
                 if (source.type().msgId() == 'inFire' || 'onFire') {
                     event.cancel()
                 }
@@ -69,7 +67,7 @@ EntityEvents.hurt(event => {
             }    
         }
 
-        //受到佩戴有冷冻核心的玩家攻击时获得冰冻DeBuff
+        //寒霜芯核 => 佩戴时玩, 使被攻击的敌对生物获得冰冻DeBuff
         if (
             entity.monster
             && actual?.player
@@ -78,5 +76,12 @@ EntityEvents.hurt(event => {
                 entity.ticksFrozen = global.methods.frozenSeconds(3)
             }
         }
+
+        //恶业之戒 => 佩戴时吸取攻击伤害的10%用于回复生命值
+        if (actual?.player) {
+            if (global.methods.slotResult(actual.player, 'kubejs:evil_ring')) {
+                source.player.heal(entity.lastHurt * 0.1)
+            }
+        } 
     }
 })

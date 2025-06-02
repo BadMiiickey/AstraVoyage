@@ -8,7 +8,7 @@ ItemEvents.tooltip(event => {
 
     //kubejs
         //饰品
-            //吸金磁
+            //磁引衡轮
             event.addAdvanced('kubejs:magnet', (item, advanced, text) => {
                 text.add(1, '§6吸引一定范围内的物品')
                 text.add(2, '§8按住[§7Shift§8]查看概要')
@@ -21,7 +21,7 @@ ItemEvents.tooltip(event => {
                 }
             })
 
-            //夜明珠
+            //月华流晶
             event.addAdvanced('kubejs:luminous_pearl', (item, advanced, text) => {
                 text.add(1, '§6免疫黑暗环境带来的负面状态且可作为动态光源')
                 text.add(2, '§8按住[§7Shift§8]查看概要')
@@ -34,7 +34,7 @@ ItemEvents.tooltip(event => {
                 }
             })
 
-            //冷冻核心
+            //寒霜芯核
             event.addAdvanced('kubejs:freezing_core', (item, advanced, text) => {
                 text.add(1, '§6免疫灼烧, 对攻击的敌对生物施加冷冻效果')
                 text.add(2, '§6自身未穿戴具有保暖效果的装备亦会被冷冻')
@@ -49,7 +49,7 @@ ItemEvents.tooltip(event => {
                 }
             })
 
-            //记忆手链
+            //慧泽丝链
             event.addAdvanced('kubejs:memory_bracelet', (item, advanced, text) => {
                 text.add(1, '§6存储经验以提升伤害, 按住§8[§7Shift+右键§8]§6存储经验')
                 text.add(2, '§8按住[§7Shift§8]查看概要')
@@ -80,33 +80,40 @@ ItemEvents.tooltip(event => {
                 }
             })
 
-            //守护之盾
-            event.addAdvanced('kubejs:guardian_shield', (item, advanced, text) => {
-                text.add(1, '§6可吸收爆炸和箭矢伤害并转化为能量')
-                text.add(2, '§6当能量到达一定值时, 可抵消一次致命伤害')
-
-                if (item.nbt?.Energy != undefined) {
-                    text.add(3, '§8按住[§7Shift§8]查看概要')
-
-                    if (event.shift) {
-                        text.remove(3)
-                        text.add(3, '§8按住[§fShift§8]查看概要')
-                        text.add(4, '§7当前存储能量:')
-                        text.add(5, `       ⚡§9${ item.nbt?.Energy } §6FE`)
-                        text.add(6, '§7能量存储上限: ⚡§996000 §6FE')
-                    }
-                }
-            })
-
             //回响晶核
             event.addAdvanced('kubejs:echo_crystal_nucleus', (item, advanced, text) => {
                 text.add(1, '§6探测周遭环境, 激活小地图和生物雷达')
             })
 
-            //虚化手套
+            //幻虚手衣
             event.addAdvanced('kubejs:phantom_glove', (item, advanced, text) => {
                 text.add(1, '§6给予凡人接触创世的力量')
                 text.add(2, '§c但……代价是什么呢?')
+            })
+
+            //血恶环戒
+            event.addAdvanced('kubejs:evil_ring', (item, advanced, text) => {
+                text.add(1, '§8按住[§7Shift§8]查看概要')
+
+                if (event.shift) {
+                    text.remove(1)
+                    text.add(1, '§8按住[§fShift§8]查看概要')
+                    text.add(3, '§6佩戴至戒指时:')
+                    text.add(4, '       §9+10% 生命窃取')
+                }
+            })
+
+            //曦光缀玉
+            event.addAdvanced('kubejs:light_crystal', (item, advanced, text) => {
+                text.add(1, '§6在光下修复装备')
+                text.add(2, '§8按住[§7Shift§8]查看概要')
+
+                if (event.shift) {
+                    text.remove(2)
+                    text.add(2, '§8按住[§fShift§8]查看概要')
+                    text.add(4, '§6佩戴至护符时:')
+                    text.add(5, '       §9每3s修复1点耐久')
+                }
             })
 
         //方块

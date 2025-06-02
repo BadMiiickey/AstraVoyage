@@ -295,15 +295,15 @@ ServerEvents.recipes(event => {
         .id('kubejs:vein_raw_cobalt')
 
     //粗铝矿脉
-    createoreexcavation.vein('§7§l粗铝矿脉', 'kubejs:raw_aluminum')
+    createoreexcavation.vein('§7§l粗铝土矿脉', 'kubejs:raw_bauxite')
     .placement(256, 16, 2101953)
         .biomeWhitelist('minecraft:is_overworld')
         .priority(32)
-        .id('kubejs:raw_aluminum_vein')
-    createoreexcavation.drilling('kubejs:raw_aluminum', 'kubejs:raw_aluminum_vein', 20)
+        .id('kubejs:raw_bauxite_vein')
+    createoreexcavation.drilling('kubejs:raw_bauxite', 'kubejs:raw_bauxite_vein', 20)
         .stress(64)
         .fluid(Fluid.of('minecraft:water', 20))
-        .id('kubejs:vein_raw_aluminum')
+        .id('kubejs:vein_raw_bauxite')
 
     //寒冰碎片矿脉
     createoreexcavation.vein('§b§l寒冰碎片矿脉', 'ad_astra:ice_shard')
