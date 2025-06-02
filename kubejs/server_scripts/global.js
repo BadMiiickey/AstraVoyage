@@ -300,6 +300,21 @@ global.mapArray = {}
     if (!global.mapArray.steelTanksMapArray) {
         global.mapArray.steelTanksMapArray = []
     }
+    
+    //戴斯燃料储罐
+    if (!global.mapArray.deshTanksMapArray) {
+        global.mapArray.deshTanksMapArray = []
+    }
+
+    //紫金燃料储罐
+    if (!global.mapArray.ostrumTanksMapArray) {
+        global.mapArray.ostrumTanksMapArray = []
+    }
+
+    //耐热金属燃料储罐
+    if (!global.mapArray.caloriteTanksMapArray) {
+        global.mapArray.caloriteTanksMapArray = []
+    }
 
 //其他全局属性
 global.other = {}

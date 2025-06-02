@@ -79,4 +79,42 @@ BlockEvents.broken(event => {
                     && deshTank.stairsResult != undefined
                 )
         }
+
+        //紫金燃料储罐
+        if (block.id == "kubejs:ostrum_tank") {
+            global.mapArray.ostrumTanksMapArray = global.mapArray.ostrumTanksMapArray
+                .filter(ostrumTank => 
+                    ostrumTank.dimension != block.dimension
+                    && ostrumTank.pos != block.pos
+                    && ostrumTank.hasBuildCorrectly != undefined
+                    && ostrumTank.failedMessageHasSent != undefined
+                    && ostrumTank.blockResult != undefined
+                    && ostrumTank.buttonResult != undefined
+                    && ostrumTank.glassResult != undefined
+                    && ostrumTank.pillarResult != undefined
+                    && ostrumTank.platingResult != undefined
+                    && ostrumTank.railwayResult != undefined
+                    && ostrumTank.slabResult != undefined
+                    && ostrumTank.stairsResult != undefined
+                )
+        }
+
+        //耐热金属燃料储罐
+        if (block.id == "kubejs:calorite_tank") {
+            global.mapArray.caloriteTanksMapArray = global.mapArray.caloriteTanksMapArray
+                .filter(caloriteTank => 
+                    caloriteTank.dimension != block.dimension
+                    && caloriteTank.pos != block.pos
+                    && caloriteTank.hasBuildCorrectly != undefined
+                    && caloriteTank.failedMessageHasSent != undefined
+                    && caloriteTank.blockResult != undefined
+                    && caloriteTank.buttonResult != undefined
+                    && caloriteTank.glassResult != undefined
+                    && caloriteTank.pillarResult != undefined
+                    && caloriteTank.platingResult != undefined
+                    && caloriteTank.railwayResult != undefined
+                    && caloriteTank.slabResult != undefined
+                    && caloriteTank.stairsResult != undefined
+                )
+        }
 })

@@ -52,4 +52,16 @@ PlayerEvents.loggedIn(event => {
             global.mapArray.deshTanksMapArray.push(deshTank)
         })
         player.persistentData.remove('deshTanksMapArray')
+
+        //紫金燃料储罐
+        global.methods.mapArrayStringfyReverse(player.persistentData.ostrumTanksMapArray).forEach(ostrumTank => {
+            global.mapArray.ostrumTanksMapArray.push(ostrumTank)
+        })
+        player.persistentData.remove('ostrumTanksMapArray')
+
+        //耐热金属燃料储罐
+        global.methods.mapArrayStringfyReverse(player.persistentData.caloriteTanksMapArray).forEach(caloriteTank => {
+            global.mapArray.caloriteTanksMapArray.push(caloriteTank)
+        })
+        player.persistentData.remove('caloriteTanksMapArray')
 })
