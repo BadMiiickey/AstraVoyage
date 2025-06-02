@@ -97,7 +97,7 @@ StartupEvents.registry('item', event => {
             .unstackable()
             .tag('curios:ring')
 
-        //曦光流玉
+        //曦光缀玉
         event.create('kubejs:light_crystal', 'basic')
             .unstackable()
             .tag('curios:charm')
