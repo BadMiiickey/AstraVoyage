@@ -1,9 +1,6 @@
-ForgeEvents.onEvent('net.minecraftforge.event.entity.living.LivingDamageEvent', event => {
+ForgeEvents.onEvent($LivingDamageEvent, /** @param { Internal.LivingDamageEvent } event */ event => {
     
     const { entity, source } = event
-
-    var $CuriosApi = Java.loadClass('top.theillusivec4.curios.api.CuriosApi')
-    var $LivingEntity = Java.loadClass('net.minecraft.world.entity.LivingEntity')
 
     if (source == null) return
 

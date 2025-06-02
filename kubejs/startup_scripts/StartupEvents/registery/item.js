@@ -5,7 +5,7 @@ StartupEvents.registry('item', event => {
     event.create('kubejs:crushed_raw_ostrum', 'basic')//粉碎紫金矿石
     event.create('kubejs:crushed_raw_calorite', 'basic')//粉碎耐热金属矿石
     event.create('kubejs:crushed_bauxite', 'basic')//粉碎铝土矿石
-    event.create('kubejs:raw_aluminum', 'basic')//粗铝
+    event.create('kubejs:raw_bauxite', 'basic')//粗铝土
     event.create('kubejs:aluminum_hydroxide', 'basic')//氢氧化铝
     event.create('kubejs:alumina', 'basic')//氧化铝
     event.create('kubejs:aluminum_ingot', 'basic')//铝锭
@@ -53,9 +53,9 @@ StartupEvents.registry('item', event => {
     event.create('kubejs:echo_mechanism', 'basic')//回响构件
     event.create('kubejs:creative_mechanism', 'basic')//创世构件
     event.create('kubejs:aviation_mechanism', 'basic')//航空构件
+    event.create('kubejs:void_mechanism', 'basic')//虚空构件
 
     //半成品注册
-    event.create('kubejs:incomplete_guardian_shield', 'create:sequenced_assembly')//守护之盾(半成品)
     event.create('kubejs:incomplete_silicon', 'create:sequenced_assembly')//硅(半成品)
     event.create('kubejs:incomplete_electronic_mechanism', 'create:sequenced_assembly')//电力构件(半成品)
     event.create('kubejs:incomplete_rock_core_mechanism', 'create:sequenced_assembly')//岩核构件(半成品)
@@ -63,67 +63,42 @@ StartupEvents.registry('item', event => {
     event.create('kubejs:incomplete_echo_mechanism', 'create:sequenced_assembly')//回响构件(半成品)
     event.create('kubejs:incomplete_creative_mechanism', 'create:sequenced_assembly')//创世构件(半成品)
     event.create('kubejs:incomplete_aviation_mechanism', 'create:sequenced_assembly')//航空构件(半成品)
+    event.create('kubejs:incomplete_void_mechanism', 'create:sequenced_assembly')//虚空构件(半成品)
 
     //饰品注册
-        //吸金磁
+        //磁引衡轮
         event.create('kubejs:magnet', 'basic')
             .unstackable()
             .tag('curios:belt')
 
-        //冷冻核心
+        //寒霜芯核
         event.create('kubejs:freezing_core', 'basic')
             .unstackable()
             .tag('curios:body')
             
-        //记忆手链
+        //慧泽丝链
         event.create('kubejs:memory_bracelet', 'basic')
             .unstackable()
             .tag('curios:bracelet')
-
-        //守护之盾
-        event.create('kubejs:guardian_shield', 'basic')
-            .unstackable()
-            .attachCapability(
-                CapabilityBuilder.ENERGY.customItemStack()
-                    .canExtract(item => true)
-                    .canReceive(item => true)
-                    .extractEnergy((item, energyCount, simulateBoolean) => {
-                        if (item.nbt?.Energy == undefined) return
-
-                        /** @type { number } */
-                        let energy = item.nbt.Energy
-
-                        if (!simulateBoolean) {
-                            energy = Math.min(96000, energy - 200)
-                        }
-
-                        return 200
-                    })
-                    .receiveEnergy((item, energyCount, simulateBoolean) => {
-                        if (item.nbt?.Energy == undefined) return
-
-                        /** @type { number } */
-                        let energy = item.nbt.Energy
-
-                        if (!simulateBoolean) {
-                            energy = Math.min(96000, energy + 200)
-                        }
-
-                        return 200
-                    })
-                    .getEnergyStored(item => item.nbt.Energy)
-                    .getMaxEnergyStored(item => item.nbt.MaxEnergy)
-            )
-            .tag('curios:charm')
 
         //回响晶核
         event.create('kubejs:echo_crystal_nucleus', 'basic')
             .unstackable()
             .tag('curios:charm')
 
-        //虚化手套
+        //幻虚手衣
         event.create('kubejs:phantom_glove', 'basic')
             .unstackable()
             .fireResistant()
             .tag('curios:hands')
+
+        //血恶环戒
+        event.create('kubejs:evil_ring', 'basic')
+            .unstackable()
+            .tag('curios:ring')
+
+        //曦光流玉
+        event.create('kubejs:light_crystal', 'basic')
+            .unstackable()
+            .tag('curios:charm')
 })

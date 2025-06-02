@@ -1,6 +1,6 @@
 BlockEvents.broken(event => {
 
-    const { block } = event
+    const { block, player } = event
 
     //移除全局方块Map中已不存在的方块信息
         //工作盆
@@ -30,8 +30,28 @@ BlockEvents.broken(event => {
                     && launchPad.hasBuildCorrectly != undefined
                     && launchPad.failedMessageHasSent != undefined
                     && launchPad.hasExploded != undefined
+                    && andesiteAlloyBlockResult != undefined
+                    && andesiteScaffoldingResult != undefined
+                    && encasedFluidPipeResult != undefined
+                    && fluidPipeResult != undefined
+                    && mechanicalPumpResult != undefined
+                    && railwayCasingResult != undefined
+                    && airResult != undefined
+                    && industrialIronBlockResult != undefined
                 )
+
+            //修复创造模式破坏掉落物增加的bug
+            if (player.creative) {
+                for (let i = -1; i <= 1; i++) {
+                    for (let j = -1; j <= 1; j++) {
+                        block.offset(i, 0, j).set('minecraft:air')
+                    }
+                }
+
+                event.cancel()
+            }
         }
+                
         
         //简易工业平台
         if (block.id == 'kubejs:simple_industrial_platform') {
@@ -50,6 +70,7 @@ BlockEvents.broken(event => {
                     && steelTank.pos != block.pos
                     && steelTank.hasBuildCorrectly != undefined
                     && steelTank.failedMessageHasSent != undefined
+                    && steelTank.hasBuilt != undefined
                     && steelTank.blockResult != undefined
                     && steelTank.buttonResult != undefined
                     && steelTank.glassResult != undefined
@@ -69,6 +90,7 @@ BlockEvents.broken(event => {
                     && deshTank.pos != block.pos
                     && deshTank.hasBuildCorrectly != undefined
                     && deshTank.failedMessageHasSent != undefined
+                    && deshTank.hasBuilt != undefined
                     && deshTank.blockResult != undefined
                     && deshTank.buttonResult != undefined
                     && deshTank.glassResult != undefined

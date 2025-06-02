@@ -18,7 +18,15 @@ BlockEvents.placed(event => {
                 pos: block.pos,
                 hasBuildCorrectly: false,
                 failedMessageHasSent: false,
-                hasExploded: false
+                hasExploded: false,
+                andesiteAlloyBlockResult: 0,
+                andesiteScaffoldingResult: 0,
+                encasedFluidPipeResult: 0,
+                fluidPipeResult: 0,
+                mechanicalPumpResult: 0,
+                railwayCasingResult: 0,
+                airResult: 0,
+                industrialIronBlockResult: 0
             })
         }
 
@@ -30,15 +38,15 @@ BlockEvents.placed(event => {
                 hasBuildCorrectly: false,
                 failedMessageHasSent: false,
                 hasBuilt: false,
-                pillarResult: undefined,
-                stairsResult: undefined,
-                slabResult: undefined,
-                railwayResult: undefined,
-                buttonResult: undefined,
-                blockResult: undefined,
-                glassResult: undefined,
-                platingResult: undefined,
-                lightningRodResult: undefined
+                pillarResult: 0,
+                stairsResult: 0,
+                slabResult: 0,
+                railwayResult: 0,
+                buttonResult: 0,
+                blockResult: 0,
+                glassResult: 0,
+                platingResult: 0,
+                lightningRodResult: 0
             })
         }
 
@@ -50,16 +58,17 @@ BlockEvents.placed(event => {
                 hasBuildCorrectly: false,
                 failedMessageHasSent: false,
                 hasBuilt: false,
-                pillarResult: undefined,
-                deshSlabResult: undefined,
-                slabResult: undefined,
-                stairsResult: undefined,
-                deshStairsResult: undefined,
-                glowingPillarResult: undefined,
-                blockResult: undefined,
-                glassResult: undefined,
-                platingResult: undefined,
-                lightningRodResult: undefined
+                hasPainted: false,
+                pillarResult: 0,
+                deshSlabResult: 0,
+                slabResult: 0,
+                stairsResult: 0,
+                deshStairsResult: 0,
+                glowingPillarResult: 0,
+                blockResult: 0,
+                glassResult: 0,
+                platingResult: 0,
+                lightningRodResult: 0
             })
         }
 

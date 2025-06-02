@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "kubejs:block/desh_tank_end",
+    "side": "kubejs:block/desh_tank_side"
+  }
+}

@@ -5,7 +5,7 @@ Ponder.registry(event => {
 
             //显示地板
             scene.showBasePlate()
-            scene.scaleSceneView(0.9)
+            scene.scaleSceneView(0.5)
             scene.idle(10)
 
             //显示火箭支撑脚
@@ -159,7 +159,7 @@ Ponder.registry(event => {
 
             ///火箭主体
             scene.showBasePlate()
-            scene.scaleSceneView(0.9)
+            scene.scaleSceneView(0.5)
 
             for (let dx of [-2, 0, 2]) {
                 for (let dz of [-2, 0, 2]) {
@@ -542,7 +542,7 @@ Ponder.registry(event => {
                 state.with('facing', 'up')
                 , false)
 
-            scene.showControls(20 * 2, [5, 5, 4], "DOWN")
+            scene.showControls(20 * 2, [5, 5, 4], 'DOWN')
                 .rightClick()
                 .withWrench()
 
@@ -551,19 +551,19 @@ Ponder.registry(event => {
             scene.world.hideSection([2, 1, 2, 9, 14, 9], Direction.UP)
             scene.world.setBlocks([2, 1, 2, 9, 14, 9], 'minecraft:air', true)
             
-            let Entity = scene.world.createEntity("ad_astra:tier_2_rocket", [6, 1, 6])
+            let rocket_2 = scene.world.createEntity('ad_astra:tier_2_rocket', [6, 1, 6])
 
             scene.idle(20 * 3)
-            scene.showControls(20 * 2, [6, 2, 6], "DOWN")
+            scene.showControls(20 * 2, [6, 2, 6], 'DOWN')
                 .leftClick()
             scene.idle(20 * 2)
 
-            let itemEntity = scene.world.createItemEntity([6, 1, 6], [0, 0, 0], "ad_astra:tier_2_rocket")
+            let itemEntity = scene.world.createItemEntity([6, 1, 6], [0, 0, 0], 'ad_astra:tier_2_rocket')
 
             scene.world.modifyEntity(itemEntity, entity => {
                 entity.setNoGravity(true)
             })
 
-            scene.world.removeEntity(Entity)
+            scene.world.removeEntity(rocket_2)
         })
 })

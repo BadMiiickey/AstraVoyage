@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "kubejs:block/calorite_tank_end",
+    "side": "kubejs:block/calorite_tank_side"
+  }
+}

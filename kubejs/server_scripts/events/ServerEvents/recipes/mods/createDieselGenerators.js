@@ -12,5 +12,5 @@ ServerEvents.recipes(event => {
         Fluid.of('createdieselgenerators:crude_oil', 100),
         20,
         'heated'
-    ).id('kubejs:distillation_diesel_gasoline_fuel')//原油分馏
+    ).id('kubejs:distillation_diesel_gasoline_fuel')//原油
 })

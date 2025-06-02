@@ -1,8 +1,4 @@
 //priority: 999999
-var $CuriosApi = Java.loadClass('top.theillusivec4.curios.api.CuriosApi')
-
-const curiosHelper = $CuriosApi.getCuriosHelper()
-
 //全局函数
 global.methods = {
 
@@ -62,19 +58,18 @@ global.methods = {
      * @param { Internal.ItemStack_ } item 
      */
     slotResult(player, item) {
-        
+
+        let curiosHelper = $CuriosApi.getCuriosHelper()
+
         /** @type { Internal.List<Internal.SlotResult> } */
         let slotResult = curiosHelper[
             'findCurios(net.minecraft.world.entity.LivingEntity,net.minecraft.world.item.Item)'
         ](player, item)
+
         /** @type { boolean } */
         let checkBoolean
         
-        if (slotResult.length >= 1) {
-            checkBoolean = true
-        } else {
-            checkBoolean = false
-        }
+        checkBoolean = slotResult.length >= 1 ? true : false
 
         return checkBoolean
     },
@@ -152,6 +147,14 @@ global.methods = {
             map.pos = new BlockPos(map.pos.x, map.pos.y, map.pos.z)
         })
         return mapArray
+    },
+
+    /**
+     * 
+     * @param { number } seconds 
+     */
+    frozenSeconds(seconds) {
+        return 140 + seconds * 20
     }
 }
 
@@ -160,6 +163,7 @@ global.definitionsArray = {
 
     //亡灵生物
     undeads: [
+        
         //Minecraft
         'minecraft:drowned',
         'minecraft:husk',
@@ -173,17 +177,6 @@ global.definitionsArray = {
         //Quark
         'quark:forgotten',
         'quark:wraith',
-        
-        //The_Graveyard
-        'graveyard:skeleton_creeper',
-        'graveyard:acolyte',
-        'graveyard:ghoul',
-        'graveyard:reaper',
-        'graveyard:revenant',
-        'graveyard:nightmare',
-        'graveyard:corrupted_vindicator',
-        'graveyard:corrupted_pillager',
-        'graveyard:wraith'
     ],
 
     //增益药水效果
@@ -315,6 +308,61 @@ global.mapArray = {}
     if (!global.mapArray.caloriteTanksMapArray) {
         global.mapArray.caloriteTanksMapArray = []
     }
+
+    //戴斯燃料储罐
+    if (!global.mapArray.deshTanksMapArray) {
+        global.mapArray.deshTanksMapArray = []
+    }
+
+    //紫金燃料储罐
+    if (!global.mapArray.ostrumTanksMapArray) {
+        global.mapArray.ostrumTanksMapArray = []
+    }
+
+    //耐热金属燃料储罐
+    if (!global.mapArray.calorieTanksMapArray) {
+        global.mapArray.calorieTanksMapArray = []
+    }
+
+//全局Config
+global.config = {
+    launchPadsResult: {
+        andesiteAlloyBlockResult: { name: '安山合金块', target: 8 },
+        andesiteScaffoldingResult: { name: '安山脚手架', target: 8 },
+        encasedFluidPipeResult: { name: '流体管道箱', target: 12 },
+        fluidPipeResult: { name: '流体管道', target: 32 },
+        mechanicalPumpResult: { name: '动力泵', target: 12 },
+        railwayCasingResult: { name: '列车机壳', target: 52 },
+        airResult: { name: '空气', target: 36 },
+        industrialIronBlockResult: { name: '工业铁块', target: 177 }
+    },
+
+    steelTanksResult: {
+        pillarResult: { name: '钢柱', target: 43 },
+        stairsResult: { name: '钢板楼梯', target: 16 },
+        slabResult: { name: '钢板台阶', target: 4 },
+        railwayResult: { name: '列车机壳', target: 6 },
+        buttonResult: { name: '钢板按钮', target: 2 },
+        blockResult: { name: '钢块', target: 18 },
+        glassResult: { name: '强化玻璃', target: 2 },
+        platingResult: { name: '钢板方块', target: 8 },
+        lightningRodResult: { name: '避雷针', target: 1 }
+    },
+
+    deshTanksResult: {
+        pillarResult: { name: '钢柱', target: 43 },
+        slabResult: { name: '钢板台阶', target: 4 },
+        deshSlabResult: { name: '戴斯板台阶', target: 4 },
+        stairsResult: { name: '钢板楼梯', target: 8 },
+        deshStairsResult: { name: '戴斯板楼梯', target: 4 },
+        blockResult: { name: '钢块', target: 4 },
+        glowingPillarResult: { name: '发光戴斯柱', target: 4 },
+        deshBlockResult: { name: '戴斯块', target: 18 },
+        glassResult: { name: '强化玻璃', target: 2 },
+        platingResult: { name: '钢板方块', target: 24 },
+        lightningRodResult: { name: '避雷针', target: 1 },
+    }
+}
 
 //其他全局属性
 global.other = {}

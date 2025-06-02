@@ -147,20 +147,6 @@ ServerEvents.recipes(event => {
         }
     }
 
-        //暗铁
-        smeltryCompatibility.materialMelting('graveyard', 'dark_iron')
-
-        smeltryCompatibility.commonMelting(
-            'kubejs:molten_dark_iron',
-            [
-                ['graveyard:dark_iron_ingot', 90, 18.75],
-                ['graveyard:dark_iron_block', 810, 56.25]
-            ],
-            800
-        )
-
-        smeltryCompatibility.componentMelting('kubejs:molten_dark_iron', 'kubejs:dark_iron', 2.75, 800)
-
         //戴斯
         smeltryCompatibility.materialMelting('ad_astra', 'desh')
 
@@ -496,18 +482,6 @@ ServerEvents.recipes(event => {
             })
         }
     }
-
-        //暗铁
-        castingCompatibility.commonCasting(
-            'graveyard:dark_iron',
-            'kubejs:molten_dark_iron'
-        )
-
-        castingCompatibility.componentsCasting(
-            'kubejs:dark_iron',
-            'kubejs:molten_dark_iron',
-            800
-        )
 
         //戴斯
         castingCompatibility.commonCasting(

@@ -9,6 +9,7 @@ StartupEvents.modifyCreativeTab('ad_astra:main', event => {
     event.remove('ad_astra:water_pump')
     event.remove('ad_astra:cheese')
     event.remove('ad_astra:cheese_block')
+    event.remove('ad_astra:wrench')
 
     global.methods.itemsRemoveArray(
         'ad_astra',
@@ -39,10 +40,20 @@ StartupEvents.modifyCreativeTab('ad_astra:main', event => {
 StartupEvents.modifyCreativeTab('create:base', event => {
 
     event.remove('create:potato_cannon')
+    event.remove('create:copper_diving_helmet')
+    event.remove('create:copper_diving_boots')
+    event.remove('create:netherite_diving_helmet')
+    event.remove('create:netherite_diving_boots')
 
     event.add('create:chromatic_compound')
     event.add('create:refined_radiance')
     event.add('create:shadow_steel')
+})
+
+//createadditions
+StartupEvents.modifyCreativeTab('createaddition:main', event => {
+
+    event.remove('createaddition:tesla_coil')
 })
 
 //createnuclear:main
@@ -66,10 +77,24 @@ StartupEvents.modifyCreativeTab('createsifter:main', event => {
     event.remove('createsifter:crushed_end_stone')
 })
 
+//create_mechanical_chicken:main
+StartupEvents.modifyCreativeTab('create_mechanical_chicken:main', event => {
+
+    event.remove('create_mechanical_chicken:seed_oil_bucket')
+    event.remove('create_mechanical_chicken:seed_oil')
+})
+
+StartupEvents.modifyCreativeTab('createutilities:base', event => {
+
+    event.remove('createutilities:void_chest')
+})
+
 //homeostatic:items
 StartupEvents.modifyCreativeTab('homeostatic:items', event => {
 
     event.remove('homeostatic:water_filter')
+    event.remove('homeostatic:book')
+    event.remove('homeostatic:thermometer')
 }) 
 
 //kubejs:tab
@@ -78,15 +103,7 @@ StartupEvents.modifyCreativeTab('kubejs:tab', event => {
     event.setIcon('kubejs:earth_coin')
     event.setDisplayName('AstraVoyage')
 
-    event.remove('kubejs:incomplete_guardian_shield')
-    event.remove('kubejs:incomplete_silicon')
-    event.remove('kubejs:incomplete_sculk_sensor')
-    event.remove('kubejs:incomplete_electronic_mechanism')
-    event.remove('kubejs:incomplete_rock_core_mechanism')
-    event.remove('kubejs:incomplete_dense_planet_core_mechanism')
-    event.remove('kubejs:incomplete_echo_mechanism')
-    event.remove('kubejs:incomplete_creative_mechanism')
-    event.remove('kubejs:incomplete_aviation_mechanism')
+    event.remove(/kubejs:incomplete_.*/)
 })
 
 //minecraft    
@@ -158,6 +175,10 @@ StartupEvents.modifyCreativeTab('kubejs:tab', event => {
     //minecraft:tools_and_utilities
     StartupEvents.modifyCreativeTab('minecraft:tools_and_utilities', event => {
 
+        event.remove('homeostatic:water_filter')
+        event.remove('homeostatic:book')
+        event.remove('homeostatic:thermometer')
+
         global.methods.itemsRemoveArray(
             'minecraft',
             ['wooden', 'stone', 'iron', 'golden', 'diamond', 'netherite'],
@@ -166,7 +187,6 @@ StartupEvents.modifyCreativeTab('kubejs:tab', event => {
             event.remove(item)
         })
 
-        event.remove('homeostatic:water_filter')
     })
 
 //refinedstorage:general
@@ -201,7 +221,13 @@ StartupEvents.modifyCreativeTab('sophisticatedbackpacks:main', event => {
 
 //tconstruct:fluids
 StartupEvents.modifyCreativeTab('tconstruct:fluids', event => {
-
+    
     event.remove('tconstruct:potion_bucket')
     event.remove('tconstruct:honey_bucket')
+})
+
+//tconstruct:general
+StartupEvents.modifyCreativeTab('tconstruct:general', event => {
+
+    event.remove('tconstruct:copper_nugget')
 })

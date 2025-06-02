@@ -1,6 +1,8 @@
 BlockEvents.rightClicked(event => {
     
-    const { player, block, level, server } = event
+    const { player, block, level, server, facing, hand } = event
+
+    if (hand != 'MAIN_HAND') return
 
     //床 => 夜晚高亮让玩家无法入睡的敌对生物
     global.methods.stringListTransformation(Ingredient.of('#minecraft:beds').itemIds).forEach(bed => {   
@@ -20,20 +22,14 @@ BlockEvents.rightClicked(event => {
 
     //灰烬收集器 => 工作盆、分散网、鼓风机 多方块机器 => 简易放置逻辑
     if (block.id == 'create:basin') {
-        if (
-            player.mainHandItem.id == 'create:nozzle'
-            || player.offHandItem.id == 'create:nozzle'
-        ) {
+        if (player.mainHandItem.id == 'create:nozzle') {
             block.offset(0, 2, 0).set('create:nozzle', { facing: 'down' })
             player.swing()
         }
     }
 
     if (block.id == 'create:nozzle') {
-        if (
-            player.mainHandItem.id == 'create:encased_fan' 
-            || player.offHandItem.id == 'create:encased_fan'
-        ) {
+        if (player.mainHandItem.id == 'create:encased_fan') {
             block.offset(0, 1, 0).set('create:encased_fan', { facing: 'down' })
             player.swing()
             event.cancel()
@@ -220,6 +216,7 @@ BlockEvents.rightClicked(event => {
                 if (rocket_2.hasBuildCorrectly) {
                     if (block.dimension == rocket_2.dimension) {
                         player.swing()
+
                         const center = rocket_2.pos
                         const minX = center.x - 3, maxX = center.x + 3
                         const minY = center.y - 12, maxY = center.y
@@ -233,7 +230,9 @@ BlockEvents.rightClicked(event => {
                             for (let dx = -3; dx <= 3; dx++) {
                                 for (let dy = 0; dy <= 14; dy++) {
                                     for (let dz = -3; dz <= 3; dz++) {
-                                        let block = player.level.getBlock(center.x + dx, center.y - dy, center.z + dz)   
+
+                                        let block = player.level.getBlock(center.x + dx, center.y - dy, center.z + dz) 
+                                          
                                         if (
                                             block.id.startsWith('ad_astra:') ||
                                             block.id == 'createnuclear:reinforced_glass' ||
@@ -244,11 +243,11 @@ BlockEvents.rightClicked(event => {
                                         }
                                     }
                                 }
-                            }                            
+                            }
+
                             let rocket = player.level.createEntity('ad_astra:tier_2_rocket')
-                            rocket.x = center.x + 0.5
-                            rocket.y = center.y - 2
-                            rocket.z = center.z + 0.5
+                            
+                            rocket.setPos(center.x + 0.5, center.y - 2, center.z + 0.5)
                             rocket.spawn()
 
                             rocket_2.hasBuildCorrectly = false
@@ -259,6 +258,19 @@ BlockEvents.rightClicked(event => {
                 }
             })
         }
+    }
 
+    //流体管道箱 => 空手右键更改管道开关状态
+    if (block.id == 'create:encased_fluid_pipe') {
+        if (player.mainHandItem.empty) {
+
+            let direction = facing.toString().toUpperCase()
+            let state = block.blockState.getValue(BlockProperties[direction]) 
+            let newState = 
+                block.blockState.setValue(BlockProperties[direction], state ? $Boolean.FALSE : $Boolean.TRUE)
+                
+            player.swing()
+            level.setBlockAndUpdate(block.pos, newState)
+        }
     }
 })

@@ -2,8 +2,6 @@ EntityEvents.spawned(event => {
 
     const { entity, server, level } = event
 
-    var $LivingEntity = Java.loadClass('net.minecraft.world.entity.LivingEntity')
-
     const player = level.getNearestPlayer(entity, 128)
 
     //敌对生物生成事件
@@ -21,7 +19,6 @@ EntityEvents.spawned(event => {
         player.persistentData.healthFromTime = 
             timeFactor * server.tickCount / (20 * 60 * 5)//时间贡献 => 每五分钟强化一次
         
-        /** @type { number } */
         let ultimateHealth = 
             entity.maxHealth + player.persistentData.healthFromKills + player.persistentData.healthFromTime//最终生命值
 

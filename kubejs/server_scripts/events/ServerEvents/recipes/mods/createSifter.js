@@ -48,4 +48,20 @@ ServerEvents.recipes(event => {
         100,
         false,
     ).id('kubejs:sifting_dirt/seeds')
+
+    //水洗熔渣 => 铁粒 + 金粒 + 铜粒 + 锌粒
+    createsifter.sifting(
+        [
+            Item.of('minecraft:iron_nugget').withChance(0.2),
+            Item.of('minecraft:gold_nugget').withChance(0.1),
+            Item.of('create:copper_nugget').withChance(0.2),
+            Item.of('create:zinc_nugget').withChance(0.1)
+        ],
+        [
+            'kubejs:washed_scoria',
+            'createsifter:brass_mesh'
+        ],
+        200,
+        true
+    ).id('kubejs:sifting_washed_scoria/nuggets')
 })

@@ -144,12 +144,12 @@ ServerEvents.recipes(event => {
         event.shaped(
             'kubejs:diorite_alloy',
             [
-                'DZ',
-                'ZD'
+                'DC',
+                'CD'
             ],
             {
                 D: 'minecraft:diorite',
-                Z: 'create:zinc_nugget'
+                C: 'create:copper_nugget'
             }
         ).id('kubejs:shaped_diorite_alloy')//闪长合金
 
@@ -166,6 +166,80 @@ ServerEvents.recipes(event => {
                 C: 'kubejs:echo_mechanism'
             }
         ).id('kubejs:shaped_echo_crystal_nucleus')//回响晶核
+
+        event.shaped(
+            'kubejs:simple_industrial_platform',
+            [
+                'WLW',
+                'LIL',
+                'WLW'
+            ],
+            {
+                W: 'minecraft:white_concrete',
+                L: 'minecraft:light_gray_concrete',
+                I: 'ad_astra:marked_iron_pillar'
+            }
+        ).id('kubejs:shaped_simple_industrial_platform')//简易工业平台
+
+        event.shaped(
+            'create_mechanical_chicken:mechanical_chicken',
+            [
+                'PCP',
+                'EIE',
+                'BSB'
+            ],
+            {
+                P: 'createaddition:biomass_pellet',
+                C: 'create:cogwheel',
+                E: '#forge:eggs',
+                I: 'create:item_vault',
+                B: 'create:brass_sheet',
+                S: 'create:shaft',
+            }
+        ).id('kubejs:shaped_mechanical_chicken')//动力鸡
+
+        event.shaped(
+            'constructionwand:iron_wand',
+            [
+                ' RI',
+                ' S ',
+                'S  '
+            ],
+            {
+                R: 'kubejs:rock_core_mechanism',
+                I: 'minecraft:iron_ingot',
+                S: 'minecraft:stick'
+            }
+        ).id('kubejs:shaped_iron_wand')//铁制手杖
+
+        event.shaped(
+            'constructionwand:diamond_wand',
+            [
+                ' RD',
+                ' S ',
+                'S  '
+            ],
+            {
+                R: 'kubejs:rock_core_mechanism',
+                D: 'minecraft:diamond',
+                S: 'minecraft:stick'
+            }
+        ).id('kubejs:shaped_diamond_wand')//钻石手杖
+
+        event.shaped(
+            'constructionwand:infinity_wand',
+            [
+                ' RN',
+                ' SD',
+                'S  '
+            ],
+            {
+                R: 'kubejs:rock_core_mechanism',
+                N: 'minecraft:nether_star',
+                S: 'minecraft:stick',
+                D: 'kubejs:dense_planet_core_mechanism'
+            }
+        ).id('kubejs:shaped_infinity_wand')//无尽手杖
         
         //无序合成
 
@@ -200,6 +274,20 @@ ServerEvents.recipes(event => {
         ingotTransformation('kubejs', 'aluminum')//铝锭
         ingotTransformation('kubejs', 'rock_core')//岩核锭
         ingotTransformation('kubejs', 'dense_planet_core')//致密星核锭
+
+        event.shapeless(
+            'kubejs:rock_core_ingot',
+            [
+                'kubejs:diorite_alloy',
+                'create:andesite_alloy',
+                'kubejs:granite_alloy'
+            ]
+        ).id('kubejs:shapeless_rock_core_ingot')//岩核锭
+
+        event.shapeless(
+            Item.of('create:copper_nugget', 9),
+            'minecraft:copper_ingot'
+        ).id('kubejs:shapeless_copper_nugget')//铜粒
 
         //熔炉 *** 高炉
 

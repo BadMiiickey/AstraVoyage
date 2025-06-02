@@ -6,12 +6,10 @@ PlayerEvents.tick(event => {
 
     if (!player.alive) return
 
-    var $CuriosApi = Java.loadClass('top.theillusivec4.curios.api.CuriosApi')
-
     let slotsList = $CuriosApi.getCuriosInventory(player).resolve().get()
 
     //玩家佩戴饰品事件    
-        //吸金磁 => 正面Buff: 佩戴时吸引附近物品
+        //磁引衡轮 => 正面Buff: 佩戴时吸引附近物品
         if (global.methods.slotResult(player, 'kubejs:magnet')) {
             
             let playerAABBForItems = player.boundingBox.inflate(8, 8, 8)
@@ -27,7 +25,7 @@ PlayerEvents.tick(event => {
             })
         }
 
-        //流光水晶 => 正面Buff: 佩戴时若主手持有匠魂镐则获得急迫Buff
+        //月华流晶 => 正面Buff: 佩戴时若主手持有匠魂镐则获得急迫Buff
         if (global.methods.tickCountCheck(server, 18, 3)) {
             if (
                 global.methods.slotResult(player, 'kubejs:luminous_pearl')
@@ -37,8 +35,8 @@ PlayerEvents.tick(event => {
             }
         }
 
-        //冷冻核心 => 正面Buff: 佩戴时免疫灼烧, 若手中持有熔岩桶则免疫其负面效果, 对攻击的敌对生物造成冰冻DeBuff
-        //冷冻核心 => 负面Buff: 佩戴时若玩家未穿戴具有保暖效果的装备则获得冷冻DeBuff
+        //寒霜芯核 => 正面Buff: 佩戴时免疫灼烧, 若手中持有熔岩桶则免疫其负面效果, 对攻击的敌对生物造成冰冻DeBuff
+        //寒霜芯核 => 负面Buff: 佩戴时若玩家未穿戴具有保暖效果的装备则获得冷冻DeBuff
         function armorInsulationCheck() {
             for (let armor of player.inventory.armor) {
                 if (armor.nbt?.insulation != undefined) return true
@@ -52,13 +50,13 @@ PlayerEvents.tick(event => {
                     && !player.creative
                     && !player.spectator
                 ) {
-                    player.ticksFrozen = 200
+                    player.ticksFrozen = global.methods.frozenSeconds(3)
                 }
             }
         }
         
-        //记忆手链 => 存储玩家经验, 并将其转化为伤害加成
-        //记忆手链 => 可选功能: 是否自动存储经验, 默认否, G键切换
+        //慧泽丝链 => 存储玩家经验, 并将其转化为伤害加成
+        //慧泽丝链 => 可选功能: 是否自动存储经验, 默认否, G键切换
             //读取玩家设置按键
             global.other.memoryBraceletModeName = KeyBindUtil.getKeyMapping('memoryBraceletMode').keyCode.name
             global.other.memoryBraceletLowerCase = global.other.memoryBraceletModeName
@@ -110,36 +108,75 @@ PlayerEvents.tick(event => {
             }
         }
 
-        //虚化手套 => 佩戴时检测玩家经验或记忆手链中存储的经验, 若两者均为0则持续受伤, 反之持续减少经验值
+        /**
+         * 
+         * @param { Internal.Player } player 
+         */
+        function phantomLogic(player) {
+
+            //未佩戴慧泽丝链
+            if (!global.methods.slotResult(player, 'kubejs:memory_bracelet')) {
+
+                //玩家经验不为0
+                if (player.xp != 0) {
+                    player.xp = Math.floor(0, player.xp - 10)
+                    return
+                }
+
+                //玩家经验为0
+                player.attack(player.damageSources().magic(), 6)
+                return
+            }
+            
+            for (let i = 0; i < slotsList.slots; i++) {
+
+                let target = slotsList.equippedCurios.getStackInSlot(i)
+
+                if (target.id != 'kubejs:memory_bracelet') continue
+
+                //佩戴慧泽丝链
+                //玩家经验不为0
+                if (player.xp != 0) {
+                    player.xp = Math.floor(0, player.xp - 10)
+                    return
+                }
+
+                //慧泽丝链中存储的经验不为0
+                if (target.nbt.StoredXP != 0) {
+                    target.nbt.StoredXP = Math.floor(0, target.nbt.StoredXP - 10)
+                    return
+                }
+
+                //玩家经验和慧泽丝链中存储的经验均为0
+                player.attack(player.damageSources().magic(), 6)
+                break
+            }
+        }
+
+        //幻虚手衣 => 佩戴时检测玩家经验或慧泽丝链中存储的经验, 若两者均为0则持续受伤, 反之持续减少经验值
         if (global.methods.tickCountCheck(server, 12, 1.5)) {
-            if (global.methods.slotResult(player, 'kubejs:phantom_glove').length) {
-                if (global.methods.slotResult(player, 'kubejs:memory_bracelet')) {
-                    for (let i = 0; i < slotsList.slots; i++) {
+            if (global.methods.slotResult(player, 'kubejs:phantom_glove')) {
+                phantomLogic(player)
+            }
+        }
 
-                        let target = slotsList.equippedCurios.getStackInSlot(i)
-
-                        if (target.id == 'kubejs:memory_bracelet') {
-                            if (player.xp == 0) {
-                                if (target.nbt.StoredXP == 0) {
-                                    player.attack(player.damageSources().magic(), 6)
-                                } else {
-                                    target.nbt.StoredXP = Math.floor(0, target.nbt.StoredXP - 10)
-                                }
-                            } else {
-                                player.xp = Math.floor(0, player.xp - 10)
-                            }
-                            break
+        //曦光缀玉 => 佩戴时若玩家位置光照等级>=7则每隔3秒修复一次装备
+        if (global.methods.tickCountCheck(server, 12, 3)) {
+            if (global.methods.slotResult(player, 'kubejs:light_crystal')) {
+                if (player.block.light >= 7) {
+                    player.inventory.allItems.forEach(item => {
+                        if (
+                            item.damageableItem
+                            && item.damaged
+                        ) {
+                            item.damageValue -= 1
                         }
-                    }
-                } else {
-                    if (player.xp == 0) {
-                        player.attack(player.damageSources().magic(), 6)
-                    } else {
-                        player.xp = Math.floor(0, player.xp - 10)
-                    }
+                    })
                 }
             }
         }
+
+    if (player.creative || player.spectator) return
 
     //玩家操作事件
         //玩家死亡惩罚补救
@@ -165,19 +202,13 @@ PlayerEvents.tick(event => {
             }
 
             //玩家生命值降至阈值触发DeBuff
-            if (
-                player.health <= 3
-                && !player.creative
-            ) {
+            if (player.health <= 3) {
                 player.setStatusMessage('§c你伤势已经极其严重, 请赶紧治疗!')
                 player.potionEffects.add('minecraft:blindness', 20 * 3, 0, false, false)
                 player.potionEffects.add('minecraft:nausea', 20 * 3, 0, false, false)
                 player.potionEffects.add('minecraft:weakness', 20 * 3, 2, false, false)
                 player.potionEffects.add('minecraft:slowness', 20 * 3, 2, false, false)
-            } else if (
-                player.health <= 10
-                && !player.creative
-            ) {
+            } else if (player.health <= 10) {
                 player.setStatusMessage('§e你的伤势开始影响意识, 注意治疗!')
                 player.potionEffects.add('minecraft:weakness', 20 * 3, 0, false, false)
                 player.potionEffects.add('minecraft:slowness', 20 * 3, 0, false, false)
@@ -185,10 +216,8 @@ PlayerEvents.tick(event => {
 
             //玩家在黑暗环境下获得缓慢及挖掘疲劳DeBuff
             if (
-                !player.creative
-                && !player.spectator
-                && player.block.light <= 7
-                && !global.methods.slotResult(player, 'minecraft:lantern')
+                player.block.light <= 7
+                && !global.methods.slotResult(player, 'kubejs:luminous_pearl')
             ) {
                 player.potionEffects.add('minecraft:slowness', 20 * 3, 0, false, false)
                 player.potionEffects.add('minecraft:mining_fatigue', 20 * 3, 0, false, false)
@@ -236,7 +265,6 @@ PlayerEvents.tick(event => {
             if (
                 dimension.toString() == 'kubejs:wasteworld'
                 && player.inRain
-                && !player.creative
             ) {
                 player.inventory.armor.forEach(armor => {
                     armor.damageValue += 1

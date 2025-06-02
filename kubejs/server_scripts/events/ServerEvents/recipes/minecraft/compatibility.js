@@ -4,31 +4,25 @@ ServerEvents.recipes(event => {
 
     /**
      * 
-     * @param { Internal.ItemStack | Internal.Ingredient } match 
-     * @param { Internal.ItemStack | Internal.Ingredient } change 
+     * @param { Internal.ItemStack_ | Internal.Ingredient_ } match 
+     * @param { Internal.ItemStack_ | Internal.Ingredient_ } change 
      */
     function compatibility(match, change) {
         event.replaceInput({}, match, change)
         event.replaceOutput({}, match, change)
     }
 
-    compatibility('ad_astra:cheese','tconstruct:cheese_ingot')//奶酪
-    compatibility('ad_astra:cheese_block','tconstruct:cheese_block')//奶酪块
-    compatibility('tconstruct:honey','create:honey')//蜂蜜
-    compatibility('tconstruct:honey_bucket','create:honey_bucket')//蜂蜜桶
+    compatibility('ad_astra:cheese', 'tconstruct:cheese_ingot')//奶酪
+    compatibility('ad_astra:cheese_block', 'tconstruct:cheese_block')//奶酪块
+    compatibility('tconstruct:honey', 'create:honey')//蜂蜜
+    compatibility('tconstruct:honey_bucket', 'create:honey_bucket')//蜂蜜桶
+    compatibility('#forge:nuggets/copper', 'create:copper_nugget')//铜粒
 
         //埃忒恩光伏电池
         event.replaceInput(
             'ad_astra:photovoltaic_etrium_cell',
             'ad_astra:desh_plate',
             'ad_astra:etrium_plate'
-        )
-
-        //NASA工作台
-        event.replaceInput(
-            'ad_astra:nasa_workbench',
-            'minecraft:redstone_torch',
-            'kubejs:diorite_alloy'
         )
 
         //燃油精炼机
@@ -86,13 +80,66 @@ ServerEvents.recipes(event => {
             'kubejs:electronic_mechanism'
         )
 
+        //充能器
+        event.replaceInput(
+            'ad_astra:energizer',
+            'minecraft:diamond_block',
+            'kubejs:electronic_mechanism'
+        )
+
+        event.replaceInput(
+            'ad_astra:energizer',
+            'ad_astra:ostrum_block',
+            'ad_astra:desh_block'
+        )
+
+        //氧气装载机
+        event.replaceInput(
+            'ad_astra:oxygen_loader',
+            'minecraft:redstone_block',
+            'kubejs:electronic_mechanism'
+        )
+
+        event.replaceInput(
+            'ad_astra:oxygen_loader',
+            'minecraft:lightning_rod',
+            'createaddition:copper_rod'
+        )
+
+        //钢电缆
+        event.replaceInput(
+            'ad_astra:steel_cable',
+            'minecraft:copper_ingot',
+            'createaddition:copper_wire'
+        )
+
+        //戴斯电缆
+        event.replaceInput(
+            'ad_astra:desh_cable',
+            'minecraft:copper_ingot',
+            'createaddition:copper_wire'
+        )
+
+        //电缆管道
+        event.replaceInput(
+            'ad_astra:cable_duct',
+            'minecraft:copper_ingot',
+            'create:copper_sheet'
+        )
+
+        //流体管道
+        event.replaceInput(
+            'ad_astra:fluid_pipe_duct',
+            'minecraft:copper_ingot',
+            'create:copper_sheet'
+        )
 
     //移除配方
     
     const removeRecipesId = (/** @type { ResourceLocation_ } */ name) => { event.remove({ id: name }) }
-    const removeRecipesInput = (/** @type { Internal.ItemStack_ } */ name) => { event.remove({ input: name })}
-    const removeRecipesOutput = (/** @type { Internal.ItemStack_ } */ name) => { event.remove({ output: name })}
-    const removeRecipesType = (/** @type { Internal.ItemStack } */ name) => { event.remove({ type: name })}
+    const removeRecipesInput = (/** @type { Internal.ItemStack_ } */ name) => { event.remove({ input: name }) }
+    const removeRecipesOutput = (/** @type { Internal.ItemStack_ } */ name) => { event.remove({ output: name }) }
+    const removeRecipesType = (/** @type { Internal.ItemStack_ } */ name) => { event.remove({ type: name }) }
 
         //Ad_Astra
         removeRecipesId('ad_astra:steel_rod')
@@ -103,6 +150,19 @@ ServerEvents.recipes(event => {
         removeRecipesId('ad_astra:coal_generator')
         removeRecipesId('ad_astra:compressor')
         removeRecipesId('ad_astra:water_pump')
+        removeRecipesId('ad_astra:nasa_workbench/tier_1_rocket_from_nasa_workbench')
+        removeRecipesId('ad_astra:nasa_workbench/tier_2_rocket_from_nasa_workbench')
+        removeRecipesId('ad_astra:nasa_workbench/tier_3_rocket_from_nasa_workbench')
+        removeRecipesId('ad_astra:nasa_workbench/tier_4_rocket_from_nasa_workbench')
+        removeRecipesId('ad_astra:etrionic_capacitor')
+        removeRecipesId('ad_astra:gas_tank')
+        removeRecipesId('ad_astra:rocket_nose_cone')
+        removeRecipesId('ad_astra:nasa_workbench')
+        removeRecipesId('ad_astra:wrench')
+        removeRecipesId('ad_astra:oxygen_gear')
+        removeRecipesId('ad_astra:engine_frame')
+        removeRecipesId('ad_astra:gravity_normalizer')
+        removeRecipesId('ad_astra:cryo_freezer')
 
         global.methods.itemsRemoveArray(
             'ad_astra',
@@ -120,6 +180,11 @@ ServerEvents.recipes(event => {
             removeRecipesId(item)
         })
 
+        //ConstructionWand
+        removeRecipesId('constructionwand:iron_wand')
+        removeRecipesId('constructionwand:diamond_wand')
+        removeRecipesId('constructionwand:infinity_wand')
+
         //Create
         removeRecipesId('create:crafting/materials/rose_quartz')
         removeRecipesId('create:mechanical_crafting/patato_cannon')
@@ -134,13 +199,24 @@ ServerEvents.recipes(event => {
         removeRecipesId('create:crafting/materials/copper_nugget')
         removeRecipesId('create:crafting/materials/andesite_alloy')
 
+        removeRecipesOutput('create:copper_diving_helmet')
+        removeRecipesOutput('create:copper_diving_boots')
+        removeRecipesOutput('create:netherite_diving_helmet')
+        removeRecipesOutput('create:netherite_diving_boots')
+
         //CreateAddition
         removeRecipesId('createaddition:compat/tconstruct/pig_iron')
         removeRecipesId('createaddition:compat/tconstruct/pig_iron_2')
         removeRecipesId('createaddition:charging/channeling')
+        removeRecipesId('createaddition:mechanical_crafting/tesla_coil')
+        removeRecipesId('createaddition:crafting/capacitor_1')
+        removeRecipesId('createaddition:crafting/capacitor_2')
 
         //CreateDieselGenerators
         removeRecipesId('createdieselgenerators:distillation/crude_oil')
+
+        //CreateMechanicalChicken
+        removeRecipesId('create_mechanical_chicken:crafting/mechanical_chicken')
 
         //CreateNuclear
         removeRecipesId('createnuclear:crafting/steel_ingot_from_compacting')
@@ -159,12 +235,17 @@ ServerEvents.recipes(event => {
 
         //CreateUtilities
         removeRecipesId('createutilities:mixing/void_steel_ingot')
+        removeRecipesId('createutilities:shaped/void_motor')
+        removeRecipesId('createutilities:shaped/void_chest')
+        removeRecipesId('createutilities:shaped/void_tank')
+        removeRecipesId('createutilities:shaped/void_battery')
 
         //Homeostatic
         removeRecipesId('homeostatic:smoking_purified_leather_flask')
         removeRecipesId('homeostatic:furnace_purified_leather_flask')
         removeRecipesId('homeostatic:water_filter')
         removeRecipesId('homeostatic:filling/water')
+        removeRecipesId('homeostatic:thermometer')
 
         //Minecraft
         removeRecipesId('minecraft:enchanting_table')
@@ -209,4 +290,5 @@ ServerEvents.recipes(event => {
 
         removeRecipesOutput('tconstruct:potion')
         removeRecipesOutput('tconstruct:potion_bucket')
+        removeRecipesOutput('tconstruct:copper_nugget')
 })

@@ -140,6 +140,8 @@
 
   "block.createnuclear.reactor_gauge": "反应堆压力表",
 
+  "block.ad_astra.ostrum_block": "紫金块",
+
   "kubejs.ponder.ash_collector.header": "灰烬收集器",
   "kubejs.ponder.ash_collector.text_1": "灰烬收集器需要在下界玄武岩三角洲才能正常工作",
   "kubejs.ponder.ash_collector.text_2": "接入动力, 使得分散网为吸引风向",
@@ -260,17 +262,9 @@
   "item.kubejs.molten_refined_radiance_bucket": "熔融光辉石桶",
   "item.kubejs.molten_shadow_steel_bucket": "熔融暗影钢",
 
-  "material.kubejs.dark_iron": "暗铁",
-  "material.kubejs.dark_iron.encyclopedia": "攻击时40%概率为敌人随机附加一种负面效果, 每级效果等级上限+1, 持续时间延长约80%",
-  "modifier.kubejs.degenerate": "堕落",
-  "modifier.kubejs.degenerate.description": "攻击时让敌人进入短暂的负面状态",
-  "modifier.kubejs.degenerate.flavor": "堕落者的狂欢!",
-  "modifier.kubejs.disease": "流疫",
-  "modifier.kubejs.disease.description": "受伤时让敌人进入短暂的负面状态",
-  "modifier.kubejs.disease.flavor": "瘟疫的开端往往无声无息",
-
   "material.kubejs.rock_core": "岩核",
   "material.kubejs.rock_core.encyclopedia": "攻击时掠夺敌人上的随机正面效果, 每级效果等级上限+1, 持续时间延长约80%",
+  "material.kubejs.rock_core.armor": "受击时掠夺敌人上的随机正面效果, 每级效果等级上限+1, 持续时间延长约80%",
   "modifier.kubejs.looting": "掠夺",
   "modifier.kubejs.looting.description": "攻击时掠夺敌人增益为己用",
   "modifier.kubejs.looting.flavor": "贪婪, 永无止境",
@@ -283,11 +277,20 @@
   "material.kubejs.brass": "黄铜",
 
   "material.kubejs.desh": "戴斯",
+  "material.kubejs.desh.encyclopedia": "攻击时40%概率为敌人随机附加一种负面效果, 每级效果等级上限+1, 持续时间延长约80%",
+  "material.kubejs.desh.armor": "受击时40%概率为敌人随机附加一种负面效果, 每级效果等级上限+1, 持续时间延长约80%",
+  "modifier.kubejs.degenerate": "堕落",
+  "modifier.kubejs.degenerate.description": "攻击时让敌人进入短暂的负面状态",
+  "modifier.kubejs.degenerate.flavor": "堕落者的狂欢!",
+  "modifier.kubejs.disease": "流疫",
+  "modifier.kubejs.disease.description": "受伤时让敌人进入短暂的负面状态",
+  "modifier.kubejs.disease.flavor": "瘟疫的开端往往无声无息",
 
   "material.kubejs.etrium": "埃忒恩",
 
   "material.kubejs.ostrum": "紫金",
   "material.kubejs.ostrum.encyclopedia": "当玩家位置光照强度大于等于7时, 每级光照强度和每级使伤害倍率增加20%",
+  "material.kubejs.ostrum.armor": "当玩家位置光照强度大于等于7时, 每级光照强度和每级使减伤倍率增加20%",
   "modifier.kubejs.lightbane": "逐光",
   "modifier.kubejs.lightbane.description": "光照强度大于等于7时造成额外伤害",
   "modifier.kubejs.lightbane.flavor": "光明永远在你背后!",
@@ -297,6 +300,7 @@
 
   "material.kubejs.calorite": "耐热金属",
   "material.kubejs.calorite.encyclopedia": "攻击时引爆敌人的灼烧效果, 每级伤害增加10%",
+  "material.kubejs.calorite.armor": "免疫灼烧伤害",
   "modifier.kubejs.burning": "炎灼",
   "modifier.kubejs.burning.description": "引爆敌人的灼烧效果",
   "modifier.kubejs.burning.flavor": "燃起来!",
@@ -307,6 +311,14 @@
   "material.kubejs.zinc": "锌",
   
   "material.kubejs.granite_alloy": "花岗合金",
+  "material.kubejs.granite_alloy.encyclopedia": "攻击时若脚下三格不为空气, 则给予敌人缓慢DeBuff, 每级效果等级+1",
+  "material.kubejs.granite_alloy.armor": "每级降低10%摔落伤害",
+  "modifier.kubejs.ground_binding": "地缚",
+  "modifier.kubejs.ground_binding.description": "攻击时若脚下三格不为空气则给予敌人缓慢DeBuff",
+  "modifier.kubejs.ground_binding.flavor": "大地束缚, 无处遁逃",
+  "modifier.kubejs.buffer": "缓冲",
+  "modifier.kubejs.buffer.description": "降低摔落伤害",
+  "modifier.kubejs.buffer.flavor": "大地永远温柔",
 
   "material.kubejs.diorite_alloy": "闪长合金",
 
@@ -336,6 +348,10 @@
   "block.kubejs.simple_industrial_platform": "简易工业平台",
   "block.kubejs.dense_planet_core_block": "致密星核块",
   "block.kubejs.steel_tank": "钢燃料储罐",
+  "block.kubejs.desh_tank": "戴斯燃料储罐",
+  "block.kubejs.ostrum_tank": "紫金燃料储罐",
+  "block.kubejs.calorite_tank": "耐热金属燃料储罐",
+  "block.kubejs.washed_scoria": "水洗熔渣",
 
   "block.kubejs.aluminate_solution": "铝酸盐溶液",
   "block.kubejs.nuclear_waste": "核废水",
@@ -355,7 +371,7 @@
   "item.kubejs.crushed_raw_ostrum": "粉碎紫金矿石",
   "item.kubejs.crushed_raw_calorite": "粉碎耐热金属矿石",
   "item.kubejs.crushed_bauxite": "粉碎铝土矿石",
-  "item.kubejs.raw_aluminum": "粗铝",
+  "item.kubejs.raw_bauxite": "粗铝土",
   "item.kubejs.aluminum_hydroxide": "氢氧化铝",
   "item.kubejs.alumina": "氧化铝",
   "item.kubejs.aluminum_ingot": "铝锭",
@@ -402,6 +418,7 @@
   "item.kubejs.echo_mechanism": "§1回响构件",
   "item.kubejs.creative_mechanism": "§4§k创世构件",
   "item.kubejs.aviation_mechanism": "§3航空构件",
+  "item.kubejs.void_mechanism": "§8虚空构件",
 
   "item.kubejs.incomplete_guardian_shield": "§d守护之盾(半成品)",
   "item.kubejs.incomplete_silicon": "硅(半成品)",
@@ -411,17 +428,19 @@
   "item.kubejs.incomplete_echo_mechanism": "§1回响构件(半成品)",
   "item.kubejs.incomplete_creative_mechanism": "§4§k创世构件(半成品)",
   "item.kubejs.incomplete_aviation_mechanism": "§3航空构件(半成品)",
+  "item.kubejs.incomplete_void_mechanism": "§8虚空构件(半成品)",
 
-  "block.kubejs.luminous_pearl": "§5流光水晶",
-  "item.kubejs.magnet": "§e万能磁体",
-  "item.kubejs.freezing_core": "§b冷冻核心",
-  "item.kubejs.memory_bracelet": "§a记忆手链",
-  "item.kubejs.guardian_shield": "§d守护之盾",
+  "block.kubejs.luminous_pearl": "§5月华流晶",
+  "item.kubejs.magnet": "§e磁引衡轮",
+  "item.kubejs.freezing_core": "§b寒霜芯核",
+  "item.kubejs.memory_bracelet": "§a慧泽丝链",
   "item.kubejs.echo_crystal_nucleus": "§9回响晶核",
-  "item.kubejs.phantom_glove": "§7§k虚化手套",
+  "item.kubejs.phantom_glove": "§7幻虚手衣",
+  "item.kubejs.evil_ring": "§c血恶环戒",
+  "item.kubejs.light_crystal": "§e曦光缀玉",
 
   "effect.kubejs.bloodthirsty": "嗜血",
   "effect.kubejs.corrosion": "蛀蚀",
 
-  "key.memoryBraceletMode": "切换记忆手链模式"
+  "key.memoryBraceletMode": "切换慧泽丝链模式"
 }

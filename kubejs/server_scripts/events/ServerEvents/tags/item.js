@@ -6,7 +6,6 @@ ServerEvents.tags('item', event => {
 
     //forge
         //forge:ingots
-        event.add('forge:ingots/dark_iron', 'graveyard:dark_iron_ingot')
         event.add('forge:ingots/void_steel', 'createutilities:void_steel_ingot')
         event.add('forge:ingots/aluminum', 'kubejs:aluminum_ingot')
         event.add('forge:ingots/aluminum_alloy', 'kubejs:aluminum_alloy_ingot')
@@ -23,12 +22,12 @@ ServerEvents.tags('item', event => {
 
         //forge:nuggets
         event.remove('forge:nuggets/steel', 'ad_astra:steel_nugget')
+        event.remove('forge:nuggets/copper', 'tconstruct:copper_nugget')
 
         //forge:rods
         event.remove('forge:rods/iron', 'ad_astra:iron_rod')
 
         //forge:storage_blocks
-        event.add('forge:storage_blocks/dark_iron', 'graveyard:dark_iron_block')
         event.add('forge:storage_blocks/void_steel', 'createutilities:void_steel_block')
         event.add('forge:storage_blocks/aluminum', 'kubejs:aluminum_block')
         event.add('forge:storage_blocks/aluminum_alloy', 'kubejs:aluminum_alloy_block')
