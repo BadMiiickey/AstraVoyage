@@ -129,6 +129,19 @@ ItemEvents.tooltip(event => {
                 }
             })
 
+            //安魂指箍
+            event.addAdvanced('kubejs:requiem_ring', (item, advanced, text) => {
+                text.add(1, '§6每次击杀敌人概率降低杀戮值')
+                text.add(2, '§8按住[§7Shift§8]查看概要')
+
+                if (event.shift) {
+                    text.remove(2)
+                    text.add(2, '§8按住[§fShift§8]查看概要')
+                    text.add(4, '§6佩戴至戒指时:')
+                    text.add(5, '       §9+30% 降低杀戮值概率')
+                }
+            })
+
         //方块
             //简易工业平台
             event.addAdvanced('kubejs:simple_industrial_platform', (item, advanced, text) => {

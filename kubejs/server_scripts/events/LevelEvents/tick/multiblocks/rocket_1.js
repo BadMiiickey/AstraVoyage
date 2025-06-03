@@ -307,6 +307,16 @@ LevelEvents.tick(event => {
                             let platingResult = rocket_1Check.steelPlating(block)
                             let lightningRodResult = rocket_1Check.lightningRod(block)
 
+                            rocket_1.pillarResult = pillarResult
+                            rocket_1.stairsResult = stairsResult
+                            rocket_1.slabResult = slabResult
+                            rocket_1.railwayResult = railwayResult
+                            rocket_1.buttonResult = buttonResult
+                            rocket_1.blockResult = blockResult
+                            rocket_1.glassResult = glassResult
+                            rocket_1.platingResult = platingResult
+                            rocket_1.lightningRodResult = lightningRodResult
+
                             if (
                                 pillarResult == 43
                                 && slabResult == 4

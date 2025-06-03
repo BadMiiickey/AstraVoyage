@@ -197,11 +197,9 @@ BlockEvents.rightClicked(event => {
                             }
 
                             let rocket = player.level.createEntity('ad_astra:tier_1_rocket')
-                            rocket.x = center.x + 0.5
-                            rocket.y = center.y - 2
-                            rocket.z = center.z + 0.5
-                            rocket.spawn()
 
+                            rocket.setPos(center.x + 0.5, center.y - 2, center.z + 0.5)
+                            rocket.spawn()
 
                             rocket_1.hasBuildCorrectly = false
 

@@ -106,4 +106,9 @@ StartupEvents.registry('item', event => {
         event.create('kubejs:lightning_claw', 'basic')
             .unstackable()
             .tag('curios:hands')
+
+        //安魂指箍
+        event.create('kubejs:requiem_ring', 'basic')
+            .unstackable()
+            .tag('curios:ring')
 })

@@ -442,7 +442,14 @@ LevelEvents.tick(event => {
                             let airResult = launchPadCheck.air(block)
                             let industrialIronBlockResult = launchPadCheck.industrialIronBlock(block)
 
-                            
+                            launchPad.andesiteAlloyBlockResult = andesiteAlloyBlockResult
+                            launchPad.andesiteScaffoldingResult = andesiteScaffoldingResult
+                            launchPad.encasedFluidPipeResult = encasedFluidPipeResult
+                            launchPad.fluidPipeResult = fluidPipeResult
+                            launchPad.mechanicalPumpResult = mechanicalPumpResult
+                            launchPad.railwayCasingResult = railwayCasingResult
+                            launchPad.airResult = airResult
+                            launchPad.industrialIronBlockResult = industrialIronBlockResult
 
                             if (
                                 andesiteAlloyBlockResult == 8
