@@ -17,6 +17,9 @@ ServerEvents.recipes(event => {
     compatibility('tconstruct:honey', 'create:honey')//蜂蜜
     compatibility('tconstruct:honey_bucket', 'create:honey_bucket')//蜂蜜桶
     compatibility('#forge:nuggets/copper', 'create:copper_nugget')//铜粒
+    compatibility('#forge:ingots/steel', 'ad_astra:steel_ingot')//钢锭
+    compatibility('#forge:nuggets/steel', 'ad_astra:steel_nugget')//钢粒
+    compatibility('#forge:blocks/steel', 'ad_astra:steel_block')//钢块
 
         //埃忒恩光伏电池
         event.replaceInput(
@@ -134,6 +137,20 @@ ServerEvents.recipes(event => {
             'create:copper_sheet'
         )
 
+        //动力筛子
+        event.replaceInput(
+            'createsifter:sifter',
+            '#minecraft:planks',
+            'createdieselgenerators:chip_wood_block'
+        )
+
+        //黄铜筛网
+        event.replaceInput(
+            'createsifter:brass_mesh',
+            'minecraft:stick',
+            'ad_astra:steel_rod'
+        )
+
     //移除配方
     
     const removeRecipesId = (/** @type { ResourceLocation_ } */ name) => { event.remove({ id: name }) }
@@ -163,6 +180,7 @@ ServerEvents.recipes(event => {
         removeRecipesId('ad_astra:engine_frame')
         removeRecipesId('ad_astra:gravity_normalizer')
         removeRecipesId('ad_astra:cryo_freezer')
+        removeRecipesId('ad_astra:radio')
 
         global.methods.itemsRemoveArray(
             'ad_astra',
@@ -223,10 +241,12 @@ ServerEvents.recipes(event => {
         removeRecipesId('createnuclear:shapeless/steel_ingot_from_decompacting')
         removeRecipesId('createnuclear:crafting/steel_block_from_compacting')
         removeRecipesId('createnuclear:mixing/steel')
-
-        removeRecipesInput('createnuclear:steel_ingot')
-        removeRecipesInput('createnuclear:steel_block')
-        removeRecipesInput('createnuclear:steel_nugget')
+        removeRecipesId('createnuclear:item_application/reactor_casing_from_steel_and_brass_casing_using_deployer')
+        removeRecipesId('createnuclear:item_application/reactor_input_from_hopper_and_reactor_casing_using_deployer')
+        removeRecipesId('createnuclear:mechanical_crafting/reactor_core')
+        removeRecipesId('createnuclear:mechanical_crafting/reactor_gauge')
+        removeRecipesId('createnuclear:mechanical_crafting/reactor_cooling_frame')
+        removeRecipesId('createnuclear:mechanical_crafting/reactor_controller')
 
         //CreateOreExcavation
         removeRecipesType('createoreexcavation:vein')

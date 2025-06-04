@@ -22,13 +22,13 @@ ServerEvents.recipes(event => {
             [
                 'SLS',
                 'LCL',
-                'DLD'
+                'PLP'
             ],
             {
                 S: 'minecraft:string',
                 L: 'minecraft:leather',
                 C: '#forge:chests/wooden',
-                D: 'ad_astra:desh_plate'
+                P: 'ad_astra:steel_plate'
             }
         ).id('kubejs:shaped_backpack')//背包
 
@@ -240,6 +240,21 @@ ServerEvents.recipes(event => {
                 D: 'kubejs:dense_planet_core_mechanism'
             }
         ).id('kubejs:shaped_infinity_wand')//无尽手杖
+
+        event.shaped(
+            'ad_astra:radio',
+            [
+                ' E ',
+                'PRP',
+                'PAP'
+            ],
+            {
+                E: 'createaddition:electrum_rod',
+                P: 'ad_astra:steel_plate',
+                R: 'ad_astra:steel_rod',
+                A: 'kubejs:aviation_mechanism'
+            }
+        ).id('kubejs:shaped_radio')//收音机
         
         //无序合成
 
@@ -309,4 +324,22 @@ ServerEvents.recipes(event => {
         smeltAndBlast('ad_astra:calorite_ingot', 'kubejs:crushed_raw_calorite')//耐热金属锭
         smeltAndBlast('tconstruct:seared_brick', 'kubejs:granite_alloy')//焦黑砖
         smeltAndBlast('kubejs:alumina', 'kubejs:aluminum_hydroxide')//氧化铝
+
+        //锻造台
+        /**
+         * 
+         * @param { Internal.List<Internal.ItemStack_> } input 
+         */
+        function spaceSuitUpdate(input) {
+            input.forEach(armor => {
+                event.smithing(
+                    `ad_astra:netherite_space_${armor}`,
+                    'kubejs:aviation_mechanism',
+                    'minecraft:netherite_ingot',
+                    `ad_astra:space_${armor}`
+                ).id(`kubejs:deploying_netherite_space_${armor}`)
+            })
+        }
+
+        spaceSuitUpdate(['helmet', 'suit', 'pants', 'boots'])
 })

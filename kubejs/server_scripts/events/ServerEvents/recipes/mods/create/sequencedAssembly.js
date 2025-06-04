@@ -116,7 +116,7 @@ ServerEvents.recipes(event => {
                 'kubejs:incomplete_echo_mechanism',
                 [
                     'kubejs:incomplete_echo_mechanism',
-                    'quark:clear_shard'
+                    '#quark:shards'
                 ]
             ),
             create.pressing(
@@ -229,4 +229,38 @@ ServerEvents.recipes(event => {
         'kubejs:incomplete_void_mechanism',
         5
     ).id('kubejs:sequenced_assembly_void_mechanism')//虚空构件
+
+    create.sequenced_assembly(
+        'kubejs:nuclear_mechanism',
+        'kubejs:lead_sheet',
+        [
+            create.deploying(
+                'kubejs:incomplete_nuclear_mechanism',
+                [
+                    'kubejs:incomplete_nuclear_mechanism',
+                    'kubejs:silicon_sheet'
+                ]
+            ),
+            create.deploying(
+                'kubejs:incomplete_nuclear_mechanism',
+                [
+                    'kubejs:incomplete_nuclear_mechanism',
+                    'createnuclear:uranium_powder'
+                ]
+            ),
+            create.filling(
+                'kubejs:incomplete_nuclear_mechanism',
+                [
+                    'kubejs:incomplete_nuclear_mechanism',
+                    Fluid.of('ad_astra:cryo_fuel', 500)
+                ]
+            ),
+            create.pressing(
+                'kubejs:incomplete_nuclear_mechanism',
+                'kubejs:incomplete_nuclear_mechanism'
+            )
+        ],
+        'kubejs:incomplete_nuclear_mechanism',
+        5
+    ).id('kubejs:sequenced_assembly_nuclear_mechanism')//核能构件
 })

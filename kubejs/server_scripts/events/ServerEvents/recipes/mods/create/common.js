@@ -69,6 +69,11 @@ ServerEvents.recipes(event => {
             'kubejs:dense_planet_core_ingot'
         ).id('kubejs:pressing_dense_planet_core_sheet')//压缩星核板
 
+        create.pressing(
+            'kubejs:lead_sheet',
+            'createnuclear:lead_ingot'
+        ).id('kubejs:pressing_lead_sheet')//铅板
+
     //动力搅拌机
     create.mixing(
         'ad_astra:steel_ingot',
@@ -262,6 +267,17 @@ ServerEvents.recipes(event => {
             'create:scoria'
         ).id('kubejs:splashing_washed_scoria')//水洗熔渣
 
+        //缠魂
+        create.haunting(
+            'minecraft:snowball',
+            'minecraft:clay_ball'
+        ).id('kubejs:haunting_snowball')//雪球
+
+        create.haunting(
+            'minecraft:snow_block',
+            'minecraft:clay'
+        ).id('kubejs:haunting_snow_block')//雪块
+
     //注液器
     create.filling(
         'homeostatic:purified_water_bottle',
@@ -408,4 +424,20 @@ ServerEvents.recipes(event => {
             ['glacio', 'ad_astra:glacio_stone']
         ]
     )
+
+    create.deploying(
+        'createnuclear:reactor_casing',
+        [
+            'create:brass_casing',
+            'ad_astra:calorite_ingot'
+        ]
+    ).id('kubejs:deploying_reactor_casing')//反应堆机壳
+
+    create.deploying(
+        'createnuclear:reactor_input',
+        [
+            'createnuclear:reactor_casing',
+            'create:brass_funnel'
+        ]
+    ).id('kubejs:deploying_reactor_input')//反应堆输入口
 })

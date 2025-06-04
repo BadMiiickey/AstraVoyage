@@ -1,6 +1,6 @@
 StartupEvents.registry('item', event => {
 
-    //物品注册
+    //基础注册
     event.create('kubejs:crushed_raw_desh', 'basic')//粉碎戴斯矿石
     event.create('kubejs:crushed_raw_ostrum', 'basic')//粉碎紫金矿石
     event.create('kubejs:crushed_raw_calorite', 'basic')//粉碎耐热金属矿石
@@ -24,6 +24,12 @@ StartupEvents.registry('item', event => {
     event.create('kubejs:rock_core_ingot', 'basic')//岩核锭
     event.create('kubejs:rock_core_nugget', 'basic')//岩核粒
     event.create('kubejs:rock_core_sheet', 'basic')//岩核板
+    event.create('kubejs:dense_planet_core_ingot', 'basic')//致密星核锭
+    event.create('kubejs:dense_planet_core_nugget', 'basic')//致密星核粒
+    event.create('kubejs:dense_planet_core_sheet', 'basic')//致密星核板
+    event.create('kubejs:lead_sheet', 'basic')//铅板
+
+    //星核注册
     event.create('kubejs:earth_core', 'basic')//地球星核
     event.create('kubejs:the_nether_core', 'basic')//下界星核
     event.create('kubejs:the_end_core', 'basic')//末地星核
@@ -33,9 +39,8 @@ StartupEvents.registry('item', event => {
     event.create('kubejs:venus_core', 'basic')//金星星核
     event.create('kubejs:glacio_core', 'basic')//霜原星核
     event.create('kubejs:wasteworld_core', 'basic')//废土星核
-    event.create('kubejs:dense_planet_core_ingot', 'basic')//致密星核锭
-    event.create('kubejs:dense_planet_core_nugget', 'basic')//致密星核粒
-    event.create('kubejs:dense_planet_core_sheet', 'basic')//致密星核板
+
+    //货币注册
     event.create('kubejs:earth_coin', 'basic')//地球币
     event.create('kubejs:the_nether_coin', 'basic')//下界币
     event.create('kubejs:the_end_coin', 'basic')//末地币
@@ -54,6 +59,7 @@ StartupEvents.registry('item', event => {
     event.create('kubejs:creative_mechanism', 'basic')//创世构件
     event.create('kubejs:aviation_mechanism', 'basic')//航空构件
     event.create('kubejs:void_mechanism', 'basic')//虚空构件
+    event.create('kubejs:nuclear_mechanism', 'basic')//核能构件
 
     //半成品注册
     event.create('kubejs:incomplete_silicon', 'create:sequenced_assembly')//硅(半成品)
@@ -64,6 +70,7 @@ StartupEvents.registry('item', event => {
     event.create('kubejs:incomplete_creative_mechanism', 'create:sequenced_assembly')//创世构件(半成品)
     event.create('kubejs:incomplete_aviation_mechanism', 'create:sequenced_assembly')//航空构件(半成品)
     event.create('kubejs:incomplete_void_mechanism', 'create:sequenced_assembly')//虚空构件(半成品)
+    event.create('kubejs:incomplete_nuclear_mechanism', 'create:sequenced_assembly')//核能构件(半成品)
 
     //饰品注册
         //磁引衡轮

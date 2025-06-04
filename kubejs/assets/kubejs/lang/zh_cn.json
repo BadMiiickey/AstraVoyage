@@ -407,6 +407,7 @@
   "item.kubejs.venus_coin": "金星币",
   "item.kubejs.glacio_coin": "霜原星币",
   "item.kubejs.wasteworld_coin": "废土币",
+  "item.kubejs.lead_sheet": "铅板",
 
   "item.kubejs.electronic_mechanism": "§5电力构件",
   "item.kubejs.rock_core_mechanism": "§6岩核构件",
@@ -415,6 +416,7 @@
   "item.kubejs.creative_mechanism": "§4§k创世构件",
   "item.kubejs.aviation_mechanism": "§3航空构件",
   "item.kubejs.void_mechanism": "§8虚空构件",
+  "item.kubejs.nuclear_mechanism": "§c核能构件",
 
   "item.kubejs.incomplete_guardian_shield": "§d守护之盾(半成品)",
   "item.kubejs.incomplete_silicon": "硅(半成品)",
@@ -425,6 +427,7 @@
   "item.kubejs.incomplete_creative_mechanism": "§4§k创世构件(半成品)",
   "item.kubejs.incomplete_aviation_mechanism": "§3航空构件(半成品)",
   "item.kubejs.incomplete_void_mechanism": "§8虚空构件(半成品)",
+  "item.kubejs.incomplete_nuclear_mechanism": "§c核能构件(半成品)",
 
   "block.kubejs.luminous_pearl": "§5月华流晶",
   "item.kubejs.magnet": "§e磁引衡轮",
