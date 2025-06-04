@@ -267,7 +267,8 @@ declare namespace Internal {
             waterlogged: string,
             axis: string,
             lit: string,
-            facing: string
+            facing: string,
+            level: number
         }
 
         entityData: CompoundTag & {

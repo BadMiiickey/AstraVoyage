@@ -127,4 +127,74 @@ ItemEvents.rightClicked(event => {
         item.nbt.Coordinate.z = Math.floor(player.z)
         player.setStatusMessage('§a已记录当前坐标')
     }
+
+    //玩家手持空桶右键非流体源方块能够将桶装满并删除流体源
+
+    /**
+     * 
+     * @param { Internal.BlockContainerJS } fluid 
+     */
+    function traceFluidSource(fluid) {
+
+        let currentFluid = fluid
+        
+        for (let i = 1; i <= 1000; i++) {
+            if (currentFluid.properties?.level == 0) return currentFluid
+            for (let dx of [-1, 0, 1]) {
+                for (let dz of [-1, 0, 1]) {
+                    if (dx == 0 && dz == 0) continue
+
+                    let nextFluid = currentFluid.offset(dx, 0, dz)
+
+                    if (!nextFluid.properties?.level) continue
+                    if (nextFluid.properties?.level == 0) return nextFluid
+                    if (nextFluid.properties?.level == 8) {
+                        currentFluid = nextFluid
+                        break
+                    }
+
+                    if (nextFluid.properties?.level < currentFluid.properties?.level) {
+                        currentFluid = nextFluid
+                        break
+                    }
+                }
+            }
+
+            if (currentFluid.properties?.level == 8) {
+                for (let dy = 1; dy <= 1000; dy++) {
+
+                    let fluidAbove = currentFluid.offset(0, dy, 0)
+
+                    if (fluidAbove.properties?.level == 0) return fluidAbove
+                    if (fluidAbove.properties?.level != 8) {
+                        currentFluid = fluidAbove
+                        break
+                    }
+                }
+            }
+        }
+
+        return currentFluid
+    }
+
+    if (
+        item.id == 'minecraft:bucket'
+        && player.rayTrace().block?.properties?.level
+        && player.rayTrace().block?.properties?.level > 0
+    ) {
+        let fluidSource = traceFluidSource(player.rayTrace().block)
+        let id = fluidSource.id
+        
+        if (fluidSource.properties?.level == 0) {
+            id = id.endsWith('_fluid') ? id.replace('_fluid', '') : id
+            fluidSource.set('minecraft:air')
+
+            if (item.count == 1) {
+                player.inventory.setItem(player.selectedSlot, `${id}_bucket`)
+            } else {
+                player.addItem(`${id}_bucket`)
+                item.count--
+            }
+        }
+    }
 })

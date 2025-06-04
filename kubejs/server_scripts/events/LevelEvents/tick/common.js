@@ -182,16 +182,17 @@ LevelEvents.tick(event => {
             level.day
             && !level.raining
         ) {
-            global.definitionsArray.undeads.forEach(undead => {
-
-                let selfBurningUndead = level.entities
-                    .filter(entity => entity.type == undead && entity.type != 'minecraft:husk')
-
-                selfBurningUndead.forEach(entity => {
-                    if (global.methods.isUnderSunlight(entity.level, entity.block.down.pos)) {
-                        entity.setSecondsOnFire(3)
-                    }
-                })
+            let selfBurningUndead = level.entities
+                .filter(entity => 
+                    entity instanceof $LivingEntity
+                    && entity.undead
+                    && entity.type != 'minecraft:husk'
+                )
+            
+            selfBurningUndead.forEach(entity => {
+                if (global.methods.isUnderSunlight(entity.level, entity.block.down.pos)) {
+                    entity.setSecondsOnFire(3)
+                }
             })
         }
     }
