@@ -146,6 +146,20 @@ ItemEvents.tooltip(event => {
             event.addAdvanced('kubejs:phase_bracelet', (item, advanced, text) => {
                 text.add(1, '§6手持该饰品按住§8[§7Shift+右键§8]§6记录坐标')
                 text.add(2, `§8按[§7${ global.other.phaseBraceletUpperCase }§8]传送`)
+                text.add(3, '§8按住[§7Shift§8]查看概要')
+
+                if (event.shift) {
+                    text.remove(3)
+                    text.add(3, '§8按住[§fShift§8]查看概要')
+                    
+                    if (item.nbt?.Coordinate) {
+                        text.add(5, '§6当前记录点位:')
+                        text.add(6, `       §7维度: §f${ item.nbt?.Coordinate?.dimension }`)
+                        text.add(7, `       §7x: §f${ item.nbt?.Coordinate?.x }`)
+                        text.add(8, `       §7y: §f${ item.nbt?.Coordinate?.y }`)
+                        text.add(9, `       §7z: §f${ item.nbt?.Coordinate?.z }`)
+                    }
+                }
             })
 
         //方块
