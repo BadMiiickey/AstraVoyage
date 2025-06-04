@@ -16,13 +16,6 @@ StartupEvents.registry('fluid', event => {
         .bucketColor(0xe1ff96)
 
     //匠魂
-        //熔融暗铁
-        event.create('kubejs:molten_dark_iron', 'basic')
-            .thickTexture(0x494747)
-            .bucketColor(0x494747)
-            .stillTexture('kubejs:block/still')
-            .flowingTexture('kubejs:block/flowing')
-
         //熔融戴斯
         event.create('kubejs:molten_desh', 'basic')
             .thickTexture(0xd68d4d)

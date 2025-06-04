@@ -1,4 +1,5 @@
 //priority: 999999
+
 //全局函数
 global.methods = {
 
@@ -223,7 +224,6 @@ global.definitionsArray = {
 
     //熔融金属流体名称定义
     materialNames: [
-        'dark_iron',
         'desh',
         'ostrum',
         'calorite',

@@ -196,7 +196,6 @@
 
   "block.kubejs.molten_aluminum_alloy": "熔融铝合金",
   "block.kubejs.molten_calorite": "熔融耐热金属",
-  "block.kubejs.molten_dark_iron": "熔融暗铁",
   "block.kubejs.molten_desh": "熔融戴斯",
   "block.kubejs.molten_etrium": "熔融埃忒恩",
   "block.kubejs.molten_ostrum": "熔融紫金",
@@ -213,7 +212,6 @@
 
   "fluid.kubejs.flowing_molten_aluminum_alloy": "熔融铝合金",
   "fluid.kubejs.flowing_molten_calorite": "熔融耐热金属",
-  "fluid.kubejs.flowing_molten_dark_iron": "熔融暗铁",
   "fluid.kubejs.flowing_molten_desh": "熔融戴斯",
   "fluid.kubejs.flowing_molten_etrium": "熔融埃忒恩",
   "fluid.kubejs.flowing_molten_ostrum": "熔融紫金",
@@ -233,7 +231,6 @@
   "fluid.kubejs.molten_diorite_alloy": "熔融闪长合金",
   "fluid.kubejs.molten_void_steel": "熔融虚空钢",
   "fluid.kubejs.molten_calorite": "熔融耐热金属",
-  "fluid.kubejs.molten_dark_iron": "熔融暗铁",
   "fluid.kubejs.molten_desh": "熔融戴斯",
   "fluid.kubejs.molten_etrium": "熔融埃忒恩",
   "fluid.kubejs.molten_ostrum": "熔融紫金",
@@ -247,7 +244,6 @@
 
   "item.kubejs.molten_aluminum_alloy_bucket": "熔融铝合金桶",
   "item.kubejs.molten_calorite_bucket": "熔融耐热金属桶",
-  "item.kubejs.molten_dark_iron_bucket": "熔融暗铁桶",
   "item.kubejs.molten_desh_bucket": "熔融戴斯桶",
   "item.kubejs.molten_etrium_bucket": "熔融埃忒恩桶",
   "item.kubejs.molten_ostrum_bucket": "熔融紫金桶",
