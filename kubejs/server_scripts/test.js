@@ -15,7 +15,9 @@
 
 BlockEvents.rightClicked(event => {
 
-    const { block, player } = event
+    const { block, player, hand } = event
+
+    if (hand != 'MAIN_HAND') return
 
     if (player.mainHandItem.id == 'kubejs:phantom_glove') {
         Client.tell(`block: ${block}`)
