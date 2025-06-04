@@ -17,6 +17,9 @@ declare const global: {
         memoryBraceletLowerCase: string,
         memoryBraceletUpperCase: string,
         collectInterval: number,
+        phaseBraceletModeName: string,
+        phaseBraceletLowerCase: string,
+        phaseBraceletUpperCase: string
     }
 
     methods: {
@@ -163,6 +166,8 @@ declare namespace Internal {
             hasForeCast: boolean,
             hordeCriticalValue: number,
             hasLoggedBefore: boolean,
+            teleportMode: boolean,
+            hasSentTeleportMessage: boolean,
 
             launchPadPaint: CompoundTag_
             
@@ -240,7 +245,14 @@ declare namespace Internal {
             Fluid: {
                 FluidName: string,
                 Amount: number
-            }
+            },
+            Coordinate: {
+                dimension: string,
+                x: number,
+                y: number,
+                z: number
+            },
+            hasTeleport: boolean
         }
     }
 
@@ -302,6 +314,14 @@ declare namespace Internal {
                     In: boolean
                 }
             }
+        }
+    }
+
+    interface NetworkEventJS {
+        data: CompoundTag & {
+            AutoStoredXP: boolean,
+            hasTeleport: boolean,
+            hasSentTeleportMessage: boolean
         }
     }
 }

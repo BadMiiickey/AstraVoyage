@@ -111,4 +111,9 @@ StartupEvents.registry('item', event => {
         event.create('kubejs:requiem_ring', 'basic')
             .unstackable()
             .tag('curios:ring')
+
+        //时隙腕璇
+        event.create('kubejs:phase_bracelet', 'basic')
+            .unstackable()
+            .tag('curios:bracelet')
 })

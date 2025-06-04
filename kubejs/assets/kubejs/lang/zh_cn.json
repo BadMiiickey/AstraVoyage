@@ -440,9 +440,11 @@
   "item.kubejs.light_crystal": "§e曦光缀玉",
   "item.kubejs.lightning_claw": "§5惊霆裂爪",
   "item.kubejs.requiem_ring": "§d安魂指箍",
+  "item.kubejs.phase_bracelet": "§b时隙腕璇",
 
   "effect.kubejs.bloodthirsty": "嗜血",
   "effect.kubejs.corrosion": "蛀蚀",
 
-  "key.memoryBraceletMode": "切换慧泽丝链模式"
+  "key.memoryBraceletMode": "切换慧泽丝链模式",
+  "key.phaseBraceletMode": "时隙腕璇传送"
 }

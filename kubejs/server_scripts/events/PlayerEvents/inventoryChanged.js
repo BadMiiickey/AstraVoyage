@@ -13,17 +13,14 @@ PlayerEvents.inventoryChanged(event => {
         })
     }
 
-    //守护之盾NBT初始化 + 设置能量上限
-    if (item.id == 'kubejs:guardian_shield') {
-        if (item.nbt?.Energy == undefined) {
-            item.setNbt({
-                Energy: 0,
-                MaxEnergy: 96000
-            })
-        }
-        
-        if (item.nbt.Energy >= 96000) {
-            item.nbt.Energy = 96000
-        }
+    //时隙腕璇NBT初始化
+    if (
+        item.id == 'kubejs:phase_bracelet'
+        && item.nbt?.Coordinate == undefined
+    ) {
+        item.setNbt({
+            Coordinate: {},
+            hasTeleport: false
+        })
     }
 })

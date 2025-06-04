@@ -175,6 +175,51 @@ PlayerEvents.tick(event => {
                 }
             }
         }
+        
+        //时隙腕璇 => 读取玩家设置按键
+        global.other.phaseBraceletModeName = KeyBindUtil.getKeyMapping('phaseBraceletMode').keyCode.name
+        global.other.phaseBraceletLowerCase = global.other.phaseBraceletModeName
+            .substring(global.other.phaseBraceletModeName.indexOf('key.keyboard.') + 13)
+        global.other.phaseBraceletUpperCase = global.other.phaseBraceletLowerCase.slice(0, 1).toUpperCase()
+            + global.other.phaseBraceletLowerCase.slice(1)
+
+        if (global.methods.tickCountCheck(server, 11, 3)) {
+            if (global.methods.slotResult(player, 'kubejs:phase_bracelet')) {
+                for (let i = 0; i < slotsList.slots; i++) {
+                    if (slotsList.equippedCurios.getStackInSlot(i).id == 'kubejs:phase_bracelet') {
+
+                        let target = slotsList.equippedCurios.getStackInSlot(i)
+
+                        target.nbt.hasTeleport = player.persistentData.teleportMode
+
+                        if (target.nbt.hasTeleport == true) {
+                            player.teleportTo(
+                                target.nbt?.Coordinate?.dimension,
+                                target.nbt?.Coordinate?.x,
+                                target.nbt?.Coordinate?.y,
+                                target.nbt?.Coordinate?.z,
+                                0, 0
+                            )
+                            target.nbt.hasTeleport = false
+                            player.persistentData.teleportMode = false
+                        }
+
+                        if (
+                            player.level.dimension.toString() == target.nbt?.Coordinate?.dimension
+                            && player.x == target.nbt?.Coordinate?.x
+                            && player.y == target.nbt?.Coordinate?.y
+                            && player.z == target.nbt?.Coordinate?.z
+                            && player.persistentData.hasSentTeleportMessage == false 
+                        ) {
+                            player.setStatusMessage(`§a传送完成!`)
+                            player.persistentData.hasSentTeleportMessage = true
+                        }
+
+                        break
+                    }
+                }
+            }
+        }
 
     if (player.creative || player.spectator) return
 
@@ -203,7 +248,7 @@ PlayerEvents.tick(event => {
 
             //玩家生命值降至阈值触发DeBuff
             if (player.health <= 3) {
-                player.setStatusMessage('§c你伤势已经极其严重, 请赶紧治疗!')
+                player.setStatusMessage('§c你的伤势已经极其严重, 请赶紧治疗!')
                 player.potionEffects.add('minecraft:blindness', 20 * 3, 0, false, false)
                 player.potionEffects.add('minecraft:nausea', 20 * 3, 0, false, false)
                 player.potionEffects.add('minecraft:weakness', 20 * 3, 2, false, false)

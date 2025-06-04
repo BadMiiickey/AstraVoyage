@@ -142,6 +142,12 @@ ItemEvents.tooltip(event => {
                 }
             })
 
+            //时隙腕璇
+            event.addAdvanced('kubejs:phase_bracelet', (item, advanced, text) => {
+                text.add(1, '§6手持该饰品按住§8[§7Shift+右键§8]§6记录坐标')
+                text.add(2, `§8按[§7${ global.other.phaseBraceletUpperCase }§8]传送`)
+            })
+
         //方块
             //简易工业平台
             event.addAdvanced('kubejs:simple_industrial_platform', (item, advanced, text) => {
