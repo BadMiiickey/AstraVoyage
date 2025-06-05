@@ -1,4 +1,4 @@
-ForgeEvents.onEvent($LivingUseTotemEvent, /** @param { Internal.LivingUseTotemEvent } event */ event => {
+NativeEvents.onEvent($LivingUseTotemEvent, /** @param { Internal.LivingUseTotemEvent } event */ event => {
 
     const { entity, totem } = event
 

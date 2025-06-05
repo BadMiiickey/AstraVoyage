@@ -1,4 +1,4 @@
-ForgeEvents.onEvent($LivingDamageEvent, /** @param { Internal.LivingDamageEvent } event */ event => {
+NativeEvents.onEvent($LivingDamageEvent, /** @param { Internal.LivingDamageEvent } event */ event => {
     
     const { entity, source } = event
 
