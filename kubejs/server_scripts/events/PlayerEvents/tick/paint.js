@@ -80,7 +80,12 @@ PlayerEvents.tick(event => {
                 }
             })
         } else {
-            player.paint({ lightLevel: { visible: false } })
+            player.paint({ 
+                lightLevel: { 
+                    type: 'text',
+                    visible: false
+                } 
+            })
         }
     }
 
@@ -148,11 +153,16 @@ PlayerEvents.tick(event => {
 
             player.paint(player.persistentData.launchPadPaint)
         } else {
-            for (let element in player.persistentData.launchPadPaint) {
-                player.persistentData.launchPadPaint[element] = { visible: false }
+            if (player.persistentData.launchPadPaint) {
+                for (let element in player.persistentData.launchPadPaint) {
+                    player.persistentData.launchPadPaint[element] = { 
+                        type: 'text',
+                        visible: false 
+                    }
+                }
+    
+                player.paint(player.persistentData.launchPadPaint)
             }
-
-            player.paint(player.persistentData.launchPadPaint)
         }
     }
 
@@ -223,11 +233,16 @@ PlayerEvents.tick(event => {
             player.paint(player.persistentData.steelTankPaint)
 
         } else {
-            for (let element in player.persistentData.steelTankPaint) {
-                player.persistentData.steelTankPaint[element] = { visible: false }
+            if (player.persistentData.steelTankPaint) {
+                for (let element in player.persistentData.steelTankPaint) {
+                    player.persistentData.steelTankPaint[element] = { 
+                        type: 'text',
+                        visible: false 
+                    }
+                }
+    
+                player.paint(player.persistentData.steelTankPaint)
             }
-
-            player.paint(player.persistentData.steelTankPaint)
         }
 
         //二阶火箭
@@ -241,7 +256,7 @@ PlayerEvents.tick(event => {
                 x: 5,
                 y: 42,
                 w: 120,
-                h: 150,
+                h: 160,
                 alignX: 'left',
                 alignY: 'top',
                 texture: 'kubejs:textures/gui/background.png',
@@ -288,11 +303,16 @@ PlayerEvents.tick(event => {
             player.paint(player.persistentData.deshTankPaint)
 
         } else {
-            for (let element in player.persistentData.deshTankPaint) {
-                player.persistentData.deshTankPaint[element] = { visible: false }
+            if (player.persistentData.deshTankPaint) {
+                for (let element in player.persistentData.deshTankPaint) {
+                    player.persistentData.deshTankPaint[element] = { 
+                        type: 'text',
+                        visible: false 
+                    }
+                }
+    
+                player.paint(player.persistentData.deshTankPaint)
             }
-
-            player.paint(player.persistentData.deshTankPaint)
         }
     }
 })
