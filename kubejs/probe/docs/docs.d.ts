@@ -6,7 +6,6 @@ declare const global: {
         undeads: Internal.List<Internal.LivingEntity>,
         rawMeets: Internal.List<Internal.ItemStack> ,
         vanillaFixMaterials: Internal.List<Internal.ItemStack>,
-        materialNames: Internal.List<Internal.Material>,
         banedEntities: Internal.List<Internal.LivingEntity>,
         rockets: Internal.EntityArrayList,
     },
@@ -38,7 +37,8 @@ declare const global: {
             dimension: string, 
             pos: {x: number, y: number, z: number}
         }>): Internal.List<T>,
-        frozenSeconds(seconds: number): number
+        frozenSeconds(seconds: number): number,
+        traceFluidSource(fluid: Internal.BlockContainerJS): Internal.BlockContainerJS
     }
     
     mapArray: {

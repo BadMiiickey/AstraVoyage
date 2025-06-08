@@ -340,10 +340,12 @@ PlayerEvents.tick(event => {
         if (global.methods.tickCountCheck(server, 10, 0.5)) {
             
             //玩家浸入熔融金属流体时燃烧
-            global.definitionsArray.materialNames.forEach(materialName => {
-                if (player.isInFluidType(Fluid.getType(`kubejs:molten_${ materialName }`).fluidType)) {
-                    player.attack(2)
-                    player.setSecondsOnFire(1)
+            Fluid.getTypes().forEach(fluid => {
+                if (fluid.startsWith('kubejs:molten_')) {
+                    if (player.isInFluidType(Fluid.getType(fluid).fluidType)) {
+                        player.attack(2)
+                        player.setSecondsOnFire(1)
+                    }
                 }
             })
 
