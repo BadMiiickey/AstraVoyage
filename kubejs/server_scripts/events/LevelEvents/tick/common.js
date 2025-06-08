@@ -5,31 +5,36 @@ LevelEvents.tick(event => {
     //亡灵生物持有嗜血效果时攻击活体生物
     if (global.methods.tickCountCheck(server, 0, 1.5)) {
         
-        let livingUndeads = level.entities
-            .filter(/** @param { Internal.LivingEntity } entity */ entity => 
-                entity.alive
-                && entity.undead
-            )
-        let notUndeads = level.entities
-            .filter(/** @param { Internal.LivingEntity } entity */ entity => 
-                entity.alive
-                && !entity.undead
-                && entity.type != 'dummmmmmy:target_dummy'
-            )
+        if (level.entities) {
 
-        livingUndeads.forEach(/** @param { Internal.AmbientCreature } livingUndead */ livingUndead => {
+            let livingUndeads = level.entities
+                .filter(/** @param { Internal.LivingEntity } entity */ entity => 
+                    entity instanceof $LivingEntity
+                    && entity.alive
+                    && entity.undead
+                )
+            let notUndeads = level.entities
+                .filter(/** @param { Internal.LivingEntity } entity */ entity => 
+                    entity instanceof $LivingEntity
+                    && entity.alive
+                    && !entity.undead
+                    && entity.type != 'dummmmmmy:target_dummy'
+                )
 
-            //判断亡灵生物是否持有嗜血效果
-            if (livingUndead.potionEffects.getActive('kubejs:bloodthirsty')) {
-                notUndeads.forEach(notUndead => {
-
-                    //检测亡灵生物与活体生物的距离
-                    if (notUndead.distanceToEntity(livingUndead) <= 16) {
-                        livingUndead.setTarget(notUndead)
+            livingUndeads.forEach(/** @param { Internal.AmbientCreature } livingUndead */ livingUndead => {
+    
+                //判断亡灵生物是否持有嗜血效果
+                if (livingUndead.potionEffects.getActive('kubejs:bloodthirsty')) {
+                    notUndeads.forEach(notUndead => {
+    
+                        //检测亡灵生物与活体生物的距离
+                        if (notUndead.distanceToEntity(livingUndead) <= 16) {
+                            livingUndead.setTarget(notUndead)
+                        }
                     }
-                }
-            )}
-        })
+                )}
+            })
+        }
     }
     
     //月相预报

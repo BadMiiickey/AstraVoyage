@@ -26,4 +26,3 @@ BlockEvents.rightClicked(event => {
         // Client.tell(`water: ${player.rayTrace().block.properties}`)
     }
 })
-
