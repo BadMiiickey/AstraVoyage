@@ -164,45 +164,46 @@ global.methods = {
      */
     traceFluidSource(fluid) {
 
-        let currentFluid = fluid
-        
-        for (let i = 1; i <= 1000; i++) {
-            if (currentFluid.properties?.level == 0) return currentFluid
+        /**
+         * 
+         * @param { Internal.BlockContainerJS } fluid 
+         */
+        function horizontalFluidCheck(fluid) {
             for (let dx of [-1, 0, 1]) {
                 for (let dz of [-1, 0, 1]) {
                     if (dx == 0 && dz == 0) continue
 
-                    let nextFluid = currentFluid.offset(dx, 0, dz)
+                    let nextFluid = fluid.offset(dx, 0, dz)
 
                     if (!nextFluid.properties?.level) continue
                     if (nextFluid.properties?.level == 0) return nextFluid
                     if (nextFluid.properties?.level == 8) {
-                        currentFluid = nextFluid
-                        break
+                        return verticalFluidCheck(nextFluid)
                     }
-
-                    if (nextFluid.properties?.level < currentFluid.properties?.level) {
-                        currentFluid = nextFluid
-                        break
-                    }
-                }
-            }
-
-            if (currentFluid.properties?.level == 8) {
-                for (let dy = 1; dy <= 1000; dy++) {
-
-                    let fluidAbove = currentFluid.offset(0, dy, 0)
-
-                    if (fluidAbove.properties?.level == 0) return fluidAbove
-                    if (fluidAbove.properties?.level != 8) {
-                        currentFluid = fluidAbove
-                        break
+                    if (nextFluid.properties?.level < fluid.properties?.level) {
+                        return horizontalFluidCheck(nextFluid)
                     }
                 }
             }
         }
 
-        return currentFluid
+        /**
+         * 
+         * @param { Internal.BlockContainerJS } fluid 
+         */
+        function verticalFluidCheck(fluid) {
+            
+            let nextFluid = fluid.offset(0, 1, 0)
+
+            if (nextFluid.properties?.level == 0) return nextFluid
+            if (nextFluid.properties?.level < fluid.properties?.level) {
+                return horizontalFluidCheck(nextFluid)
+            }
+        }
+
+        let currentFluid = fluid.properties?.level == 8 ? verticalFluidCheck(fluid) : horizontalFluidCheck(fluid)
+
+        return currentFluid.properties?.level == 0 ? currentFluid : this.traceFluidSource(currentFluid)
     }
 }
 

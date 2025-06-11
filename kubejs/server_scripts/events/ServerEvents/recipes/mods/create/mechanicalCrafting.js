@@ -363,24 +363,7 @@ ServerEvents.recipes(event => {
     ).id('kubejs:mechanical_crafting_reactor_core')//反应堆核心
 
     create.mechanical_crafting(
-        'createnuclear:reactor_gauge',
-        [
-            'CCCCC',
-            'CNGNC',
-            'CGUGC',
-            'CNGNC',
-            'CCCCC'
-        ],
-        {
-            C: 'createnuclear:reactor_casing',
-            N: 'kubejs:nuclear_mechanism',
-            G: 'createnuclear:reinforced_glass',
-            U: 'createnuclear:uranium_bucket'
-        }
-    ).id('kubejs:mechanical_crafting_reactor_gauge')//反应堆压力表
-
-    create.mechanical_crafting(
-        'createnuclear:reactor_cooling_frame',
+        'createnuclear:reactor_cooler',
         [
             'CCCCC',
             'CNGNC',
@@ -394,7 +377,7 @@ ServerEvents.recipes(event => {
             G: 'createnuclear:reinforced_glass',
             F: 'ad_astra:cryo_freezer'
         }
-    ).id('kubejs:mechanical_crafting_reactor_cooling_frame')//反应堆冷却框架
+    ).id('kubejs:mechanical_crafting_reactor_cooling_frame')//反应堆冷却器
 
     create.mechanical_crafting(
         'createnuclear:reactor_controller',

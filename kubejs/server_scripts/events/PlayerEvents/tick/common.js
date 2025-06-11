@@ -122,7 +122,7 @@ PlayerEvents.tick(event => {
                     player.xp = Math.floor(0, player.xp - 10)
                     return
                 }
-
+                
                 //玩家经验为0
                 player.attack(player.damageSources().magic(), 6)
                 return
