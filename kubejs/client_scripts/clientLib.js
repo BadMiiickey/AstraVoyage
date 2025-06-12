@@ -2,7 +2,6 @@
 
 var $CuriosApi = Java.loadClass('top.theillusivec4.curios.api.CuriosApi')
 var $AllGuiTextures = Java.loadClass('com.simibubi.create.foundation.gui.AllGuiTextures')
-var $GuiGameElement = Java.loadClass('com.simibubi.create.foundation.gui.element.GuiGameElement')
 var $AnimatedKinetics = Java.loadClass('com.simibubi.create.compat.jei.category.animations.AnimatedKinetics')
 var $AllPartialModels = Java.loadClass('com.simibubi.create.AllPartialModels')
 var $CreateRecipeCategory = Java.loadClass('com.simibubi.create.compat.jei.category.CreateRecipeCategory')
