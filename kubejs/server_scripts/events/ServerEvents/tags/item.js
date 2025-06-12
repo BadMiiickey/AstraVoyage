@@ -17,12 +17,14 @@ ServerEvents.tags('item', event => {
         event.add('forge:ingots/chromatic_compound', 'create:chromatic_compound')
         event.add('forge:ingots/refined_radiance', 'create:refined_radiance')
         event.add('forge:ingots/shadow_steel', 'create:shadow_steel')
+        event.add('forge:ingots/silver', 'kubejs:silver_ingot')
 
         event.remove('forge:ingots/steel', 'ad_astra:steel_ingot')
 
         //forge:nuggets
         event.remove('forge:nuggets/steel', 'ad_astra:steel_nugget')
         event.remove('forge:nuggets/copper', 'tconstruct:copper_nugget')
+        event.add('forge:nuggets/silver', 'kubejs:silver_nugget')
 
         //forge:rods
         event.remove('forge:rods/iron', 'ad_astra:iron_rod')
@@ -33,6 +35,7 @@ ServerEvents.tags('item', event => {
         event.add('forge:storage_blocks/aluminum_alloy', 'kubejs:aluminum_alloy_block')
         event.add('forge:storage_blocks/granite_alloy', 'kubejs:granite_alloy_block')
         event.add('forge:storage_blocks/diorite_alloy', 'kubejs:diorite_alloy_block')
+        event.add('forge:storage_blocks/silver', 'kubejs:silver_block')
 
         //forge:plates
         event.remove('forge:plates/iron', 'ad_astra:iron_plate')

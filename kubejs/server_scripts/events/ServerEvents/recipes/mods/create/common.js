@@ -8,7 +8,7 @@ ServerEvents.recipes(event => {
             'minecraft:magma_block',
             [
                 Fluid.of('minecraft:lava', 250),
-                Item.of('supplementaries:ash', 4)
+                Item.of('kubejs:ash', 4)
             ]
         ).id('kubejs:compacting_magma_block')//岩浆块
         
@@ -27,7 +27,7 @@ ServerEvents.recipes(event => {
             'create:blaze_cake_base',
             [
                 'create:cinder_flour',
-                'supplementaries:ash',
+                'kubejs:ash',
                 'minecraft:sugar',
                 '#forge:eggs'
             ]
@@ -73,6 +73,11 @@ ServerEvents.recipes(event => {
             'kubejs:lead_sheet',
             'createnuclear:lead_ingot'
         ).id('kubejs:pressing_lead_sheet')//铅板
+
+        create.pressing(
+            'kubejs:silver_sheet',
+            'kubejs:silver_ingot'
+        ).id('kubejs:pressing_silver_sheet')//银板
 
     //动力搅拌机
     create.mixing(
@@ -194,7 +199,7 @@ ServerEvents.recipes(event => {
         'kubejs:granite_alloy',
         [
             Item.of('minecraft:granite', 2),
-            Item.of('supplementaries:ash', 2)
+            Item.of('kubejs:ash', 2)
         ]
     ).id('kubejs:mixing_granite_alloy')//花岗合金
 
@@ -258,6 +263,14 @@ ServerEvents.recipes(event => {
             'refinedstorage:silicon',
             'kubejs:acid_silicon'
         ).id('kubejs:splashing_silicon')//硅
+
+        create.splashing(
+            [
+                Item.of('kubejs:silver_nugget', 9),
+                Item.of('kubejs:ash').withChance(0.5)
+            ],
+            'kubejs:crushed_raw_silver'
+        ).id('kubejs:splashing_silver_nugget')//银粒
 
         create.splashing(
             [
@@ -387,6 +400,17 @@ ServerEvents.recipes(event => {
                 'kubejs:bauxite_ore',
                 'kubejs:deepslate_bauxite_ore',
                 'kubejs:raw_bauxite'
+            ],
+            'minecraft:cobblestone'
+        )
+
+        //粉碎银矿石
+        crushingCompatibility(
+            'kubejs:crushed_raw_silver',
+            [
+                'kubejs:silver_ore',
+                'kubejs:deepslate_silver_ore',
+                'kubejs:raw_silver'
             ],
             'minecraft:cobblestone'
         )

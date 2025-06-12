@@ -137,7 +137,7 @@ ServerEvents.recipes(event => {
             ],
             {
                 G: 'minecraft:granite',
-                A: 'supplementaries:ash'
+                A: 'kubejs:ash'
             }
         ).id('kubejs:shaped_granite_alloy')//花岗合金
 
@@ -289,6 +289,7 @@ ServerEvents.recipes(event => {
         ingotTransformation('kubejs', 'aluminum')//铝锭
         ingotTransformation('kubejs', 'rock_core')//岩核锭
         ingotTransformation('kubejs', 'dense_planet_core')//致密星核锭
+        ingotTransformation('kubejs', 'silver')//银锭
 
         event.shapeless(
             'kubejs:rock_core_ingot',
@@ -314,9 +315,10 @@ ServerEvents.recipes(event => {
         function smeltAndBlast(output, input) {
 
             let outputPath = output.toString().replace(':', '_')
+            let inputPath = input.toString().replace(':', '_')
 
-            event.smelting(output, input).id(`kubejs:smelting_${ outputPath }`)
-            event.blasting(output, input).id(`kubejs:blasting_${ outputPath }`)
+            event.smelting(output, input).id(`kubejs:smelting_${ outputPath }/${ inputPath }`)
+            event.blasting(output, input).id(`kubejs:blasting_${ outputPath }/${ inputPath }`)
         }
 
         smeltAndBlast('ad_astra:desh_ingot', 'kubejs:crushed_raw_desh')//戴斯锭
@@ -324,6 +326,8 @@ ServerEvents.recipes(event => {
         smeltAndBlast('ad_astra:calorite_ingot', 'kubejs:crushed_raw_calorite')//耐热金属锭
         smeltAndBlast('tconstruct:seared_brick', 'kubejs:granite_alloy')//焦黑砖
         smeltAndBlast('kubejs:alumina', 'kubejs:aluminum_hydroxide')//氧化铝
+        smeltAndBlast('kubejs:silver_ingot', 'kubejs:raw_silver')//银锭
+        smeltAndBlast('kubejs:silver_ingot', 'kubejs:crushed_raw_silver')//银锭
 
         //锻造台
         /**

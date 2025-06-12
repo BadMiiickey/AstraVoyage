@@ -154,10 +154,7 @@ StartupEvents.modifyCreativeTab('kubejs:tab', event => {
         event.remove('minecraft:enchanting_table')
         event.remove('minecraft:end_portal_frame')
         event.remove('minecraft:brewing_stand')
-        event.remove('supplementaries:bamboo_spikes_tipped')
         event.remove('#minecraft:anvil')
-        event.remove('supplementaries:globe')
-        event.remove('supplementaries:globe_sepia')
     })
 
     //minecraft:ingredients

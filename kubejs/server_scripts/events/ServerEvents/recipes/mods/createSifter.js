@@ -19,7 +19,7 @@ ServerEvents.recipes(event => {
     //熔渣 => 灰烬 + 砂土
     createsifter.sifting(
         [
-            Item.of('supplementaries:ash').withChance(0.3),
+            Item.of('kubejs:ash').withChance(0.3),
             Item.of('minecraft:coarse_dirt').withChance(0.5)
         ],
         [

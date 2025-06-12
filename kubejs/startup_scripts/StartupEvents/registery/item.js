@@ -28,6 +28,12 @@ StartupEvents.registry('item', event => {
     event.create('kubejs:dense_planet_core_nugget', 'basic')//致密星核粒
     event.create('kubejs:dense_planet_core_sheet', 'basic')//致密星核板
     event.create('kubejs:lead_sheet', 'basic')//铅板
+    event.create('kubejs:raw_silver', 'basic')//粗银
+    event.create('kubejs:crushed_raw_silver', 'basic')//粉碎银矿石
+    event.create('kubejs:silver_ingot', 'basic')//银锭
+    event.create('kubejs:silver_nugget', 'basic')//银粒
+    event.create('kubejs:silver_sheet', 'basic')//银板
+    event.create('kubejs:ash', 'basic')//灰烬
 
     //星核注册
     event.create('kubejs:earth_core', 'basic')//地球星核

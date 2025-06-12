@@ -315,4 +315,15 @@ ServerEvents.recipes(event => {
         .stress(8)
         .fluid(Fluid.of('minecraft:water', 20))
         .id('kubejs:vein_ice_shard')
+
+    //粗银矿脉
+    createoreexcavation.vein('§f§l粗银矿脉', 'kubejs:raw_silver')
+        .placement(256, 16, 2101955)
+        .biomeWhitelist('kubejs:is_mercury')
+        .priority(32)
+        .id('kubejs:raw_silver_vein')
+    createoreexcavation.drilling('kubejs:raw_silver', 'kubejs:raw_silver_vein', 20)
+        .stress(16)
+        .fluid(Fluid.of('minecraft:water', 20))
+        .id('kubejs:vein_raw_silver')
 })

@@ -24,7 +24,7 @@ LevelEvents.tick(event => {
                             let collectInterval = 9 - Math.floor(Math.log2(fanSpeed))
 
                             if (global.methods.tickCountCheck(server, 0, collectInterval)) {
-                                block.inventory.insertItem('supplementaries:ash', false)
+                                block.inventory.insertItem('kubejs:ash', false)
                             }
                         }
                     }

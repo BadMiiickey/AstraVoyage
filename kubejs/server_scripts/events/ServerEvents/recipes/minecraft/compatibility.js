@@ -298,9 +298,6 @@ ServerEvents.recipes(event => {
         removeRecipesId('refinedstoraged:quartz_enriched_iron')
         removeRecipesId('refinedstorage:silicon')
 
-        //Supplementaries
-        removeRecipesId('supplementaries:soap/globe_sepia')
-
         //SophisticatedBackpacks
         removeRecipesId('sophisticatedbackpacks:backpack')
 

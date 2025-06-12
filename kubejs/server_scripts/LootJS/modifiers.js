@@ -14,15 +14,24 @@ LootJS.modifiers(event => {
         .removeLoot('minecraft:totem_of_undying')
 
     //方块掉落
-        //铝土矿石
-        event.addBlockLootModifier('kubejs:bauxite_ore')
-            .removeLoot(Ingredient.all)
-            .addLoot('kubejs:raw_bauxite')
-            .dropExperience(10)
 
-        //深层铝土矿石
-        event.addBlockLootModifier('kubejs:deepslate_bauxite_ore')
-            .removeLoot(Ingredient.all)
-            .addLoot('kubejs:raw_bauxite')
-            .dropExperience(15)
+    /**
+     * 
+     * @param { Internal.List<Internal.Material> } materials
+     */
+    function oreLootModifier(materials) {
+        materials.forEach(material => {
+            event.addBlockLootModifier(`kubejs:${ material }_ore`)
+                .removeLoot(Ingredient.all)
+                .addLoot(`kubejs:raw_${ material }`)
+                .dropExperience(10)
+
+            event.addBlockLootModifier(`kubejs:deepslate_${ material }_ore`)
+                .removeLoot(Ingredient.all)
+                .addLoot(`kubejs:raw_${ material }`)
+                .dropExperience(15)
+        })
+    }
+
+    oreLootModifier(['bauxite', 'silver'])
 })
