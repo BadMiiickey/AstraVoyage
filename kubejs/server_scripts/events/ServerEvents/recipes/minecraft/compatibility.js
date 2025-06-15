@@ -151,6 +151,20 @@ ServerEvents.recipes(event => {
             'ad_astra:steel_rod'
         )
 
+        //电阻线圈
+        event.replaceInput(
+            'moreburners:resistance_coil',
+            'minecraft:copper_ingot',
+            'createaddition:copper_wire'
+        )
+
+        //铜线圈
+        event.replaceInput(
+            'moreburners:copper_coil',
+            'minecraft:copper_ingot',
+            'createaddition:copper_wire'
+        )
+
     //移除配方
     
     const removeRecipesId = (/** @type { ResourceLocation_ } */ name) => { event.remove({ id: name }) }
@@ -205,7 +219,6 @@ ServerEvents.recipes(event => {
 
         //Create
         removeRecipesId('create:crafting/materials/rose_quartz')
-        removeRecipesId('create:mechanical_crafting/patato_cannon')
         removeRecipesId('create:crushing/deepslate_desh_ore')
         removeRecipesId('create:crushing/moon_desh_ore')
         removeRecipesId('create:crushing/deepslate_ostrum_ore')
@@ -229,6 +242,9 @@ ServerEvents.recipes(event => {
         removeRecipesId('createaddition:mechanical_crafting/tesla_coil')
         removeRecipesId('createaddition:crafting/capacitor_1')
         removeRecipesId('createaddition:crafting/capacitor_2')
+
+        //CreateCasing
+        removeRecipesId(/createcasing:crafting\/configurable_gearbox.*/)
 
         //CreateDieselGenerators
         removeRecipesId('createdieselgenerators:distillation/crude_oil')
@@ -289,6 +305,10 @@ ServerEvents.recipes(event => {
             removeRecipesInput(armor)
             removeRecipesOutput(armor)
         })
+
+        //Moreburners
+        removeRecipesId('moreburners:electric_burner')
+        removeRecipesId('moreburners:sequenced_assembly/heat_upgrade')
 
         //Quark
         removeRecipesId('quark:tools/crafting/pickarang_heart')

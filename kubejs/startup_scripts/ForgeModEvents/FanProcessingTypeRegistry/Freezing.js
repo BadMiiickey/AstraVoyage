@@ -1,13 +1,13 @@
 ForgeModEvents.onEvent('net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent', event => {
     
-    let $AllFanProcessingTypes = Java.loadClass('com.simibubi.create.content.kinetics.fan.processing.AllFanProcessingTypes')
-    let $FanProcessingType = Java.loadClass('com.simibubi.create.content.kinetics.fan.processing.FanProcessingType')
-    let $ParticleTypes = Java.loadClass('net.minecraft.core.particles.ParticleTypes')
-    let $LivingEntity = Java.loadClass('net.minecraft.world.entity.LivingEntity')
-    let $ItemStack = Java.loadClass('net.minecraft.world.item.ItemStack')
-    let $ArrayList = Java.loadClass('java.util.ArrayList')
-    let $Context = Java.loadClass('dev.latvian.mods.rhino.Context')
-    let $KubeJS = Java.loadClass('dev.latvian.mods.kubejs.KubeJS')
+    var $AllFanProcessingTypes = Java.loadClass('com.simibubi.create.content.kinetics.fan.processing.AllFanProcessingTypes')
+    var $FanProcessingType = Java.loadClass('com.simibubi.create.content.kinetics.fan.processing.FanProcessingType')
+    var $ParticleTypes = Java.loadClass('net.minecraft.core.particles.ParticleTypes')
+    var $LivingEntity = Java.loadClass('net.minecraft.world.entity.LivingEntity')
+    var $ItemStack = Java.loadClass('net.minecraft.world.item.ItemStack')
+    var $ArrayList = Java.loadClass('java.util.ArrayList')
+    var $Context = Java.loadClass('dev.latvian.mods.rhino.Context')
+    var $KubeJS = Java.loadClass('dev.latvian.mods.kubejs.KubeJS')
 
     let context = $KubeJS.getStartupScriptManager().context
 
@@ -128,6 +128,7 @@ ForgeModEvents.onEvent('net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEve
         }
     }
 
+    /** @type { Internal.FanProcessingType } */
     let freezingType = $Context.jsToJava(context, freezingTypeImplementation, $FanProcessingType)
 
     $AllFanProcessingTypes.register('freezing', freezingType)

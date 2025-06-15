@@ -10,3 +10,4 @@ var $LivingUseTotemEvent = Java.loadClass('net.minecraftforge.event.entity.livin
 var $PortalSpawnEvent = Java.loadClass('net.minecraftforge.event.level.BlockEvent$PortalSpawnEvent')
 var $AnvilUpdateEvent = Java.loadClass('net.minecraftforge.event.AnvilUpdateEvent')
 var $PotionBrewEvent = Java.loadClass('net.minecraftforge.event.brewing.PotionBrewEvent')
+var $StairsShape = Java.loadClass('net.minecraft.world.level.block.state.properties.StairsShape')

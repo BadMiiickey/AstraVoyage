@@ -153,9 +153,12 @@ ServerEvents.recipes(event => {
                     'kubejs:dense_planet_core_mechanism'
                 ]
             ),
-            create.pressing(
+            create.deploying(
                 'kubejs:incomplete_creative_mechanism',
-                'kubejs:incomplete_creative_mechanism'
+                [
+                    'kubejs:incomplete_creative_mechanism',
+                    'createcasing:creative_casing'
+                ]
             ),
             create.filling(
                 'kubejs:incomplete_creative_mechanism',
@@ -263,4 +266,32 @@ ServerEvents.recipes(event => {
         'kubejs:incomplete_nuclear_mechanism',
         5
     ).id('kubejs:sequenced_assembly_nuclear_mechanism')//核能构件
+
+    //其他
+    create.sequenced_assembly(
+        'moreburners:heat_upgrade',
+        'ad_astra:calorite_plate',
+        [
+            create.filling(
+                'moreburners:incomplete_heat_upgrade',
+                [
+                    'moreburners:incomplete_heat_upgrade',
+                    Fluid.of('minecraft:lava', 1000)
+                ]
+            ),
+            create.deploying(
+                'moreburners:incomplete_heat_upgrade',
+                [
+                    'moreburners:incomplete_heat_upgrade',
+                    'moreburners:nickel_coil'
+                ]
+            ),
+            create.pressing(
+                'moreburners:incomplete_heat_upgrade',
+                'moreburners:incomplete_heat_upgrade'
+            )
+        ],
+        'moreburners:incomplete_heat_upgrade',
+        1
+    ).id('moreburners:sequenced_assembly_heat_upgrade')//热量升级
 })

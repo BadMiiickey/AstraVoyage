@@ -271,4 +271,49 @@ BlockEvents.rightClicked(event => {
             level.setBlockAndUpdate(block.pos, newState)
         }
     }
+
+    //楼梯 => 扳手右键更改朝向
+    if (block.hasTag('minecraft:stairs')) {
+        if (player.mainHandItem.id == 'create:wrench') {
+
+            let stateList = [
+                $StairsShape.STRAIGHT, 
+                $StairsShape.OUTER_LEFT, $StairsShape.OUTER_RIGHT,
+                $StairsShape.INNER_LEFT, $StairsShape.INNER_RIGHT
+            ] 
+            let newState = 
+                block.blockState.setValue(BlockProperties.STAIRS_SHAPE, stateList[global.other.stateCount])
+
+            global.other.stateCount += 1
+
+            if (global.other.stateCount >= stateList.length) {
+                global.other.stateCount = 0
+            }
+            
+            player.swing()
+            level.setBlockAndUpdate(block.pos, newState)
+        }
+    }
+
+    //花 => 骨粉右键产出
+    if (
+        block.hasTag('minecraft:flowers')
+        && !block.hasTag('minecraft:tall_flowers')
+    ) {
+        if (player.mainHandItem.id == 'minecraft:bone_meal') {
+            player.swing()
+            block.popItem(block.id)
+            level.spawnParticles(
+                'minecraft:composter', false,
+                block.x + Math.random(),
+                block.y + 0.5 + Math.random() * 0.5,
+                block.z + Math.random(),
+                0, 0, 0, 5, 0
+            )
+            
+            if (!player.creative) {
+                player.mainHandItem.count--
+            }
+        }
+    }
 })

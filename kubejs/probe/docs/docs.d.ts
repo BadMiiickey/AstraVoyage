@@ -18,7 +18,8 @@ declare const global: {
         collectInterval: number,
         phaseBraceletModeName: string,
         phaseBraceletLowerCase: string,
-        phaseBraceletUpperCase: string
+        phaseBraceletUpperCase: string,
+        stateCount: number
     }
 
     methods: {

@@ -4,18 +4,24 @@ JEIAddedEvents.registerCategories(event => {
     const { jeiHelpers } = data
     const { guiHelper } = jeiHelpers
 
-    event.custom('create:freezing', builder => {
-        builder.title('批量冷冻')
-        builder.iconSupplier(() => {
+    event.custom('create:freezing', category => {
+        category.title('批量冷冻')
+        category.setWidth(178)
+        category.setHeight(72)
+        category.background(guiHelper.createBlankDrawable(0, 0))
+
+        category.iconSupplier(() => {
             return new $DoubleItemIcon(
                 () => Item.of('create:propeller'),
-                () => Item.of('minecraft:powder_snow_bucket')
+                () => Item.of('minecraft:snow')
             )
         })
-        builder.setWidth(178)
-        builder.setHeight(72)
-        builder.background(guiHelper.createBlankDrawable(0, 0))
-        builder.setSetRecipeHandler((layoutBuilder, recipe, focuses) => {
+
+        category.isRecipeHandled(recipe => {
+            return true
+        })
+
+        category.handleLookup((layoutBuilder, recipe, focuses) => {
             layoutBuilder.addSlot($RecipeIngredientRole.INPUT, 21, 48)
                 .setBackground($CreateRecipeCategory.getRenderedSlot(), -1, -1)
                 .addItemStack(recipe.recipeData.input)
@@ -25,7 +31,8 @@ JEIAddedEvents.registerCategories(event => {
                 .addItemStack(recipe.recipeData.output)
         })
 
-        builder.setDrawHandler((recipe, recipeSlotsView, graphics, mouseX, mouseY) => {
+        category.setDrawHandler((recipe, recipeSlotsView, graphics, mouseX, mouseY) => {
+            graphics.renderComponentHoverEffect
 
             $AllGuiTextures.JEI_SHADOW.render(graphics, 46, 29)
             $AllGuiTextures.JEI_SHADOW.render(graphics, 65, 39)

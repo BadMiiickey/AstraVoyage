@@ -2,8 +2,10 @@ PlayerEvents.loggedIn(event => {
 
     const { player } = event
 
-    //玩家初次登录附带防辐射套
+    //玩家初次登录
     if (!player.persistentData.hasLoggedBefore) {
+
+        //给予玩家初始防护服
         player.headArmorItem = 'createnuclear:white_anti_radiation_helmet'
         player.chestArmorItem = 'createnuclear:white_anti_radiation_chestplate'
         player.legsArmorItem = 'createnuclear:white_anti_radiation_leggings'

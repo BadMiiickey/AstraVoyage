@@ -378,3 +378,7 @@ global.config = {
 
 //其他全局属性
 global.other = {}
+
+    if (!global.other.stateCount) {
+        global.other.stateCount = 0
+    }

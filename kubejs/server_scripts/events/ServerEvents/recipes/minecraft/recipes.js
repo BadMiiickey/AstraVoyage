@@ -255,6 +255,22 @@ ServerEvents.recipes(event => {
                 A: 'kubejs:aviation_mechanism'
             }
         ).id('kubejs:shaped_radio')//收音机
+
+        event.shaped(
+            'moreburners:electric_burner',
+            [
+                'TCT',
+                'AEA',
+                ' B '
+            ],
+            {
+                T: 'minecraft:tinted_glass',
+                C: 'moreburners:copper_coil',
+                A: 'create:andesite_casing',
+                E: 'kubejs:electronic_mechanism',
+                B: 'create:empty_blaze_burner'
+            }
+        ).id('kubejs:shaped_electric_burner')//电磁炉
         
         //无序合成
 

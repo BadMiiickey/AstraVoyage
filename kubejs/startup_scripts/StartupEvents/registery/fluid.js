@@ -4,16 +4,29 @@ StartupEvents.registry('fluid', event => {
     event.create('kubejs:acid', 'basic')
         .thinTexture(0xfdffe9)
         .bucketColor(0xfdffe9)
+        .stillTexture('kubejs:block/still')
+        .flowingTexture('kubejs:block/flowing')
 
     //铝酸盐溶液
     event.create('kubejs:aluminate_solution', 'basic')
         .thinTexture(0xe8f012)
         .bucketColor(0xe8f012)
+        .stillTexture('kubejs:block/still')
+        .flowingTexture('kubejs:block/flowing')
 
     //核废水
     event.create('kubejs:nuclear_waste', 'basic')
         .thinTexture(0xe1ff96)
         .bucketColor(0xe1ff96)
+        .stillTexture('kubejs:block/still')
+        .flowingTexture('kubejs:block/flowing')
+
+    //嬗变龙血
+    event.create('kubejs:dragon_blood', 'basic')
+        .thickTexture(0xb277f8)
+        .bucketColor(0xb277f8)
+        .stillTexture('kubejs:block/still')
+        .flowingTexture('kubejs:block/flowing')
 
     //匠魂
         //熔融戴斯

@@ -39,7 +39,6 @@ StartupEvents.modifyCreativeTab('ad_astra:main', event => {
 //create:base
 StartupEvents.modifyCreativeTab('create:base', event => {
 
-    event.remove('create:potato_cannon')
     event.remove('create:copper_diving_helmet')
     event.remove('create:copper_diving_boots')
     event.remove('create:netherite_diving_helmet')
@@ -54,6 +53,12 @@ StartupEvents.modifyCreativeTab('create:base', event => {
 StartupEvents.modifyCreativeTab('createaddition:main', event => {
 
     event.remove('createaddition:tesla_coil')
+})
+
+//createcasing:tab
+StartupEvents.modifyCreativeTab('createcasing:tab', event => {
+
+    event.remove(/configurable_gearbox.*/)
 })
 
 //createnuclear:main

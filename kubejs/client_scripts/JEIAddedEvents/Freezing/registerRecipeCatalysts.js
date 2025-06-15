@@ -7,5 +7,5 @@ JEIAddedEvents.registerRecipeCatalysts(event => {
     let recipeType = jeiHelpers.getRecipeType(freezingTypeId).get()
 
     data["addRecipeCatalyst(net.minecraft.world.item.ItemStack,mezz.jei.api.recipe.RecipeType[])"]
-        (Item.of('create:encased_fan').setHoverName('§r在雪后放置鼓风机'), recipeType)
+        (Item.of('create:encased_fan').setHoverName('在雪后放置鼓风机'), recipeType)
 })
