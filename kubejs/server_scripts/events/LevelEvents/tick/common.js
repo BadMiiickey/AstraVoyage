@@ -258,4 +258,24 @@ LevelEvents.tick(event => {
             }
         })
     }
+
+    //移除速度为0的火焰弹
+    if (global.methods.tickCountCheck(server, 8, 1.5)) {
+        server.players.forEach(/** @param { Internal.Player } player */ player => {
+            player.level.entities.forEach(/** @param { Internal.Entity } entity */ entity => {
+                if (entity.type == 'minecraft:fireball') {
+                    
+                    let motion = Math.sqrt(
+                        Math.pow(entity.motionX, 2)
+                        + Math.pow(entity.motionY, 2)
+                        + Math.pow(entity.motionZ, 2)
+                    )
+
+                    if (motion <= 0.1) {
+                        entity.setRemoved('unloaded_with_player')
+                    }
+                }
+            })
+        })
+    }
 })

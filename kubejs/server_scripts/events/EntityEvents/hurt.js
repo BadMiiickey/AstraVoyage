@@ -77,7 +77,7 @@ EntityEvents.hurt(event => {
             }
         }
 
-        //恶业之戒 => 佩戴时吸取攻击伤害的10%用于回复生命值
+        //血恶环戒 => 佩戴时吸取攻击伤害的10%用于回复生命值
         if (actual?.player) {
             if (global.methods.slotResult(actual, 'kubejs:evil_ring')) {
                 source.player.heal(entity.lastHurt * 0.1)

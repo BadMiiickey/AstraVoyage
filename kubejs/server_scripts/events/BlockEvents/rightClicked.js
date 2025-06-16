@@ -272,10 +272,87 @@ BlockEvents.rightClicked(event => {
         }
     }
 
-    //楼梯 => 扳手右键更改朝向
-    if (block.hasTag('minecraft:stairs')) {
+    //墙 => 扳手右键更改连接状态
+    if (block.hasTag('minecraft:walls')) {
+        if (player.mainHandItem.id == 'create:wrench') {
+            if (facing == 'UP' || facing == 'DOWN') return
+
+            let stateList = [
+                $WallSide.NONE, 
+                $WallSide.LOW, 
+                $WallSide.TALL
+            ]
+            let direction = facing.toString().toUpperCase() + '_WALL'
+            let newState = 
+                block.blockState.setValue(BlockProperties[direction], stateList[global.other.stateCount])
+
+            global.other.stateCount += 1
+
+            if (global.other.stateCount >= stateList.length) {
+                global.other.stateCount = 0
+            }
+
+            player.swing()
+            level.setBlockAndUpdate(block.pos, newState)
+            
+        }
+    }
+
+    //栅栏 => 扳手右键更改连接状态
+    if (block.hasTag('minecraft:fences')) {
         if (player.mainHandItem.id == 'create:wrench') {
 
+            let direction = facing.toString().toUpperCase()
+            let state = block.blockState.getValue(BlockProperties[direction]) 
+            let newState = 
+                block.blockState.setValue(BlockProperties[direction], state ? $Boolean.FALSE : $Boolean.TRUE)
+
+            player.swing()
+            level.setBlockAndUpdate(block.pos, newState)
+            
+        }
+    }
+
+    //栅栏门 => Shift + 扳手右键更改状态
+    if (block.hasTag('minecraft:fence_gates')) {
+        if (player.mainHandItem.id == 'create:wrench') {
+            if (player.crouching) {
+
+                let state = block.blockState.getValue(BlockProperties.IN_WALL)
+                let newState = 
+                    block.blockState.setValue(BlockProperties.IN_WALL, state ? $Boolean.FALSE : $Boolean.TRUE)
+
+                player.swing()
+                level.setBlockAndUpdate(block.pos, newState)
+            }
+        }
+    }
+
+    //楼梯 => 扳手右键更改形状, Shift + 扳手右键更改朝向
+    if (block.hasTag('minecraft:stairs')) {
+        if (player.mainHandItem.id == 'create:wrench') {
+            if (player.crouching) {
+
+                let stateList = [
+                    $Direction.NORTH, 
+                    $Direction.SOUTH, 
+                    $Direction.EAST, 
+                    $Direction.WEST
+                ]
+                let newState = 
+                    block.blockState.setValue(BlockProperties.HORIZONTAL_FACING, stateList[global.other.stateCount])
+
+                global.other.stateCount += 1
+
+                if (global.other.stateCount >= stateList.length) {
+                    global.other.stateCount = 0
+                }
+
+                player.swing()
+                level.setBlockAndUpdate(block.pos, newState)
+                return
+            }
+            
             let stateList = [
                 $StairsShape.STRAIGHT, 
                 $StairsShape.OUTER_LEFT, $StairsShape.OUTER_RIGHT,
@@ -295,14 +372,216 @@ BlockEvents.rightClicked(event => {
         }
     }
 
-    //花 => 骨粉右键产出
+    //台阶 => 扳手右键更改上下位置
+    if (block.hasTag('minecraft:slabs')) {
+        if (
+            player.mainHandItem.id == 'create:wrench'
+            && block.blockState.getValue(BlockProperties.SLAB_TYPE) != $SlabType.DOUBLE
+        ) {
+            let stateList = [
+                $SlabType.BOTTOM, 
+                $SlabType.TOP,
+            ]
+            let newState = 
+                block.blockState.setValue(BlockProperties.SLAB_TYPE, stateList[global.other.stateCount])
+
+            global.other.stateCount += 1
+
+            if (global.other.stateCount >= stateList.length) {
+                global.other.stateCount = 0
+            }
+            
+            player.swing()
+            level.setBlockAndUpdate(block.pos, newState)
+        }
+    }
+
+    //竖直台阶 => 扳手右键更改朝向
+    if (block.hasTag('quark:vertical_slabs')) {
+        if (
+            player.mainHandItem.id == 'create:wrench'
+            && block.blockState.getValue($QuarkVerticalSlabBlock.TYPE) != $VerticalSlabType.DOUBLE
+        ) {
+            let stateList = [
+                $VerticalSlabType.NORTH,
+                $VerticalSlabType.SOUTH,
+                $VerticalSlabType.EAST,
+                $VerticalSlabType.WEST
+            ]
+            let newState = 
+                block.blockState.setValue($QuarkVerticalSlabBlock.TYPE, stateList[global.other.stateCount])
+
+            global.other.stateCount += 1
+
+            if (global.other.stateCount >= stateList.length) {
+                global.other.stateCount = 0
+            }
+
+            player.swing()
+            level.setBlockAndUpdate(block.pos, newState)
+        }
+    }
+
+    //避雷针、末地烛 => 扳手右键更改上下朝向
     if (
-        block.hasTag('minecraft:flowers')
-        && !block.hasTag('minecraft:tall_flowers')
+        block.id == 'minecraft:lightning_rod' 
+        || block.id == 'minecraft:end_rod'
+    ) {
+        if (player.mainHandItem.id == 'create:wrench') {
+
+            let stateList = [
+                $Direction.UP,
+                $Direction.DOWN
+            ]
+            let newState = 
+                block.blockState.setValue(BlockProperties.FACING, stateList[global.other.stateCount])
+
+            global.other.stateCount += 1
+
+            if (global.other.stateCount >= stateList.length) {
+                global.other.stateCount = 0
+            }
+
+            player.swing()
+            level.setBlockAndUpdate(block.pos, newState)
+        }
+    }
+
+    //活板门 => 扳手右键更改上下位置, Shift + 扳手右键更改朝向
+    if (block.hasTag('minecraft:trapdoors')) {
+        if (player.mainHandItem.id == 'create:wrench') {
+            if (player.crouching) {
+
+                let stateList = [
+                    $Direction.NORTH, 
+                    $Direction.SOUTH, 
+                    $Direction.EAST, 
+                    $Direction.WEST
+                ]
+                let newState = 
+                    block.blockState.setValue(BlockProperties.HORIZONTAL_FACING, stateList[global.other.stateCount])
+
+                global.other.stateCount += 1
+
+                if (global.other.stateCount >= stateList.length) {
+                    global.other.stateCount = 0
+                }
+
+                player.swing()
+                level.setBlockAndUpdate(block.pos, newState)
+                return
+            }
+            
+            let stateList = [
+                $Half.BOTTOM,
+                $Half.TOP
+            ]
+            let newState = 
+                block.blockState.setValue(BlockProperties.HALF, stateList[global.other.stateCount])
+
+            global.other.stateCount += 1
+
+            if (global.other.stateCount >= stateList.length) {
+                global.other.stateCount = 0
+            }
+            
+            player.swing()
+            level.setBlockAndUpdate(block.pos, newState)
+            event.cancel()
+        }
+    }
+
+    //杆 => Shift + 扳手右键更改连接状态
+    if (block.hasTag('quark:posts')) {
+        if (player.mainHandItem.id == 'create:wrench') {
+            if (player.crouching) {
+                $WoodPostBlock.SIDES.forEach(side => {
+
+                    let stateList = [
+                        $PostSideType.NONE,
+                        $PostSideType.CHAIN,
+                        $PostSideType.OTHER_POST,
+                    ]
+                    let direction = 'CONNECT_' + facing.toString().toUpperCase()
+
+                    if (side.name.toUpperCase() != direction) return
+
+                    let newState = 
+                        block.blockState.setValue(side, stateList[global.other.stateCount])
+    
+                    global.other.stateCount += 1
+    
+                    if (global.other.stateCount >= stateList.length) {
+                        global.other.stateCount = 0
+                    }
+    
+                    player.swing()
+                    level.setBlockAndUpdate(block.pos, newState)
+                })
+            }
+        }
+    }
+
+    //具有AXIS属性的方块 => 扳手右键更改轴向
+    if (block.blockState.hasProperty(BlockProperties.AXIS)) {
+        if (player.crouching) return
+        if (player.mainHandItem.id == 'create:wrench') {
+
+            let stateList = [
+                $DirectionAxis.X,
+                $DirectionAxis.Y,
+                $DirectionAxis.Z
+            ]
+            let newState = 
+                block.blockState.setValue(BlockProperties.AXIS, stateList[global.other.stateCount])
+
+            global.other.stateCount += 1
+
+            if (global.other.stateCount >= stateList.length) {
+                global.other.stateCount = 0
+            }
+
+            player.swing()
+            level.setBlockAndUpdate(block.pos, newState)
+        }
+    }
+
+    //花、睡莲、海泡菜 => 骨粉右键产出
+    if (
+        (block.hasTag('minecraft:flowers') && !block.hasTag('minecraft:tall_flowers'))
+        || block.id == 'minecraft:lily_pad'
+        || block.id == 'minecraft:sea_pickle'
     ) {
         if (player.mainHandItem.id == 'minecraft:bone_meal') {
             player.swing()
             block.popItem(block.id)
+            level.spawnParticles(
+                'minecraft:composter', false,
+                block.x + Math.random(),
+                block.y + 0.5 + Math.random() * 0.5,
+                block.z + Math.random(),
+                0, 0, 0, 5, 0
+            )
+            
+            if (!player.creative) {
+                player.mainHandItem.count--
+            }
+        }
+    }
+
+    //甘蔗 => 骨粉右键根部成长
+    if (
+        block.id == 'minecraft:sugar_cane'
+        && block.offset(0, -1, 0).id != 'minecraft:sugar_cane'
+    ) {
+        if (player.mainHandItem.id == 'minecraft:bone_meal') {
+            player.swing()
+
+            let state = block.blockState.getValue(BlockProperties.AGE_15)
+            let newState = 
+                block.blockState.setValue(BlockProperties.AGE_15, $Integer.valueOf(String(Math.min(state + 1, 15))))
+
+            level.setBlockAndUpdate(block.pos, newState)
             level.spawnParticles(
                 'minecraft:composter', false,
                 block.x + Math.random(),

@@ -30,7 +30,7 @@ ForgeModEvents.onEvent('net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEve
         },
 
         getPriority() {
-            return 450
+            return 600
         },
 
         /**

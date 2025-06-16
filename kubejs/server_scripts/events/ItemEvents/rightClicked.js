@@ -149,4 +149,23 @@ ItemEvents.rightClicked(event => {
             }
         }
     }
+
+    //玩家对空气右键火焰弹将其发射
+    if (
+        item.id == 'minecraft:fire_charge'
+        && player.rayTrace().block == null
+    ) {
+        player.swing()
+
+        let fireCharge = level.createEntity('minecraft:fireball')
+
+        fireCharge.setPos(player.x, player.y + 1.5, player.z)
+        fireCharge.setRotation(player.yaw, player.pitch)
+        // fireCharge.setMotion()
+        fireCharge.spawn()
+
+        if (!player.creative) {
+            item.count--
+        }
+    }
 })

@@ -23,6 +23,7 @@ BlockEvents.rightClicked(event => {
         Client.tell(`block: ${block}`)
         Client.tell(`blockProperties: ${block.properties}`)
         Client.tell(`blockEntityData: ${block.entityData}`)
+        // Client.tell(`blockVanillaPropertyMap: ${block.blockState.vanillaPropertyMap}`)
         // Client.tell(`water: ${player.rayTrace().block.properties}`)
     }
 })
