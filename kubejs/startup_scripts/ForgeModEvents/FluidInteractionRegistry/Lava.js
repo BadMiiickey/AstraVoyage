@@ -101,7 +101,7 @@ ForgeModEvents.onEvent('net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEve
             FluidInteractionLib.basicMethods.addInteraction(
                 Fluid.getType(fluid).fluidType,
                 (level, currentPos, relativePos, currentState) => {
-                    FluidInteractionLib.basicMethods.hasFluidInteraction(level, currentPos, interactFluid)
+                    return FluidInteractionLib.basicMethods.hasFluidInteraction(level, currentPos, interactFluid)
                 },
                 (level, currentPos, relativePos, currentState) => {
                     this.fluidInteraction(level, currentPos, currentState, sourceTransferToBlock, flowingTransferToBlock)

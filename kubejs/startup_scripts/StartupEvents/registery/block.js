@@ -16,6 +16,22 @@ StartupEvents.registry('block', event => {
         .tagBlock('minecraft:needs_iron_tool')
         .stoneSoundType()
 
+    //银矿石
+    event.create('kubejs:silver_ore', 'basic')
+        .hardness(2.0)
+        .requiresTool(true)
+        .tagBlock('minecraft:mineable/pickaxe')
+        .tagBlock('minecraft:needs_iron_tool')
+        .stoneSoundType()
+
+    //深层银矿石
+    event.create('kubejs:deepslate_silver_ore', 'basic')
+        .hardness(2.5)
+        .requiresTool(true)
+        .tagBlock('minecraft:mineable/pickaxe')
+        .tagBlock('minecraft:needs_iron_tool')
+        .stoneSoundType()
+
     //铝块
     event.create('kubejs:aluminum_block', 'basic')
         .hardness(1.5)
@@ -64,22 +80,6 @@ StartupEvents.registry('block', event => {
     .tagBlock('minecraft:needs_netherite_tool')
     .stoneSoundType()
 
-    //银矿石
-    event.create('kubejs:silver_ore', 'basic')
-        .hardness(2.0)
-        .requiresTool(true)
-        .tagBlock('minecraft:mineable/pickaxe')
-        .tagBlock('minecraft:needs_iron_tool')
-        .stoneSoundType()
-
-    //深层银矿石
-    event.create('kubejs:deepslate_silver_ore', 'basic')
-        .hardness(2.5)
-        .requiresTool(true)
-        .tagBlock('minecraft:mineable/pickaxe')
-        .tagBlock('minecraft:needs_iron_tool')
-        .stoneSoundType()
-
     //银块
     event.create('kubejs:silver_block', 'basic')
         .hardness(1.5)
@@ -105,7 +105,7 @@ StartupEvents.registry('block', event => {
         .requiresTool(true)
         .tagBlock('minecraft:mineable/pickaxe')
         .tagBlock('minecraft:needs_iron_tool')
-        .glassSoundType()
+        .tagBlock('minecraft:crystal_sound_blocks')
         .lightLevel(1)
         .item(item => {
             item.unstackable()

@@ -546,22 +546,36 @@ BlockEvents.rightClicked(event => {
         }
     }
 
-    //花、睡莲、海泡菜 => 骨粉右键产出
+    /**
+     * 
+     * @param { Internal.Level } level 
+     * @param { Internal.BlockContainerJS } block 
+     */
+    function composterSpawn(level, block) {
+        for (let i = 0; i <= 40; i++) {
+                level.spawnParticles(
+                'minecraft:composter', false,
+                block.x + Math.random(),
+                block.y + Math.random(),
+                block.z + Math.random(),
+                0, 0, 0, 1, 0
+            )
+        }
+
+    }
+
+    //矮花、睡莲、海泡菜、绯红菌、诡异菌 => 骨粉右键产出
     if (
         (block.hasTag('minecraft:flowers') && !block.hasTag('minecraft:tall_flowers'))
         || block.id == 'minecraft:lily_pad'
         || block.id == 'minecraft:sea_pickle'
+        || block.id == 'minecraft:crimson_fungus'
+        || block.id == 'minecraft:warped_fungus'
     ) {
         if (player.mainHandItem.id == 'minecraft:bone_meal') {
             player.swing()
             block.popItem(block.id)
-            level.spawnParticles(
-                'minecraft:composter', false,
-                block.x + Math.random(),
-                block.y + 0.5 + Math.random() * 0.5,
-                block.z + Math.random(),
-                0, 0, 0, 5, 0
-            )
+            composterSpawn(level, block)
             
             if (!player.creative) {
                 player.mainHandItem.count--
@@ -569,9 +583,9 @@ BlockEvents.rightClicked(event => {
         }
     }
 
-    //甘蔗 => 骨粉右键根部成长
+    //甘蔗 => 骨粉右键根部催熟
     if (
-        block.id == 'minecraft:sugar_cane'
+        block.id == 'minecraft:sugar_cane' 
         && block.offset(0, -1, 0).id != 'minecraft:sugar_cane'
     ) {
         if (player.mainHandItem.id == 'minecraft:bone_meal') {
@@ -582,13 +596,25 @@ BlockEvents.rightClicked(event => {
                 block.blockState.setValue(BlockProperties.AGE_15, $Integer.valueOf(String(Math.min(state + 1, 15))))
 
             level.setBlockAndUpdate(block.pos, newState)
-            level.spawnParticles(
-                'minecraft:composter', false,
-                block.x + Math.random(),
-                block.y + 0.5 + Math.random() * 0.5,
-                block.z + Math.random(),
-                0, 0, 0, 5, 0
-            )
+            composterSpawn(level, block)
+            
+            if (!player.creative) {
+                player.mainHandItem.count--
+            }
+        }
+    }
+
+    //下界疣 => 骨粉右键催熟
+    if (block.id == 'minecraft:nether_wart') {
+        if (player.mainHandItem.id == 'minecraft:bone_meal') {
+            player.swing()
+
+            let state = block.blockState.getValue(BlockProperties.AGE_3)
+            let newState = 
+                block.blockState.setValue(BlockProperties.AGE_3, $Integer.valueOf(String(Math.min(state + 1, 3))))
+
+            level.setBlockAndUpdate(block.pos, newState)
+            composterSpawn(level, block)
             
             if (!player.creative) {
                 player.mainHandItem.count--
