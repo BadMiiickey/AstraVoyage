@@ -334,10 +334,10 @@ BlockEvents.rightClicked(event => {
             if (player.crouching) {
 
                 let stateList = [
-                    $Direction.NORTH, 
-                    $Direction.SOUTH, 
-                    $Direction.EAST, 
-                    $Direction.WEST
+                    Direction.NORTH, 
+                    Direction.SOUTH, 
+                    Direction.EAST, 
+                    Direction.WEST
                 ]
                 let newState = 
                     block.blockState.setValue(BlockProperties.HORIZONTAL_FACING, stateList[global.other.stateCount])
@@ -430,8 +430,8 @@ BlockEvents.rightClicked(event => {
         if (player.mainHandItem.id == 'create:wrench') {
 
             let stateList = [
-                $Direction.UP,
-                $Direction.DOWN
+                Direction.UP,
+                Direction.DOWN
             ]
             let newState = 
                 block.blockState.setValue(BlockProperties.FACING, stateList[global.other.stateCount])
@@ -453,10 +453,10 @@ BlockEvents.rightClicked(event => {
             if (player.crouching) {
 
                 let stateList = [
-                    $Direction.NORTH, 
-                    $Direction.SOUTH, 
-                    $Direction.EAST, 
-                    $Direction.WEST
+                    Direction.NORTH, 
+                    Direction.SOUTH, 
+                    Direction.EAST, 
+                    Direction.WEST
                 ]
                 let newState = 
                     block.blockState.setValue(BlockProperties.HORIZONTAL_FACING, stateList[global.other.stateCount])
@@ -528,9 +528,9 @@ BlockEvents.rightClicked(event => {
         if (player.mainHandItem.id == 'create:wrench') {
 
             let stateList = [
-                $DirectionAxis.X,
-                $DirectionAxis.Y,
-                $DirectionAxis.Z
+                DirectionAxis.X,
+                DirectionAxis.Y,
+                DirectionAxis.Z
             ]
             let newState = 
                 block.blockState.setValue(BlockProperties.AXIS, stateList[global.other.stateCount])
@@ -564,13 +564,12 @@ BlockEvents.rightClicked(event => {
 
     }
 
-    //矮花、睡莲、海泡菜、绯红菌、诡异菌 => 骨粉右键产出
+    //矮花、珊瑚、睡莲、海泡菜 => 骨粉右键产出
     if (
-        (block.hasTag('minecraft:flowers') && !block.hasTag('minecraft:tall_flowers'))
+        block.hasTag('minecraft:small_flowers')
+        || block.hasTag('minecraft:corals')
         || block.id == 'minecraft:lily_pad'
         || block.id == 'minecraft:sea_pickle'
-        || block.id == 'minecraft:crimson_fungus'
-        || block.id == 'minecraft:warped_fungus'
     ) {
         if (player.mainHandItem.id == 'minecraft:bone_meal') {
             player.swing()

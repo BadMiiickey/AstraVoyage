@@ -1,8 +1,5 @@
 JEIAddedEvents.registerRecipes(event => {
 
-    const { data } = event
-    const { jeiHelpers } = data
-
     let transmutatingTypeId = new ResourceLocation('create', 'transmutating')
     let recipeBuilder = event.custom(transmutatingTypeId)
     

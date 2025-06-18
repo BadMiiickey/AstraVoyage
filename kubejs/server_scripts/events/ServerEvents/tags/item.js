@@ -39,4 +39,18 @@ ServerEvents.tags('item', event => {
 
         //forge:plates
         event.remove('forge:plates/iron', 'ad_astra:iron_plate')
+
+    //kubejs:corals
+    event.add('kubejs:corals', [
+        'minecraft:brain_coral',
+        'minecraft:bubble_coral',
+        'minecraft:fire_coral',
+        'minecraft:horn_coral',
+        'minecraft:tube_coral',
+        'minecraft:brain_coral_fan',
+        'minecraft:bubble_coral_fan',
+        'minecraft:fire_coral_fan',
+        'minecraft:horn_coral_fan',
+        'minecraft:tube_coral_fan'
+    ])
 })

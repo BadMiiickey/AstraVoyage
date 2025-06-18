@@ -1,8 +1,5 @@
 JEIAddedEvents.registerRecipes(event => {
 
-    const { data } = event
-    const { jeiHelpers } = data
-
     let freezingTypeId = new ResourceLocation('create', 'freezing')
     let recipeBuilder = event.custom(freezingTypeId)
     

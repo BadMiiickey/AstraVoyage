@@ -17,10 +17,6 @@ JEIAddedEvents.registerCategories(event => {
             )
         })
 
-        category.isRecipeHandled(recipe => {
-            return true
-        })
-
         category.handleLookup((layoutBuilder, recipe, focuses) => {
             layoutBuilder.addSlot($RecipeIngredientRole.INPUT, 21, 48)
                 .setBackground($CreateRecipeCategory.getRenderedSlot(), -1, -1)
@@ -32,7 +28,6 @@ JEIAddedEvents.registerCategories(event => {
         })
 
         category.setDrawHandler((recipe, recipeSlotsView, graphics, mouseX, mouseY) => {
-            graphics.renderComponentHoverEffect
 
             $AllGuiTextures.JEI_SHADOW.render(graphics, 46, 29)
             $AllGuiTextures.JEI_SHADOW.render(graphics, 65, 39)
