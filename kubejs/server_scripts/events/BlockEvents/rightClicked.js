@@ -148,13 +148,6 @@ BlockEvents.rightClicked(event => {
     ) {
         player.swing()
         block.set('minecraft:air')
-        global.mapArray.platformsMapArray = global.mapArray.platformsMapArray
-            .filter(platform =>
-                !(
-                    platform.dimension == block.dimension
-                    && platform.pos == block.pos
-                )
-            )
         platformFilling(block)
         server.scheduleInTicks(16 * 5, callback => platformFrameFilling(block))
     }
