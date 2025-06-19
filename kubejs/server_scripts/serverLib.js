@@ -19,3 +19,4 @@ var $Half = Java.loadClass('net.minecraft.world.level.block.state.properties.Hal
 var $DirectionAxis = Java.loadClass('net.minecraft.core.Direction$Axis')
 var $WoodPostBlock = Java.loadClass('org.violetmoon.quark.content.building.block.WoodPostBlock')
 var $PostSideType = Java.loadClass('org.violetmoon.quark.content.building.block.WoodPostBlock$PostSideType')
+var $ForgeCatnipServices = Java.loadClass('net.createmod.catnip.platform.ForgeCatnipServices')

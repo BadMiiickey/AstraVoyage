@@ -229,6 +229,10 @@ ServerEvents.recipes(event => {
         removeRecipesId('create:crafting/materials/copper_ingot')
         removeRecipesId('create:crafting/materials/copper_nugget')
         removeRecipesId('create:crafting/materials/andesite_alloy')
+        removeRecipesId('create:filling/redstone')
+        removeRecipesId('create:filling/glowstone')
+        removeRecipesId('create:filling/gunpowder')
+        removeRecipesId('create:fill_minecraft_bucket_with_tconstruct_potion')
 
         removeRecipesOutput('create:copper_diving_helmet')
         removeRecipesOutput('create:copper_diving_boots')
