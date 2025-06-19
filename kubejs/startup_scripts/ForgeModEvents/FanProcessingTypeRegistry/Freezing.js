@@ -12,7 +12,8 @@ ForgeModEvents.onEvent('net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEve
     let context = $KubeJS.getStartupScriptManager().context
 
     const freezingRecipes = {
-        'minecraft:water_bucket': 'minecraft:powder_snow_bucket'
+        'minecraft:water_bucket': 'minecraft:powder_snow_bucket',
+        'minecraft:ice': 'minecraft:blue_ice'
     }
 
     const freezingTypeImplementation = {

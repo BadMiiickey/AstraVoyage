@@ -8,4 +8,9 @@ JEIAddedEvents.registerRecipes(event => {
         input: Item.of('minecraft:water_bucket'),
         output: Item.of('minecraft:powder_snow_bucket')
     })
+
+    recipeBuilder.add({
+        input: Item.of('minecraft:ice'),
+        output: Item.of('minecraft:blue_ice')
+    })
 })

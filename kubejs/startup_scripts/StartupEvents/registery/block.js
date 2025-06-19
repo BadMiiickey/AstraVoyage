@@ -95,6 +95,11 @@ StartupEvents.registry('block', event => {
         .tagBlock('minecraft:mineable/pickaxe')
         .tagBlock('minecraft:needs_iron_tool')
         .stoneSoundType()
+        .blockEntity(info => {
+            info.tick(blockEntity => {
+                
+            })
+        })
 
     //月华流晶
     event.create('kubejs:luminous_pearl', 'basic')
@@ -120,6 +125,18 @@ StartupEvents.registry('block', event => {
         .tagBlock('minecraft:needs_iron_tool')
         .tagBlock('create:wrench_pickup')
         .stoneSoundType()
+        .blockEntity(info => {
+            info.tick(blockEntity => {
+                if (!blockEntity.persistentData) {
+                    blockEntity.persistentData = {
+                        hasBuildCorrectly: false,
+                        failedMessageHasSent: false,
+                        hasBuilt: false,
+                    }
+                }
+                multiblockCheck.steelTank(blockEntity)
+            })
+        })
 
     //戴斯燃料储罐
     event.create('kubejs:desh_tank', 'basic')
@@ -129,6 +146,18 @@ StartupEvents.registry('block', event => {
         .tagBlock('minecraft:needs_iron_tool')
         .tagBlock('create:wrench_pickup')
         .stoneSoundType()
+        .blockEntity(info => {
+            info.tick(blockEntity => {
+                if (!blockEntity.persistentData) {
+                    blockEntity.persistentData = {
+                        hasBuildCorrectly: false,
+                        failedMessageHasSent: false,
+                        hasBuilt: false,
+                    }
+                }
+                multiblockCheck.deshTank(blockEntity)
+            })
+        })
 
     //紫金燃料储罐
     event.create('kubejs:ostrum_tank', 'basic')
@@ -138,6 +167,17 @@ StartupEvents.registry('block', event => {
         .tagBlock('minecraft:needs_iron_tool')
         .tagBlock('create:wrench_pickup')
         .stoneSoundType()
+        .blockEntity(info => {
+            info.tick(blockEntity => {
+                if (!blockEntity.persistentData) {
+                    blockEntity.persistentData = {
+                        hasBuildCorrectly: false,
+                        failedMessageHasSent: false,
+                        hasBuilt: false,
+                    }
+                }
+            })
+        })
         
     //耐热金属燃料储罐
     event.create('kubejs:calorite_tank', 'basic')
@@ -147,6 +187,17 @@ StartupEvents.registry('block', event => {
         .tagBlock('minecraft:needs_iron_tool')
         .tagBlock('create:wrench_pickup')
         .stoneSoundType()
+        .blockEntity(info => {
+            info.tick(blockEntity => {
+                if (!blockEntity.persistentData) {
+                    blockEntity.persistentData = {
+                        hasBuildCorrectly: false,
+                        failedMessageHasSent: false,
+                        hasBuilt: false,
+                    }
+                }
+            })
+        })
 
     //水洗熔渣
     event.create('kubejs:washed_scoria', 'basic')

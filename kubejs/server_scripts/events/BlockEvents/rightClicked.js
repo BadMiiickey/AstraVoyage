@@ -161,100 +161,59 @@ BlockEvents.rightClicked(event => {
 
     // 一阶火箭
     if (player.mainHandItem.id == 'create:wrench') {
-        if (global.mapArray.steelTanksMapArray) {
-            global.mapArray.steelTanksMapArray.forEach(rocket_1 => {
-                if (rocket_1.hasBuildCorrectly) {
-                    if (block.dimension == rocket_1.dimension) {
-                        player.swing()
+        if (block.id == 'kubejs:steel_tank') {
+            player.swing()
 
-                        const center = rocket_1.pos
-                        const minX = center.x - 3, maxX = center.x + 3
-                        const minY = center.y - 3, maxY = center.y + 9
-                        const minZ = center.z - 3, maxZ = center.z + 3
+            for (let dx = -3; dx <= 3; dx++) {
+                for (let dy = -3; dy <= 9; dy++) {
+                    for (let dz = -3; dz <= 3; dz++) {
+
+                        let checkBlock = block.offset(dx, dy, dz)
 
                         if (
-                            block.x >= minX && block.x <= maxX 
-                            && block.y >= minY && block.y <= maxY 
-                            && block.z >= minZ && block.z <= maxZ
+                            checkBlock.id.startsWith('ad_astra:') 
+                            || checkBlock.id == 'createnuclear:reinforced_glass' 
+                            || checkBlock.id == 'create:railway_casing' 
+                            || checkBlock.id == 'minecraft:lightning_rod'
+                            || checkBlock.id == 'kubejs:steel_tank'
                         ) {
-                            for (let dx = -3; dx <= 3; dx++) {
-                                for (let dy = -3; dy <= 9; dy++) {
-                                    for (let dz = -3; dz <= 3; dz++) {
-
-                                        let block = player.level.getBlock(center.x + dx, center.y + dy, center.z + dz)
-
-                                        if (
-                                            block.id.startsWith('ad_astra:') 
-                                            || block.id == 'createnuclear:reinforced_glass' 
-                                            || block.id == 'create:railway_casing' 
-                                            || block.id == 'minecraft:lightning_rod'
-                                            || block.id == 'kubejs:steel_tank'
-                                        ) {
-                                            block.set('minecraft:air')
-                                        }
-                                    }
-                                }
-                            }
-
-                            let rocket = player.level.createEntity('ad_astra:tier_1_rocket')
-
-                            rocket.setPos(center.x + 0.5, center.y - 2, center.z + 0.5)
-                            rocket.spawn()
-
-                            rocket_1.hasBuildCorrectly = false
-
-                            event.cancel()
+                            checkBlock.set('minecraft:air')
                         }
                     }
                 }
-            })
+            }
+
+            let rocket = block.level.createEntity('ad_astra:tier_1_rocket')
+
+            rocket.setPos(block.x + 0.5, block.y - 2, block.z + 0.5)
+            rocket.spawn()
         }
-        if (global.mapArray.deshTanksMapArray) {
-            global.mapArray.deshTanksMapArray.forEach(rocket_2 => {
-                if (rocket_2.hasBuildCorrectly) {
-                    if (block.dimension == rocket_2.dimension) {
-                        player.swing()
+        
+        if (block.id == 'kubejs:desh_tank') {
+            player.swing()
 
-                        const center = rocket_2.pos
-                        const minX = center.x - 3, maxX = center.x + 3
-                        const minY = center.y - 12, maxY = center.y
-                        const minZ = center.z - 3, maxZ = center.z + 3
+            for (let dx = -3; dx <= 3; dx++) {
+                for (let dy = 0; dy <= 14; dy++) {
+                    for (let dz = -3; dz <= 3; dz++) {
 
-                        if (
-                            block.x >= minX && block.x <= maxX &&
-                            block.y >= minY && block.y <= maxY &&
-                            block.z >= minZ && block.z <= maxZ
-                        ) {
-                            for (let dx = -3; dx <= 3; dx++) {
-                                for (let dy = 0; dy <= 14; dy++) {
-                                    for (let dz = -3; dz <= 3; dz++) {
-
-                                        let block = player.level.getBlock(center.x + dx, center.y - dy, center.z + dz) 
-                                          
-                                        if (
-                                            block.id.startsWith('ad_astra:') ||
-                                            block.id == 'createnuclear:reinforced_glass' ||
-                                            block.id == 'minecraft:lightning_rod' || 
-                                            block.id == 'kubejs:desh_tank'
-                                        ) {
-                                            block.set('minecraft:air')
-                                        }
-                                    }
-                                }
-                            }
-
-                            let rocket = player.level.createEntity('ad_astra:tier_2_rocket')
+                        let checkBlock = block.offset(dx, dy, dz) 
                             
-                            rocket.setPos(center.x + 0.5, center.y - 2, center.z + 0.5)
-                            rocket.spawn()
-
-                            rocket_2.hasBuildCorrectly = false
-
-                            event.cancel()
+                        if (
+                            checkBlock.id.startsWith('ad_astra:') 
+                            || checkBlock.id == 'createnuclear:reinforced_glass' 
+                            || checkBlock.id == 'minecraft:lightning_rod' 
+                            || checkBlock.id == 'kubejs:desh_tank'
+                        ) {
+                            checkBlock.set('minecraft:air')
                         }
                     }
                 }
-            })
+            }
+
+            let rocket = block.level.createEntity('ad_astra:tier_2_rocket')
+            
+            rocket.setPos(block.x + 0.5, block.y - 2, block.z + 0.5)
+            rocket.spawn()
         }
     }
 

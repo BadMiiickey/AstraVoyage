@@ -353,5 +353,10 @@ PlayerEvents.tick(event => {
             if (player.isInFluidType(Fluid.getType('kubejs:acid').fluidType)) {
                 player.attack(2)
             }
+
+            //玩家浸入嬗变龙血时持续受伤
+            if (player.isInFluidType(Fluid.getType('kubejs:dragon_blood').fluidType)) {
+                player.attack(player.damageSources().magic(), 2)
+            }
         }
 })

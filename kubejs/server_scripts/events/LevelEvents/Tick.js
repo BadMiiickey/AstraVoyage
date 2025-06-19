@@ -201,39 +201,6 @@ LevelEvents.tick(event => {
             })
         }
     }
-    
-    //营火事件
-    if (global.methods.tickCountCheck(server, 4, 3)) {
-        if (
-            global.mapArray.campfiresMapArray
-            && global.mapArray.campfiresMapArray.length > 0
-        ) {
-            global.mapArray.campfiresMapArray.forEach(campfire => {
-                server.players.forEach(/** @param { Internal.Player } player */ player => {
-                    if (player.level.dimension.toString() == campfire.dimension.toString()) {
-
-                        //玩家半径16格内存在营火则获得生命恢复Buff
-                        if (Math.sqrt(player.getDistanceSq(campfire.pos)) <= 16) {
-                            player.potionEffects.add('minecraft:regeneration', 20 * 3, 0, false, false)
-                        }
-
-                        //暴露于雨中熄灭
-                        let block = player.level.getBlock(campfire.pos)
-
-                        if (
-                            block.canSeeSky
-                            && block.level.raining
-                        ) {
-                            let litFalse = block.blockState
-                                .setValue($BlockStateProperties.LIT, $Boolean.FALSE)
-                    
-                            block.level.setBlockAndUpdate(campfire.pos, litFalse)
-                        }
-                    }
-                })
-            })
-        }
-    }
         
     //末地唯一进入方式并创造黑曜石平台
     if (global.methods.tickCountCheck(server, 7, 1.5)) {

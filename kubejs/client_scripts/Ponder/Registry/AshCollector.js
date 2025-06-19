@@ -30,7 +30,7 @@ Ponder.registry(event => {
             builder.idle(20 * 1)
 
             //显示鼓风机
-            builder.showControls(20 * 1.5, [2, 4, 2], 'left')
+            builder.overlay().showControls(20 * 1.5, [2, 4, 2], 'left')
                 .rightClick()
                 .withItem('create:encased_fan')
             

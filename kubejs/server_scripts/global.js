@@ -124,34 +124,6 @@ global.methods = {
 
     /**
      * 
-     * @param { Internal.List<{dimension: ResourceLocation, pos: BlockPos}> } mapArray 
-     */
-    mapArrayStringfy(mapArray) {
-        mapArray.forEach(map => {
-            map.dimension = map.dimension.toString()
-            map.pos = {
-                x: map.pos.x,
-                y: map.pos.y,
-                z: map.pos.z
-            }
-        })
-        return mapArray
-    },
-
-    /**
-     * 
-     * @param { Internal.List<{dimension: string, pos: {x: number, y: number, z: number} }> } mapArray 
-     */
-    mapArrayStringfyReverse(mapArray) {
-        mapArray.forEach(map => {
-            map.dimension = new ResourceLocation(map.dimension)
-            map.pos = new BlockPos(map.pos.x, map.pos.y, map.pos.z)
-        })
-        return mapArray
-    },
-
-    /**
-     * 
      * @param { number } seconds 
      */
     frozenSeconds(seconds) {
@@ -276,104 +248,6 @@ global.definitionsArray = {
         'ad_astra:lunarian_wandering_trader',
         'ad_astra:martian_wandering_trader'
     ]
-}
-
-//全局方块Map
-global.mapArray = {}
-
-    //营火
-    if (!global.mapArray.campfiresMapArray) {
-        global.mapArray.campfiresMapArray = []
-    }
-
-    //工作盆
-    if (!global.mapArray.basinsMapArray) { 
-        global.mapArray.basinsMapArray = []
-    }
-
-    //发射台
-    if (!global.mapArray.launchPadsMapArray) {
-        global.mapArray.launchPadsMapArray = []
-    }
-
-    //简易工业平台
-    if (!global.mapArray.platformsMapArray) {
-        global.mapArray.platformsMapArray = []
-    }
-
-    //钢燃料储罐
-    if (!global.mapArray.steelTanksMapArray) {
-        global.mapArray.steelTanksMapArray = []
-    }
-    
-    //戴斯燃料储罐
-    if (!global.mapArray.deshTanksMapArray) {
-        global.mapArray.deshTanksMapArray = []
-    }
-
-    //紫金燃料储罐
-    if (!global.mapArray.ostrumTanksMapArray) {
-        global.mapArray.ostrumTanksMapArray = []
-    }
-
-    //耐热金属燃料储罐
-    if (!global.mapArray.caloriteTanksMapArray) {
-        global.mapArray.caloriteTanksMapArray = []
-    }
-
-    //戴斯燃料储罐
-    if (!global.mapArray.deshTanksMapArray) {
-        global.mapArray.deshTanksMapArray = []
-    }
-
-    //紫金燃料储罐
-    if (!global.mapArray.ostrumTanksMapArray) {
-        global.mapArray.ostrumTanksMapArray = []
-    }
-
-    //耐热金属燃料储罐
-    if (!global.mapArray.calorieTanksMapArray) {
-        global.mapArray.calorieTanksMapArray = []
-    }
-
-//全局Config
-global.config = {
-    launchPadsResult: {
-        andesiteAlloyBlockResult: { name: '安山合金块', target: 8 },
-        andesiteScaffoldingResult: { name: '安山脚手架', target: 8 },
-        encasedFluidPipeResult: { name: '流体管道箱', target: 12 },
-        fluidPipeResult: { name: '流体管道', target: 32 },
-        mechanicalPumpResult: { name: '动力泵', target: 12 },
-        railwayCasingResult: { name: '列车机壳', target: 52 },
-        airResult: { name: '空气', target: 36 },
-        industrialIronBlockResult: { name: '工业铁块', target: 177 }
-    },
-
-    steelTanksResult: {
-        pillarResult: { name: '钢柱', target: 43 },
-        stairsResult: { name: '钢板楼梯', target: 16 },
-        slabResult: { name: '钢板台阶', target: 4 },
-        railwayResult: { name: '列车机壳', target: 6 },
-        buttonResult: { name: '钢板按钮', target: 2 },
-        blockResult: { name: '钢块', target: 18 },
-        glassResult: { name: '强化玻璃', target: 2 },
-        platingResult: { name: '钢板方块', target: 8 },
-        lightningRodResult: { name: '避雷针', target: 1 }
-    },
-
-    deshTanksResult: {
-        pillarResult: { name: '钢柱', target: 43 },
-        slabResult: { name: '钢板台阶', target: 4 },
-        deshSlabResult: { name: '戴斯板台阶', target: 4 },
-        stairsResult: { name: '钢板楼梯', target: 8 },
-        deshStairsResult: { name: '戴斯板楼梯', target: 4 },
-        blockResult: { name: '钢块', target: 4 },
-        glowingPillarResult: { name: '发光戴斯柱', target: 4 },
-        deshBlockResult: { name: '戴斯块', target: 18 },
-        glassResult: { name: '强化玻璃', target: 2 },
-        platingResult: { name: '钢板方块', target: 24 },
-        lightningRodResult: { name: '避雷针', target: 1 },
-    }
 }
 
 //其他全局属性
