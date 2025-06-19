@@ -40,7 +40,7 @@ BlockEvents.broken(event => {
                     && industrialIronBlockResult != undefined
                 )
 
-            //修复创造模式破坏掉落物增加的bug
+            //修复创造模式破坏掉落物增加的Bug
             if (player.creative) {
                 for (let i = -1; i <= 1; i++) {
                     for (let j = -1; j <= 1; j++) {
