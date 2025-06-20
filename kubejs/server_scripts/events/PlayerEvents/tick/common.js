@@ -192,7 +192,13 @@ PlayerEvents.tick(event => {
 
                         target.nbt.hasTeleport = player.persistentData.teleportMode
 
-                        if (target.nbt.hasTeleport == true) {
+                        if (
+                            target.nbt.hasTeleport == true
+                            && target.nbt?.Coordinate?.dimension
+                            && target.nbt?.Coordinate?.x
+                            && target.nbt?.Coordinate?.y
+                            && target.nbt?.Coordinate?.z
+                        ) {
                             player.teleportTo(
                                 target.nbt?.Coordinate?.dimension,
                                 target.nbt?.Coordinate?.x,
@@ -334,6 +340,16 @@ PlayerEvents.tick(event => {
                     player.setSecondsOnFire(1)
                 }
             }
+
+            //玩家在营火16格范围内获得生命恢复效果
+            
+            let playerAABBForCampfire = player.boundingBox.inflate(16, 16, 16)
+            
+            level.getBlockStates(playerAABBForCampfire).forEach(blockState => {
+                if (blockState.block.id == 'minecraft:campfire') {
+                    player.potionEffects.add('minecraft:regeneration', 20 * 3, 0, false, false)
+                }
+            })
         }
 
         //流体相关

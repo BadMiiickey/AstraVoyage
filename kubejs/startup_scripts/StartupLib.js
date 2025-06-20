@@ -2,6 +2,7 @@
 
 var $Boolean = Java.loadClass('java.lang.Boolean')
 var $BlockStateProperties = Java.loadClass('net.minecraft.world.level.block.state.properties.BlockStateProperties')
+var $BlockBuilder = Java.loadClass('dev.latvian.mods.kubejs.block.BlockBuilder')
 
 const multiblockCheck = {
 
@@ -11,11 +12,13 @@ const multiblockCheck = {
      */
     platform(blockEntity) {
 
+        let block = blockEntity.block
+
         /**
          * 
-         * @param { Internal.BlockContainerJS } platform 
+         * @param { Internal.BlockContainerJS } block 
          */
-        function frameParticleForecast(platform) {
+        function frameParticleForecast(block) {
 
             let dxs = [19, -19]
             let dzs = [20, -18]
@@ -24,9 +27,9 @@ const multiblockCheck = {
             dys.forEach(dy => {
                 for (let x = -18; x <= 19; x++) {
                     dzs.forEach(dz => {
-                        platform.level.spawnParticles(
+                        block.level.spawnParticles(
                             'minecraft:end_rod', false,
-                            platform.x + x, platform.y + 0.25 + dy, platform.z + dz,
+                            block.x + x, block.y + 0.25 + dy, block.z + dz,
                             0, 0, 0,
                             10, 0
                         )
@@ -35,9 +38,9 @@ const multiblockCheck = {
 
                 for (let z = -18; z <= 20; z++) {
                     dxs.forEach(dx => {
-                        platform.level.spawnParticles(
+                        block.level.spawnParticles(
                             'minecraft:end_rod', false,
-                            platform.x + dx, platform.y + 0.25 + dy, platform.z + z,
+                            block.x + dx, block.y + 0.25 + dy, block.z + z,
                             0, 0, 0,
                             10, 0
                         )
@@ -48,9 +51,9 @@ const multiblockCheck = {
             for (let y = 0; y <= 15; y++) {
                 dxs.forEach(dx => {
                     dzs.forEach(dz => {
-                        platform.level.spawnParticles(
+                        block.level.spawnParticles(
                             'minecraft:end_rod', false,
-                            platform.x + dx, platform.y + 0.25 + y, platform.z + dz,
+                            block.x + dx, block.y + 0.25 + y, block.z + dz,
                             0, 0, 0,
                             10, 0
                         )
@@ -66,11 +69,26 @@ const multiblockCheck = {
      * 
      * @param { Internal.BlockEntityJS } blockEntity 
      */
-    launchPad(blockEntity) {
+    diversionChannel(blockEntity) {
 
         let block = blockEntity.block
 
         const blockCheck = {
+
+            /**
+             * 
+             * @param { Internal.BlockContainerJS } block 
+             */
+            launchPad(block) {
+
+                let checkNumber = 0
+
+                if (block.offset(0, 5, 0).id == 'ad_astra:launch_pad') {
+                    checkNumber++
+                }
+
+                return checkNumber  //应为1
+            },
 
             /**
              * 
@@ -83,7 +101,7 @@ const multiblockCheck = {
                 for (let dx = -1; dx <= 1; dx++) {
                     for (let dz = -1; dz <= 1; dz++) {
                         if (!(dx == 0 && dz == 0)) {
-                            if (block.offset(dx, -1, dz).id == 'create:andesite_alloy_block') {
+                            if (block.offset(dx, 4, dz).id == 'create:andesite_alloy_block') {
                                 checkNumber++
                             }
                         }
@@ -102,7 +120,7 @@ const multiblockCheck = {
                 let checkNumber = 0
 
                 for (let dx of [-2, 2]) {
-                    for (let dy of [0, 1]) {
+                    for (let dy of [5, 6]) {
                         for (let dz of [-2, 2]) {
                             if (block.offset(dx, dy, dz).id == 'create:andesite_scaffolding') {
                                 checkNumber++
@@ -125,9 +143,9 @@ const multiblockCheck = {
                 for (let dx of [-2, 2]) {
                     for (let dz of [-2, 2]) {
                         
-                        let upperCheckBlock = block.offset(dx, -1, dz)
-                        let lowerCheckBlock_1 = block.offset(2 * dx, -2, dz)
-                        let lowerCheckBlock_2 = block.offset(dx, -2, 2 * dz)
+                        let upperCheckBlock = block.offset(dx, 4, dz)
+                        let lowerCheckBlock_1 = block.offset(2 * dx, 3, dz)
+                        let lowerCheckBlock_2 = block.offset(dx, 3, 2 * dz)
                         let upperEntityData = upperCheckBlock.entityData
                         let lowerEntityData_1 = lowerCheckBlock_1.entityData
                         let lowerEntityData_2 = lowerCheckBlock_2.entityData
@@ -178,7 +196,7 @@ const multiblockCheck = {
                     for (let j = -2; j <= 2; j++) {
                         if (i == j && i == -2) continue
                         if (i == -j && i == -2) continue
-                        if (block.offset(i, -1, j).id == 'create:fluid_pipe') {
+                        if (block.offset(i, 4, j).id == 'create:fluid_pipe') {
                             checkNumber++
                         }
                     }
@@ -186,11 +204,11 @@ const multiblockCheck = {
 
                 for (let dx of [-2, 2]) {
                     for (let dz of [-2, 2]) {
-                        if (block.offset(dx, -1, 2 * dz).id == 'create:fluid_pipe') {
+                        if (block.offset(dx, 4, 2 * dz).id == 'create:fluid_pipe') {
                             checkNumber++
                         }
                         
-                        if (block.offset(2 * dx, -1, dz).id == 'create:fluid_pipe') {
+                        if (block.offset(2 * dx, 4, dz).id == 'create:fluid_pipe') {
                             checkNumber++
                         }
                     }
@@ -204,7 +222,7 @@ const multiblockCheck = {
                             || (dx == -3 && dz == 3)
                             || (dx == -3 && dz == -3)
                         ) continue
-                        if (block.offset(dx, -2, dz).id == 'create:fluid_pipe') {
+                        if (block.offset(dx, 3, dz).id == 'create:fluid_pipe') {
                             checkNumber++
                         }
                     }
@@ -226,7 +244,7 @@ const multiblockCheck = {
                         if (dx == dz && dx == -3) continue
                         if (dx == -dz && dx == -3) continue
                         
-                        let checkBlock = block.offset(dx, -1, dz)
+                        let checkBlock = block.offset(dx, 4, dz)
                         let checkEntityData = checkBlock.entityData
 
                         if (checkBlock.id == 'create:mechanical_pump') {
@@ -243,9 +261,9 @@ const multiblockCheck = {
                 }
 
                 for (let d of [-3, 3]) {
-                    if (block.offset(d, -1, 0).id == 'create:mechanical_pump') {
+                    if (block.offset(d, 4, 0).id == 'create:mechanical_pump') {
 
-                        let checkBlock = block.offset(d, -1, 0)
+                        let checkBlock = block.offset(d, 4, 0)
                         let checkEntityData = checkBlock.entityData
 
                         if (
@@ -258,9 +276,9 @@ const multiblockCheck = {
                 }
 
                 for (let d of [-3, 3]) {
-                    if (block.offset(0, -1, d).id == 'create:mechanical_pump') {
+                    if (block.offset(0, 4, d).id == 'create:mechanical_pump') {
 
-                        let checkBlock = block.offset(0, -1, d)
+                        let checkBlock = block.offset(0, 4, d)
                         let checkEntityData = checkBlock.entityData
 
                         if (
@@ -286,7 +304,7 @@ const multiblockCheck = {
                 for (let i = -3; i <= 3; i++) {
                     for (let j = -3; j <= 3; j++) {
                         if (i != 0 && j != 0) {
-                            if (block.offset(i, -2, j).id == 'create:railway_casing') {
+                            if (block.offset(i, 3, j).id == 'create:railway_casing') {
                                 checkNumber++
                             }
                         }
@@ -296,7 +314,7 @@ const multiblockCheck = {
                 for (let i = -4; i <= 4; i++) {
                     for (let j = -4; j <= 4; j++) {
                         if (!(i >= -3 && i <= 3 && j >= -3 && j <= 3)) {
-                            if (block.offset(i, -3, j).id == 'create:railway_casing') {
+                            if (block.offset(i, 2, j).id == 'create:railway_casing') {
                                 checkNumber++
                             }
                         }
@@ -313,13 +331,13 @@ const multiblockCheck = {
 
                 let checkNumber = 0
 
-                for (let i = -4; i <= -1; i++) {
+                for (let i = 1; i <= 4; i++) {
                     if (block.offset(0, i, 0).id == 'minecraft:air') {
                         checkNumber++
                     }
                 }
 
-                for (let dy = -4; dy <= -2; dy++) {
+                for (let dy = 1; dy <= 3; dy++) {
                     for (let d of [-1, 1]) {
                         if (block.offset(d, dy, 0).id == 'minecraft:air') {
                             checkNumber++
@@ -331,7 +349,7 @@ const multiblockCheck = {
                     }
                 }
 
-                for (let dy = -3; dy <= -2; dy++) {
+                for (let dy = 2; dy <= 3; dy++) {
                     for (let d of [-3, -2, 2, 3]) {
                         if (block.offset(d, dy, 0).id == 'minecraft:air') {
                             checkNumber++
@@ -344,11 +362,11 @@ const multiblockCheck = {
                 }
 
                 for (let d of [-4, 4]) {
-                    if (block.offset(d, -2, 0).id == 'minecraft:air') {
+                    if (block.offset(d, 3, 0).id == 'minecraft:air') {
                         checkNumber++
                     }
 
-                    if (block.offset(0, -2, d).id == 'minecraft:air') {
+                    if (block.offset(0, 3, d).id == 'minecraft:air') {
                         checkNumber++
                     }
                 }
@@ -366,7 +384,7 @@ const multiblockCheck = {
                 for (let i = -2; i <= 2; i++) {
                     for (let j = -2; j <= 2; j++) {
                         if (i != 0 && j != 0) {
-                            if (block.offset(i, -2, j).id == 'create:industrial_iron_block') {
+                            if (block.offset(i, 3, j).id == 'create:industrial_iron_block') {
                                 checkNumber++
                             }
                         }
@@ -376,7 +394,7 @@ const multiblockCheck = {
                 for (let i = -3; i <= 3; i++) {
                     for (let j = -3; j <= 3; j++) {
                         if (i != 0 && j != 0) {
-                            if (block.offset(i, -3, j).id == 'create:industrial_iron_block') {
+                            if (block.offset(i, 2, j).id == 'create:industrial_iron_block') {
                                 checkNumber++
                             }
                         }
@@ -386,18 +404,18 @@ const multiblockCheck = {
                 for (let i = -3; i <= 3; i++) {
                     for (let j = -3; j <= 3; j++) {
                         if (i != 0 && j != 0) {
-                            if (block.offset(i, -4, j).id == 'create:industrial_iron_block') {
+                            if (block.offset(i, 1, j).id == 'create:industrial_iron_block') {
                                 checkNumber++
                             }
                         } else if (i == 0) {
                             if (j != -1 || j != 1) {
-                                if (block.offset(i, -4, j).id == 'create:industrial_iron_block') {
+                                if (block.offset(i, 1, j).id == 'create:industrial_iron_block') {
                                     checkNumber++
                                 }
                             }
                         } else if (j == 0) {
                             if (i != -1 || i != 1) {
-                                if (block.offset(i, -4, j).id == 'create:industrial_iron_block') {
+                                if (block.offset(i, 1, j).id == 'create:industrial_iron_block') {
                                     checkNumber++
                                 }
                             }
@@ -407,7 +425,7 @@ const multiblockCheck = {
 
                 for (let i = -4; i <= 4; i++) {
                     for (let j = -4; j <= 4; j++) {
-                        if (block.offset(i, -5, j).id == 'create:industrial_iron_block') {
+                        if (block.offset(i, 0, j).id == 'create:industrial_iron_block') {
                             checkNumber++
                         }
                     }
@@ -450,6 +468,7 @@ const multiblockCheck = {
             explosion()
         }
 
+        let launchPadResult = blockCheck.launchPad(block)
         let andesiteAlloyBlockResult = blockCheck.andesiteAlloyBlock(block)
         let andesiteScaffoldingResult = blockCheck.andesiteScaffolding(block)
         let encasedFluidPipeResult = blockCheck.encasedFluidPipe(block)
@@ -460,7 +479,8 @@ const multiblockCheck = {
         let industrialIronBlockResult = blockCheck.industrialIronBlock(block)
 
         if (
-            andesiteAlloyBlockResult == 8
+            launchPadResult == 1
+            && andesiteAlloyBlockResult == 8
             && andesiteScaffoldingResult == 8
             && encasedFluidPipeResult == 12
             && fluidPipeResult == 32

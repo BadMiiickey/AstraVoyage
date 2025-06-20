@@ -1,10 +1,1 @@
-{
-  "kubejs.ponder.ash_collector.header": "kubejs:ash_collector",
-  "kubejs.ponder.launch_pad_aboveground.header": "kubejs:launch_pad",
-  "kubejs.ponder.launch_pad_underground.header": "kubejs:launch_pad",
-  "kubejs.ponder.rocket_1_body.header": "kubejs:rocket_1",
-  "kubejs.ponder.rocket_1_pedestal.header": "kubejs:rocket_1",
-  "kubejs.ponder.rocket_2_body.header": "kubejs:rocket_2",
-  "kubejs.ponder.rocket_2_padestal.header": "kubejs:rocket_2",
-  "kubejs.ponder.rocket_2_whole.header": "kubejs:rocket_2"
-}
+{}

@@ -13,6 +13,7 @@ PlayerEvents.loggedIn(event => {
         
         //初始化部分persistentData
         player.persistentData.autoMode = false
+        player.persistentData.mobKillCount = 0
 
         //初次登录后标记
         player.persistentData.hasLoggedBefore = true

@@ -74,11 +74,11 @@ StartupEvents.registry('block', event => {
         
     //致密星核块
     event.create('kubejs:dense_planet_core_block', 'basic')
-    .hardness(4.0)
-    .requiresTool(true)
-    .tagBlock('minecraft:mineable/pickaxe')
-    .tagBlock('minecraft:needs_netherite_tool')
-    .stoneSoundType()
+        .hardness(4.0)
+        .requiresTool(true)
+        .tagBlock('minecraft:mineable/pickaxe')
+        .tagBlock('minecraft:needs_netherite_tool')
+        .stoneSoundType()
 
     //银块
     event.create('kubejs:silver_block', 'basic')
@@ -96,13 +96,13 @@ StartupEvents.registry('block', event => {
         .tagBlock('minecraft:needs_iron_tool')
         .stoneSoundType()
         .blockEntity(info => {
-            info.tick(blockEntity => {
-                
+            info.tick(20 * 2.5, 0, blockEntity => {
+                multiblockCheck.platform(blockEntity)
             })
         })
 
     //月华流晶
-    event.create('kubejs:luminous_pearl', 'basic')
+    event.create('kubejs:luminous_pearl')
         .waterlogged()
         .fullBlock(false)
         .defaultCutout()
@@ -196,6 +196,35 @@ StartupEvents.registry('block', event => {
                         hasBuilt: false,
                     }
                 }
+            })
+        })
+
+    //导流槽
+    event.create('kubejs:diversion_channel')
+        .hardness(2.0)
+        .requiresTool(true)
+        .tagBlock('minecraft:mineable/pickaxe')
+        .tagBlock('minecraft:needs_iron_tool')
+        .tagBlock('create:wrench_pickup')
+        .waterlogged()
+        .fullBlock(false)
+        .defaultCutout()
+        .stoneSoundType()
+        .box(0, 0, 0, 15, 1, 15)
+        .box(1, 2, 1, 14, 2, 14)
+        .box(3, 3, 3, 12, 4, 12)
+        .box(5, 5, 5, 10, 6, 10)
+        .box(6, 7, 6, 9, 9, 9)
+        .blockEntity(info => {
+            info.tick(blockEntity => {
+                if (!blockEntity.persistentData) {
+                    blockEntity.persistentData = {
+                        hasBuildCorrectly: false,
+                        failedMessageHasSent: false,
+                        hasBuilt: false
+                    }
+                }
+                multiblockCheck.diversionChannel(blockEntity)
             })
         })
 

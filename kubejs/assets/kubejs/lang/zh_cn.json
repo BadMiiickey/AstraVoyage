@@ -253,7 +253,8 @@
   "kubejs.ponder.ash_collector.text_2": "接入动力, 使得分散网为吸引风向",
 
   "kubejs.ponder.launch_pad_underground.header": "火箭发射基座地下部分",
-  "kubejs.ponder.launch_pad_underground.text_1": "这是最底层的9x9工业铁块平台",
+  "kubejs.ponder.launch_pad_underground.text_0": "这是最底层的9x9工业铁块平台",
+  "kubejs.ponder.launch_pad_underground.text_1": "在中心处放置导流槽",
   "kubejs.ponder.launch_pad_underground.text_2": "注意, 这里要空出五个方块的十字形空间作为空气通道",
   "kubejs.ponder.launch_pad_underground.text_3": "同样的, 第三层也要空出十三个方块的十字形空间作为空气通道",
   "kubejs.ponder.launch_pad_underground.text_4": "在此之后, 需要使用列车机壳围绕第三层工业铁块放置一圈",
@@ -457,6 +458,7 @@
   "block.kubejs.silver_ore": "银矿石",
   "block.kubejs.deepslate_silver_ore": "深层银矿石",
   "block.kubejs.silver_block": "银块",
+  "block.kubejs.diversion_channel": "导流槽",
 
   "block.kubejs.aluminate_solution": "铝酸盐溶液",
   "block.kubejs.nuclear_waste": "核废水",

@@ -317,6 +317,7 @@ ServerEvents.recipes(event => {
         //Quark
         removeRecipesId('quark:tools/crafting/pickarang_heart')
         removeRecipesId('quark:building/crafting/compressed/charcoal_block_uncompress')
+        removeRecipesId('quark:tools/smithing/flamerang_smithing')
 
         //RefinedStorage
         removeRecipesId('refinedstoraged:quartz_enriched_iron')

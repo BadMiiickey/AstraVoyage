@@ -1,7 +1,7 @@
 Ponder.registry(event => {
 
     //火箭发射基座
-    event.create('ad_astra:launch_pad')
+    event.create(Ingredient.custom(['ad_astra:launch_pad', 'kubejs:diversion_channel']))
 
         //显示地下部分
         .scene('kubejs:launch_pad_underground', 'kubejs:launch_pad', (builder, util) => {
@@ -14,7 +14,11 @@ Ponder.registry(event => {
             //显示第一层
             builder.addKeyframe()
             builder.world().setBlocks([2, 1, 2, 10, 1, 10], 'create:industrial_iron_block', false)
+            builder.world().setBlocks([6, 1, 6], 'kubejs:diversion_channel', false)
             builder.world().showSection([2, 1, 2, 10, 1, 10], Direction.DOWN)
+            builder.idle(20 * 1)
+            builder.text(20 * 2, 'kubejs:underground_0', [7, 1, 7])
+            builder.idle(20 * 3)
             builder.idle(20 * 1)
             builder.text(20 * 2, 'kubejs:underground_1', [7, 1, 7])
             builder.idle(20 * 3)
